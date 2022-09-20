@@ -1,0 +1,2098 @@
+fileFormatVersion: 2
+guid: 1914d95466e3d4341a618c35a56d5f82
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -750047184722822154
+    second: Bringer-of-Death-SpritSheet_0
+  - first:
+      213: 8445469178646879675
+    second: Bringer-of-Death-SpritSheet_1
+  - first:
+      213: -5923306537521942286
+    second: Bringer-of-Death-SpritSheet_2
+  - first:
+      213: 8707107778256294047
+    second: Bringer-of-Death-SpritSheet_3
+  - first:
+      213: -1846612928519130627
+    second: Bringer-of-Death-SpritSheet_4
+  - first:
+      213: 28493216337309425
+    second: Bringer-of-Death-SpritSheet_5
+  - first:
+      213: 8118819912966400158
+    second: Bringer-of-Death-SpritSheet_6
+  - first:
+      213: 8079674775554739003
+    second: Bringer-of-Death-SpritSheet_7
+  - first:
+      213: 6233496440514900867
+    second: Bringer-of-Death-SpritSheet_8
+  - first:
+      213: 6185124051430620655
+    second: Bringer-of-Death-SpritSheet_9
+  - first:
+      213: -6243590176172294242
+    second: Bringer-of-Death-SpritSheet_10
+  - first:
+      213: -187061038009810156
+    second: Bringer-of-Death-SpritSheet_11
+  - first:
+      213: -2137382666133240926
+    second: Bringer-of-Death-SpritSheet_12
+  - first:
+      213: 973881123878733542
+    second: Bringer-of-Death-SpritSheet_13
+  - first:
+      213: -7142606862941313327
+    second: Bringer-of-Death-SpritSheet_14
+  - first:
+      213: 7875671365747817104
+    second: Bringer-of-Death-SpritSheet_15
+  - first:
+      213: -8871867928371661369
+    second: Bringer-of-Death-SpritSheet_16
+  - first:
+      213: 5282158534819968045
+    second: Bringer-of-Death-SpritSheet_17
+  - first:
+      213: -422922510760239427
+    second: Bringer-of-Death-SpritSheet_18
+  - first:
+      213: 6631781949004943560
+    second: Bringer-of-Death-SpritSheet_19
+  - first:
+      213: 8231058446179839085
+    second: Bringer-of-Death-SpritSheet_20
+  - first:
+      213: 751812126289047221
+    second: Bringer-of-Death-SpritSheet_21
+  - first:
+      213: 6430574574124883500
+    second: Bringer-of-Death-SpritSheet_22
+  - first:
+      213: -6766038691376649458
+    second: Bringer-of-Death-SpritSheet_23
+  - first:
+      213: 2483782727947890954
+    second: Bringer-of-Death-SpritSheet_24
+  - first:
+      213: 3687449107416671509
+    second: Bringer-of-Death-SpritSheet_25
+  - first:
+      213: 4072241969498346569
+    second: Bringer-of-Death-SpritSheet_26
+  - first:
+      213: 8385784872082410219
+    second: Bringer-of-Death-SpritSheet_27
+  - first:
+      213: 2090659836945643480
+    second: Bringer-of-Death-SpritSheet_28
+  - first:
+      213: -8645012906986925910
+    second: Bringer-of-Death-SpritSheet_29
+  - first:
+      213: 8914642584386402721
+    second: Bringer-of-Death-SpritSheet_30
+  - first:
+      213: -4964555800879844387
+    second: Bringer-of-Death-SpritSheet_31
+  - first:
+      213: -643843233168925960
+    second: Bringer-of-Death-SpritSheet_32
+  - first:
+      213: -1554090680192844270
+    second: Bringer-of-Death-SpritSheet_33
+  - first:
+      213: 1900342803882551889
+    second: Bringer-of-Death-SpritSheet_34
+  - first:
+      213: -6959215256267499731
+    second: Bringer-of-Death-SpritSheet_35
+  - first:
+      213: -8721093536611414691
+    second: Bringer-of-Death-SpritSheet_36
+  - first:
+      213: -4818586564699129774
+    second: Bringer-of-Death-SpritSheet_37
+  - first:
+      213: -2960163153839071603
+    second: Bringer-of-Death-SpritSheet_38
+  - first:
+      213: -1378873467200105373
+    second: Bringer-of-Death-SpritSheet_39
+  - first:
+      213: -6237223263896097850
+    second: Bringer-of-Death-SpritSheet_40
+  - first:
+      213: -6342980997288685656
+    second: Bringer-of-Death-SpritSheet_41
+  - first:
+      213: 1887337606458979207
+    second: Bringer-of-Death-SpritSheet_42
+  - first:
+      213: 2778454290109986065
+    second: Bringer-of-Death-SpritSheet_43
+  - first:
+      213: -6416028094590494610
+    second: Bringer-of-Death-SpritSheet_44
+  - first:
+      213: 6824449332584486427
+    second: Bringer-of-Death-SpritSheet_45
+  - first:
+      213: 8403998346646135688
+    second: Bringer-of-Death-SpritSheet_46
+  - first:
+      213: 3879292089760221355
+    second: Bringer-of-Death-SpritSheet_47
+  - first:
+      213: 29702762353113097
+    second: Bringer-of-Death-SpritSheet_48
+  - first:
+      213: 8687428498307349624
+    second: Bringer-of-Death-SpritSheet_49
+  - first:
+      213: -5379403063917420916
+    second: Bringer-of-Death-SpritSheet_50
+  - first:
+      213: -1332470889934944754
+    second: Bringer-of-Death-SpritSheet_51
+  - first:
+      213: 6565450280992480206
+    second: Bringer-of-Death-SpritSheet_52
+  - first:
+      213: -3351220719838747524
+    second: Bringer-of-Death-SpritSheet_53
+  - first:
+      213: -953707883773386096
+    second: Bringer-of-Death-SpritSheet_54
+  - first:
+      213: 7592883989416276412
+    second: Bringer-of-Death-SpritSheet_55
+  - first:
+      213: 8521500246072281666
+    second: Bringer-of-Death-SpritSheet_56
+  - first:
+      213: -4221278012398908484
+    second: Bringer-of-Death-SpritSheet_57
+  - first:
+      213: 6754218284649242354
+    second: Bringer-of-Death-SpritSheet_58
+  - first:
+      213: -8457060507731139865
+    second: Bringer-of-Death-SpritSheet_59
+  - first:
+      213: 6332021275310799178
+    second: Bringer-of-Death-SpritSheet_60
+  - first:
+      213: 3976960032240018065
+    second: Bringer-of-Death-SpritSheet_61
+  - first:
+      213: 7215576535354308736
+    second: Bringer-of-Death-SpritSheet_62
+  - first:
+      213: -216337917939532555
+    second: Bringer-of-Death-SpritSheet_63
+  - first:
+      213: -6776482256723300285
+    second: BringerSpritSheet_0
+  - first:
+      213: 364302620763396103
+    second: BringerSpritSheet_1
+  - first:
+      213: 539603263107747796
+    second: BringerSpritSheet_2
+  - first:
+      213: 3931675975819689954
+    second: BringerSpritSheet_3
+  - first:
+      213: 7390965205866392458
+    second: BringerSpritSheet_4
+  - first:
+      213: 5610628323082725876
+    second: BringerSpritSheet_5
+  - first:
+      213: 4397412378270355707
+    second: BringerSpritSheet_6
+  - first:
+      213: -3774666974756048951
+    second: BringerSpritSheet_7
+  - first:
+      213: -121316173999969329
+    second: BringerSpritSheet_8
+  - first:
+      213: 1424185727695974187
+    second: BringerSpritSheet_9
+  - first:
+      213: -3857212863839827181
+    second: BringerSpritSheet_10
+  - first:
+      213: 904832543546464980
+    second: BringerSpritSheet_11
+  - first:
+      213: -4789377891992843355
+    second: BringerSpritSheet_12
+  - first:
+      213: 7437557352019433825
+    second: BringerSpritSheet_13
+  - first:
+      213: 7097180038842326950
+    second: BringerSpritSheet_14
+  - first:
+      213: 2681498309284883574
+    second: BringerSpritSheet_15
+  - first:
+      213: -2705472833852072267
+    second: BringerSpritSheet_16
+  - first:
+      213: 5668629775673668383
+    second: BringerSpritSheet_17
+  - first:
+      213: -2392253920030039733
+    second: BringerSpritSheet_18
+  - first:
+      213: -2489217459605631931
+    second: BringerSpritSheet_19
+  - first:
+      213: 3188984345243540576
+    second: BringerSpritSheet_20
+  - first:
+      213: 6548511272773331250
+    second: BringerSpritSheet_21
+  - first:
+      213: -8901817616525086955
+    second: BringerSpritSheet_22
+  - first:
+      213: -3668563336577989648
+    second: BringerSpritSheet_23
+  - first:
+      213: 2335704318795446309
+    second: BringerSpritSheet_24
+  - first:
+      213: 500101544429510173
+    second: BringerSpritSheet_25
+  - first:
+      213: 3809391885484053245
+    second: BringerSpritSheet_26
+  - first:
+      213: -1191240327418926666
+    second: BringerSpritSheet_27
+  - first:
+      213: -3434408526096216926
+    second: BringerSpritSheet_28
+  - first:
+      213: -4199786730223001622
+    second: BringerSpritSheet_29
+  - first:
+      213: -5842999435615454751
+    second: BringerSpritSheet_30
+  - first:
+      213: -3416090254320448678
+    second: BringerSpritSheet_31
+  - first:
+      213: -3278696003322559532
+    second: BringerSpritSheet_32
+  - first:
+      213: 1465067562215155431
+    second: BringerSpritSheet_33
+  - first:
+      213: -2637074785664532729
+    second: BringerSpritSheet_34
+  - first:
+      213: 4760812429989969409
+    second: BringerSpritSheet_35
+  - first:
+      213: -4506515144586647709
+    second: BringerSpritSheet_36
+  - first:
+      213: -2030159553832142260
+    second: BringerSpritSheet_37
+  - first:
+      213: 1029203073665674221
+    second: BringerSpritSheet_38
+  - first:
+      213: -8852870287915738573
+    second: BringerSpritSheet_39
+  - first:
+      213: 4585758995759564372
+    second: BringerSpritSheet_40
+  - first:
+      213: 773009029098800295
+    second: BringerSpritSheet_41
+  - first:
+      213: 2928084539717071257
+    second: BringerSpritSheet_42
+  - first:
+      213: 8863426002086768994
+    second: BringerSpritSheet_43
+  - first:
+      213: 4501541761814438684
+    second: BringerSpritSheet_44
+  - first:
+      213: -995790429191533927
+    second: BringerSpritSheet_45
+  - first:
+      213: -6174312698202128566
+    second: BringerSpritSheet_46
+  - first:
+      213: -4526402213194194998
+    second: BringerSpritSheet_47
+  - first:
+      213: -6376769905844475931
+    second: BringerSpritSheet_48
+  - first:
+      213: 7840050341960467255
+    second: BringerSpritSheet_49
+  - first:
+      213: 214767023177971224
+    second: BringerSpritSheet_50
+  - first:
+      213: -1867958123775448833
+    second: BringerSpritSheet_51
+  - first:
+      213: -7544272533128179129
+    second: BringerSpritSheet_52
+  - first:
+      213: 8471393244155279618
+    second: BringerSpritSheet_53
+  - first:
+      213: 3358875572876133995
+    second: BringerSpritSheet_54
+  - first:
+      213: -8997323818053563830
+    second: BringerSpritSheet_55
+  - first:
+      213: 7438324968452606154
+    second: BringerSpritSheet_56
+  - first:
+      213: 7285777265124330905
+    second: BringerSpritSheet_57
+  - first:
+      213: -3738438657840847287
+    second: BringerSpritSheet_58
+  - first:
+      213: -3862053027709314732
+    second: BringerSpritSheet_59
+  - first:
+      213: 698211289730502312
+    second: BringerSpritSheet_60
+  - first:
+      213: 7183826793220891065
+    second: BringerSpritSheet_61
+  - first:
+      213: 8782488570181416212
+    second: BringerSpritSheet_62
+  - first:
+      213: -6056851261838444768
+    second: BringerSpritSheet_63
+  - first:
+      213: -414145455421075271
+    second: BringerSpritSheet_64
+  - first:
+      213: -1394974727734784841
+    second: BringerSpritSheet_65
+  - first:
+      213: -4488844296175790231
+    second: BringerSpritSheet_66
+  - first:
+      213: 2148486783297586218
+    second: BringerSpritSheet_67
+  - first:
+      213: 464514648774659653
+    second: BringerSpritSheet_68
+  - first:
+      213: 1899143824641665465
+    second: BringerSpritSheet_69
+  - first:
+      213: -9147910423006429669
+    second: BringerSpritSheet_70
+  - first:
+      213: -6116330938516552684
+    second: BringerSpritSheet_71
+  - first:
+      213: 8549864109000133902
+    second: BringerSpritSheet_72
+  - first:
+      213: -3817877030991455154
+    second: BringerSpritSheet_73
+  - first:
+      213: -5740249109016825405
+    second: BringerSpritSheet_74
+  - first:
+      213: 1754963887230449498
+    second: BringerSpritSheet_75
+  - first:
+      213: 2705219349746311324
+    second: BringerSpritSheet_76
+  - first:
+      213: -7069306082179051849
+    second: BringerSpritSheet_77
+  - first:
+      213: -8233858000213264954
+    second: BringerSpritSheet_78
+  - first:
+      213: -2199432311478969096
+    second: BringerSpritSheet_79
+  - first:
+      213: 1252601845792913855
+    second: BringerSpritSheet_80
+  - first:
+      213: -3182155892673513316
+    second: BringerSpritSheet_81
+  - first:
+      213: 5070164826694658128
+    second: BringerSpritSheet_82
+  - first:
+      213: -3278840732942599452
+    second: BringerSpritSheet_83
+  - first:
+      213: -4001891220720732984
+    second: BringerSpritSheet_84
+  - first:
+      213: 4667199170335145817
+    second: BringerSpritSheet_85
+  - first:
+      213: -7407663724294498632
+    second: BringerSpritSheet_86
+  - first:
+      213: -2918290368469320431
+    second: BringerSpritSheet_87
+  - first:
+      213: -5619630932539057162
+    second: BringerSpritSheet_88
+  - first:
+      213: -4845130967017160359
+    second: BringerSpritSheet_89
+  - first:
+      213: -2162764882858825405
+    second: BringerSpritSheet_90
+  - first:
+      213: -2499737039520351192
+    second: BringerSpritSheet_91
+  - first:
+      213: -2385583545636102281
+    second: BringerSpritSheet_92
+  - first:
+      213: 1558838581537506765
+    second: BringerSpritSheet_93
+  - first:
+      213: -4498744673981056326
+    second: BringerSpritSheet_94
+  - first:
+      213: -3635500592638000977
+    second: BringerSpritSheet_95
+  - first:
+      213: -986540623995056920
+    second: BringerSpritSheet_96
+  - first:
+      213: 8508731243103016770
+    second: BringerSpritSheet_97
+  - first:
+      213: 7932945299950679236
+    second: BringerSpritSheet_98
+  - first:
+      213: -3241857646034572900
+    second: BringerSpritSheet_99
+  - first:
+      213: -4337256753092216123
+    second: BringerSpritSheet_100
+  - first:
+      213: -700951509264373663
+    second: BringerSpritSheet_101
+  - first:
+      213: -377607325804369270
+    second: BringerSpritSheet_102
+  - first:
+      213: 8623169288239449113
+    second: BringerSpritSheet_103
+  - first:
+      213: 5335335589571314850
+    second: BringerSpritSheet_104
+  - first:
+      213: 3618425683480146415
+    second: BringerSpritSheet_105
+  - first:
+      213: -4747534101318310685
+    second: BringerSpritSheet_106
+  - first:
+      213: -2330332664909939974
+    second: BringerSpritSheet_107
+  - first:
+      213: 3617211983260606060
+    second: BringerSpritSheet_108
+  - first:
+      213: -281466776989663881
+    second: BringerSpritSheet_109
+  - first:
+      213: 1737481798455755182
+    second: BringerSpritSheet_110
+  - first:
+      213: 1624087713006499155
+    second: BringerSpritSheet_111
+  - first:
+      213: -3721989526403698556
+    second: BringerSpritSheet_112
+  - first:
+      213: -3115081504774616956
+    second: BringerSpritSheet_113
+  - first:
+      213: 9186764507046258583
+    second: BringerSpritSheet_114
+  - first:
+      213: 5733137688451968675
+    second: BringerSpritSheet_115
+  - first:
+      213: -1523228484435734122
+    second: BringerSpritSheet_116
+  - first:
+      213: 2041384604700397567
+    second: BringerSpritSheet_117
+  - first:
+      213: -6937611653810859312
+    second: BringerSpritSheet_118
+  - first:
+      213: 7000680691397271250
+    second: BringerSpritSheet_119
+  - first:
+      213: -2933086995889260077
+    second: BringerSpritSheet_120
+  - first:
+      213: -3510787782506740501
+    second: BringerSpritSheet_121
+  - first:
+      213: -372551660868110914
+    second: BringerSpritSheet_122
+  - first:
+      213: 4061859693995408263
+    second: BringerSpritSheet_123
+  - first:
+      213: -2098742306977450396
+    second: BringerSpritSheet_124
+  - first:
+      213: -3694144869997433020
+    second: BringerSpritSheet_125
+  - first:
+      213: -1910035356583181440
+    second: BringerSpritSheet_126
+  - first:
+      213: -3626049018015723760
+    second: BringerSpritSheet_127
+  - first:
+      213: 2770701176133039546
+    second: BringerSpritSheet_128
+  - first:
+      213: -4868506971321008783
+    second: BringerSpritSheet_129
+  - first:
+      213: -3841398186830494999
+    second: BringerSpritSheet_130
+  - first:
+      213: 8961606495539828409
+    second: BringerSpritSheet_131
+  - first:
+      213: -6840262700794129888
+    second: BringerSpritSheet_132
+  - first:
+      213: 2212958860890730433
+    second: BringerSpritSheet_133
+  - first:
+      213: -5014051019503239063
+    second: BringerSpritSheet_134
+  - first:
+      213: -764052858123909683
+    second: BringerSpritSheet_135
+  - first:
+      213: 7732274465871363935
+    second: BringerSpritSheet_136
+  - first:
+      213: -4022462857431454580
+    second: BringerSpritSheet_137
+  - first:
+      213: 5080291366624340935
+    second: BringerSpritSheet_138
+  - first:
+      213: -3402110121839311828
+    second: BringerSpritSheet_139
+  - first:
+      213: 4614989099286475339
+    second: BringerSpritSheet_140
+  - first:
+      213: -6452409578700238185
+    second: BringerSpritSheet_141
+  - first:
+      213: 4928859529699717365
+    second: BringerSpritSheet_142
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BringerSpritSheet_0
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 652
+        width: 40
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34035457a4915f1a0800000000000000
+      internalID: -6776482256723300285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_1
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 652
+        width: 40
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 708985dad434e0500800000000000000
+      internalID: 364302620763396103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_2
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 652
+        width: 41
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dfcd211f4e0d7700800000000000000
+      internalID: 539603263107747796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_3
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 652
+        width: 41
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ef7ba6187e109630800000000000000
+      internalID: 3931675975819689954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_4
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 652
+        width: 45
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8b20fa12bbf19660800000000000000
+      internalID: 7390965205866392458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_5
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 652
+        width: 47
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f96714cbb4fcdd40800000000000000
+      internalID: 5610628323082725876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_6
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 652
+        width: 45
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf0d5b1724fb60d30800000000000000
+      internalID: 4397412378270355707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_7
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 652
+        width: 43
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cf6440b260bd9bc0800000000000000
+      internalID: -3774666974756048951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_8
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 559
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcbe83f159ff05ef0800000000000000
+      internalID: -121316173999969329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_9
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 559
+        width: 56
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2fef79af59b3c310800000000000000
+      internalID: 1424185727695974187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_10
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 559
+        width: 56
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31b82c3365d687ac0800000000000000
+      internalID: -3857212863839827181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_11
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 559
+        width: 54
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dadc43876c9e8c00800000000000000
+      internalID: 904832543546464980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_12
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 559
+        width: 48
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ab48a4be26b88db0800000000000000
+      internalID: -4789377891992843355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_13
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 559
+        width: 46
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16996bb7103873760800000000000000
+      internalID: 7437557352019433825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_14
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 559
+        width: 45
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6af903294af3e7260800000000000000
+      internalID: 7097180038842326950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_15
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 559
+        width: 50
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67c6cbe4188963520800000000000000
+      internalID: 2681498309284883574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_16
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 465
+        width: 141
+        height: 84
+      alignment: 9
+      pivot: {x: 0.7, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5be17c4baca347ad0800000000000000
+      internalID: -2705472833852072267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_19
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 466
+        width: 133
+        height: 76
+      alignment: 9
+      pivot: {x: 0.7, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c818fa8e5847dd0800000000000000
+      internalID: -2489217459605631931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_21
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 465
+        width: 128
+        height: 87
+      alignment: 9
+      pivot: {x: 0.7, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 239ab4d9e4cf0ea50800000000000000
+      internalID: 6548511272773331250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_25
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 466
+        width: 61
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1e585b74b7b0f600800000000000000
+      internalID: 500101544429510173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_26
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 466
+        width: 62
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df25880acbdadd430800000000000000
+      internalID: 3809391885484053245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_30
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 466
+        width: 44
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e9355988fe79eea0800000000000000
+      internalID: -5842999435615454751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_31
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 466
+        width: 60
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5b4e8e430c9790d0800000000000000
+      internalID: -3416090254320448678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_37
+      rect:
+        serializedVersion: 2
+        x: 982
+        y: 465
+        width: 129
+        height: 88
+      alignment: 9
+      pivot: {x: 0.7, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4a387c54ac63d3e0800000000000000
+      internalID: -2030159553832142260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_46
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 373
+        width: 37
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4f7a7b505f605aa0800000000000000
+      internalID: -6174312698202128566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_47
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 373
+        width: 41
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acf94044b2dfe21c0800000000000000
+      internalID: -4526402213194194998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_48
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 373
+        width: 39
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e72db36e892187a0800000000000000
+      internalID: -6376769905844475931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_49
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 373
+        width: 40
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 733cbb56f347dcc60800000000000000
+      internalID: 7840050341960467255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_50
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 373
+        width: 45
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 816bdfd38710bf200800000000000000
+      internalID: 214767023177971224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_51
+      rect:
+        serializedVersion: 2
+        x: 1061
+        y: 373
+        width: 48
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff82f09bbfda316e0800000000000000
+      internalID: -1867958123775448833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_56
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 373
+        width: 114
+        height: 85
+      alignment: 9
+      pivot: {x: 0.83, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac8498c162d3a3760800000000000000
+      internalID: 7438324968452606154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_57
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 373
+        width: 47
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99d4a5822d74c1560800000000000000
+      internalID: 7285777265124330905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_61
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 285
+        width: 50
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b16dd9286412b360800000000000000
+      internalID: 7183826793220891065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_62
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 292
+        width: 49
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 415779da2daa1e970800000000000000
+      internalID: 8782488570181416212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_64
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 304
+        width: 38
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b0d84c07e8a04af0800000000000000
+      internalID: -414145455421075271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_65
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 280
+        width: 49
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bc88b240ed04ace0800000000000000
+      internalID: -1394974727734784841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_66
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 280
+        width: 51
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 967576245eb64b1c0800000000000000
+      internalID: -4488844296175790231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_67
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 279
+        width: 53
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a240313a855f0dd10800000000000000
+      internalID: 2148486783297586218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_69
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 298
+        width: 43
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b9a4251f3d1b5a10800000000000000
+      internalID: 1899143824641665465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_71
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 280
+        width: 54
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4144df8ca6d6e1ba0800000000000000
+      internalID: -6116330938516552684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_76
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 185
+        width: 54
+        height: 95
+      alignment: 9
+      pivot: {x: 0.7, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c90642d6aaeda8520800000000000000
+      internalID: 2705219349746311324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_77
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 187
+        width: 51
+        height: 92
+      alignment: 9
+      pivot: {x: 0.7, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7be8533b297c4ed90800000000000000
+      internalID: -7069306082179051849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_84
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 187
+        width: 56
+        height: 91
+      alignment: 9
+      pivot: {x: 0.7, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c4bf2f332d6678c0800000000000000
+      internalID: -4001891220720732984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_86
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 187
+        width: 48
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b611e91711b23990800000000000000
+      internalID: -7407663724294498632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_87
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 187
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11d31f32f562087d0800000000000000
+      internalID: -2918290368469320431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_88
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 187
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fb5631e07f0302b0800000000000000
+      internalID: -5619630932539057162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_89
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 187
+        width: 50
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95182bc5e03a2ccb0800000000000000
+      internalID: -4845130967017160359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_91
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 187
+        width: 57
+        height: 92
+      alignment: 9
+      pivot: {x: 0.7, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82cb08f18662f4dd0800000000000000
+      internalID: -2499737039520351192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_92
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 132
+        width: 32
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77fd7549764b4eed0800000000000000
+      internalID: -2385583545636102281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_93
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 132
+        width: 32
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc587ba4e6b12a510800000000000000
+      internalID: 1558838581537506765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_94
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 133
+        width: 35
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ababd2ced8f3191c0800000000000000
+      internalID: -4498744673981056326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_95
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 133
+        width: 35
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa00713097b1c8dc0800000000000000
+      internalID: -3635500592638000977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_96
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 128
+        width: 29
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ec4846878a1f42f0800000000000000
+      internalID: -986540623995056920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_97
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 115
+        width: 31
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2475c620cf5151670800000000000000
+      internalID: 8508731243103016770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_98
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 98
+        width: 31
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c43a2248bb771e60800000000000000
+      internalID: 7932945299950679236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_99
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 94
+        width: 31
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c99a9b3a5ab9203d0800000000000000
+      internalID: -3241857646034572900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_100
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 1
+        width: 33
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ca364c76f7fec3c0800000000000000
+      internalID: -4337256753092216123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_101
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 1
+        width: 34
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 168e58de058b546f0800000000000000
+      internalID: -700951509264373663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_102
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 1
+        width: 35
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8a68d8432872caf0800000000000000
+      internalID: -377607325804369270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_103
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 0
+        width: 40
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9140297b7c6aba770800000000000000
+      internalID: 8623169288239449113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_105
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 0
+        width: 38
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe1fbf5ecfa373230800000000000000
+      internalID: 3618425683480146415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_106
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 40
+        width: 29
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e46edb63ee5d1eb0800000000000000
+      internalID: -4747534101318310685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_107
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 39
+        width: 31
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afabd83b9cef8afd0800000000000000
+      internalID: -2330332664909939974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BringerSpritSheet_108
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 39
+        width: 31
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6ed88b422be23230800000000000000
+      internalID: 3617211983260606060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
