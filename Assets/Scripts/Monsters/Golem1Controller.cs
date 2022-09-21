@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
-public class BatController : MonoBehaviour
+public class Golem1Controller : MonoBehaviour
 {
     Transform target;
     float speed = 8f;
@@ -57,7 +57,8 @@ public class BatController : MonoBehaviour
         //방향 바꾸기 재검토
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle - 180, Vector3.forward);
-        cc.Move(dir * speed * Time.deltaTime);
+        cc.Move((dir + Vector3.right) * speed * Time.deltaTime);
+        cc.Move((dir + Vector3.left) * speed * Time.deltaTime);
         if (Vector2.Distance(target.position, transform.position) < attackDistance)
         {
             state = State.Attack;
@@ -96,29 +97,35 @@ public class BatController : MonoBehaviour
         hpBar.value = 0;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         anim.SetTrigger("Die");
-        int blue = Random.Range(1, 3);
+        int blue = Random.Range(2, 4);
+        int orange = Random.Range(1, 3);
         for (int i = 1; i <= blue; i++)
             spawnBlue(i);
-        spawnOrange();
+        for (int i = 1; i <= orange; i++)
+            spawnOrange(i);
         StartCoroutine(DieProcess());
     }
 
     private void spawnBlue(int n)
     {
         GameObject bluecoin = Instantiate(ItemPrefab1, transform.position, transform.rotation);
-        if(n==1)
-            bluecoin.transform.Translate(Vector3.right);
-        if(n==2)
-            bluecoin.transform.Translate(Vector3.left);
+        if (n % 2 == 0)
+            bluecoin.transform.Translate(Vector3.right * n + Vector3.up * n * 0.4f);
+        if (n % 2 == 1)
+            bluecoin.transform.Translate(Vector3.left * n + Vector3.down * n * 0.4f);
     }
-    private void spawnOrange()
+    private void spawnOrange(int n)
     {
         GameObject orangecoin = Instantiate(ItemPrefab2, transform.position, transform.rotation);
+        if (n == 1)
+            orangecoin.transform.Translate(Vector3.right);
+        if (n == 2)
+            orangecoin.transform.Translate(Vector3.left);
     }
     IEnumerator DieProcess()
     {
         yield return new WaitForSeconds(2f);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void HitEnemy(int hitPower)
@@ -141,5 +148,4 @@ public class BatController : MonoBehaviour
             Die();
         }
     }
-
 }

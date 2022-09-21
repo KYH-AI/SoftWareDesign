@@ -80,7 +80,7 @@ public class SlimeController: MonoBehaviour
     IEnumerator DieProcess()
     {
         yield return new WaitForSeconds(2f);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     public void HitEnemy(int hitPower)
     {

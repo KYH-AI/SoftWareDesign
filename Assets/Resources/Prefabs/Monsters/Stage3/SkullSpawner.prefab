@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2556175020893925865}
-  - component: {fileID: 2556175020893925866}
+  - component: {fileID: 6102378734882635657}
   m_Layer: 0
   m_Name: SkullSpawner
   m_TagString: Untagged
@@ -27,12 +27,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.7454348, y: -0.50339866, z: -0.030372337}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2556175020893925866
+--- !u!114 &6102378734882635657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,9 +40,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2556175020893925864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 522a9ac3b302420489de90de128dbca4, type: 3}
+  m_Script: {fileID: 11500000, guid: 40148e2a81b1d1a45b54b17ac8180f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkullPrefab: {fileID: 5348025766137426976, guid: 5258adc0dbb5b1747ad8b67e6c631c85, type: 3}
+  Prefab: {fileID: 5348025766137426976, guid: 5258adc0dbb5b1747ad8b67e6c631c85, type: 3}
+  Monster: []
   spawnRateMin: 0.5
-  spawnRateMax: 1
+  spawnRateMax: 3

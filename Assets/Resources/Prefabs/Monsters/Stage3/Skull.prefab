@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 5348025766137426982}
   - component: {fileID: 5348025766137426983}
   m_Layer: 0
-  m_Name: lv3_Skull
+  m_Name: Skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
