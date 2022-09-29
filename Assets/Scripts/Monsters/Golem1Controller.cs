@@ -134,6 +134,7 @@ public class Golem1Controller : MonoBehaviour
         {
             return;
         }
+        hpBar.IsActive();
         HP -= hitPower;
         hpBar.value = (float)HP / (float)maxHP;
         if (HP > 0)
@@ -146,6 +147,17 @@ public class Golem1Controller : MonoBehaviour
         {
             state = State.Die;
             Die();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Skill")
+        {
+            Debug.Log("Damaged!");
+            //int AttackPower = GameObject.Find("Player").GetComponent<BasicStat>().DefaultAttackDamage;
+            int AttackPower = 5;
+            HitEnemy(AttackPower);
         }
     }
 }

@@ -8,11 +8,11 @@ public class SkullController : MonoBehaviour
 {
     Transform target;
     float speed = 8f;
+    private Rigidbody2D rigid;
     int attackPower = 2;
     int HP;
     int maxHP;
     float attackDistance = 2.5f;
-    CharacterController cc;
     Animator anim;
 
     public Slider hpBar;
@@ -31,12 +31,12 @@ public class SkullController : MonoBehaviour
     void Start()
     {
         target = GameObject.Find("Player").transform;
+        rigid = GetComponent<Rigidbody2D>();
         HP = 20;
         maxHP = HP;
         state = State.Run;
         hpBar.value = HP / maxHP;
-        anim = GetComponent<Animator>();
-        cc = GetComponent<CharacterController>();
+        anim = this.GetComponent<Animator>();
     }
 
     void Update()
@@ -56,13 +56,13 @@ public class SkullController : MonoBehaviour
         Vector3 dir = (target.position - transform.position).normalized;
         //방향 바꾸기 재검토
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle - 180, Vector3.forward);
-        cc.Move((dir+Vector3.right) * speed * Time.deltaTime);
-        cc.Move((dir+Vector3.left) * speed * Time.deltaTime);
-        if (Vector2.Distance(target.position, transform.position) < attackDistance)
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        rigid.velocity = dir * speed;
+        // transform.position = Vector3.MoveTowards(transform.position, target.position, speed);
+        /*if (Vector2.Distance(target.position, transform.position) < attackDistance)
         {
             state = State.Attack;
-        }
+        }*/
     }
 
     private void Attack()
@@ -97,16 +97,18 @@ public class SkullController : MonoBehaviour
         hpBar.value = 0;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         anim.SetTrigger("Die");
-        int blue = Random.Range(2, 4);
+        /*int blue = Random.Range(2, 4);
         int orange = Random.Range(1, 3);
         for (int i = 1; i <= blue; i++)
             spawnBlue(i);
         for(int i=1; i<=orange; i++)
-            spawnOrange(i);
+            spawnOrange(i);*/
+        GameObject bluecoin = Instantiate(ItemPrefab1, transform.position, transform.rotation);
+        GameObject orangecoin = Instantiate(ItemPrefab2, transform.position + Vector3.right, transform.rotation);
         StartCoroutine(DieProcess());
     }
 
-    private void spawnBlue(int n)
+    /*private void spawnBlue(int n)
     {
         GameObject bluecoin = Instantiate(ItemPrefab1, transform.position, transform.rotation);
         if (n%2==0)
@@ -121,10 +123,10 @@ public class SkullController : MonoBehaviour
             orangecoin.transform.Translate(Vector3.right);
         if (n == 2)
             orangecoin.transform.Translate(Vector3.left);
-    }
+    }*/
     IEnumerator DieProcess()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
     }
 
@@ -146,6 +148,17 @@ public class SkullController : MonoBehaviour
         {
             state = State.Die;
             Die();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Skill")
+        {
+            Debug.Log("Damaged!");
+            //int AttackPower = GameObject.Find("Player").GetComponent<BasicStat>().DefaultAttackDamage;
+            int AttackPower = 5;
+            HitEnemy(AttackPower);
         }
     }
 }

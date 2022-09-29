@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 3635063540764204163, guid: c603181e03553be428b1103cd80ad34a, type: 3}
   Monster: []
-  spawnRateMin: 0.5
-  spawnRateMax: 1
+  spawnRateMin: 3
+  spawnRateMax: 5
 --- !u!212 &10995952251771169
 SpriteRenderer:
   m_ObjectHideFlags: 0

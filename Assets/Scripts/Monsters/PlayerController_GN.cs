@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController_GN : MonoBehaviour
 {
-    public Vector2 speed = new Vector2(10, 10);
+    public float speed=30f;
     int hp = 20;
 
     void Update()
@@ -12,7 +12,7 @@ public class PlayerController_GN : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(speed.x * x, speed.y * y, 0);
+        Vector3 movement = new Vector3(speed * x, speed * y, 0);
         movement *= Time.deltaTime;
         transform.Translate(movement);
     }

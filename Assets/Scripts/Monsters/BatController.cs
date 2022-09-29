@@ -143,5 +143,14 @@ public class BatController : MonoBehaviour
             Die();
         }
     }
-
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Skill")
+        {
+            Debug.Log("Damaged!");
+            //int AttackPower = GameObject.Find("Player").GetComponent<BasicStat>().DefaultAttackDamage;
+            int AttackPower = 5;
+            HitEnemy(AttackPower);
+        }
+    }
 }
