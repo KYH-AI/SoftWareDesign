@@ -16,9 +16,4 @@ public class PlayerController_GN : MonoBehaviour
         movement *= Time.deltaTime;
         transform.Translate(movement);
     }
-
-    public void damage(int n)
-    {
-        hp -= n;
-    }
 }

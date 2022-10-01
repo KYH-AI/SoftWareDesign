@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69e6443d67a4cf241a1179bfa19679a3, type: 3}
-  m_Name: Enemy A Stat
+  m_Name: 2_Bat Stat
   m_EditorClassIdentifier: 
-  Hp: 10
-  MoveSpeed: 1.5
+  Hp: 3
+  MoveSpeed: 3
   Armor: 0
-  defaultAttackDamage: 0
+  DefaultAttackDamage: 0
