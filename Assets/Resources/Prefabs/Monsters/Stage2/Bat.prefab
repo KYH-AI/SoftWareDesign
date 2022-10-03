@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7412701302403272570}
   - component: {fileID: 6434066338891990763}
   - component: {fileID: 7030311390025762017}
-  - component: {fileID: 880368591615999522}
+  - component: {fileID: 8917448463598156176}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Untagged
@@ -143,7 +143,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &880368591615999522
+--- !u!114 &8917448463598156176
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,12 +152,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1580878356797909751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1796abb599c8d3b44b4f057e07623a55, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fbb3c74d4969814ca1f9427392cdf96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: 9f613e728c9387a458528bf06ff721c9, type: 2}
   playerTarget: {fileID: 0}
   DamageInform: {fileID: 6345487201166720215}
+  coolTime: -1
+  skillTime: 2
+  minKillCount: 0
+  maxKillCount: 0
 --- !u!1 &3299268154873951989
 GameObject:
   m_ObjectHideFlags: 0

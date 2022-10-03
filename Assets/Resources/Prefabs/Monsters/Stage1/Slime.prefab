@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8283450641377011237}
   - component: {fileID: 8283450641377011236}
   - component: {fileID: 8283450641377011239}
-  - component: {fileID: 8283450641377011238}
+  - component: {fileID: 4810123017021479018}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -143,7 +143,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8283450641377011238
+--- !u!114 &4810123017021479018
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,12 +152,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8283450641377011257}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1796abb599c8d3b44b4f057e07623a55, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fbb3c74d4969814ca1f9427392cdf96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: 0e00f04b633936944a75eb901f148cc5, type: 2}
   playerTarget: {fileID: 0}
   DamageInform: {fileID: 8283450643052738486}
+  coolTime: -1
+  skillTime: 2
+  minKillCount: 0
+  maxKillCount: 0
 --- !u!1 &8283450641668736460
 GameObject:
   m_ObjectHideFlags: 0

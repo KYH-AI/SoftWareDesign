@@ -152,12 +152,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7960855229358580596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1796abb599c8d3b44b4f057e07623a55, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fbb3c74d4969814ca1f9427392cdf96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: 7ebf54fbc8f37e847bc0c9fb9f041749, type: 2}
   playerTarget: {fileID: 0}
   DamageInform: {fileID: 7960855230200363519}
+  coolTime: -1
+  skillTime: 2
+  minKillCount: 0
+  maxKillCount: 0
 --- !u!1 &7960855229773450458
 GameObject:
   m_ObjectHideFlags: 0
