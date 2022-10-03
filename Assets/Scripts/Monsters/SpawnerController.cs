@@ -6,8 +6,8 @@ public class SpawnerController : MonoBehaviour
 {
     public GameObject Prefab;
     public GameObject[] Monster;
-    public float spawnRateMin = 0.5f;
-    public float spawnRateMax = 3f;
+    public float spawnRateMin;
+    public float spawnRateMax;
 
     private float spawnRate;
     int idx = 0;
@@ -30,9 +30,9 @@ public class SpawnerController : MonoBehaviour
     {
         spawnRate = Random.Range(spawnRateMin, spawnRateMax);
         yield return new WaitForSeconds(spawnRate);
-        Monster[idx].transform.position = gameObject.transform.position;
+        Monster[idx].transform.position = gameObject.transform.position+Vector3.right*20;
         Monster[idx++].SetActive(true);
-        Monster[idx].transform.position = gameObject.transform.position;
+        Monster[idx].transform.position = gameObject.transform.position + Vector3.left * 20;
         Monster[idx++].SetActive(true);
         if (idx == MAX) idx = 0;
         StartCoroutine("Spawn");

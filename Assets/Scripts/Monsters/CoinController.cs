@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlueCoinController : MonoBehaviour
+public class CoinController : MonoBehaviour
 {
     Transform target;
     float obtainDistance=2.0f;
     float rotateSpeed=40f;
+    public int value;
+
     void Start()
     {
         target = GameObject.Find("Player").transform;
