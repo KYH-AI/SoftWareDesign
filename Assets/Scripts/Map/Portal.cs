@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
     public GameObject Portalpref;
     GameObject myInstance;
     int x, y;
-
+    float distance = 2;
 
     private void Start()
     {
@@ -30,29 +31,38 @@ public class Portal : MonoBehaviour
 
         if (portal_y > 30) { portal_y = 30; }
         if (portal_y < -32) { portal_y = -32; }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            for(int i=0; i < 8; i++)
+        
+        
+        
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                myInstance = Instantiate(Portalpref);
-                myInstance.transform.position = new Vector2(portal_x, portal_y);
+                for (int i = 0; i < 8; i++)
+                {
+                    myInstance = Instantiate(Portalpref);
+                    myInstance.transform.position = new Vector2(portal_x, portal_y);
+                }
+                
+                
             }
-            
+        if (myInstance != null)
+        {
+            distance = Vector2.Distance(myInstance.transform.position, transform.position);
         }
-        float distance = Vector2.Distance(myInstance.transform.position, transform.position);
         if (distance < 1)
         {
             StartCoroutine(SceneChange());
         }
-    
+
+
+
 
 
     }
     
     IEnumerator SceneChange()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Store");
 
     }
 
