@@ -16,14 +16,10 @@ public class WD_BossFSM
 
     private WD_Boss wdboss;
 
-
     public WD_BossFSM(WD_Boss wD_Boss) 
     {
         wdboss = wD_Boss; 
-
     }
-
-
 
     public BossState b_state;
     public int attackPower = 10;
@@ -35,8 +31,6 @@ public class WD_BossFSM
     void Start()
     {
         b_state = BossState.Move;
-
-
     }
     // Update is called once per frame
     public void Update()
