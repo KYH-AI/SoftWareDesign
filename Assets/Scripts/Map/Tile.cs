@@ -10,7 +10,7 @@ public class Tile : MonoBehaviour
     int Tile_x = 0;
     int Tile_y = 0;
 
-
+    
 
 
     void Start()
@@ -18,11 +18,22 @@ public class Tile : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
-        
-       
+        switch (StageManager.Instance.stage)
+        {
+            case StageManager.Stage.two:
+                Unitsize = 16;
+                break;
+            case StageManager.Stage.three:
+                Unitsize = 30;
+                break;
+            case StageManager.Stage.four:
+                break;
+        }
+
+
         if (Player.transform.position.x > Tile_x + Unitsize)
         {
             Tile_x += Unitsize * 2;

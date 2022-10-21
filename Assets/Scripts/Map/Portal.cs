@@ -9,7 +9,6 @@ public class Portal : MonoBehaviour
     GameObject myInstance;
     int x, y;
     float distance = 2;
-
     private void Start()
     {
        
@@ -22,10 +21,12 @@ public class Portal : MonoBehaviour
         if (-3 <= y || y <= 0) { y = Random.Range(-8, -3); }
         print(x);
         print(y);
+       
     } 
     // Update is called once per frame
     void Update()
     {
+        
         int portal_x = (int)transform.position.x + x;
         int portal_y = (int)transform.position.y + y;
 
@@ -48,22 +49,38 @@ public class Portal : MonoBehaviour
         {
             distance = Vector2.Distance(myInstance.transform.position, transform.position);
         }
-        if (distance < 1)
+        if (distance < 2)
         {
-            StartCoroutine(SceneChange());
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                StartCoroutine(SceneChange());
+            }
         }
-
-
-
-
 
     }
     
     IEnumerator SceneChange()
     {
-        yield return new WaitForSeconds(2f);
+        switch (StageManager.Instance.stage)
+        {
+            case StageManager.Stage.one:
+                StageManager.Instance.stage = StageManager.Stage.two;
+                print("stage2상태");
+                break;
+            case StageManager.Stage.two:
+                StageManager.Instance.stage = StageManager.Stage.three;
+                print("stage3상태");
+                break;
+            case StageManager.Stage.three:
+                StageManager.Instance.stage = StageManager.Stage.four;
+                print("stage4상태");
+                break;
+            case StageManager.Stage.four:
+                StageManager.Instance.stage = StageManager.Stage.five;
+                break;
+        }
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("Store");
-
     }
 
 }
