@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerController : MonoBehaviour
+public class Spawner_1by1 : MonoBehaviour
 {
     public GameObject Prefab;
     public GameObject[] Monster;
@@ -12,17 +12,19 @@ public class SpawnerController : MonoBehaviour
     private float spawnRate;
     int idx = 0;
     int MAX = 100;
+    bool state;
 
     // Start is called before the first frame update
     void Start()
     {
         Monster = new GameObject[MAX];
-        for(int i=0; i<MAX; i++)
+        for (int i = 0; i < MAX; i++)
         {
             GameObject ob = Instantiate(Prefab);
             Monster[i] = ob;
             ob.SetActive(false);
         }
+        state = true;
         StartCoroutine("Spawn");
     }
 
@@ -30,12 +32,22 @@ public class SpawnerController : MonoBehaviour
     {
         spawnRate = Random.Range(spawnRateMin, spawnRateMax);
         yield return new WaitForSeconds(spawnRate);
-        Monster[idx].transform.position = gameObject.transform.position+Vector3.right*20;
-        Monster[idx++].SetActive(true);
-        Monster[idx].transform.position = gameObject.transform.position + Vector3.left * 20;
-        Monster[idx++].SetActive(true);
-        if (idx == MAX) idx = 0;
+        if (Monster[idx].activeInHierarchy == false)
+        {
+            Monster[idx].transform.position = gameObject.transform.position;
+            Monster[idx].SetActive(true);
+            state = false;
+        }
+        idx++;
+        if (idx == MAX)
+        {
+            if (state == true)//Max까지 최대 오브젝트 setActive(true) 상태
+            {
+
+            }
+            idx = 0;
+            state = true;
+        }
         StartCoroutine("Spawn");
     }
-
 }

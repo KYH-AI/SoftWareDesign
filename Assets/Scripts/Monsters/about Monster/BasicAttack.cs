@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.AI;
 
 public class BasicAttack : BasicMonsterController
 {
@@ -21,7 +18,14 @@ public class BasicAttack : BasicMonsterController
     IEnumerator AttackProcess()
     {
         yield return new WaitForSeconds(1.0f);
-        base.DefaultAttack();
+    }
+
+    void AttackPlayer()
+    {
+        Collider2D c = GetComponent<Collider2D>();
+        if (c.gameObject.CompareTag("Player")){
+            base.DefaultAttack();
+        }
     }
 }
 
