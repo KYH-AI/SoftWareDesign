@@ -892,7 +892,7 @@ Animator:
   m_GameObject: {fileID: 143779847}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 34b1120b760b86b4c833593d75fb38e8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3367335d7735a4443b6be6f37f09ce8b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1461,7 +1461,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33, y: -62}
+  m_AnchoredPosition: {x: 46.6, y: -62}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &168317502
@@ -1712,7 +1712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 250}
+  m_AnchoredPosition: {x: -66.2, y: 259.8}
   m_SizeDelta: {x: 709.99994, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &202828865
@@ -1736,7 +1736,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
+    m_Font: {fileID: 12800000, guid: 8a6eb5f47a234534089bbb34387399af, type: 3}
     m_FontSize: 160
     m_FontStyle: 1
     m_BestFit: 0
@@ -1747,8 +1747,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
-    m_LineSpacing: 0.7
-  m_Text: "Vempire\n    Survival"
+    m_LineSpacing: 1
+  m_Text: "\uC2DC\uB85C\uC758 \uD76C\uB9DD "
 --- !u!222 &202828866
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4491,7 +4491,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 140, y: -79}
+  m_AnchoredPosition: {x: 126.8, y: -79}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &769102645
@@ -5016,6 +5016,101 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820618858}
+  m_CullTransparentMesh: 1
+--- !u!1 &826269762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 826269763}
+  - component: {fileID: 826269766}
+  - component: {fileID: 826269765}
+  - component: {fileID: 826269764}
+  m_Layer: 5
+  m_Name: developer (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &826269763
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826269762}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1333020078}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 119, y: -374.8}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &826269764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826269762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.6415094, g: 0, b: 0.07365597, a: 0.5}
+  m_EffectDistance: {x: 0, y: -2.2}
+  m_UseGraphicAlpha: 1
+--- !u!114 &826269765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826269762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6415094, g: 0.4926308, b: 0.4926308, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8a6eb5f47a234534089bbb34387399af, type: 3}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 60
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: "\uC870\uC791 \uD0A4 "
+--- !u!222 &826269766
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826269762}
   m_CullTransparentMesh: 1
 --- !u!1 &830085369
 GameObject:
@@ -8833,7 +8928,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1333020078
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8849,6 +8944,7 @@ RectTransform:
   - {fileID: 769102644}
   - {fileID: 1911226831}
   - {fileID: 394475290}
+  - {fileID: 826269763}
   m_Father: {fileID: 1275539837}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12350,8 +12446,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.6399536, y: 5.199951}
-  m_SizeDelta: {x: 3.2800293, y: 30}
+  m_AnchoredPosition: {x: 109.9001, y: -6.400055}
+  m_SizeDelta: {x: -273.79984, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1757486060
 MonoBehaviour:
@@ -12374,19 +12470,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
+    m_Font: {fileID: 12800000, guid: 8a6eb5f47a234534089bbb34387399af, type: 3}
     m_FontSize: 160
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
-    m_LineSpacing: 0.7
-  m_Text: "Vempire\n    Survival"
+    m_LineSpacing: 1
+  m_Text: "\uC2DC\uB85C\uC758 \uD76C\uB9DD "
 --- !u!222 &1757486061
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13987,7 +14083,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
