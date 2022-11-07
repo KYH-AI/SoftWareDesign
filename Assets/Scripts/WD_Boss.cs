@@ -6,6 +6,19 @@ using UnityEngine.UI;
 
 public class WD_Boss : MonoBehaviour
 {
+    public enum BossState{
+        MOVE_STATE,
+        ATTACK_STATE,
+        HURT_STATE,
+        DEAD_STATE,
+        PATTERN_DARKHEAL_STATE,
+        PATTERN_RUINSTK_STATE,
+        PATTERN_SUMNSKELETON_STATE,
+        PATTERN_BIND_STATE            
+    };
+
+
+
     WD_BossFSM bossFSM;
 
     [SerializeField] GameObject player;
@@ -73,7 +86,8 @@ public class WD_Boss : MonoBehaviour
         }
         else
         {
-            bossFSM.b_state = WD_BossFSM.BossState.Attack;
+            bossFSM.bossState = BossState.ATTACK_STATE;           
+            
         }
     }
 
@@ -90,9 +104,37 @@ public class WD_Boss : MonoBehaviour
 
         if (Vector2.Distance(transform.position, target.position) > contactDistance && follow && !check)
         {
-            bossFSM.b_state = WD_BossFSM.BossState.Move;
+            bossFSM.bossState = BossState.MOVE_STATE; 
         }
     }
+
+    public void Hurt()
+    {
+
+    }
+    public void OnDead()
+    {
+
+    }
+    public void Pattern_DarkHeal()
+    {
+
+    }
+    public void Pattern_RuinStk()
+    {
+
+    }
+    public void Pattern_SummonSkeleton()
+    {
+
+    }
+    public void Pattern_Bind()
+    {
+       
+    }
+
+
+
    private void ChangeCheck()
     {
         check = false;
@@ -107,7 +149,7 @@ public class WD_Boss : MonoBehaviour
 
         //2.공격 애니메이션 종료되면 이동
 
-
+       
     }
 
     
