@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Sprites/Sprites/InGame/Cloud A.png.meta
 guid: d9ee53f3733530547a8518461bfcad64
+========
+guid: c96da5bf6d4c75649be10d45896b9771
+>>>>>>>> 91a3e302c623fed30fde50d07e62650624662fbe:Assets/Etc/TIle_Asset/tf_ashlands/1x/tf_A1_ashlands_1.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -31,9 +35,15 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+<<<<<<<< HEAD:Assets/Sprites/Sprites/InGame/Cloud A.png.meta
     filterMode: 0
     aniso: -1
     mipBias: -100
+========
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+>>>>>>>> 91a3e302c623fed30fde50d07e62650624662fbe:Assets/Etc/TIle_Asset/tf_ashlands/1x/tf_A1_ashlands_1.png.meta
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -58,13 +68,21 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   applyGammaDecoding: 0
+<<<<<<<< HEAD:Assets/Sprites/Sprites/InGame/Cloud A.png.meta
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 256
+========
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+>>>>>>>> 91a3e302c623fed30fde50d07e62650624662fbe:Assets/Etc/TIle_Asset/tf_ashlands/1x/tf_A1_ashlands_1.png.meta
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -73,6 +91,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+<<<<<<<< HEAD:Assets/Sprites/Sprites/InGame/Cloud A.png.meta
     maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
@@ -101,6 +120,12 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
+========
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+>>>>>>>> 91a3e302c623fed30fde50d07e62650624662fbe:Assets/Etc/TIle_Asset/tf_ashlands/1x/tf_A1_ashlands_1.png.meta
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0

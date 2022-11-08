@@ -17,11 +17,8 @@ public class WD_Boss : MonoBehaviour
     Transform target;
     
     //[SerializeField] AnimationTriggers attack;
-
-
     Rigidbody2D bossRigidBody;
     Animator bossAttack;
-
 
     [SerializeField] [Range(1f, 20f)] float moveSpeed = 3f;
     [SerializeField] [Range(0f, 50f)] float contactDistance = 1f;
@@ -33,14 +30,11 @@ public class WD_Boss : MonoBehaviour
     void Start()
     {
         bossFSM = new WD_BossFSM(this);
-
         scaleX = transform.localScale.x; 
         bossRigidBody = GetComponent<Rigidbody2D>();
         weaponCollider = weapon.GetComponent<BoxCollider2D>();
-
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         bossAttack = GetComponent<Animator>();
-
     }
 
     // Update is called once per frame
@@ -48,7 +42,6 @@ public class WD_Boss : MonoBehaviour
     {
         ChangeDir();
         bossFSM.Update();
-
     }
 
 
@@ -67,7 +60,10 @@ public class WD_Boss : MonoBehaviour
             bossRigidBody.transform.localScale = new Vector2(-scaleX, transform.localScale.y);
         }
     }
-  
+  /// <summary>
+  /// 플레이어와 보스의 위치차이가 contactDistance가 멀다면 dir에 플레이어가 있는 방향으로 설정, 보스의 좌표를 이동함. 
+  /// 만약 contackDistance보다 짧은 위치에 플레이어와 보스가 있다면 보스는 State를 Attack으로 설정함. 
+  /// </summary>
     public void Move()
     {
         if (Vector2.Distance(transform.position, target.position) > contactDistance && follow)
@@ -78,11 +74,14 @@ public class WD_Boss : MonoBehaviour
         else
         {
             bossFSM.b_state = WD_BossFSM.BossState.Attack;
-          
         }
     }
 
     bool check = true;
+
+    /// <summary>
+    /// 보스와 플레이어가 가깝다면 boss의 상태를 attack상태로 변환하고 보스의 veclocity를 zero로 해줌으로써 공격중에 이동하는 현상을 막는다.
+    /// </summary>
     public void Attack()
     {
         
@@ -93,7 +92,6 @@ public class WD_Boss : MonoBehaviour
         {
             bossFSM.b_state = WD_BossFSM.BossState.Move;
         }
-       
     }
    private void ChangeCheck()
     {
