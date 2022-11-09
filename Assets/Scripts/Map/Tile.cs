@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    public GameObject Player;
+    [SerializeField] GameObject Player;
 
     int Unitsize = 10;
     int Tile_x = 0;
@@ -21,19 +21,23 @@ public class Tile : MonoBehaviour
    
     void Update()
     {
-        switch (StageManager.Instance.stage)
+        switch (StageManager.GetInstance().stage)
         {
-            case StageManager.Stage.two:
+            case Define.Stage.TWO:
                 Unitsize = 16;
                 break;
-            case StageManager.Stage.three:
+            case Define.Stage.THREE:
                 Unitsize = 30;
                 break;
-            case StageManager.Stage.four:
+            case Define.Stage.FOUR:
+                Unitsize = 20;
                 break;
         }
 
-
+        MoveTile();
+    }
+    void MoveTile()
+    {
         if (Player.transform.position.x > Tile_x + Unitsize)
         {
             Tile_x += Unitsize * 2;

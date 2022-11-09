@@ -23,30 +23,37 @@ public class PlayerController : LivingEntity, IBasicMovement
    
     public Dictionary<int, ActiveSkill> playerActiveSkills = new Dictionary<int, ActiveSkill>();
     public Dictionary<int, PassiveSkill> playerPassiveSkills = new Dictionary<int, PassiveSkill>();
+    
+    
 
     private void Start()
     {
+       
         lastDir = Vector2.up;
  
        GameObject skillObject = Mangers.Resource.GetPerfabGameObject("Player Skill/PowerSlash Skill");
        ActiveSkill pdSkill = Instantiate(skillObject, this.transform).GetComponent<ActiveSkill>();
        pdSkill.Init(this.gameObject);
-       playerActiveSkills.Add(0, pdSkill);
-        
-        GameObject skillObject2 = Mangers.Resource.GetPerfabGameObject("Player Skill/ThunderClap Skill");
+        playerActiveSkills.Add(0, pdSkill);
+       
+
+         GameObject skillObject2 = Mangers.Resource.GetPerfabGameObject("Player Skill/ThunderClap Skill");
         ActiveSkill tdSkill = Instantiate(skillObject2, this.transform).GetComponent<ActiveSkill>();
         tdSkill.Init(this.gameObject);
         playerActiveSkills.Add(1, tdSkill);
+   
 
         GameObject skillObject3 = Mangers.Resource.GetPerfabGameObject("Player Skill/FirePillar Skill");
         ActiveSkill fpSkill = Instantiate(skillObject3, this.transform).GetComponent<ActiveSkill>();
         fpSkill.Init(this.gameObject);
         playerActiveSkills.Add(2, fpSkill);
+     
 
         GameObject skillObject4 = Mangers.Resource.GetPerfabGameObject("Player Skill/Barrier Skill");
         ActiveSkill brSkill = Instantiate(skillObject4, this.transform).GetComponent<ActiveSkill>();
         brSkill.Init(this.gameObject);
         playerActiveSkills.Add(3, brSkill);
+        
 
         GameObject skillObject5 = Mangers.Resource.GetPerfabGameObject("Player Skill/ThrowingKnife Skill");
         ActiveSkill tkSkill = Instantiate(skillObject5, this.transform).GetComponent<ActiveSkill>();
