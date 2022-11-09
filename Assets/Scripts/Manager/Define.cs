@@ -8,4 +8,15 @@ public class Define
         BGM = 0,
         SFX = 1,
     }
+    /// <summary>
+    /// 스테이지 상황 표시
+    /// </summary>
+    public enum Stage
+    {
+        ONE,
+        TWO,
+        THREE,
+        FOUR,
+        FIVE
+    }
 }

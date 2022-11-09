@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    public GameObject Portalpref;
+    [SerializeField] GameObject Portalpref;
     GameObject myInstance;
     int x, y;
-    float distance = 2;
+    float distace=10;
+    int portal_x;
+    int portal_y;
     private void Start()
     {
        
@@ -17,66 +19,66 @@ public class Portal : MonoBehaviour
         y = Random.Range(-8, 9);
         if ( 0 < x || x <= 3) { x = Random.Range(4, 9); }
         if (-3 <= x || x <= 0) { x = Random.Range(-8, -3); }
-        if (0 < y || y <= 3) { y = Random.Range(4, 9); }
-        if (-3 <= y || y <= 0) { y = Random.Range(-8, -3); }
-        print(x);
-        print(y);
        
     } 
     // Update is called once per frame
     void Update()
     {
         
-        int portal_x = (int)transform.position.x + x;
-        int portal_y = (int)transform.position.y + y;
+        portal_x = (int)transform.position.x + x;
+        portal_y = (int)transform.position.y + y;
 
         if (portal_y > 30) { portal_y = 30; }
         if (portal_y < -32) { portal_y = -32; }
+
+
+        SpawnPortal();
         
-        
-        
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    myInstance = Instantiate(Portalpref);
-                    myInstance.transform.position = new Vector2(portal_x, portal_y);
-                }
-                
-                
-            }
         if (myInstance != null)
         {
-            distance = Vector2.Distance(myInstance.transform.position, transform.position);
+            distace = Vector2.Distance(myInstance.transform.position, transform.position);
         }
-        if (distance < 2)
+
+        if (distace < 2)
         {
             if (Input.GetKeyDown(KeyCode.C))
             {
-                StartCoroutine(SceneChange());
+                StartCoroutine(ToStore());
             }
         }
 
     }
     
-    IEnumerator SceneChange()
+    void SpawnPortal()
     {
-        switch (StageManager.Instance.stage)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            case StageManager.Stage.one:
-                StageManager.Instance.stage = StageManager.Stage.two;
+            for (int i = 0; i < 8; i++)
+            {
+                myInstance = Instantiate(Portalpref);
+                myInstance.transform.position = new Vector2(portal_x, portal_y);
+            }
+        }
+
+    }
+    IEnumerator ToStore()
+    {
+        switch (StageManager.GetInstance().stage)
+        {
+            case Define.Stage.ONE:
+                StageManager.GetInstance().stage = Define.Stage.TWO;
                 print("stage2상태");
                 break;
-            case StageManager.Stage.two:
-                StageManager.Instance.stage = StageManager.Stage.three;
+            case Define.Stage.TWO:
+                StageManager.GetInstance().stage = Define.Stage.THREE;
                 print("stage3상태");
                 break;
-            case StageManager.Stage.three:
-                StageManager.Instance.stage = StageManager.Stage.four;
+            case Define.Stage.THREE:
+                StageManager.GetInstance().stage = Define.Stage.FOUR;
                 print("stage4상태");
                 break;
-            case StageManager.Stage.four:
-                StageManager.Instance.stage = StageManager.Stage.five;
+            case Define.Stage.FOUR:
+                StageManager.GetInstance().stage = Define.Stage.FIVE;
                 break;
         }
         yield return new WaitForSeconds(1f);

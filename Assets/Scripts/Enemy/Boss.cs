@@ -19,7 +19,6 @@ public class Boss : Enemy
 
     }
 
-
     protected override sealed void OnDead()
     {
         

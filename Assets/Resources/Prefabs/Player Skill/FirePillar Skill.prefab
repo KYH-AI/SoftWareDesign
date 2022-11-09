@@ -43,5 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926f684522d790a4480d2cd58aeed5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillCoolTime: 1
   firePillarObject: {fileID: 4037858369838473433, guid: 828653288c5247e4aa045e03057ab3a5, type: 3}
   firePillarProfile: {fileID: 11400000, guid: 90fdbcada58302e4a86b2f564e522b62, type: 2}
