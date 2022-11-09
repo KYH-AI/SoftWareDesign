@@ -4,6 +4,31 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+
     private static StageManager instance;
-    public static StageManager Instance { get{return instance;} }
+    
+    
+    public Define.Stage stage = Define.Stage.ONE;
+
+
+    private void Awake()
+    {
+        SetInstance();
+    }
+    private void SetInstance()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+    }
+    public static StageManager GetInstance()
+    {
+        return instance;
+    }
 }
