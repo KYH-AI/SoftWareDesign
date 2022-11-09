@@ -33,12 +33,14 @@ public class PowerSlash : ActiveSkill
 
         // x, y 마지막 방향을 이용해 해당 방향으로 10m 날라간다.
 
-        RaycastHit2D hitObject = Physics2D.Raycast(transform.position, playerController.LastDir, maxDistance, wallLayer);
+        RaycastHit2D hitObject = Physics2D.Raycast(transform.position, playerController.LastDir, maxDistance, LayerMask.GetMask("wallLayer"));
 
         if (hitObject)  // RayCast가 벽에 충돌했다는 의미
         {
-            maxDistance = hitObject.distance;     // 벽 충돌 위치까지만 Ray를 쏘기 위한 거리 측정
-            playerObject.transform.position = hitObject.normal; // 충돌한 벽 앞 까지만 이동
+            float Distance = hitObject.distance;     // 벽 충돌 위치까지만 Ray를 쏘기 위한 거리 측정
+            //playerObject.transform.position = hitObject.normal; // 충돌한 벽 앞 까지만 이동
+            //if(playerController.LastDir.normalized == new Vector3(0, -1, 0) { }
+            playerObject.transform.Translate(playerController.LastDir.normalized * (Distance-0.5f));
         }
 
         else

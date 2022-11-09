@@ -213,7 +213,7 @@ Animator:
   m_GameObject: {fileID: 8875915565974644419}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 706fcd949519ce5488fd65994a0a3569, type: 2}
+  m_Controller: {fileID: 9100000, guid: 54d67c584be43d94aba5f1035b077ae3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -231,12 +231,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8875915565974644419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1796abb599c8d3b44b4f057e07623a55, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fbb3c74d4969814ca1f9427392cdf96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: b108fb6e341f8834fbf54d8ee9a223f2, type: 2}
   playerTarget: {fileID: 0}
   DamageInform: {fileID: 8875915565026611516}
+  coolTime: -1
+  skillTime: 2
+  minKillCount: 0
+  maxKillCount: 0
 --- !u!1 &8875915566083400911
 GameObject:
   m_ObjectHideFlags: 0

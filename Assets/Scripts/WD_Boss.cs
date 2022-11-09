@@ -6,11 +6,22 @@ using UnityEngine.UI;
 
 public class WD_Boss : MonoBehaviour
 {
+    public enum BossState{
+        MOVE_STATE,
+        ATTACK_STATE,
+        HURT_STATE,
+        DEAD_STATE,
+        PATTERN_DARKHEAL_STATE,
+        PATTERN_RUINSTK_STATE,
+        PATTERN_SUMNSKELETON_STATE,
+        PATTERN_BIND_STATE            
+    };
+
+
+
     WD_BossFSM bossFSM;
 
     [SerializeField] GameObject player;
-    [SerializeField] BoxCollider2D weaponCollider;   
-    [SerializeField] GameObject weapon;
 
     private Vector2 dir;
 
@@ -32,16 +43,20 @@ public class WD_Boss : MonoBehaviour
         bossFSM = new WD_BossFSM(this);
         scaleX = transform.localScale.x; 
         bossRigidBody = GetComponent<Rigidbody2D>();
-        weaponCollider = weapon.GetComponent<BoxCollider2D>();
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         bossAttack = GetComponent<Animator>();
+
+
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+   
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         ChangeDir();
-        bossFSM.Update();
+        bossFSM.bossState = BossState.MOVE_STATE;
+        //bossFSM.Update();
     }
 
 
@@ -66,6 +81,7 @@ public class WD_Boss : MonoBehaviour
   /// </summary>
     public void Move()
     {
+        Debug.Log("Move");
         if (Vector2.Distance(transform.position, target.position) > contactDistance && follow)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
@@ -73,7 +89,8 @@ public class WD_Boss : MonoBehaviour
         }
         else
         {
-            bossFSM.b_state = WD_BossFSM.BossState.Attack;
+            bossFSM.bossState = BossState.ATTACK_STATE;           
+            
         }
     }
 
@@ -84,15 +101,43 @@ public class WD_Boss : MonoBehaviour
     /// </summary>
     public void Attack()
     {
-        
-        bossAttack.SetTrigger("Attack");
+        Debug.Log("Attack");
+        bossAttack.SetTrigger("DefaultAttack");
         bossRigidBody.velocity = Vector2.zero;
 
         if (Vector2.Distance(transform.position, target.position) > contactDistance && follow && !check)
         {
-            bossFSM.b_state = WD_BossFSM.BossState.Move;
+            bossFSM.bossState = BossState.MOVE_STATE; 
         }
     }
+
+    public void Hurt()
+    {
+
+    }
+    public void OnDead()
+    {
+
+    }
+    public void Pattern_DarkHeal()
+    {
+
+    }
+    public void Pattern_RuinStk()
+    {
+
+    }
+    public void Pattern_SummonSkeleton()
+    {
+
+    }
+    public void Pattern_Bind()
+    {
+       
+    }
+
+
+
    private void ChangeCheck()
     {
         check = false;
@@ -100,14 +145,8 @@ public class WD_Boss : MonoBehaviour
 
     private void StopMove()
     {
-        //1.공격 애니메이션 시작되면 이동 불가능
-        //이동이 불가능 하면서 공격모션은 진행이 계속 되어야 함 
-
-        //2.칼을 휘두른 애니메이션이 나올때 Weapon 콜라이더를 활성화
-
-        //2.공격 애니메이션 종료되면 이동
-
-
+       
+       
     }
 
     
