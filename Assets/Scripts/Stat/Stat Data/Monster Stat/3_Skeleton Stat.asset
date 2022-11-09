@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 3_Skeleton Stat
   m_EditorClassIdentifier: 
   Hp: 10
-  MoveSpeed: 0
+  MoveSpeed: 3
   Armor: 0
   DefaultAttackDamage: 0

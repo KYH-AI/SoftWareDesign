@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e6443d67a4cf241a1179bfa19679a3, type: 3}
   m_Name: 2_Rat Stat
   m_EditorClassIdentifier: 
-  Hp: 0
-  MoveSpeed: 0
+  Hp: 5
+  MoveSpeed: 3
   Armor: 0
   DefaultAttackDamage: 0

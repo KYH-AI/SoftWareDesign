@@ -95,7 +95,7 @@ public abstract class BasicMonsterController : Enemy
     protected override sealed void OnDead()
     {
         base.OnDead();
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+     
         base.EnemyAnimator.SetTrigger("Die");
         StartCoroutine(DieProcess());
     }
