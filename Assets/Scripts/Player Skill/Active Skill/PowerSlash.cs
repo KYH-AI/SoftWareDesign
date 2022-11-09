@@ -7,33 +7,70 @@ using UnityEngine;
 /// </summary>
 public class PowerSlash : ActiveSkill
 {
-    private readonly float DASH_DISTANCE = 7f;  // 대쉬 범위
     private TrailRenderer powerSlashEffect;
+
+    #region 스킬 기본 스텟 데이터
+    /// <summary>
+    /// 스킬 데미지
+    /// </summary>
+    private int skillDamgae = 6;
+    /// <summary>
+    /// 스킬 대쉬 최대길이
+    /// </summary>
+    private float skillDashDistacne = 3f;
+    #endregion
+
+    #region 스킬 스텟 프로퍼티
+    /// <summary>
+    /// 스킬 데미지 프로퍼티 ( set : 스킬 데미지 값 변경 )
+    /// </summary>
+    public int SkillDamgae { set { skillDamgae = value; } }
+    /// <summary>
+    /// 스킬 대쉬 최대길이 프로퍼티 ( set : 스킬 대쉬 최대길이 값 변경 )
+    /// </summary>
+    public float SkillDashDistacne { set { skillDashDistacne = value; } }   
+    #endregion
 
     private void Start()
     {
-        powerSlashEffect = GetComponentInChildren<TrailRenderer>();
+        WindSlashInit();
+    }
 
+    private void WindSlashInit()
+    {
+        powerSlashEffect = GetComponentInChildren<TrailRenderer>();
         powerSlashEffect.enabled = false;
     }
 
     public override void OnActive()
     {
-
-        PowerSlashSkillAttack();
+        if (currentSkillState == Define.CurrentSkillState.ACTIVE)
+        {
+            currentSkillState = Define.CurrentSkillState.COOL_TIME;
+            WindSlashSkillAttack();
+        }
+        else
+        {
+            // TODO : UI에서 "아직 재사용 대기시간 입니다." 연출하기
+            return;
+        }
     }
 
-
-    private void PowerSlashSkillAttack()
+    public override void Upgrade()
     {
-        AcitvePowerDashEffect();  // 이펙트 활성화
+        // TODO : 상점에서 업그레이드 방식이 정해지면 진행 하자 (09/28)
+    }
+
+    private void WindSlashSkillAttack()
+    {
+        OnSkillEffect();  // 이펙트 활성화
 
         Vector3 firstPosition = playerObject.transform.position;
-        float maxDistance = DASH_DISTANCE;
+        float maxDistance = skillDashDistacne;
 
         // x, y 마지막 방향을 이용해 해당 방향으로 10m 날라간다.
 
-        RaycastHit2D hitObject = Physics2D.Raycast(transform.position, playerController.LastDir, maxDistance, wallLayer);
+        RaycastHit2D hitObject = Physics2D.Raycast(transform.position, playerObject.PlayerController.LastDir, maxDistance, wallLayer);
 
         if (hitObject)  // RayCast가 벽에 충돌했다는 의미
         {
@@ -43,30 +80,32 @@ public class PowerSlash : ActiveSkill
 
         else
         {
-            playerObject.transform.Translate(playerController.LastDir.normalized * maxDistance); // 마지막으로 본 방향 + dashDistance 길이 만큼 이동
+            playerObject.transform.Translate(playerObject.PlayerController.LastDir.normalized * maxDistance); // 마지막으로 본 방향 + dashDistance 길이 만큼 이동
         }
 
 
-        RaycastHit2D[] enemyObject = Physics2D.RaycastAll(firstPosition, playerController.LastDir, maxDistance, enemyLayer);
+        RaycastHit2D[] enemyObjects = Physics2D.RaycastAll(firstPosition, playerObject.PlayerController.LastDir, maxDistance, enemyLayer);
         /*
         Debug.Log("스킬 충돌 거리 : " + dashDistance);
         Debug.Log("충돌한 적 : " + enemyObject.Length);
         */
 
 
-        if (enemyObject.Length > 0)
+        if (enemyObjects.Length > 0)
         {
-            for (int i = 0; i < enemyObject.Length; i++)
+            for (int enemyCount = 0; enemyCount < enemyObjects.Length; enemyCount++)
             {
-                Destroy(enemyObject[i].transform.gameObject, 0.5f);
+                // TODO : 데미지 처리 하기 (10/30)
+               // Destroy(enemyObjects[enemyCount].transform.gameObject, 0.5f);
             }
         }
 
-        Invoke(nameof(AcitvePowerDashEffect), 1f); //  이펙트 비활성화
+        Invoke(nameof(OnSkillEffect), 1f); //  이펙트 비활성화
+        OnCoolTime();
     }
 
-    private void AcitvePowerDashEffect()
+    private void OnSkillEffect()
     {
         powerSlashEffect.enabled = !powerSlashEffect.enabled;
-    }    
+    }
 }

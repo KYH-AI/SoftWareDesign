@@ -8,70 +8,64 @@ using UnityEngine.Events;
 /// </summary>
 public abstract class LivingEntity : MonoBehaviour
 {
-    [SerializeField] BasicStat basicStat;
+    [SerializeField] BasicStat basicStat; // 기본 스텟
 
-    /* 원본 데이터 */
+    /* 내부 원본 데이터 */
     private int hp;
     private int maxHp;
     private float moveSpeed;
     private int armor;
     private int defaultAttackDamage;
 
-    /* 제공되는 복사본 데이터 */
-    private int copyHp;
-    private int copyMaxHp;
-    private float copyMoveSpeed;
-    private int copyArmor;
-    private int copyDefaultAttackDamage;
+    /* 버프 이벤트 */
+    private UnityEvent buffEvent;
+    public UnityEvent BuffEvent { get { return buffEvent; } }
 
-    /* 일시적으로 변경되는 버프 데이터 */
-    private float buffSpeed;
-    private int buffDefaultAttackDamage;
 
     /// <summary>
-    /// HP 프로퍼티  get ( 복사본 HP ), set ( 복사복 HP, 원본 HP 값 수정 )
+    /// 현재체력 프로퍼티  get ( hp ), set ( hp 값 수정 )
     /// </summary>
     public int Hp 
     { 
-        get { return copyHp; } 
+        get { return hp; } 
         set 
         { 
-            copyHp = value;
-            hp = copyHp;
+            hp = value;
         } 
     }
 
     /// <summary>
-    /// 
-    /// MaxHp 프로퍼티  get ( 복사본 MaxHp ), set ( 복사복 MaxHp, 원본 MaxHp 값 수정 )
+    /// 최대체력 프로퍼티  get ( maxHp ), set ( maxHp 값 수정 )
     /// </summary>
     public int MaxHp
     {
-        get { return copyMaxHp; }
+        get { return maxHp; }
         set
         {
-            copyMaxHp = value;
-            maxHp = copyMaxHp;
+            maxHp = value;
         }
     }
+
+    /// <summary>
+    /// 이동속도 프로퍼티  get ( moveSpeed ), set (  moveSpeed 값 수정)
+    /// </summary>
     public float MoveSpeed 
     {
-        get { return copyMoveSpeed; }
+
+        get { return moveSpeed; }
         set
         {
-            copyMoveSpeed = value;
-            moveSpeed = copyMoveSpeed;
-            buffSpeed = copyMoveSpeed;
+            moveSpeed = value;
         }
     }
     public float Armor { get; set; }
     public int DefaultAttackDamage { get; set; }
 
     /// <summary>
-    /// 기본 스텟을 BasicStat 클래스로 부터 불러온다
-    /// (최대체력, 이동속도, 방어력, 공격력)
+    /// 기본 스텟을 BasicStat 클래스로 부터 값을 받아 초기화
+    /// (최대체력, 이동속도, 방어력, 기본 공격력)
     /// </summary>
-    protected void Init()
+    protected void BasicStatInit()
     {
         hp = basicStat.Hp;
         maxHp = hp;
@@ -79,14 +73,6 @@ public abstract class LivingEntity : MonoBehaviour
         armor = basicStat.Armor;
         defaultAttackDamage = basicStat.DefaultAttackDamage;
 
-
-        copyHp = hp;
-        copyMaxHp = maxHp;
-        copyMoveSpeed = moveSpeed;
-        copyArmor = armor;
-        copyDefaultAttackDamage = defaultAttackDamage;
-
-        buffSpeed = copyMoveSpeed;
     }
 
     /// <summary>
@@ -119,28 +105,4 @@ public abstract class LivingEntity : MonoBehaviour
         // TODO : Boss UI에서 체력 게이지 변경 (재정의)
         // TODO : Player UI에서 체력 게이지 변경 (재정의)
     }
-
-    public virtual void MoveSpeedBufffloat(float buffStat, float buffDuration)
-    {
-        // 버프 효과 시작
-        buffSpeed = buffStat * buffSpeed;
-
-        // 프로퍼티 접근이 아닌 다이렉트로 접근 (일시적으로 바꾸는 값)
-        copyMoveSpeed = buffSpeed; // 현재 속도를 buffSpeed 로 변경
-
-        // buffDuration 시작
-
-
-        // 버브 효과 종료
-        buffSpeed = moveSpeed;      // 버프 값을 buffStat 만큼 다시 역계산해서 buffSpeed 초기 값으로 돌림
-        copyMoveSpeed = buffSpeed;  // 현재 속도를 버프를 받기 전 buffSpeed 값으로 돌림 
-
-
-        //skillDelayTime = skillDelayTime * (1 - ((float)value / 100))
-    }
-    public virtual void DefaultAttackBuff(int buffStat)
-    {
-
-    }
-
 }

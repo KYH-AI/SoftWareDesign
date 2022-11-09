@@ -245,3 +245,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da6ad294ccefc742b89f565148232f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillCoolTime: 10
