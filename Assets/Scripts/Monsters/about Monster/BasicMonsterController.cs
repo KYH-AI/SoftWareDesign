@@ -27,7 +27,7 @@ public abstract class BasicMonsterController : Enemy
     public void Start()
     {
         base.Start();
-      //  base.playerTarget = GameObject.Find("Player").transform;
+        base.playerTarget = GameObject.Find("Player").GetComponent<Player>();
         renderer = GetComponent<SpriteRenderer>();
         state = State.Run;
     }

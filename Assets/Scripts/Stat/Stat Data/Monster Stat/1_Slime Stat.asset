@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e6443d67a4cf241a1179bfa19679a3, type: 3}
   m_Name: 1_Slime Stat
   m_EditorClassIdentifier: 
-  Hp: 1
-  MoveSpeed: 3
-  Armor: 0
-  DefaultAttackDamage: 0
+  hp: 5
+  moveSpeed: 2
+  armor: 5
+  defaultAttackDamage: 2

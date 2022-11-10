@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-
+    public Player player;
     private static StageManager instance;
     
     
@@ -13,6 +13,7 @@ public class StageManager : MonoBehaviour
 
     private void Awake()
     {
+        
         SetInstance();
     }
     private void SetInstance()
@@ -31,4 +32,6 @@ public class StageManager : MonoBehaviour
     {
         return instance;
     }
+
+    
 }

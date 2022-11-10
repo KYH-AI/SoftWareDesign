@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4876385088684575664}
   m_Layer: 0
   m_Name: Mushroom
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4668938655123782945, guid: 179f77b4a77508644bb0e4717e8add6a, type: 3}
+  m_Sprite: {fileID: 4668938655123782945, guid: 179f77b4a77508644bb0e4717e8add6a,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -156,7 +157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: 845b5c1c94f054843826f0f48d9dacd3, type: 2}
-  playerTarget: {fileID: 0}
   DamageInform: {fileID: 5964092284375562476}
   coolTime: -1
   skillTime: 2

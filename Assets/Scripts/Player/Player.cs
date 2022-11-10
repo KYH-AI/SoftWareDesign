@@ -17,6 +17,7 @@ public class Player : LivingEntity
     private void Start()
     {
         PlayerInit();
+        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>

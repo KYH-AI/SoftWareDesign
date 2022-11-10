@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spawner_1by1 : MonoBehaviour
 {
+
     public GameObject Prefab;
     public GameObject[] Monster;
     public float spawnRateMin;
@@ -13,14 +14,16 @@ public class Spawner_1by1 : MonoBehaviour
     int idx = 0;
     int MAX = 100;
     bool state;
-
+    
     // Start is called before the first frame update
     void Start()
     {
+
         Monster = new GameObject[MAX];
         for (int i = 0; i < MAX; i++)
         {
             GameObject ob = Instantiate(Prefab);
+            ob.GetComponent<Enemy>().EnemyInit(StageManager.GetInstance().player);
             Monster[i] = ob;
             ob.SetActive(false);
         }
