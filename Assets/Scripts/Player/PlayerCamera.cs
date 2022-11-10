@@ -34,11 +34,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (targetPlayer != null)
-        {
-            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, targetPlayer.position, customCameraDeltaTime * GameManager.Instance.PlayerCameraMoveSpeed);
-            mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, CAM_Z_OFFSET.z);
-        }
+        TrackingPlayer();
     }
 
     /// <summary>
@@ -48,6 +44,15 @@ public class PlayerCamera : MonoBehaviour
     public void ChagnePostProcessProfile(VolumeProfile postProcessProfile) 
     {
         mainCameraGlobalVolume.profile = postProcessProfile;
+    }
+
+    public void TrackingPlayer()
+    {
+        if (targetPlayer != null)
+        {
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, targetPlayer.position, customCameraDeltaTime * GameManager.Instance.PlayerCameraMoveSpeed);
+            mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, CAM_Z_OFFSET.z);
+        }
     }
 
 }

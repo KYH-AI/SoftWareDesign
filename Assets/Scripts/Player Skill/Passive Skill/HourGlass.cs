@@ -9,48 +9,92 @@ public class HourGlass : PassiveSkill
     [SerializeField] VolumeProfile hourGlassProfile;
 
     private Animator hourGlassAnimator;
-    public Animator HourGlassAnimator { get { return hourGlassAnimator; } }
 
-    private Coroutine hourGlassCheck = null;
-    private WaitForSecondsRealtime skillDuration = new WaitForSecondsRealtime(5f);
+    #region 스킬 기본 스텟 데이터
+    /// <summary>
+    /// 스킬 지속시간 
+    /// </summary>
+    private float skillDuration = 5f; // 초기 값 5초
+    /// <summary>
+    /// 스킬 지속시간 코루틴
+    /// </summary>
+    private WaitForSecondsRealtime skillDurationSec;
+    #endregion
+
+    #region 스킬 스텟 프로퍼티
+    /// <summary>
+    /// 스킬 지속시간 프로퍼티 ( set : 모래시계 지속시간 코루틴 WaitForSeconds 값 변경 )
+    /// </summary>
+    public float SkillDuration 
+    { 
+        set 
+        {
+            if (skillDuration != value)
+            {
+                skillDurationSec = new WaitForSecondsRealtime(value);
+            }
+            skillDuration = value;
+        }
+    } 
+    #endregion
+
 
     private void Start()
     {
+        HourGlassInit();
+    }
+
+    private void HourGlassInit()
+    {
         hourGlassAnimator = hourGlassEffectObject.GetComponent<Animator>();
+        hourGlassEffectObject.SetActive(false); 
+        skillDurationSec = new WaitForSecondsRealtime(skillDuration);
     }
 
     public override void OnActive()
     {
-        if (hourGlassCheck == null)
+        if (currentSkillState == Define.CurrentSkillState.ACTIVE)
         {
-            hourGlassCheck = StartCoroutine(BarrierSkillProcess());
+            currentSkillState = Define.CurrentSkillState.COOL_TIME;
+            StartCoroutine(HourGlassSkillProcess());
         }
+        else
+        {
+            return;
+        }
+    }
+
+    public override void Upgrade()
+    {
+       
     }
 
     private void HourGlassSkillActive()
     {
         Time.timeScale = 0f; // 시간 정지 
-        PlayerCamera.Instance.ChagnePostProcessProfile(hourGlassProfile); // Hour Glass 스킬 포스트 프로세싱 효과 활성화
+        OnSkillEffect();
         hourGlassEffectObject.SetActive(true); // Hour Glass Effect 오브젝트 활성화
     }
 
     private void HourGlassSkillDisable()
     {
-        if (hourGlassCheck != null)
-        {
-            StopCoroutine(hourGlassCheck);
-        }
-
-        hourGlassAnimator.SetTrigger("ComeBack"); // 돌아오는 시계 애니메이션 재생
-        hourGlassCheck = null;
+        hourGlassAnimator.SetTrigger("ComeBack"); // 돌아오는 시계 애니메이션 재생 및 HourGlassEvent.cs 에서 연출 효과 및 시간 정지 해체 진행
+        OnCoolTime();
     }
 
-    IEnumerator BarrierSkillProcess()
+    private void OnSkillEffect()
+    {
+        PlayerCamera.Instance.ChagnePostProcessProfile(hourGlassProfile); // Hour Glass 스킬 포스트 프로세싱 효과 활성화
+    }
+
+    private IEnumerator HourGlassSkillProcess()
     {
         HourGlassSkillActive();
 
-        yield return skillDuration;
+        yield return skillDurationSec;
 
         HourGlassSkillDisable();
     }
+
+
 }

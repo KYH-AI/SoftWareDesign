@@ -5,21 +5,16 @@ using Pathfinding;
 
 public class Enemy : LivingEntity, IBasicMovement
 {
-    public Transform playerTarget;
+    private Player playerTarget;
 
     private Rigidbody2D enemyRigidbody;
     private Animator enemyAnimator;
     public Rigidbody2D EnemyRigidbody { get { return enemyRigidbody; } }
     public Animator EnemyAnimator { get { return enemyAnimator; } }
 
-    AIPath a;
-
     protected void Start()
     {
-        Init();
-
-        enemyRigidbody = GetComponent<Rigidbody2D>();
-        enemyAnimator = GetComponent<Animator>();
+        BasicStatInit();
     }
 
     private void FixedUpdate()
@@ -27,14 +22,19 @@ public class Enemy : LivingEntity, IBasicMovement
         Move();
     }
 
+    public void EnemyInit(Player playerTarget)
+    {
+        this.playerTarget = playerTarget;
+        enemyRigidbody = GetComponent<Rigidbody2D>();
+        enemyAnimator = GetComponent<Animator>();
+    }
 
     public void DefaultAttack()
     {
-         playerTarget.GetComponent<LivingEntity>().TakeDamage(DefaultAttackDamage);
+        playerTarget.TakeDamage(DefaultAttackDamage);
     }
 
     protected override void OnDead() { }
-
 
     public void Move()
     {

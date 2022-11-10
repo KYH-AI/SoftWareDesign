@@ -32,6 +32,11 @@ public class Mangers : MonoBehaviour
 
     private void Start()
     {
+        MangersInit();
+    }
+
+    private void MangersInit()
+    {
         sound = GetComponentInChildren<SoundManager>();
         button = GetComponentInChildren<ButtonManager>();
     }
