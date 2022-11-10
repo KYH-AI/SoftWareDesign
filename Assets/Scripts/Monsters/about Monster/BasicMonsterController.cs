@@ -27,7 +27,7 @@ public abstract class BasicMonsterController : Enemy
     public void Start()
     {
         base.Start();
-        base.playerTarget = GameObject.Find("Player").transform;
+      //  base.playerTarget = GameObject.Find("Player").transform;
         renderer = GetComponent<SpriteRenderer>();
         state = State.Run;
     }
@@ -42,7 +42,7 @@ public abstract class BasicMonsterController : Enemy
     public void Run()
     {
         base.Move();
-        if ((playerTarget.position.x - this.transform.position.x) < 0)
+        if ((playerTarget.gameObject.transform.position.x - this.transform.position.x) < 0)
             renderer.flipX = true;
         else renderer.flipX = false;
             if (base.Hp <= 0)
