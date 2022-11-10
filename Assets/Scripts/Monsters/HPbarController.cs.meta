@@ -1,5 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/LeanTween/Framework/LTDescr.cs.meta
+guid: 403e8e94802ef7348a139be11c0de26b
+timeCreated: 1463137984
+licenseType: Store
+========
 guid: 99d317f30c9353a4ea39134961b9b3dd
+>>>>>>>> 91a3e302c623fed30fde50d07e62650624662fbe:Assets/Scripts/Monsters/HPbarController.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
