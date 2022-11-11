@@ -410,6 +410,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8784905400550912004, guid: 358c1fcee85b0d54a835b4f8f4d6f498,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784905400550912004, guid: 358c1fcee85b0d54a835b4f8f4d6f498,
+        type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -674,6 +679,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5358792418452267751, guid: 6cd823db686f90049bbec25e4bac4ce3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967234591598548438, guid: 6cd823db686f90049bbec25e4bac4ce3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967234591656830306, guid: 6cd823db686f90049bbec25e4bac4ce3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967234591782878853, guid: 6cd823db686f90049bbec25e4bac4ce3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8967234591947267996, guid: 6cd823db686f90049bbec25e4bac4ce3,
         type: 3}
       propertyPath: m_RootOrder
