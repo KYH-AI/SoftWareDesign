@@ -8,17 +8,7 @@ public class Define
         BGM = 0,
         SFX = 1,
     }
-    /// <summary>
-    /// 스테이지 상황 표시
-    /// </summary>
-    public enum Stage
-    {
-        ONE,
-        TWO,
-        THREE,
-        FOUR,
-        FIVE
-    }
+
     /// <summary>
     /// 오브젝트 Tag 표시
     /// </summary>
@@ -35,5 +25,27 @@ public class Define
     {
         ACTIVE = 0,
         COOL_TIME = 1,
+    }
+
+    /// <summary>
+    /// 스테이지 상황 표시
+    /// </summary>
+    public enum Stage
+    {
+        ONE,
+        TWO,
+        THREE,
+        FOUR,
+        FIVE
+    }
+
+    /// <summary>
+    /// 생성힐 프리팹 타입 (Path)
+    /// </summary>
+    public enum PrefabType
+    {
+        Player_Skill,
+        Boss_Skill,
+        Monsters
     }
 }

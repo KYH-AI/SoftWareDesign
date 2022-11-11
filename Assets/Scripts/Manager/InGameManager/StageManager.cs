@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+    [SerializeField] Player player;
+    public Player Player { get { return player; } }
 
     private static StageManager instance;
-    
-    
     public Define.Stage stage = Define.Stage.ONE;
 
 

@@ -79,6 +79,7 @@ public class ThrowingKnife : ActiveSkill
 
     private void CreateProjectile()
     {
+        /*
         GameObject projectile = Instantiate(knifeObject,
                                             playerObject.PlayerController.AttackDir.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)),
                                             Quaternion.identity);
@@ -86,5 +87,6 @@ public class ThrowingKnife : ActiveSkill
         projectile.transform.rotation =  Quaternion.Euler(0, 0, Mathf.Atan2(-playerObject.PlayerController.LastDir.y, -playerObject.PlayerController.LastDir.x) * Mathf.Rad2Deg);
         //   GunMuzzel.right* Random.Range(2, 4) + Vector3.up * Random.Range(2, 4);
         projectile.GetComponent<Projectile>().ProjectileInit(playerObject.PlayerController.LastDir.normalized, skillDamgae, skillProjectileSpeed);
+        */
     }
 }

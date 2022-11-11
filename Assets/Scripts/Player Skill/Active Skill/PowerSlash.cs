@@ -63,45 +63,46 @@ public class PowerSlash : ActiveSkill
 
     private void WindSlashSkillAttack()
     {
-        OnSkillEffect();  // 이펙트 활성화
 
-        Vector3 firstPosition = playerObject.transform.position;
-        float maxDistance = skillDashDistacne;
+        //OnSkillEffect();  // 이펙트 활성화
 
-        // x, y 마지막 방향을 이용해 해당 방향으로 10m 날라간다.
+        //Vector3 firstPosition = playerObject.transform.position;
+        //float maxDistance = skillDashDistacne;
 
-        RaycastHit2D hitObject = Physics2D.Raycast(transform.position, playerObject.PlayerController.LastDir, maxDistance, wallLayer);
+        //// x, y 마지막 방향을 이용해 해당 방향으로 10m 날라간다.
 
-        if (hitObject)  // RayCast가 벽에 충돌했다는 의미
-        {
-            maxDistance = hitObject.distance;     // 벽 충돌 위치까지만 Ray를 쏘기 위한 거리 측정
-            playerObject.transform.position = hitObject.normal; // 충돌한 벽 앞 까지만 이동
-        }
+        //RaycastHit2D hitObject = Physics2D.Raycast(transform.position, playerObject.PlayerController.LastDir, maxDistance, wallLayer);
 
-        else
-        {
-            playerObject.transform.Translate(playerObject.PlayerController.LastDir.normalized * maxDistance); // 마지막으로 본 방향 + dashDistance 길이 만큼 이동
-        }
+        //if (hitObject)  // RayCast가 벽에 충돌했다는 의미
+        //{
+        //    maxDistance = hitObject.distance;     // 벽 충돌 위치까지만 Ray를 쏘기 위한 거리 측정
+        //    playerObject.transform.position = hitObject.normal; // 충돌한 벽 앞 까지만 이동
+        //}
 
-
-        RaycastHit2D[] enemyObjects = Physics2D.RaycastAll(firstPosition, playerObject.PlayerController.LastDir, maxDistance, enemyLayer);
-        /*
-        Debug.Log("스킬 충돌 거리 : " + dashDistance);
-        Debug.Log("충돌한 적 : " + enemyObject.Length);
-        */
+        //else
+        //{
+        //    playerObject.transform.Translate(playerObject.PlayerController.LastDir.normalized * maxDistance); // 마지막으로 본 방향 + dashDistance 길이 만큼 이동
+        //}
 
 
-        if (enemyObjects.Length > 0)
-        {
-            for (int enemyCount = 0; enemyCount < enemyObjects.Length; enemyCount++)
-            {
-                // TODO : 데미지 처리 하기 (10/30)
-               // Destroy(enemyObjects[enemyCount].transform.gameObject, 0.5f);
-            }
-        }
+        //RaycastHit2D[] enemyObjects = Physics2D.RaycastAll(firstPosition, playerObject.PlayerController.LastDir, maxDistance, enemyLayer);
+        ///*
+        //Debug.Log("스킬 충돌 거리 : " + dashDistance);
+        //Debug.Log("충돌한 적 : " + enemyObject.Length);
+        //*/
 
-        Invoke(nameof(OnSkillEffect), 1f); //  이펙트 비활성화
-        OnCoolTime();
+
+        //if (enemyObjects.Length > 0)
+        //{
+        //    for (int enemyCount = 0; enemyCount < enemyObjects.Length; enemyCount++)
+        //    {
+        //        // TODO : 데미지 처리 하기 (10/30)
+        //       // Destroy(enemyObjects[enemyCount].transform.gameObject, 0.5f);
+        //    }
+        //}
+
+        //Invoke(nameof(OnSkillEffect), 1f); //  이펙트 비활성화
+        //OnCoolTime();
     }
 
     private void OnSkillEffect()

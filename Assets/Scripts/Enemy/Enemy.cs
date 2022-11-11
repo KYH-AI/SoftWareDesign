@@ -5,7 +5,8 @@ using Pathfinding;
 
 public class Enemy : LivingEntity, IBasicMovement
 {
-    private Player playerTarget;
+    StageManager stage;
+    protected Player playerTarget;
 
     private Rigidbody2D enemyRigidbody;
     private Animator enemyAnimator;
@@ -14,6 +15,7 @@ public class Enemy : LivingEntity, IBasicMovement
 
     protected void Start()
     {
+         
         BasicStatInit();
     }
 

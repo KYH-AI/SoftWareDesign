@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4810123017021479018}
   m_Layer: 0
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6897147555146677718, guid: bbbae09279b66cb48b7d05525773c545, type: 3}
+  m_Sprite: {fileID: -6897147555146677718, guid: bbbae09279b66cb48b7d05525773c545,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,7 +108,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &8283450641377011236
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -156,7 +157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: 0e00f04b633936944a75eb901f148cc5, type: 2}
-  playerTarget: {fileID: 0}
   DamageInform: {fileID: 8283450643052738486}
   coolTime: -1
   skillTime: 2

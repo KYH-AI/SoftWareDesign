@@ -8,28 +8,28 @@ public abstract class BasicMonsterController : Enemy
 {
     public Text DamageInform;
     //public GameObject coinPrephab;
-    enum State
+    public enum State
     {
         Run,
         Attack,
         Damage,
         Die
     }
-    State state;
+    public State state;
 
     public float coolTime=-1.0f, skillTime = 2.0f;
-    SpriteRenderer renderer;
+    new SpriteRenderer renderer;
 
 
     public int minKillCount;
     public int maxKillCount;
 
-    public void Start()
+    new public void Start()
     {
-        //base.Start();
-        //base.playerTarget = GameObject.Find("Player").transform;
-        //renderer = GetComponent<SpriteRenderer>();
-        //state = State.Run;
+        base.Start();
+        base.playerTarget = GameObject.Find("Player").GetComponent<Player>();
+        renderer = GetComponent<SpriteRenderer>();
+        state = State.Run;
     }
     public void Update()
     {
@@ -41,15 +41,15 @@ public abstract class BasicMonsterController : Enemy
     //달리기
     public void Run()
     {
-        //base.Move();
-        //if ((playerTarget.position.x - this.transform.position.x) < 0)
-        //    renderer.flipX = true;
-        //else renderer.flipX = false;
-        //    if (base.Hp <= 0)s
-        //{
-        //    state = State.Die;
-        //    return;
-        //}
+        base.Move();
+        if ((playerTarget.gameObject.transform.position.x - this.transform.position.x) < 0)
+            renderer.flipX = true;
+        else renderer.flipX = false;
+            if (base.Hp <= 0)
+        {
+            state = State.Die;
+            return;
+        }
     }
 
     //공격
@@ -84,7 +84,7 @@ public abstract class BasicMonsterController : Enemy
     IEnumerator DamageProcess()
     {
         DamageInform.enabled = true;
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         DamageInform.enabled = false;
         state = State.Run;
     }
