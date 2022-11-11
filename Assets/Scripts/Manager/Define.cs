@@ -19,4 +19,21 @@ public class Define
         FOUR,
         FIVE
     }
+    /// <summary>
+    /// 오브젝트 Tag 표시
+    /// </summary>
+    public enum StringTag
+    {
+        Enemy = 0,
+        Player = 1,
+    }
+
+    /// <summary>
+    /// 스킬 상태 표시
+    /// </summary>
+    public enum CurrentSkillState
+    {
+        ACTIVE = 0,
+        COOL_TIME = 1,
+    }
 }

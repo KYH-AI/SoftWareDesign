@@ -26,10 +26,10 @@ public abstract class BasicMonsterController : Enemy
 
     public void Start()
     {
-        base.Start();
-        base.playerTarget = GameObject.Find("Player").transform;
-        renderer = GetComponent<SpriteRenderer>();
-        state = State.Run;
+        //base.Start();
+        //base.playerTarget = GameObject.Find("Player").transform;
+        //renderer = GetComponent<SpriteRenderer>();
+        //state = State.Run;
     }
     public void Update()
     {
@@ -41,15 +41,15 @@ public abstract class BasicMonsterController : Enemy
     //달리기
     public void Run()
     {
-        base.Move();
-        if ((playerTarget.position.x - this.transform.position.x) < 0)
-            renderer.flipX = true;
-        else renderer.flipX = false;
-            if (base.Hp <= 0)
-        {
-            state = State.Die;
-            return;
-        }
+        //base.Move();
+        //if ((playerTarget.position.x - this.transform.position.x) < 0)
+        //    renderer.flipX = true;
+        //else renderer.flipX = false;
+        //    if (base.Hp <= 0)s
+        //{
+        //    state = State.Die;
+        //    return;
+        //}
     }
 
     //공격

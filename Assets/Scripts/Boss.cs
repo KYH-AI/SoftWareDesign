@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class WD_Boss : MonoBehaviour
+public class Boss : MonoBehaviour
 {
     public enum BossState{
         MOVE_STATE,
@@ -19,7 +19,7 @@ public class WD_Boss : MonoBehaviour
 
 
 
-    WD_BossFSM bossFSM;
+    BossFSM bossFSM;
 
     [SerializeField] GameObject player;
 
@@ -31,23 +31,24 @@ public class WD_Boss : MonoBehaviour
     Rigidbody2D bossRigidBody;
     Animator bossAttack;
 
-    [SerializeField] [Range(1f, 20f)] float moveSpeed = 3f;
-    [SerializeField] [Range(0f, 50f)] float contactDistance = 1f;
-
+    [SerializeField] [Range(1f, 20f)] float moveSpeed = 5f;
+    [SerializeField] [Range(0f, 50f)] float contactDistance = 100f;
+    [SerializeField] [Range(10, 5000)] int currentHP = 100; 
+    
     public bool follow = false;
     private float scaleX;
   
     // Start is called before the first frame update
     void Start()
     {
-        bossFSM = new WD_BossFSM(this);
+        bossFSM = new BossFSM(this);
         scaleX = transform.localScale.x; 
         bossRigidBody = GetComponent<Rigidbody2D>();
         bossAttack = GetComponent<Animator>();
 
 
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-   
+
         
     }
 
@@ -55,20 +56,18 @@ public class WD_Boss : MonoBehaviour
     void Update()
     {
         ChangeDir();
-        bossFSM.bossState = BossState.MOVE_STATE;
-        //bossFSM.Update();
+       // bossFSM.bossState = BossState.MOVE_STATE;
+        bossFSM.Update();
+        
     }
-
-
     /// <summary>
     /// 플레이어 오브젝트의 위치에 따라서 보스 오브젝트의 스프라이트 좌우 반전을 컨트롤 하는 함수
     /// </summary>
     private void ChangeDir()
     {
-        if (dir.x < 0)
+        if (dir.x > 0)
         {             
             bossRigidBody.transform.localScale = new Vector2(scaleX, transform.localScale.y);
-
         }
         else
         {
@@ -81,15 +80,17 @@ public class WD_Boss : MonoBehaviour
   /// </summary>
     public void Move()
     {
+        
         Debug.Log("Move");
-        if (Vector2.Distance(transform.position, target.position) > contactDistance && follow)
+        if (Vector2.Distance(transform.position, target.position) > contactDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             dir = (player.transform.position - transform.position).normalized;
         }
         else
         {
-            bossFSM.bossState = BossState.ATTACK_STATE;           
+            bossFSM.bossState = BossState.ATTACK_STATE;
+            //bossFSM.Update();
             
         }
     }
@@ -105,7 +106,7 @@ public class WD_Boss : MonoBehaviour
         bossAttack.SetTrigger("DefaultAttack");
         bossRigidBody.velocity = Vector2.zero;
 
-        if (Vector2.Distance(transform.position, target.position) > contactDistance && follow && !check)
+        if (Vector2.Distance(transform.position, target.position) > contactDistance)
         {
             bossFSM.bossState = BossState.MOVE_STATE; 
         }
