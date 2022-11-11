@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mangers : MonoBehaviour
+public class Managers : MonoBehaviour
 {
-    private static Mangers instance;
-    public static Mangers Instance { get { return instance; } }
+    private static Managers instance;
+    public static Managers Instance { get { return instance; } }
 
     private ResourceManager resource = new ResourceManager(); // °´Ã¼È­ »ý¼º
     public static ResourceManager Resource { get { return Instance.resource; } }

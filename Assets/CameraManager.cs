@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-
     public Transform followingTarget;
     public float moveSpeed;
 
+    private void Start()
+    {
+        followingTarget = StageManager.GetInstance().Player.GetComponent<Transform>();
+    }
 
     void LateUpdate()                   /* 카메라 이동은 LateUpdate()에서 처리 */
     {

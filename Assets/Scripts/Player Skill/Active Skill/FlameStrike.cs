@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-public class FirePillar : ActiveSkill
+public class FlameStrike : ActiveSkill
 {
     [SerializeField] GameObject firePillarObject;
     [SerializeField] VolumeProfile firePillarProfile;
@@ -15,11 +15,11 @@ public class FirePillar : ActiveSkill
     /// <summary>
     /// 불기둥 스킬 소환 개수
     /// </summary>
-    private int skillProjectileCount = 15; // 초기 값 1개
+    private int skillProjectileCount = 1; // 초기 값 1개
     /// <summary>
     /// 불기둥 소환 간격시간
     /// </summary>
-    private float skillAttackDelay = 0.25f; // 초기 값 0초
+    private float skillAttackDelay = 0.0f; // 초기 값 0초
     /// <summary>
     /// 불기둥 소환간격 시간 코루틴  
     /// </summary>
@@ -94,26 +94,20 @@ public class FirePillar : ActiveSkill
 
     IEnumerator FlameStrikeSkillProcess()
     {
-
-        float[,] locationCount = new float[4, 2]
-        {
-            {0f, 2f},
-            {4f, 0f},
-            {0f, -4f},
-            {-4f, 0f},
-         };
-
-        OnSkillEffect();
+       // OnSkillEffect();
 
         for (int i = 0; i < skillProjectileCount; i++)
         {
-            //  GameObject projectile =  Instantiate(firePillarObject, RandomSpawnLocation(locationCount[i,0], locationCount[i,1]), Quaternion.identity);
-            GameObject projectile = Instantiate(firePillarObject, RandomSpawnLocation(Random.Range(-4f, 4f), Random.Range(-4f, 4f)), Quaternion.identity);
+            //  Instantiate(firePillarObject, RandomSpawnLocation(Random.Range(-4f, 4f), Random.Range(-4f, 4f)), Quaternion.identity);
+            GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(firePillarObject, 
+                                                                                     Define.PrefabType.Player_Skill,
+                                                                                     new Vector2(transform.position.x + Random.Range(-4f, 4f), transform.position.y + Random.Range(-4f, 4f)),
+                                                                                     Quaternion.identity); 
             projectile.GetComponent<Projectile>().ProjectileInit(Vector2.zero, skillDamgae);
             yield return skillAttackDelayTimeSec; // 불기둥 소환간격 시간
         }
 
-        Invoke(nameof(OffSkillEffect), 2f); //  2초뒤 이펙트 비활성화 ;
+     //   Invoke(nameof(OffSkillEffect), 2f); //  2초뒤 이펙트 비활성화 ;
         OnCoolTime();
     }
 
@@ -126,17 +120,4 @@ public class FirePillar : ActiveSkill
     {
         PlayerCamera.Instance.ChagnePostProcessProfile(null);
     }
-
-
-    /*
-    private void SpawnFirePillarObject(float angle)
-    {
-        Vector3 direction = Quaternion.Euler(0, angle, 0) * Vector2.right;
-        Vector2 spawnPosition = playerObject.transform.position + direction * 5;
-        Debug.Log(direction);
-        Debug.Log(spawnPosition);
-        Instantiate(firePillarObject, spawnPosition, Quaternion.identity);
-    }
-
-    */
 }

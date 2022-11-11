@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    [SerializeField] GameObject Player;
+    private Transform Player;
 
     int Unitsize = 10;
     int Tile_x = 0;
     int Tile_y = 0;
 
-    
-
-
     void Start()
     {
-        
+        Player = StageManager.GetInstance().Player.GetComponent<Transform>();
     }
-
    
     void Update()
     {

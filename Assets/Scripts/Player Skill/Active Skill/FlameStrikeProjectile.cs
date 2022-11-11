@@ -9,12 +9,30 @@ public class FlameStrikeProjectile : Projectile
     private void Start()
     {
         FlameStrikeInit();
-        // TODO : 애니메이션이 종료되면 투사체 제거
     }
+
+
+    private void OnEnable()
+    {
+        Invoke(nameof(DisableObject), 5f);
+    }
+
 
     private void FlameStrikeInit()
     {
         flameStrikeColilder = GetComponent<BoxCollider2D>();
+    }
+
+ 
+    private void DisableObject()
+    {
+        // TODO : 애니메이션이 종료되면 투사체 제거
+        gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        MemoryPoolManager.GetInstance().InputGameObject(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D target)

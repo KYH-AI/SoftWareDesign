@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 1279858682202149930}
   - component: {fileID: 5421609425218881040}
   m_Layer: 0
-  m_Name: ThunderClap Skill
+  m_Name: ThunderSlash Skill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

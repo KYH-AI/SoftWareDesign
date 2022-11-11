@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour, IBasicMovement
 
         lastDir = Vector2.up;
 
+        /*
         GameObject skillObject = Mangers.Resource.GetPerfabGameObject("Player Skill/PowerSlash Skill");
         ActiveSkill pdSkill = Instantiate(skillObject, this.transform).GetComponent<ActiveSkill>();
         pdSkill.Init(player);
@@ -77,7 +78,7 @@ public class PlayerController : MonoBehaviour, IBasicMovement
         cdskill.Init(this.player);
         playerPassiveSkills.Add(2, cdskill);
 
-
+        */
         playerPassiveSkills[1].OnActive();
         playerPassiveSkills[2].OnActive();
     }
