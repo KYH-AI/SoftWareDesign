@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TargetCheck : MonoBehaviour
 {
-    WD_Boss bossScript; 
+    Boss bossScript; 
 
     
 
@@ -13,7 +13,7 @@ public class TargetCheck : MonoBehaviour
     void Start()
     {
 
-        bossScript = GetComponentInParent<WD_Boss>(); 
+        bossScript = GetComponentInParent<Boss>(); 
 
 
     }
