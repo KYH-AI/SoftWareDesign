@@ -155,7 +155,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4517011205545875929, guid: f738d4160643ac1428a9cac4f9b6a39a, type: 3}
+  m_Sprite: {fileID: 4517011205545875929, guid: f738d4160643ac1428a9cac4f9b6a39a,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -235,12 +236,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: fe535c1536b466d4abfd7ca8f2a691ec, type: 2}
-  playerTarget: {fileID: 0}
   DamageInform: {fileID: 600722168590772995}
+  state: 0
   coolTime: -1
   skillTime: 2
   minKillCount: 0
   maxKillCount: 0
+  Prefab: {fileID: 4631849611314212067, guid: 5c2ca54cc55948744a77baf587f59040, type: 3}
+  Monster: []
 --- !u!1 &600722169990852577
 GameObject:
   m_ObjectHideFlags: 0

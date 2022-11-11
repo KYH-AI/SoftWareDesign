@@ -6,8 +6,28 @@ using UnityEngine.AI;
 
 public class BoneAttack :BasicMonsterController
 {
-    protected override void Attack()
-{
+    public GameObject Prefab;
+    public GameObject[] Monster;
+    int idx = 0;
+    int MAX = 3;
 
-}
+    protected override void Attack()
+    {
+        Monster = new GameObject[MAX];
+        for(int i=0; i<MAX; i++)
+        {
+            GameObject ob = Instantiate(Prefab);
+            Monster[i] = ob;
+            ob.SetActive(false);
+        }
+        StartCoroutine("Spawn");
+    }
+
+    IEnumerator Spawn()
+    {
+        yield return new WaitForSeconds(base.skillTime);
+        Monster[idx].transform.position = gameObject.transform.position;
+        Monster[idx++].SetActive(true);
+        StartCoroutine("Spawn");
+    }
 }

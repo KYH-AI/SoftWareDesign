@@ -8,26 +8,26 @@ public abstract class BasicMonsterController : Enemy
 {
     public Text DamageInform;
     //public GameObject coinPrephab;
-    enum State
+    public enum State
     {
         Run,
         Attack,
         Damage,
         Die
     }
-    State state;
+    public State state;
 
     public float coolTime=-1.0f, skillTime = 2.0f;
-    SpriteRenderer renderer;
+    new SpriteRenderer renderer;
 
 
     public int minKillCount;
     public int maxKillCount;
 
-    public void Start()
+    new public void Start()
     {
         base.Start();
-      //  base.playerTarget = GameObject.Find("Player").transform;
+        base.playerTarget = GameObject.Find("Player").GetComponent<Player>();
         renderer = GetComponent<SpriteRenderer>();
         state = State.Run;
     }
@@ -84,7 +84,7 @@ public abstract class BasicMonsterController : Enemy
     IEnumerator DamageProcess()
     {
         DamageInform.enabled = true;
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         DamageInform.enabled = false;
         state = State.Run;
     }
