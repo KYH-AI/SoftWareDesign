@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Define;
 
 public class SpawnerMove : MonoBehaviour
 {
-    private GameObject target;
+    private Transform target;
 
     private void Start()
     {
-        target = GameObject.FindGameObjectWithTag(Define.StringTag.Player.ToString());
+       target = StageManager.GetInstance().Player.GetComponent<Transform>();    
     }
     void Update()
     {
-        gameObject.transform.position = target.transform.position;
+        gameObject.transform.position = target.position;
     }
 }

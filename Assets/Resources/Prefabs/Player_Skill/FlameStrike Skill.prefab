@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 533947677345860936}
   - component: {fileID: 533947677345860935}
   m_Layer: 0
-  m_Name: FirePillar Skill
+  m_Name: FlameStrike Skill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

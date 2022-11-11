@@ -45,10 +45,7 @@ public class WD_Boss : MonoBehaviour
         bossRigidBody = GetComponent<Rigidbody2D>();
         bossAttack = GetComponent<Animator>();
 
-
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-   
-        
     }
 
     // Update is called once per frame

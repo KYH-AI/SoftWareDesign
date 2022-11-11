@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 /// <summary>
 /// ±Í¸êÀÇ Ä®³¯ º®·ÂÀÏ¼¶ N¿¬¼Ó ±â¼ú
 /// </summary>
-public class Thunderclap : ActiveSkill
+public class ThunderSlash : ActiveSkill
 {
     private TrailRenderer thunderclapEffect;
     [SerializeField] GameObject thunderSlashLockOnEffect;

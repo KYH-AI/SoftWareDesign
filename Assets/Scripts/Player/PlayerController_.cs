@@ -9,7 +9,6 @@ public class PlayerController_ : MonoBehaviour
 {
     #region 이동 관련 변수 선언부
     Vector3 moveDirection;                  //이동방향
-    float moveSpeed = 4f;                   //이동속도
     #endregion
 
     #region 애니메이션 관련 변수 선언부
@@ -18,14 +17,37 @@ public class PlayerController_ : MonoBehaviour
     #endregion
 
     #region 상태 제어 변수 선언부
-    bool isMoveable = true;                 
+    bool isMoveable = true;
     #endregion
-    
+
+    #region 플레이어 정보 변수 선언부
+    Player player;
+    #endregion
+
+    #region 플레이어 스킬 정보 변수 선언부
+    public Dictionary<int, ActiveSkill> playerActiveSkills = new Dictionary<int, ActiveSkill>();
+    public Dictionary<int, PassiveSkill> playerPassiveSkills = new Dictionary<int, PassiveSkill>();
+    #endregion
+
     #region 유니티 함수
-    private void Start()
+    public void PlayerControllerInit(Player player)
     {
-        anim = GetComponent<Animator>();            
-        boxCol = GetComponent<BoxCollider2D>();     
+        this.player = player;
+     //   anim = GetComponent<Animator>();
+        boxCol = GetComponent<BoxCollider2D>();
+
+        /* 테스트 용도 */
+        GameObject skillObject3 = Managers.Resource.GetPerfabGameObject("Player_Skill/FlameStrike Skill");
+        ActiveSkill fpSkill = Instantiate(skillObject3, this.transform).GetComponent<ActiveSkill>();
+        fpSkill.Init(player);
+        playerActiveSkills.Add(0, fpSkill);
+
+        GameObject skillObject2 = Managers.Resource.GetPerfabGameObject("Player_Skill/FlameStrike Skill");
+        ActiveSkill tsSkill = Instantiate(skillObject3, this.transform).GetComponent<ActiveSkill>();
+        fpSkill.Init(player);
+        playerActiveSkills.Add(1, tsSkill);
+
+
     }
 
     private void FixedUpdate()
@@ -47,14 +69,16 @@ public class PlayerController_ : MonoBehaviour
         bool hasControl = (moveDirection != Vector3.zero);
         if (hasControl == true)
         {
+            /*
             anim.SetBool("isMove", true);
             anim.SetFloat("X", moveDirection.x);
             anim.SetFloat("Y", moveDirection.y);
-            transform.position += moveDirection * moveSpeed * Time.deltaTime;
+            */
+            transform.position += moveDirection * player.MoveSpeed * Time.deltaTime;
         }
         else
         {
-            anim.SetBool("isMove", false);
+            //anim.SetBool("isMove", false);
         }
     }
     #endregion
@@ -67,7 +91,7 @@ public class PlayerController_ : MonoBehaviour
     void OnSkill1()
     {
         //첫번째 스킬 사용
-        Debug.Log("q");
+        playerActiveSkills[0].OnActive();
     }
     void OnSkill2()
     {

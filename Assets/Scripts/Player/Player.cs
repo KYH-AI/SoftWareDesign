@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class Player : LivingEntity
 {
-    private PlayerController playerController;
-    public PlayerController PlayerController { get { return playerController; } }
+    private PlayerController_ playerController;
+    public PlayerController_ PlayerController { get { return playerController; } }
 
     private int playerGold = 0;
     public int PlayerGold { get { return playerGold; } set { playerGold = value; } }
@@ -26,7 +26,7 @@ public class Player : LivingEntity
     private void PlayerInit()
     {
         BasicStatInit();
-        playerController = GetComponent<PlayerController>();
+        playerController = GetComponent<PlayerController_>();
         playerController.PlayerControllerInit(this);
     }
 

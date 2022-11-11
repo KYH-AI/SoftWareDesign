@@ -24,7 +24,7 @@ public class Define
     public enum CurrentSkillState
     {
         ACTIVE = 0,
-        COOL_TIME =1,
+        COOL_TIME = 1,
     }
 
     /// <summary>
@@ -37,5 +37,15 @@ public class Define
         THREE,
         FOUR,
         FIVE
+    }
+
+    /// <summary>
+    /// »ý¼ºÈú ÇÁ¸®ÆÕ Å¸ÀÔ (Path)
+    /// </summary>
+    public enum PrefabType
+    {
+        Player_Skill,
+        Boss_Skill,
+        Monsters
     }
 }

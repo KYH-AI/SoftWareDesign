@@ -25,6 +25,7 @@ public class Spawner_FixedMaximum: MonoBehaviour
         for (int i = 0; i < MAX; i++)
         {
             GameObject ob = Instantiate(Prefab);
+            ob.GetComponent<Enemy>().EnemyInit(StageManager.GetInstance().Player);
             Monster[i] = ob;
             ob.SetActive(false);
         }
