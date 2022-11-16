@@ -17,6 +17,7 @@ public class BossSkillProjectile : Projectile
     private void OnEnable()
     {
         skullRigidBody.velocity = Dir.normalized * ProjectileSpeed;
+        Invoke(nameof(DisableObject),3.0f);
     }
 
     private void OnTriggerEnter2D(Collider2D target)
@@ -25,6 +26,7 @@ public class BossSkillProjectile : Projectile
         {
             target.GetComponent<Player>().TakeDamage(ProjectileDamage);
             skullAnimator.SetTrigger("DestroySkull");
+            skullRigidBody.velocity = Vector2.zero;
         }
     }
 

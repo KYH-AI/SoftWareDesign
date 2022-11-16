@@ -7,7 +7,7 @@ public class BossFSM
 {
 
 
-    public Boss.BossState bossState;
+    public Define.BossState bossState;
     private Boss boss;
     
     public BossFSM(Boss boss) 
@@ -20,21 +20,22 @@ public class BossFSM
     {
         switch (bossState)
         {
-            case Boss.BossState.MOVE_STATE: 
+            case Define.BossState.MOVE_STATE: 
                 boss.Move(); break;
-            case Boss.BossState.ATTACK_STATE:
+            case Define.BossState.ATTACK_STATE:
                 boss.Attack(); break;               
-            case Boss.BossState.HURT_STATE:
-                boss.Hurt(); break;
-            case Boss.BossState.DEAD_STATE:
-                boss.OnDead(); break;
-            case Boss.BossState.PATTERN_DARKHEAL_STATE:
+            case Define.BossState.HURT_STATE:
+                break;
+               // boss.TakeDamage(); break;
+            case Define.BossState.DEAD_STATE:
+                break;
+            case Define.BossState.PATTERN_DARKHEAL_STATE:
                 boss.Pattern_DarkHeal(); break;
-            case Boss.BossState.PATTERN_RUINSTK_STATE:
+            case Define.BossState.PATTERN_RUINSTK_STATE:
                 boss.Pattern_RuinStk(); break;
-            case Boss.BossState.PATTERN_SUMNSKELETON_STATE:
+            case Define.BossState.PATTERN_SUMNSKELETON_STATE:
                 boss.Pattern_SummonSkeleton(); break;
-            case Boss.BossState.PATTERN_BIND_STATE:
+            case Define.BossState.PATTERN_BIND_STATE:
                 boss.Pattern_Bind(); break;
         }
       

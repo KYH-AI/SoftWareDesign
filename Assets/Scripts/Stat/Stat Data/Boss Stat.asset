@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Boss Stat
   m_EditorClassIdentifier: 
   hp: 5000
-  moveSpeed: 3
+  moveSpeed: 2
   armor: 0
   defaultAttackDamage: 40
