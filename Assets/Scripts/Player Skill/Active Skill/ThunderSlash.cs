@@ -64,7 +64,7 @@ public class ThunderSlash : ActiveSkill
 
         if (enemyCollider.Length > 0)
         {
-            OnSkillEffect();
+         //   OnSkillEffect();
             ThunderSlashEffect(); // 번개 효과 이펙트 (Trail Renderer) 활성화
             Time.timeScale = 0.1f;
             StartCoroutine(ThunderSlashSkillAttackSkillProcess(enemyCollider));
@@ -96,7 +96,7 @@ public class ThunderSlash : ActiveSkill
             yield return new WaitForSecondsRealtime(1f);   // 캐싱 하자
             Destroy(lockOnEffect[enemyCount]);
         }
-        OffSkillEffect();
+    //    OffSkillEffect();
         Time.timeScale = 1.0f;
  
         Invoke(nameof(ThunderSlashEffect), 1f); // 번개 효과 이펙트 (Trail Renderer) 비활성화

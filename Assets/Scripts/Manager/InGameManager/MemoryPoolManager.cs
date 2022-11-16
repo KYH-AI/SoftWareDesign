@@ -33,7 +33,7 @@ public class MemoryPoolManager : MonoBehaviour
     /// <summary>
     /// 오브젝트 반납(넣는다)
     /// </summary>
-    /// <param name="gameObject">반납 오브젝트</param>
+    /// <param name="gameObject">반납 SetActive(ture)오브젝트</param>
     public void InputGameObject(GameObject gameObject)
     {
         gameObject.SetActive(false);
@@ -47,7 +47,7 @@ public class MemoryPoolManager : MonoBehaviour
     /// <param name="prefabType">오브젝트 타입</param>
     /// <param name="spawnPosition">오브젝트 생성 위치</param>
     /// <param name="quaternion">오브젝트 회전 위치</param>
-    /// <returns>Queue에서 반환된 오브젝트</returns>
+    /// <returns>Queue에서 반환된 SetActive(false)오브젝트</returns>
     public GameObject OutputGameObject(GameObject gameObject, Define.PrefabType prefabType, Vector2 spawnPosition, Quaternion quaternion)
     {
         GameObject temp;
@@ -67,7 +67,7 @@ public class MemoryPoolManager : MonoBehaviour
             temp = Instantiate(Managers.Resource.GetPerfabGameObject(prefabType.ToString() +"/"+ gameObject.name));
             temp.name = gameObject.name; // 프리팹 (Clone) 이름 삭제
             temp.SetActive(false);
-            //  pools[gameObject.name].Enqueue(temp);             // -> 투사체.cs OnDisable()에서 Enqueue 진행
+            //  pools[gameObject.name].Enqueue(temp);             // -> 각 오브젝트.cs OnDisable()에서 Enqueue 진행
             Debug.Log($"{gameObject.name}전용 큐가 비워서 EnQueue");
         }
 
@@ -79,7 +79,7 @@ public class MemoryPoolManager : MonoBehaviour
 
         Debug.Log($"{gameObject.name}전용 큐 DeQueue");
         print(temp.gameObject.name);
-        temp.SetActive(true);
+       // temp.SetActive(true);  -> 오브젝트 OnEnable 특성상 외부에서 활성화 해야함
         return temp;
     }
 }

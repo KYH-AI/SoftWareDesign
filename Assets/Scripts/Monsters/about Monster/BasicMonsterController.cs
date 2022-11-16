@@ -55,11 +55,12 @@ public abstract class BasicMonsterController : Enemy
     //АјАн
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+            if (other.tag == "Player")
         {
             state = State.Attack;
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.tag=="Player")
