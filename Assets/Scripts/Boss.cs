@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Boss : MonoBehaviour
+public class Boss : Enemy
 {
     public enum BossState{
         MOVE_STATE,
@@ -18,38 +18,38 @@ public class Boss : MonoBehaviour
     };
 
 
-
-    BossFSM bossFSM;
-
-    [SerializeField] GameObject player;
-
-    private Vector2 dir;
-
-    Transform target;
     
-    //[SerializeField] AnimationTriggers attack;
-    Rigidbody2D bossRigidBody;
-    Animator bossAttack;
+    BossFSM bossFSM;
+    [SerializeField] GameObject player;
+    private Vector2 dir;
+    Transform target;
 
-    [SerializeField] [Range(1f, 20f)] float moveSpeed = 5f;
-    [SerializeField] [Range(0f, 50f)] float contactDistance = 100f;
-    [SerializeField] [Range(10, 5000)] int currentHP = 100; 
+
+    //[SerializeField] AnimationTriggers attack;
+
+    Rigidbody2D boss;
+    Animator boss_ani; 
+
+    
+    [SerializeField] [Range(0f, 50f)] float contactDistance;    //보스의 사정거리 초기값 10
+    
     
     public bool follow = false;
     private float scaleX;
-  
+
+    // 보스 기본공격 투사체
+    [SerializeField] GameObject bossProjectileSkull;
+    readonly float BOSS_DEFAULT_ATTACK_SPEED = 1.5f;
+    readonly float BOSS_PROJECTILE_SKULL_SPEED = 10f; 
+
     // Start is called before the first frame update
     void Start()
     {
         bossFSM = new BossFSM(this);
         scaleX = transform.localScale.x; 
-        bossRigidBody = GetComponent<Rigidbody2D>();
-        bossAttack = GetComponent<Animator>();
-
-
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-
-        
+        boss_ani = GetComponent<Animator>();
+        boss = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -66,12 +66,16 @@ public class Boss : MonoBehaviour
     private void ChangeDir()
     {
         if (dir.x > 0)
-        {             
-            bossRigidBody.transform.localScale = new Vector2(scaleX, transform.localScale.y);
+        {
+            //스테이지 매니져에서 보스를 만들어야 할지, 아니면 boss내에서 자체 처리할지, 
+
+            boss.transform.localScale = new Vector2(scaleX, transform.localScale.y);
+            //EnemyRigidbody.transform.localScale = new Vector2(scaleX, transform.localScale.y);
         }
         else
         {
-            bossRigidBody.transform.localScale = new Vector2(-scaleX, transform.localScale.y);
+            boss.transform.localScale = new Vector2(-scaleX, transform.localScale.y);
+            //EnemyRigidbody.transform.localScale = new Vector2(-scaleX, transform.localScale.y);
         }
     }
   /// <summary>
@@ -84,7 +88,7 @@ public class Boss : MonoBehaviour
         Debug.Log("Move");
         if (Vector2.Distance(transform.position, target.position) > contactDistance)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, MoveSpeed * Time.deltaTime);
             dir = (player.transform.position - transform.position).normalized;
         }
         else
@@ -102,19 +106,38 @@ public class Boss : MonoBehaviour
     /// </summary>
     public void Attack()
     {
-        Debug.Log("Attack");
-        bossAttack.SetTrigger("DefaultAttack");
-        bossRigidBody.velocity = Vector2.zero;
-
+     
         if (Vector2.Distance(transform.position, target.position) > contactDistance)
         {
-            bossFSM.bossState = BossState.MOVE_STATE; 
+            bossFSM.bossState = BossState.MOVE_STATE;
         }
+        else if(Vector2.Distance(transform.position, target.position) < contactDistance)
+        {
+            Debug.Log("Attack");
+            boss_ani.SetTrigger("DefaultAttack");
+            boss.velocity = Vector2.zero;
+            CreateBossProjectileSkull();
+            //EnemyAnimator.SetTrigger("DefaultAttack");
+            //EnemyRigidbody.velocity = Vector2.zero;
+        }
+    }
+
+    /// <summary>
+    /// 애니메이션 이벤트 기본공격에서 호출
+    /// </summary>
+    private void CreateBossProjectileSkull()
+    {
+        GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(bossProjectileSkull,
+                                                                                Define.PrefabType.Boss_Skill,
+                                                                                transform.position,
+                                                                                Quaternion.identity);
+        projectile.GetComponent<Projectile>().ProjectileInit(dir, DefaultAttackDamage, BOSS_PROJECTILE_SKULL_SPEED);
+        projectile.SetActive(true);
     }
 
     public void Hurt()
     {
-
+      
     }
     public void OnDead()
     {

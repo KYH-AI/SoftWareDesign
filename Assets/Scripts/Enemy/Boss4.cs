@@ -20,9 +20,9 @@ public class Boss4 : Enemy
     BossState state;
     SpriteRenderer renderer;
     Collider2D collider;
-    void Awake()
+    void Start()
     {
-        EnemyInit(StageManager.GetInstance().player);
+        EnemyInit(StageManager.GetInstance().Player);
         state = BossState.IDLE_STATE;
         renderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();  
