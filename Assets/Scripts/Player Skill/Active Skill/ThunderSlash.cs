@@ -60,7 +60,7 @@ public class ThunderSlash : ActiveSkill
 
     private void ThunderSlashSkillAttack()
     {
-        Collider2D[] enemyCollider = Physics2D.OverlapCircleAll(playerObject.transform.position, 10f, enemyLayer);
+        Collider2D[] enemyCollider = Physics2D.OverlapCircleAll(playerObject.transform.position, 10f, enemyLayer);//아트록스 q
 
         if (enemyCollider.Length > 0)
         {

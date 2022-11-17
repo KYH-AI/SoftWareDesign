@@ -1438,7 +1438,7 @@ TextureImporter:
         serializedVersion: 2
         x: 1705
         y: 24
-        width: 91
+        width: 17
         height: 17
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1470,6 +1470,27 @@ TextureImporter:
       bones: []
       spriteID: 7fa2855c6f7745ab0800000000000000
       internalID: -5020255782854710537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NightBorne_19
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 23
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47699d297edfa8640800000000000000
+      internalID: 5083154300484032116
       vertices: []
       indices: 
       edges: []

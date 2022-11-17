@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boss4 : Enemy
 {
+    protected int playerLayer = 1 << 10;
     public enum BossState
     {
         IDLE_STATE,
@@ -16,25 +17,20 @@ public class Boss4 : Enemy
     float moveDistance = 10f;
     float attackDistance = 3f;
     float moveSpeed = 4f;
+    float attackDelay = 2f;
     Vector2 dir;
-    BossState state;
-    SpriteRenderer renderer;
-    Collider2D collider;
-    void Awake()
-    {
-        EnemyInit(StageManager.GetInstance().player);
-        state = BossState.IDLE_STATE;
-        renderer = GetComponent<SpriteRenderer>();
-        collider = GetComponent<Collider2D>();  
-    }
+    BossState state = BossState.IDLE_STATE;
+    bool isAttack = true;
+    bool onTrigger = true;
+    bool isHurt = false;
+
 
     // Update is called once per frame
     void Update()
     {
-        dir = (playerTarget.transform.position - transform.position).normalized;
+        dir = (playerTarget.transform.position - transform.position);
         ChangeDir();
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));//회전이 안되게 고정
-        distance = Vector2.Distance(transform.position, playerTarget.transform.position);
+        distance = dir.magnitude;  //Vector2.Distance(transform.position, playerTarget.transform.position);
         Fsm();
     }
 
@@ -42,12 +38,12 @@ public class Boss4 : Enemy
     {
         if (dir.x < 0)
         {
-            renderer.flipX = true;
+            SpriteRenderer.flipX = true;
 
         }
         else
         {
-            renderer.flipX = false;
+            SpriteRenderer.flipX = false;
         }
     }
     void Fsm()
@@ -69,19 +65,33 @@ public class Boss4 : Enemy
                 break;
         }
     }
+     private void OnTriggerEnter2D(Collider2D collision)
+     {
+         if (collision.gameObject.tag == "Player"&& onTrigger)
+         {
+             DefaultAttack();
+             print("데미지를 줌");
+         }
+        onTrigger = false;
+     }
+
     void Idle()
     {
         if (distance < moveDistance)
         {
-            StartCoroutine(IdleTOMove()); 
+            state = BossState.MOVE_STATE;
+            //StartCoroutine(IdleTOMove()); 
         }
         EnemyAnimator.SetBool("isRun", false);
     }
     private void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, playerTarget.transform.position, moveSpeed * Time.deltaTime);
+        if (!isHurt)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, playerTarget.transform.position, moveSpeed * Time.deltaTime);
+        }
+        
         EnemyAnimator.SetBool("isRun", true);
-        print("뿌");
        if (distance <= attackDistance)
         {
             state = BossState.ATTACK_STATE;
@@ -89,33 +99,44 @@ public class Boss4 : Enemy
     }
     private void Attack()
     {
-        EnemyAnimator.SetBool("isAttack", true);
-        collider.isTrigger = true;
-        if (distance > attackDistance)
+        if (isAttack)
         {
-            StartCoroutine(AttackToIdle());
+            StartCoroutine(AttackDelay());
         }
             
     }
+    public override void TakeDamage(int newDamage)
+    {
+        base.TakeDamage(newDamage);
+        Hurt();
+    }
+
+  
+
+    protected override void OnDead()
+    {
+        base.OnDead();
+        EnemyCollider.isTrigger = true;
+        EnemyAnimator.SetTrigger("isDie");
+    }
+    void DeadProcess()//Die애니메이션에 넣음
+    {
+        Destroy(gameObject);
+    }
+
 
     private void Hurt()
     {
         EnemyAnimator.SetBool("isDamaged", true);
+        isHurt = true;
         StartCoroutine(HurtToIdle());
     }
     
-    IEnumerator AttackToIdle()
-    {
-        yield return new WaitForSeconds(0.9f);
-        EnemyAnimator.SetBool("isRun", false);
-        EnemyAnimator.SetBool("isAttack", false);
-        collider.isTrigger = false;
-        state = BossState.IDLE_STATE;
-    }
     IEnumerator HurtToIdle()
     {
         yield return new WaitForSeconds(1f);
         EnemyAnimator.SetBool("isDamaged", false);
+        isHurt = false;
         state = BossState.IDLE_STATE;
     }
 
@@ -123,5 +144,31 @@ public class Boss4 : Enemy
     {
         yield return new WaitForSeconds(1f);
         state = BossState.MOVE_STATE;
+    }
+
+    IEnumerator AttackDelay()
+    {
+        isAttack = false;
+        EnemyAnimator.SetBool("isRun", false);
+       // yield return new WaitForSeconds(0.1f);//0.2초 동안 idle
+        EnemyAnimator.SetBool("isAttack", true);
+        //EnemyCollider.isTrigger = true;//공격할때 검과 캐리터가 겹치기 위함
+        yield return new WaitForSeconds(attackDelay);//공격 딜레이
+        onTrigger = true;
+        isAttack = true;
+    }
+    void AttackToIdle()//attack애니메이션 마지막에 넣음
+    {
+        EnemyAnimator.SetBool("isAttack", false);
+        StartCoroutine(AfterDelay());//공격 후 딜레이
+        //EnemyCollider.isTrigger = false;
+    }
+    IEnumerator AfterDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (distance > attackDistance)//멀어지면 idle 상태로 돌아가서 플레이어 추적하기
+        {
+            state = BossState.IDLE_STATE;
+        }
     }
 }

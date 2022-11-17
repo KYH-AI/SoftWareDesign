@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69e6443d67a4cf241a1179bfa19679a3, type: 3}
-  m_Name: boss4_stat
+  m_Name: Baisc Stat
   m_EditorClassIdentifier: 
-  hp: 150
-  moveSpeed: 5
-  armor: 5
-  defaultAttackDamage: 2
+  hp: 0
+  moveSpeed: 0
+  armor: 0
+  defaultAttackDamage: 0

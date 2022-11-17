@@ -7,14 +7,12 @@ using UnityEngine.AI;
 
 public class MushroomAttack : BasicMonsterController
 {
-    Collider2D c;
     float time = 0;
     protected override void Attack()
     {
-        c = GetComponent<Collider2D>();
         base.EnemyAnimator.SetTrigger("Attack");
         base.EnemyAnimator.SetTrigger("Smoke");
-        c.isTrigger = true;
+        EnemyCollider.isTrigger = true;
         this.transform.localPosition = (new Vector3(10,10,0));
         StartCoroutine(AttackProcess());
         base.coolTime = base.skillTime;
@@ -22,7 +20,7 @@ public class MushroomAttack : BasicMonsterController
 
     IEnumerator AttackProcess()
     {
-        if (c.gameObject.CompareTag("Player"))
+        if (EnemyCollider.gameObject.CompareTag("Player"))
         {
             base.DefaultAttack();
         }

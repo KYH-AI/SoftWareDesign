@@ -949,7 +949,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &2130564544
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,8 +1004,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2523420501982882019, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4,
         type: 3}
+      propertyPath: m_Size.x
+      value: 0.96700096
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523420501982882019, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.054326
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523420501982882019, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523420501982882019, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.03769064
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523420501982882019, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.4643916
       objectReference: {fileID: 0}
     - target: {fileID: 2523420501982882019, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4,
         type: 3}
@@ -1016,6 +1036,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2523420501982882025, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2523420501982882031, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4,
         type: 3}
