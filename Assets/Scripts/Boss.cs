@@ -15,6 +15,7 @@ public class Boss : Enemy
     [SerializeField] GameObject bossProjectileSkull;
     readonly float BOSS_DEFAULT_ATTACK_SPEED = 1.5f;
     readonly float BOSS_PROJECTILE_SKULL_SPEED = 10f;
+    float bossHpPercentage; 
 
     #endregion
     #region 플레이어&방향 관련 변수 선언
@@ -126,13 +127,53 @@ public class Boss : Enemy
     /// </summary>
     public override sealed void TakeDamage(int newDamage)
     {
-        //  boss_ani.SetTrigger("RunTakeDamaged");
+        
         StartCoroutine(SwitchMaterial());
         base.TakeDamage(newDamage);
-       
+        bossHpPercentage = (bossHpPercentage / (float)MaxHp * 100);
+        if(((float)Hp < ((float)MaxHp * 0.7f)) && ((float)Hp > ((float)MaxHp * 0.15f)))
+        {
+            bossFSM.bossState = Define.BossState.PATTERN_BIND_STATE;
+            //SetAnimationTrigger("RunBindMotion");
+        }
+        else if (((float)Hp < ((float)MaxHp * 0.5f)) && ((float)Hp > ((float)MaxHp * 0.3f))) 
+            {
+            bossFSM.bossState = Define.BossState.PATTERN_SUMNSKELETON_STATE;
+            //SetAnimationTrigger("RunSumnSkeleton"); 
+        }
+        else if (((float)Hp < ((float)MaxHp * 0.4f)) && ((float)Hp > ((float)MaxHp * 0.21f)))
+        {
+            bossFSM.bossState = Define.BossState.PATTERN_RUINSTK_STATE;
+            //SetAnimationTrigger("RunRuinStk");
+        } else if (((float)Hp < ((float)MaxHp * 0.2f)) && ((float)Hp > ((float)MaxHp * 0.06f)))
+        {
+            bossFSM.bossState = Define.BossState.PATTERN_RUINSTK_STATE;
+            //SetAnimationTrigger("RunRuinStk");
+        }
+        else if (((float)Hp < ((float)MaxHp * 0.04f)) && ((float)Hp > ((float)MaxHp * 0.01f)))
+        {
+            bossFSM.bossState = Define.BossState.PATTERN_RUINSTK_STATE;
+            //SetAnimationTrigger("RunRuinStk");
+        }
+        
+        //bossHpPercentage변수를  각각의 기능을  실행시키는 큰 메소드(Run_Pattern)로 오게함. 
+
+
+        //Dark heal = 1분 30초마다 반복,
+        //ruin stk = 보스의 체력이 40,20,5가 될 때 
+        //sumn skt = 보스의 체력이 50%
+        //bind = 보스 체력 70%, 15% ,
+        //보스현재 체력은 Hp로 접근하면됨   
 
         //EnemyAnimator.SetTrigger("RunTakeDamaged");
     }
+    public void RunPattern(float currentHp)
+    {
+        
+    }
+    
+
+
     /// <summary>
     /// 피격효과를 일정시간 유지시키는 코루틴-IEnumerator 함수
     /// </summary>
@@ -149,47 +190,54 @@ public class Boss : Enemy
     /// </summary>
     protected override void OnDead()
     {
-        
         bossFSM.bossState = Define.BossState.DEAD_STATE;
-        SetAnimationTrigger("RunDead"); // 그냥 이벤트로 DIE함수를 실행시키게 해봤음. 
-             
-        //오브젝트 파괴 함수/코드 삽입
-
+        SetAnimationTrigger("RunDead"); 
         //모든 애니메이션과 스테이트 정리, 오브젝트 파괴가 이루어지면 UI를 호출함 
     }
 
-    public void Die()
+    private void Die()
     {
+        
         Destroy(this);
     }
     
     /// <summary>
     /// 패턴 다크 힐 실행 함수
+    /// 1분 30초마다 반복되고 8초동안 에너지를 모음
+    /// 만약 데미지를 1,000 이상 받게 된다면 모으고 있던 에너지는 흩어짐(이후 플레이어 다시 재추적)
+    /// 회복량으 보스 최대 체력의 15%를 회복함 
     /// </summary>
     public void Pattern_DarkHeal()
     {
-
+        SetAnimationTrigger("RunDarkHealMotion");
     }
     /// <summary>
     /// 패턴 루인 스트라이크 실행 함수
+    /// 보스의 체력이 40%, 25%, 5%가 되었을 때마다 실행 
+    /// 들어오는 조건에 따라 4개,6,개,9개의 투사체가 랜덤한 위치에 생성됨
     /// </summary>
     public void Pattern_RuinStk()
     {
-
+        SetAnimationTrigger("RunRuinStk"); 
+        
     }
     /// <summary>
     /// 패턴 스켈레톤 소환 실행 함수
+    /// 보스의 체력이 50%가 되었을 때 시전되며 개체수는 미정. 
+    /// 스켈레톤의 공격력은 20, 기본 근접 공격밖에 없음. 체력은 조금 높게 설정. 
     /// </summary>
     public void Pattern_SummonSkeleton()
     {
-
+        SetAnimationTrigger("RunSumnSkeleton");
     }
     /// <summary>
     /// 패턴 바인드 실행 함수
+    /// 체력 70%, 15%가 되었을 때 실행됨. 
+    /// Quick Time Event가 동시에 실행되며 이를 실패하면 5초 속박. 
     /// </summary>
     public void Pattern_Bind()
     {
-
+        SetAnimationTrigger("RunBindMotion");
     }
 
     #endregion
