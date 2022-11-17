@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fire Pillar
+  m_Name: Flame Strike
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -16,21 +16,64 @@ AnimationClip:
   m_EulerCurves: []
   m_PositionCurves: []
   m_ScaleCurves: []
-  m_FloatCurves: []
+  m_FloatCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1.4166666
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Enabled
+    path: 
+    classID: 58
+    script: {fileID: 0}
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 4870267349279466588, guid: b7311183cc4b78d42ac10201406e94b3, type: 3}
+      value: {fileID: 4870267349279466588, guid: b7311183cc4b78d42ac10201406e94b3,
+        type: 3}
     - time: 0.16666667
-      value: {fileID: 6077134999677794071, guid: b7311183cc4b78d42ac10201406e94b3, type: 3}
+      value: {fileID: 6077134999677794071, guid: b7311183cc4b78d42ac10201406e94b3,
+        type: 3}
     - time: 0.41666666
-      value: {fileID: 9162259516881084967, guid: b7311183cc4b78d42ac10201406e94b3, type: 3}
+      value: {fileID: 9162259516881084967, guid: b7311183cc4b78d42ac10201406e94b3,
+        type: 3}
     - time: 0.5833333
-      value: {fileID: -6884136517931821538, guid: b7311183cc4b78d42ac10201406e94b3, type: 3}
+      value: {fileID: -6884136517931821538, guid: b7311183cc4b78d42ac10201406e94b3,
+        type: 3}
     - time: 0.75
-      value: {fileID: 5708900832649423246, guid: b7311183cc4b78d42ac10201406e94b3, type: 3}
+      value: {fileID: 5708900832649423246, guid: b7311183cc4b78d42ac10201406e94b3,
+        type: 3}
     - time: 1
-      value: {fileID: 1289808644793426528, guid: b7311183cc4b78d42ac10201406e94b3, type: 3}
+      value: {fileID: 1289808644793426528, guid: b7311183cc4b78d42ac10201406e94b3,
+        type: 3}
     - time: 1.0833334
       value: {fileID: 21300000, guid: bf2b8be6714913b4ca633ce78fc8e0a1, type: 3}
     - time: 1.1666666
@@ -68,6 +111,13 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 3305885265
+      script: {fileID: 0}
+      typeID: 58
+      customType: 0
+      isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 0
@@ -115,8 +165,52 @@ AnimationClip:
     m_KeepOriginalPositionXZ: 0
     m_HeightFromFeet: 0
     m_Mirror: 0
-  m_EditorCurves: []
+  m_EditorCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1.4166666
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 2
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Enabled
+    path: 
+    classID: 58
+    script: {fileID: 0}
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 2.5
+    functionName: DisableObject
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

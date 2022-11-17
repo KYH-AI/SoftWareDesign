@@ -17,7 +17,7 @@ public class ThrowingKnife : ActiveSkill
     /// <summary>
     /// 표창 소환 개수
     /// </summary>
-    private int skillProjectileCount = 50; 
+    private int skillProjectileCount = 10; 
     /// <summary>
     /// 표창 투척속도
     /// </summary>
@@ -79,14 +79,15 @@ public class ThrowingKnife : ActiveSkill
 
     private void CreateProjectile()
     {
-        /*
-        GameObject projectile = Instantiate(knifeObject,
-                                            playerObject.PlayerController.AttackDir.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)),
-                                            Quaternion.identity);
+        GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(knifeObject,
+                                                                                 Define.PrefabType.Player_Skill,
+                                                                                 (transform.position + new Vector3(playerObject.PlayerController.LastDirection.x, playerObject.PlayerController.LastDirection.y, 0f)) + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)),
+                                                                                 Quaternion.Euler(0, 0, Mathf.Atan2(-playerObject.PlayerController.LastDirection.y, -playerObject.PlayerController.LastDirection.x) * Mathf.Rad2Deg));
 
-        projectile.transform.rotation =  Quaternion.Euler(0, 0, Mathf.Atan2(-playerObject.PlayerController.LastDir.y, -playerObject.PlayerController.LastDir.x) * Mathf.Rad2Deg);
-        //   GunMuzzel.right* Random.Range(2, 4) + Vector3.up * Random.Range(2, 4);
-        projectile.GetComponent<Projectile>().ProjectileInit(playerObject.PlayerController.LastDir.normalized, skillDamgae, skillProjectileSpeed);
-        */
+        projectile.GetComponent<Projectile>().ProjectileInit(Define.StringTag.Enemy, 
+                                                             playerObject.PlayerController.LastDirection, 
+                                                             skillDamgae, 
+                                                             skillProjectileSpeed);
+        projectile.SetActive(true);
     }
 }

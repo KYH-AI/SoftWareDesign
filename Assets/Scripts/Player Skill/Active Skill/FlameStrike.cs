@@ -103,7 +103,8 @@ public class FlameStrike : ActiveSkill
                                                                                      Define.PrefabType.Player_Skill,
                                                                                      new Vector2(transform.position.x + Random.Range(-4f, 4f), transform.position.y + Random.Range(-4f, 4f)),
                                                                                      Quaternion.identity); 
-            projectile.GetComponent<Projectile>().ProjectileInit(Vector2.zero, skillDamgae);
+            projectile.GetComponent<Projectile>().ProjectileInit(Define.StringTag.Enemy, Vector2.zero, skillDamgae);
+            projectile.SetActive(true);
             yield return skillAttackDelayTimeSec; // 불기둥 소환간격 시간
         }
 

@@ -28,7 +28,7 @@ public abstract class BasicMonsterController : Enemy
     {
         base.Start();
         base.playerTarget = GameObject.Find("Player").GetComponent<Player>();
-        
+        renderer = GetComponent<SpriteRenderer>();
         state = State.Run;
     }
     public void Update()
@@ -43,8 +43,8 @@ public abstract class BasicMonsterController : Enemy
     {
         base.Move();
         if ((playerTarget.gameObject.transform.position.x - this.transform.position.x) < 0)
-            SpriteRenderer.flipX = true;
-        else SpriteRenderer.flipX = false;
+            renderer.flipX = true;
+        else renderer.flipX = false;
             if (base.Hp <= 0)
         {
             state = State.Die;
@@ -53,16 +53,17 @@ public abstract class BasicMonsterController : Enemy
     }
 
     //АјАн
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag(Define.StringTag.Player.ToString()))
+            if (other.tag == "Player")
         {
             state = State.Attack;
         }
     }
-    private void OnCollisionExit2D(Collision2D collision)
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(Define.StringTag.Player.ToString()))
+        if(collision.tag=="Player")
             state = State.Run;
         coolTime = -1.0f;
         base.EnemyAnimator.SetTrigger("AttackToMove");
