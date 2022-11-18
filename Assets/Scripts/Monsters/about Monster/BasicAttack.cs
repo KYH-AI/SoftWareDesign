@@ -23,7 +23,7 @@ public class BasicAttack : BasicMonsterController
     void AttackPlayer()
     {
         Collider2D c = GetComponent<Collider2D>();
-        if (c.gameObject.CompareTag("Player")){
+        if (c.gameObject.CompareTag(Define.StringTag.Player.ToString())){
             base.DefaultAttack();
         }
     }

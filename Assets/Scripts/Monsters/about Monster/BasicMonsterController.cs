@@ -27,7 +27,6 @@ public abstract class BasicMonsterController : Enemy
     new public void Start()
     {
         base.Start();
-        base.playerTarget = GameObject.Find("Player").GetComponent<Player>();
         renderer = GetComponent<SpriteRenderer>();
         state = State.Run;
     }
@@ -45,7 +44,7 @@ public abstract class BasicMonsterController : Enemy
         if ((playerTarget.gameObject.transform.position.x - this.transform.position.x) < 0)
             renderer.flipX = true;
         else renderer.flipX = false;
-            if (base.Hp <= 0)
+        if (base.Hp <= 0)
         {
             state = State.Die;
             return;
@@ -55,7 +54,7 @@ public abstract class BasicMonsterController : Enemy
     //АјАн
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag(Define.StringTag.Player.ToString()))
         {
             state = State.Attack;
         }
@@ -79,13 +78,18 @@ public abstract class BasicMonsterController : Enemy
         DamageInform.text = "-"+newDamage.ToString();
         StartCoroutine(DamageProcess());
         base.EnemyAnimator.SetTrigger("DamageToMove");
+        if (base.Hp <= 0)
+        {
+            state = State.Die;
+            return;
+        }
     }
 
     IEnumerator DamageProcess()
     {
-        DamageInform.enabled = true;
-        yield return new WaitForSeconds(2.0f);
-        DamageInform.enabled = false;
+        DamageInform.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
+        DamageInform.gameObject.SetActive(false);
         state = State.Run;
     }
 

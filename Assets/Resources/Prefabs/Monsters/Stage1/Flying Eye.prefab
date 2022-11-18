@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 228962412014079394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -34.7, y: 3.9, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 228962412315354551}
   m_Father: {fileID: 0}
@@ -237,6 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: d877644bfd2ad5e48852974827422947, type: 2}
   DamageInform: {fileID: 228962411544161006}
+  state: 0
   coolTime: -1
   skillTime: 2
   minKillCount: 0
@@ -259,7 +260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &228962412315354551
 RectTransform:
   m_ObjectHideFlags: 0
