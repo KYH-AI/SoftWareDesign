@@ -5,6 +5,7 @@ public class BasicAttack : BasicMonsterController
 {
     protected override void Attack()
     {
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         if (base.coolTime < 0)
         {
             base.EnemyAnimator.SetTrigger("Attack");

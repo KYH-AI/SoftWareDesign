@@ -41,6 +41,7 @@ public abstract class BasicMonsterController : Enemy
     public void Run()
     {
         base.Move();
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         if ((playerTarget.gameObject.transform.position.x - this.transform.position.x) < 0)
             renderer.flipX = true;
         else renderer.flipX = false;
@@ -105,6 +106,7 @@ public abstract class BasicMonsterController : Enemy
     }
     IEnumerator DieProcess()
     {
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         yield return new WaitForSeconds(1.0f);
         /*GameObject coin = Resources.Load<GameObject>("Prefabs/BlueCoin");
         coin.transform.position = this.transform.position;

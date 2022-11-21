@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69e6443d67a4cf241a1179bfa19679a3, type: 3}
-  m_Name: 4_Pebble Stat 1
+  m_Name: 4_Pebble Stat
   m_EditorClassIdentifier: 
   hp: 5
   moveSpeed: 2
