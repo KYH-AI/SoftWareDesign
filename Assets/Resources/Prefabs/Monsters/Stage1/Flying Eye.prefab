@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 228962412014079405}
   - component: {fileID: 228962412014079404}
   - component: {fileID: 5758283752995821831}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Flying Eye
   m_TagString: Enemy
   m_Icon: {fileID: 0}

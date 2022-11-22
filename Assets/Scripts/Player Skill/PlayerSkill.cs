@@ -52,7 +52,7 @@ public class PlayerSkill : MonoBehaviour
     protected void OnCoolTime()
     {
         if (currentSkillState != Define.CurrentSkillState.COOL_TIME) return;
-
+        playerObject.OnActiveSkillEvent?.Invoke();
         StartCoroutine(SkillCoolTimeProcess());
     }
 

@@ -16,10 +16,10 @@ TagManager:
   - 
   - 
   - 
-  - PlayerLayer
-  - EnemyLayer
-  - WallLayer
-  - 
+  - Player
+  - Enemy
+  - Wall
+  - VolumeEffect
   - 
   - 
   - 

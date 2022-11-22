@@ -16,11 +16,8 @@ public class Managers : MonoBehaviour
     private ButtonManager button;
     public static ButtonManager Button { get { return Instance.button; } }
 
-    private UIManager ui;
-    public static UIManager UI { get { return Instance.ui; } }
-
-    private Player player;
-    public static Player Player { get { return Instance.player; } }
+    private SkillEffectVolumeManager skillEffectVolume;
+    public static SkillEffectVolumeManager SkillEffectVolume { get { return Instance.skillEffectVolume; } }
 
     private void Awake()
     {
@@ -45,5 +42,6 @@ public class Managers : MonoBehaviour
     {
         sound = GetComponentInChildren<SoundManager>();
         button = GetComponentInChildren<ButtonManager>();
+        skillEffectVolume = GetComponentInChildren<SkillEffectVolumeManager>();
     }
 }

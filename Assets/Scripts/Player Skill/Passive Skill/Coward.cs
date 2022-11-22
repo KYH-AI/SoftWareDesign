@@ -2,56 +2,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstAid : PassiveSkill
+public class Coward : PassiveSkill
 {
+
     #region 스킬 초기 스텟 데이터
     /// <summary>
-    /// 스킬 최대 체력의 회복 퍼센트
+    /// 스킬 이동속도
     /// </summary>
-    private int buffHpRegenPercent = 8;
+    private int buffSpeed = 3;  //초기 데이터 1
     /// <summary>
     /// 스킬 지속시간
     /// </summary>
-    private float skillDuration = 3f;
+    private float skillDuration = 1.5f; // 초기 데이터 1.5f 
     /// <summary>
-    /// 스킬 딜레이 (고정 값) = 초당 회복력을 위한 1초 시간 코루틴
+    /// 스킬 지속시간 코루틴
     /// </summary>
-    private readonly WaitForSeconds PER_SECONDS = new WaitForSeconds(1f);
+    private WaitForSeconds skillDurationSec;
     #endregion
 
     #region 스킬 스텟 프로퍼티
     /// <summary>
     /// 스킬 이동속도 프로퍼티 (  set : 겁쟁이 이동속도 buffSpeed 값 변경 )
     /// </summary>
-    public int BuffHpRegenPercent
+    public int BuffSpeed
     {
-        set { buffHpRegenPercent = value; }
+        set { buffSpeed = value; }
     }
     /// <summary>
     /// 스킬 지속시간 프로퍼티 (  set : 겁쟁이 지속시간 코루틴 WaitForSeconds 값 변경 )
     /// </summary>
-    public float SkillDuration
-    {
-        set
-        {
-            skillDuration = value;
-        }
+    public float SkillDuration 
+    { 
+        set 
+        { 
+            if(skillDuration != value)
+            {
+                skillDurationSec = new WaitForSeconds(value);
+            }
+            skillDuration = value; 
+        }     
     }
     #endregion
 
     private void Start()
     {
-        FirstAidInit();
+        CowardInit();
     }
 
-    private void FirstAidInit()
+    private void CowardInit()
     {
-        //skillDurationSec = new WaitForSeconds(skillDuration);
+        skillDurationSec = new WaitForSeconds(skillDuration);
     }
 
+    /// <summary>
+    ///  해당 스킬 피격 시 발동 되도록 이벤트 등록
+    /// </summary>
     public override void OnActive()
     {
-        playerObject.BuffEvent.AddListener(FirstAidSkillActive);
+        playerObject.HitEvent += CowardSkillActive;
     }
 
     public override void Upgrade()
@@ -63,19 +71,19 @@ public class FirstAid : PassiveSkill
          */
     }
 
-    private void FirstAidSkillActive()
+    private void CowardSkillActive()
     {
         if (currentSkillState == Define.CurrentSkillState.ACTIVE)
         {
+            Debug.Log("겁쟁이 패시브 작동");
             currentSkillState = Define.CurrentSkillState.COOL_TIME;
-            StartCoroutine(FirstAidSkillProcess(skillDuration, (playerObject.MaxHp * buffHpRegenPercent) / 100));
+            StartCoroutine(CowardSkillProcess());
         }
         else
         {
             return;
         }
-
-
+        #region  버프 효과가 %일 경우 아래 코드를 이용
         /*  
         // playerController.MoveSpeed *= buffSpeed;
 
@@ -93,17 +101,14 @@ public class FirstAid : PassiveSkill
         buffSpeed = moveSpeed;      // 버프 값을 buffStat 만큼 다시 역계산해서 buffSpeed 초기 값으로 돌림
         copyMoveSpeed = buffSpeed;  // 현재 속도를 버프를 받기 전 buffSpeed 값으로 돌림 
         */
+        #endregion
     }
 
-    private IEnumerator FirstAidSkillProcess(float buffDuration, int addHP)
+    private IEnumerator CowardSkillProcess()
     {
-        while(buffDuration > 0)
-        {
-            playerObject.Hp += addHP;
-            buffDuration--;
-            yield return PER_SECONDS;
-        }
-
+        playerObject.MoveSpeed += buffSpeed; // 속도 버프 적용
+        yield return skillDurationSec;
+        playerObject.MoveSpeed -= buffSpeed; // 속도 버프 해체
         OnCoolTime();
     }
 }
