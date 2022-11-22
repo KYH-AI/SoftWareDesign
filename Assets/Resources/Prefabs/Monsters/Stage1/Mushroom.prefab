@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5964092283244195767}
   - component: {fileID: 5964092283244195766}
   - component: {fileID: 4876385088684575664}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mushroom
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -158,6 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: 845b5c1c94f054843826f0f48d9dacd3, type: 2}
   DamageInform: {fileID: 5964092284375562476}
+  state: 0
   coolTime: -1
   skillTime: 2
   minKillCount: 0

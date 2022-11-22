@@ -49,9 +49,12 @@ public class FirstAid : PassiveSkill
         //skillDurationSec = new WaitForSeconds(skillDuration);
     }
 
+    /// <summary>
+    ///  해당 스킬 피격 시 발동 되도록 이벤트 등록
+    /// </summary>
     public override void OnActive()
     {
-        playerObject.BuffEvent.AddListener(FirstAidSkillActive);
+        playerObject.HitEvent += FirstAidSkillActive;
     }
 
     public override void Upgrade()
@@ -74,7 +77,6 @@ public class FirstAid : PassiveSkill
         {
             return;
         }
-
 
         /*  
         // playerController.MoveSpeed *= buffSpeed;
@@ -99,6 +101,7 @@ public class FirstAid : PassiveSkill
     {
         while(buffDuration > 0)
         {
+            print("플레이어 체력 회복 중 (남은시간 : " + buffDuration);
             playerObject.Hp += addHP;
             buffDuration--;
             yield return PER_SECONDS;

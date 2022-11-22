@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8283450641377011236}
   - component: {fileID: 8283450641377011239}
   - component: {fileID: 4810123017021479018}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -158,6 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: 0e00f04b633936944a75eb901f148cc5, type: 2}
   DamageInform: {fileID: 8283450643052738486}
+  state: 0
   coolTime: -1
   skillTime: 2
   minKillCount: 0

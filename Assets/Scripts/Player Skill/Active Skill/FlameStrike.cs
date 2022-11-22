@@ -94,11 +94,10 @@ public class FlameStrike : ActiveSkill
 
     IEnumerator FlameStrikeSkillProcess()
     {
-       // OnSkillEffect();
+        OnSkillEffect();
 
         for (int i = 0; i < skillProjectileCount; i++)
-        {
-            //  Instantiate(firePillarObject, RandomSpawnLocation(Random.Range(-4f, 4f), Random.Range(-4f, 4f)), Quaternion.identity);
+        { 
             GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(firePillarObject, 
                                                                                      Define.PrefabType.Player_Skill,
                                                                                      new Vector2(transform.position.x + Random.Range(-4f, 4f), transform.position.y + Random.Range(-4f, 4f)),
@@ -108,17 +107,17 @@ public class FlameStrike : ActiveSkill
             yield return skillAttackDelayTimeSec; // 불기둥 소환간격 시간
         }
 
-     //   Invoke(nameof(OffSkillEffect), 2f); //  2초뒤 이펙트 비활성화 ;
+       Invoke(nameof(OffSkillEffect), 2f); //  2초뒤 이펙트 비활성화 ;
         OnCoolTime();
     }
 
     private void OnSkillEffect()
     {
-        PlayerCamera.Instance.ChagnePostProcessProfile(firePillarProfile);
+        Managers.SkillEffectVolume.ChagnePostProcessProfile(firePillarProfile);
     }
 
     private void OffSkillEffect()
     {
-        PlayerCamera.Instance.ChagnePostProcessProfile(null);
+        Managers.SkillEffectVolume.ChagnePostProcessProfile(null);
     }
 }

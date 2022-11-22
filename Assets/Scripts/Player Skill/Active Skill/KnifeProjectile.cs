@@ -17,7 +17,7 @@ public class KnifeProjectile : Projectile
     private void OnEnable()
     {
         knifteRigidBody.velocity = Dir * ProjectileSpeed;
-        Invoke(nameof(DisableObject), 3f);                   // 5초뒤 자동 소멸
+        Invoke(nameof(DisableObject), 3f);                   // 3초뒤 자동 소멸
     }
 
     private void KnifeProjectileInit()

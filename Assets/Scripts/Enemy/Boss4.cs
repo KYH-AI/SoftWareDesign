@@ -22,7 +22,7 @@ public class Boss4 : Enemy
     Collider2D collider;
     void Awake()
     {
-        EnemyInit(StageManager.GetInstance().player);
+        EnemyInit(StageManager.GetInstance().Player);
         state = BossState.IDLE_STATE;
         renderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();  
