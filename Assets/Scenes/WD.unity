@@ -290,6 +290,8 @@ MonoBehaviour:
   contactDistance: 10
   bossProjectileSkull: {fileID: 7382934670996431563, guid: eb4cd1cbc60c71e4189e42a1ecf37ca5,
     type: 3}
+  bossProjectileRuinStk: {fileID: 1421817752121113056, guid: ca77da5b8e140df4bbdb0fdab8945a9d,
+    type: 3}
   player: {fileID: 699996991}
   originalMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   hurtMaterial: {fileID: 2100000, guid: c839255fc8f6b4b4d90bf8c1af9f9bd1, type: 3}
