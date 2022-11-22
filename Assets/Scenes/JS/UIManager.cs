@@ -34,4 +34,9 @@ public class UIManager : Managers
     {
         goldAmount.text = Managers.Player.PlayerGold.ToString();
     }
+
+    public void temp()
+    {
+
+    }
 }
