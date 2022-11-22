@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public class Boss4 : Enemy
 {
     public enum BossState
@@ -125,3 +125,4 @@ public class Boss4 : Enemy
         state = BossState.MOVE_STATE;
     }
 }
+*/
