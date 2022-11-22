@@ -20,15 +20,20 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 3616641007533208252, guid: 3f2b9fa17f592fa4fb2597d22cfd6192, type: 3}
+      value: {fileID: 3616641007533208252, guid: 3f2b9fa17f592fa4fb2597d22cfd6192,
+        type: 3}
     - time: 0.083333336
-      value: {fileID: -708143198734582480, guid: 3f2b9fa17f592fa4fb2597d22cfd6192, type: 3}
+      value: {fileID: -708143198734582480, guid: 3f2b9fa17f592fa4fb2597d22cfd6192,
+        type: 3}
     - time: 0.16666667
-      value: {fileID: -8571702218229297731, guid: 3f2b9fa17f592fa4fb2597d22cfd6192, type: 3}
+      value: {fileID: -8571702218229297731, guid: 3f2b9fa17f592fa4fb2597d22cfd6192,
+        type: 3}
     - time: 0.25
-      value: {fileID: -7424311634706903468, guid: 3f2b9fa17f592fa4fb2597d22cfd6192, type: 3}
+      value: {fileID: -7424311634706903468, guid: 3f2b9fa17f592fa4fb2597d22cfd6192,
+        type: 3}
     - time: 0.33333334
-      value: {fileID: -2512097640483545141, guid: 3f2b9fa17f592fa4fb2597d22cfd6192, type: 3}
+      value: {fileID: -2512097640483545141, guid: 3f2b9fa17f592fa4fb2597d22cfd6192,
+        type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -79,9 +84,10 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.083333336
-    functionName: AttackPlayer()
+    functionName: AttackPlayer
     data: 
-    objectReferenceParameter: {fileID: 11500000, guid: 8fbb3c74d4969814ca1f9427392cdf96, type: 3}
+    objectReferenceParameter: {fileID: 11500000, guid: 8fbb3c74d4969814ca1f9427392cdf96,
+      type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

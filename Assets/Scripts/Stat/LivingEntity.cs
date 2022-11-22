@@ -17,11 +17,6 @@ public abstract class LivingEntity : MonoBehaviour
     private int armor;
     private int defaultAttackDamage;
 
-    /* 버프 이벤트 */
-    private UnityEvent buffEvent;
-    public UnityEvent BuffEvent { get { return buffEvent; } }
-
-
     /// <summary>
     /// 현재체력 프로퍼티  get ( hp ), set ( hp 값 수정 )
     /// </summary>
@@ -51,7 +46,6 @@ public abstract class LivingEntity : MonoBehaviour
     /// </summary>
     public float MoveSpeed 
     {
-
         get { return moveSpeed; }
         set
         {
@@ -59,7 +53,14 @@ public abstract class LivingEntity : MonoBehaviour
         }
     }
     public float Armor { get; set; }
-    public int DefaultAttackDamage { get; set; }
+    public int DefaultAttackDamage 
+    {
+        get { return defaultAttackDamage; }
+        set
+        {
+            defaultAttackDamage = value;
+        }
+    }
 
     /// <summary>
     /// 기본 스텟을 BasicStat 클래스로 부터 값을 받아 초기화
@@ -72,7 +73,6 @@ public abstract class LivingEntity : MonoBehaviour
         moveSpeed = basicStat.MoveSpeed;
         armor = basicStat.Armor;
         defaultAttackDamage = basicStat.DefaultAttackDamage;
-
     }
 
     /// <summary>

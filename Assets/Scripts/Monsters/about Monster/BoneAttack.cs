@@ -9,18 +9,25 @@ public class BoneAttack :BasicMonsterController
     public GameObject Prefab;
     public GameObject[] Monster;
     int idx = 0;
-    int MAX = 3;
-
+    int MAX = 5;
+    bool isAttack=true;
     protected override void Attack()
     {
-        Monster = new GameObject[MAX];
-        for(int i=0; i<MAX; i++)
+        if (isAttack == false) base.state = State.Run;
+        else
         {
-            GameObject ob = Instantiate(Prefab);
-            Monster[i] = ob;
-            ob.SetActive(false);
+            isAttack = false;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            Monster = new GameObject[MAX];
+            for (int i = 0; i < MAX; i++)
+            {
+                GameObject ob = Instantiate(Prefab);
+                ob.GetComponent<Enemy>().EnemyInit(StageManager.GetInstance().Player);
+                Monster[i] = ob;
+                ob.SetActive(false);
+            }
+            StartCoroutine("Spawn");
         }
-        StartCoroutine("Spawn");
     }
 
     IEnumerator Spawn()
@@ -28,6 +35,12 @@ public class BoneAttack :BasicMonsterController
         yield return new WaitForSeconds(base.skillTime);
         Monster[idx].transform.position = gameObject.transform.position;
         Monster[idx++].SetActive(true);
-        StartCoroutine("Spawn");
+        if (idx != MAX)
+            StartCoroutine("Spawn");
+        else
+        {
+            //gameObject.SetActive(false);
+            idx = 0;
+        }
     }
 }

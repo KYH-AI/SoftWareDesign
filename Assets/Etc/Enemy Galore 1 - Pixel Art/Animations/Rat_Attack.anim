@@ -20,21 +20,29 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 4807302976523773726, guid: 644b5e0fc2845cd42961d91d1151e072, type: 3}
+      value: {fileID: 4807302976523773726, guid: 644b5e0fc2845cd42961d91d1151e072,
+        type: 3}
     - time: 0.083333336
-      value: {fileID: 8580169393291790282, guid: 644b5e0fc2845cd42961d91d1151e072, type: 3}
+      value: {fileID: 8580169393291790282, guid: 644b5e0fc2845cd42961d91d1151e072,
+        type: 3}
     - time: 0.16666667
-      value: {fileID: -5602548871143879945, guid: 644b5e0fc2845cd42961d91d1151e072, type: 3}
+      value: {fileID: -5602548871143879945, guid: 644b5e0fc2845cd42961d91d1151e072,
+        type: 3}
     - time: 0.25
-      value: {fileID: 8986176777830439530, guid: 644b5e0fc2845cd42961d91d1151e072, type: 3}
+      value: {fileID: 8986176777830439530, guid: 644b5e0fc2845cd42961d91d1151e072,
+        type: 3}
     - time: 0.33333334
-      value: {fileID: 6484397934913687566, guid: 644b5e0fc2845cd42961d91d1151e072, type: 3}
+      value: {fileID: 6484397934913687566, guid: 644b5e0fc2845cd42961d91d1151e072,
+        type: 3}
     - time: 0.41666666
-      value: {fileID: -6722306106482004015, guid: 644b5e0fc2845cd42961d91d1151e072, type: 3}
+      value: {fileID: -6722306106482004015, guid: 644b5e0fc2845cd42961d91d1151e072,
+        type: 3}
     - time: 0.5
-      value: {fileID: 1178384562213430967, guid: 644b5e0fc2845cd42961d91d1151e072, type: 3}
+      value: {fileID: 1178384562213430967, guid: 644b5e0fc2845cd42961d91d1151e072,
+        type: 3}
     - time: 0.5833333
-      value: {fileID: -6767387555615838607, guid: 644b5e0fc2845cd42961d91d1151e072, type: 3}
+      value: {fileID: -6767387555615838607, guid: 644b5e0fc2845cd42961d91d1151e072,
+        type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -88,9 +96,10 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.25
-    functionName: AttackPlayer()
+    functionName: AttackPlayer
     data: 
-    objectReferenceParameter: {fileID: 11500000, guid: 8fbb3c74d4969814ca1f9427392cdf96, type: 3}
+    objectReferenceParameter: {fileID: 11500000, guid: 8fbb3c74d4969814ca1f9427392cdf96,
+      type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
