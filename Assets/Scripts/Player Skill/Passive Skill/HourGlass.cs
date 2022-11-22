@@ -53,6 +53,9 @@ public class HourGlass : PassiveSkill
 
     public override void OnActive()
     {
+        // 플레이어 현재 체력이 30보다 많을경우 무시
+        if (playerObject.Hp < 30) return;
+
         if (currentSkillState == Define.CurrentSkillState.ACTIVE)
         {
             currentSkillState = Define.CurrentSkillState.COOL_TIME;
@@ -84,7 +87,7 @@ public class HourGlass : PassiveSkill
 
     private void OnSkillEffect()
     {
-        PlayerCamera.Instance.ChagnePostProcessProfile(hourGlassProfile); // Hour Glass 스킬 포스트 프로세싱 효과 활성화
+       Managers.SkillEffectVolume.ChagnePostProcessProfile(hourGlassProfile); // Hour Glass 스킬 포스트 프로세싱 효과 활성화
     }
 
     private IEnumerator HourGlassSkillProcess()

@@ -48,4 +48,18 @@ public class Define
         Boss_Skill,
         Monsters
     }
+    /// <summary>
+    /// BOSS에서 사용하는 STATE의 열거형 변수 집합
+    /// </summary>
+    public enum BossState
+    {
+        MOVE_STATE,
+        ATTACK_STATE,
+        HURT_STATE,
+        DEAD_STATE,
+        PATTERN_DARKHEAL_STATE,
+        PATTERN_RUINSTK_STATE,
+        PATTERN_SUMNSKELETON_STATE,
+        PATTERN_BIND_STATE
+    };
 }

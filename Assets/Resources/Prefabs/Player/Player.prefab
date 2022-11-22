@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 2523420501982882019}
   - component: {fileID: 990524877292455951}
   - component: {fileID: 2523420501982882029}
+  - component: {fileID: 2093446425}
+  - component: {fileID: 2093446419}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -55,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 6164395428596610570, guid: 0107d9b30d38dc64d8a652c5065ea593,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -129,7 +131,7 @@ Animator:
   m_GameObject: {fileID: 2523420501982882025}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1a80fe5324cbbe344ab6180dc65793ec, type: 2}
+  m_Controller: {fileID: 9100000, guid: cb5a106e2e8ca3c4cb26a487dd2e3d96, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -177,9 +179,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: 6ac829316f1142046b3629755c6c6238, type: 2}
-  HitEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  playerHitEffectMaterial: {fileID: 2100000, guid: 585188cdc4600544eb408bee749e4b3a,
+    type: 3}
+  orignalPlayerMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &2523420501982882029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,3 +194,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa135fa73079f4548a4858c61aecdfa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &2093446425
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2523420501982882025}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!70 &2093446419
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2523420501982882025}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.34285963}
+  m_Size: {x: 0.875, y: 1.4392807}
+  m_Direction: 0

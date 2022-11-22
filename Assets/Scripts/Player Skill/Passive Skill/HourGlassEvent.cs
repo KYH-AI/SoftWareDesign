@@ -13,6 +13,6 @@ public class HourGlassEvent : MonoBehaviour
 
     private void OffSkillEffect()
     {
-        PlayerCamera.Instance.ChagnePostProcessProfile(null); // Hour Glass 스킬 포스트 프로세싱 효과 해체
+        Managers.SkillEffectVolume.ChagnePostProcessProfile(null); // Hour Glass 스킬 포스트 프로세싱 효과 해체
     }
 }

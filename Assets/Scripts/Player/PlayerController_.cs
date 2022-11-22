@@ -9,6 +9,8 @@ public class PlayerController_ : MonoBehaviour
 {
     #region 이동 관련 변수 선언부
     Vector3 moveDirection;                  //이동방향
+    Vector2 lastDirection;                  //마지막 이동방향
+    public Vector2 LastDirection { get { return lastDirection; } }
     #endregion
 
     #region 애니메이션 관련 변수 선언부
@@ -24,30 +26,12 @@ public class PlayerController_ : MonoBehaviour
     Player player;
     #endregion
 
-    #region 플레이어 스킬 정보 변수 선언부
-    public Dictionary<int, ActiveSkill> playerActiveSkills = new Dictionary<int, ActiveSkill>();
-    public Dictionary<int, PassiveSkill> playerPassiveSkills = new Dictionary<int, PassiveSkill>();
-    #endregion
-
     #region 유니티 함수
     public void PlayerControllerInit(Player player)
     {
         this.player = player;
-     //   anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         boxCol = GetComponent<BoxCollider2D>();
-
-        /* 테스트 용도 */
-        GameObject skillObject3 = Managers.Resource.GetPerfabGameObject("Player_Skill/FlameStrike Skill");
-        ActiveSkill fpSkill = Instantiate(skillObject3, this.transform).GetComponent<ActiveSkill>();
-        fpSkill.Init(player);
-        playerActiveSkills.Add(0, fpSkill);
-
-        GameObject skillObject2 = Managers.Resource.GetPerfabGameObject("Player_Skill/FlameStrike Skill");
-        ActiveSkill tsSkill = Instantiate(skillObject3, this.transform).GetComponent<ActiveSkill>();
-        fpSkill.Init(player);
-        playerActiveSkills.Add(1, tsSkill);
-
-
     }
 
     private void FixedUpdate()
@@ -69,16 +53,18 @@ public class PlayerController_ : MonoBehaviour
         bool hasControl = (moveDirection != Vector3.zero);
         if (hasControl == true)
         {
-            /*
+    
             anim.SetBool("isMove", true);
             anim.SetFloat("X", moveDirection.x);
             anim.SetFloat("Y", moveDirection.y);
-            */
+
             transform.position += moveDirection * player.MoveSpeed * Time.deltaTime;
+
+            lastDirection = moveDirection;  //마지막 보고있는 방향 저장
         }
         else
         {
-            //anim.SetBool("isMove", false);
+            anim.SetBool("isMove", false);
         }
     }
     #endregion
@@ -91,27 +77,27 @@ public class PlayerController_ : MonoBehaviour
     void OnSkill1()
     {
         //첫번째 스킬 사용
-        playerActiveSkills[0].OnActive();
+        player.playerActiveSkills[0].OnActive();
     }
     void OnSkill2()
     {
         //2번째 스킬 사용
-        Debug.Log("w");
+        player.playerActiveSkills[1].OnActive();
     }
     void OnSkill3()
     {
         //3번째 스킬 사용
-        Debug.Log("e");
+        player.playerActiveSkills[2].OnActive();
     }
     void OnSkill4()
     {
         //4번째 스킬 사용
-        Debug.Log("r");
+        player.playerPassiveSkills[0].OnActive();
     }
     void OnSkill5()
     {
         //5번째 스킬 사용
-        Debug.Log("t");
+        player.playerActiveSkills[4].OnActive();
     }
     void OnAttack()
     {
@@ -127,7 +113,9 @@ public class PlayerController_ : MonoBehaviour
     void SetColliderEnabled()       //플레이어가 기본 공격시 콜라이더를 켜는 애니메이션 이벤트 함수.
         => boxCol.enabled = true;
     void SetColliderDisabled()      //플레이어가 기본 공격시 콜라이더를 끄는 애니메이션 이벤트 함수.
-        => boxCol.enabled = false;
+    {
+        boxCol.enabled = false;
+        player.DisableBuffEvent?.Invoke();
+    }
     #endregion
-
 }

@@ -9,11 +9,11 @@ public class Coward : PassiveSkill
     /// <summary>
     /// 스킬 이동속도
     /// </summary>
-    private int buffSpeed = 10;  //초기 데이터 1
+    private int buffSpeed = 3;  //초기 데이터 1
     /// <summary>
     /// 스킬 지속시간
     /// </summary>
-    private float skillDuration = 10f; // 초기 데이터 1.5f 
+    private float skillDuration = 1.5f; // 초기 데이터 1.5f 
     /// <summary>
     /// 스킬 지속시간 코루틴
     /// </summary>
@@ -54,9 +54,12 @@ public class Coward : PassiveSkill
         skillDurationSec = new WaitForSeconds(skillDuration);
     }
 
+    /// <summary>
+    ///  해당 스킬 피격 시 발동 되도록 이벤트 등록
+    /// </summary>
     public override void OnActive()
     {
-        playerObject.HitEvent.AddListener(CowardSkillActive);
+        playerObject.HitEvent += CowardSkillActive;
     }
 
     public override void Upgrade()
@@ -70,7 +73,6 @@ public class Coward : PassiveSkill
 
     private void CowardSkillActive()
     {
-
         if (currentSkillState == Define.CurrentSkillState.ACTIVE)
         {
             Debug.Log("겁쟁이 패시브 작동");
