@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UIManager : Mangers
+public class UIManager : Managers
 {
-    public static UIEventHandler eventHandler = new UIEventHandler();
+    public Slider playerSlider;
+    public Slider bossSlider;
+    public Text goldAmount;
 
     public void SetCanvas(GameObject gameObject, bool set)
     {
@@ -17,8 +20,18 @@ public class UIManager : Mangers
 
     }
 
-    public void UpdateHpBar()
+    public void UpdatePlayerHpSlider(float currentHp, float maxHp)
     {
-        // 슬라이더 value = Managers.player.현재체력 / Max 체력 
+        playerSlider.value = currentHp / maxHp;
+    }
+
+    public void UpdateBossHpSlider(float currentHp, float maxHp)
+    {
+        bossSlider.value = currentHp / maxHp;
+    }
+
+    public void UpdateGoldText()
+    {
+        goldAmount.text = Managers.Player.PlayerGold.ToString();
     }
 }
