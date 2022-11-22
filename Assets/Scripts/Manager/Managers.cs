@@ -19,6 +19,12 @@ public class Managers : MonoBehaviour
     private SkillEffectVolumeManager skillEffectVolume;
     public static SkillEffectVolumeManager SkillEffectVolume { get { return Instance.skillEffectVolume; } }
 
+    private UIManager ui;
+    public static UIManager UI { get { return Instance.ui; } }
+
+    private Player player;
+    public static Player Player { get { return Instance.player; } }
+
     private void Awake()
     {
         if(instance == null)
