@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SpawnerMove : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
 
     private void Start()
     {
-        target = GameObject.Find("Player").transform;
+       target = StageManager.GetInstance().Player.GetComponent<Transform>();    
     }
     void Update()
     {

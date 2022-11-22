@@ -1,9 +1,17 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Sprites/back.png.meta
+guid: 010c129bf401d8f45b901ff5fcfd2b8a
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 10
+========
 guid: a5c61d1ffbaf41d4e977966d4cc5c512
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
+>>>>>>>> 91a3e302c623fed30fde50d07e62650624662fbe:Assets/Etc/TIle_Asset/tf_ashlands/1x/tf_A2_ashlands_1.png.meta
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -32,9 +40,15 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+<<<<<<<< HEAD:Assets/Sprites/back.png.meta
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+========
     filterMode: 1
     aniso: 1
     mipBias: 0
+>>>>>>>> 91a3e302c623fed30fde50d07e62650624662fbe:Assets/Etc/TIle_Asset/tf_ashlands/1x/tf_A2_ashlands_1.png.meta
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -60,9 +74,12 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+<<<<<<<< HEAD:Assets/Sprites/back.png.meta
+========
   ignorePngGamma: 0
   applyGammaDecoding: 0
   cookieLightType: 0
+>>>>>>>> 91a3e302c623fed30fde50d07e62650624662fbe:Assets/Etc/TIle_Asset/tf_ashlands/1x/tf_A2_ashlands_1.png.meta
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform

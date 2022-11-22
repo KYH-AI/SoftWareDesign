@@ -4,21 +4,18 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-
+    [SerializeField] Player player;
+    public Player Player { get { return player; } }
 
     private static StageManager instance;
-    public static StageManager Instance { get{return instance;} }
-    public enum Stage{
-        one, 
-        two,
-        three,
-        four,
-        five
-    }
-    public Stage stage = Stage.one;
+    public Define.Stage stage = Define.Stage.ONE;
 
 
     private void Awake()
+    {
+        SetInstance();
+    }
+    private void SetInstance()
     {
         if (instance == null)
         {
@@ -28,7 +25,10 @@ public class StageManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
         DontDestroyOnLoad(gameObject);
+    }
+    public static StageManager GetInstance()
+    {
+        return instance;
     }
 }

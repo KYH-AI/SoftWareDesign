@@ -8,4 +8,58 @@ public class Define
         BGM = 0,
         SFX = 1,
     }
+
+    /// <summary>
+    /// 오브젝트 Tag 표시
+    /// </summary>
+    public enum StringTag
+    {
+        Enemy = 0,
+        Player = 1,
+    }
+
+    /// <summary>
+    /// 스킬 상태 표시
+    /// </summary>
+    public enum CurrentSkillState
+    {
+        ACTIVE = 0,
+        COOL_TIME = 1,
+    }
+
+    /// <summary>
+    /// 스테이지 상황 표시
+    /// </summary>
+    public enum Stage
+    {
+        ONE,
+        TWO,
+        THREE,
+        FOUR,
+        FIVE
+    }
+
+    /// <summary>
+    /// 생성힐 프리팹 타입 (Path)
+    /// </summary>
+    public enum PrefabType
+    {
+        Player_Skill,
+        Boss_Skill,
+        Monsters
+    }
+    /// <summary>
+    /// BOSS에서 사용하는 STATE의 열거형 변수 집합
+    /// </summary>
+    public enum BossState
+    {
+        MOVE_STATE,
+        ATTACK_STATE,
+        HURT_STATE,
+        DEAD_STATE,
+        PATTERN_DARKHEAL_STATE,
+        PATTERN_RUINSTK_STATE,
+        PATTERN_SUMNSKELETON_STATE,
+        PATTERN_BIND_STATE
+    };
 }

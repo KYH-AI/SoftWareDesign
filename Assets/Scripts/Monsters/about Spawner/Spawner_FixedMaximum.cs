@@ -20,11 +20,12 @@ public class Spawner_FixedMaximum: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int idx = 0;
+        idx = 0;
         Monster = new GameObject[MAX];
         for (int i = 0; i < MAX; i++)
         {
             GameObject ob = Instantiate(Prefab);
+            ob.GetComponent<Enemy>().EnemyInit(StageManager.GetInstance().Player);
             Monster[i] = ob;
             ob.SetActive(false);
         }

@@ -5,36 +5,42 @@ using Pathfinding;
 
 public class Enemy : LivingEntity, IBasicMovement
 {
-    public Transform playerTarget;
+    protected Player playerTarget;
 
     private Rigidbody2D enemyRigidbody;
     private Animator enemyAnimator;
+    private Collider2D enemyCollider;
+    private SpriteRenderer spriteRenderer;
     public Rigidbody2D EnemyRigidbody { get { return enemyRigidbody; } }
     public Animator EnemyAnimator { get { return enemyAnimator; } }
-
-    AIPath a;
+    public SpriteRenderer SpriteRenderer { get { return spriteRenderer; } }
+    public Collider2D EnemyCollider { get { return enemyCollider; } }
 
     protected void Start()
     {
-        Init();
-
-        enemyRigidbody = GetComponent<Rigidbody2D>();
-        enemyAnimator = GetComponent<Animator>();
+        BasicStatInit();
     }
 
     private void FixedUpdate()
     {
-        Move();
+        //Move();
     }
 
+    public void EnemyInit(Player playerTarget)
+    {
+        this.playerTarget = playerTarget;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        enemyCollider = GetComponent<Collider2D>();
+        enemyRigidbody = GetComponent<Rigidbody2D>();
+        enemyAnimator = GetComponent<Animator>();
+    }
 
     public void DefaultAttack()
     {
-         playerTarget.GetComponent<LivingEntity>().TakeDamage(DefaultAttackDamage);
+        playerTarget.TakeDamage(DefaultAttackDamage);
     }
 
     protected override void OnDead() { }
-
 
     public void Move()
     {

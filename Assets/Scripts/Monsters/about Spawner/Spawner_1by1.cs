@@ -21,6 +21,7 @@ public class Spawner_1by1 : MonoBehaviour
         for (int i = 0; i < MAX; i++)
         {
             GameObject ob = Instantiate(Prefab);
+            ob.GetComponent<Enemy>().EnemyInit(StageManager.GetInstance().Player);
             Monster[i] = ob;
             ob.SetActive(false);
         }

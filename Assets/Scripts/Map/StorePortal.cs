@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StorePortal : MonoBehaviour
 {
-    public GameObject player;
+    [SerializeField] GameObject player;
     float distance;
 
     // Update is called once per frame
@@ -24,17 +24,21 @@ public class StorePortal : MonoBehaviour
     IEnumerator SceneChange()
     {
         yield return new WaitForSeconds(1f);
-        switch (StageManager.Instance.stage)
+        switch (StageManager.GetInstance().stage)
         {
-            case StageManager.Stage.two:
+            case Define.Stage.TWO:
                 SceneManager.LoadScene("Stage2");
                 break;
-            case StageManager.Stage.three:
+            case Define.Stage.THREE:
                 SceneManager.LoadScene("Stage3");
                 break;
-            case StageManager.Stage.four:
+            case Define.Stage.FOUR:
                 SceneManager.LoadScene("Stage4");
                 break;
+            case Define.Stage.FIVE:
+                SceneManager.LoadScene("Stage5");
+                break;
+
         }
     }
 }

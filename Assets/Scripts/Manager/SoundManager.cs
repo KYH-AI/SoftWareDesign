@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
     */
 
     [SerializeField] AudioSource bgmAduioSource;
-    [SerializeField] AudioSource sfxAudiSource;
+    [SerializeField] AudioSource sfxAudioSource;
 
    // private Dictionary<string, AudioClip> bgmClips = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> sfxClips = new Dictionary<string, AudioClip>();
@@ -46,13 +46,13 @@ public class SoundManager : MonoBehaviour
         AudioClip clip;
         if (soundType == Define.SoundType.BGM) // 클립 타입이 BGM 이면
         {
-            clip =  Mangers.Resource.GetAudioClip(BGM_CLIP_DEFAULT_PATH + path); // BGM은 자주 이용되지 않게 때문에 따로 저장하지 않고 빼오는게 이득인거 같음
+            clip = Managers.Resource.GetAudioClip(BGM_CLIP_DEFAULT_PATH + path); // BGM은 자주 이용되지 않게 때문에 따로 저장하지 않고 빼오는게 이득인거 같음
         }
         else // 클립 타입이 효과음이면
         {
             if(!sfxClips.TryGetValue(path, out clip)) // 효과음(SFX)는 자주 호출되기 때문에 따로 저장하고 불러오는 형태로 진행
             {
-                clip = Mangers.Resource.GetAudioClip(SFX_CLIP_DEFAULT_PATH + path); 
+                clip = Managers.Resource.GetAudioClip(SFX_CLIP_DEFAULT_PATH + path); 
                 sfxClips.Add(path, clip);
             }
         }
@@ -94,7 +94,7 @@ public class SoundManager : MonoBehaviour
     /// <param name="isloop">BGM 반복 (기본 값 false)</param>
     public void PlaySFXAudio(string sfxClipName, AudioSource sfxAudio = null, float vol = 1.0f, bool isloop = false)
     {
-        if (sfxAudio == null) sfxAudio = sfxAudiSource;
+        if (sfxAudio == null) sfxAudio = sfxAudioSource;
 
         sfxAudio.clip = SearchingAudioClip(sfxClipName, Define.SoundType.SFX);
 
