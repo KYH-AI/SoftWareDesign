@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8283450641377011236}
   - component: {fileID: 8283450641377011239}
   - component: {fileID: 4810123017021479018}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8283450641377011257}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 40.2, y: 20.5, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 8283450641668736461}
   m_Father: {fileID: 0}
@@ -158,6 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: 0e00f04b633936944a75eb901f148cc5, type: 2}
   DamageInform: {fileID: 8283450643052738486}
+  state: 0
   coolTime: -1
   skillTime: 2
   minKillCount: 0
@@ -294,10 +295,10 @@ RectTransform:
   m_Father: {fileID: 8283450641668736461}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 15, y: -17}
-  m_SizeDelta: {x: 30, y: 30}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 15, y: 9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8283450643052738487
 CanvasRenderer:
@@ -328,12 +329,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
+    m_Font: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
     m_FontSize: 5
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 80
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1

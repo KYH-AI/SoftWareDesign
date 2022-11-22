@@ -2345,8 +2345,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f3cdc7a58efbf6448b386d40636bf54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 1863701650061619288, guid: e8ad5425ce79d9d4296e3cc603e4335f, type: 3}
+  Prefab: {fileID: 2629422497350528139, guid: 1f30ccc02b0404f49bc6b3ecd9f4c53e, type: 3}
   Monster:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -2357,7 +2369,7 @@ MonoBehaviour:
   - {fileID: 0}
   spawnRateMin: 0
   spawnRateMax: 1
-  MAX: 8
+  MAX: 20
 --- !u!1 &2257653479790994359
 GameObject:
   m_ObjectHideFlags: 0

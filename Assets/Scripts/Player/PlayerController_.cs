@@ -26,35 +26,12 @@ public class PlayerController_ : MonoBehaviour
     Player player;
     #endregion
 
-    #region 플레이어 스킬 정보 변수 선언부
-    public Dictionary<int, ActiveSkill> playerActiveSkills = new Dictionary<int, ActiveSkill>();
-    public Dictionary<int, PassiveSkill> playerPassiveSkills = new Dictionary<int, PassiveSkill>();
-    #endregion
-
     #region 유니티 함수
     public void PlayerControllerInit(Player player)
     {
         this.player = player;
         anim = GetComponent<Animator>();
         boxCol = GetComponent<BoxCollider2D>();
-
-        /* 테스트 용도 */
-        GameObject skillObject3 = Managers.Resource.GetPerfabGameObject("Player_Skill/FlameStrike Skill");
-        ActiveSkill fpSkill = Instantiate(skillObject3, this.transform).GetComponent<ActiveSkill>();
-        fpSkill.Init(player);
-        playerActiveSkills.Add(0, fpSkill);
-
-        GameObject skillObject2 = Managers.Resource.GetPerfabGameObject("Player_Skill/ThrowingKnife Skill");
-        ActiveSkill tkSkill = Instantiate(skillObject2, this.transform).GetComponent<ActiveSkill>();
-        tkSkill.Init(player);
-        playerActiveSkills.Add(1, tkSkill);
-
-        GameObject skillObject1 = Managers.Resource.GetPerfabGameObject("Player_Skill/ThunderSlash Skill");
-        ActiveSkill tdSkill = Instantiate(skillObject1, this.transform).GetComponent<ActiveSkill>();
-        tdSkill.Init(player);
-        playerActiveSkills.Add(2, tdSkill);
-
-
     }
 
     private void FixedUpdate()
@@ -100,27 +77,27 @@ public class PlayerController_ : MonoBehaviour
     void OnSkill1()
     {
         //첫번째 스킬 사용
-        playerActiveSkills[0].OnActive();
+        player.playerActiveSkills[0].OnActive();
     }
     void OnSkill2()
     {
         //2번째 스킬 사용
-        playerActiveSkills[1].OnActive();
+        player.playerActiveSkills[1].OnActive();
     }
     void OnSkill3()
     {
         //3번째 스킬 사용
-        playerActiveSkills[2].OnActive();
+        player.playerActiveSkills[2].OnActive();
     }
     void OnSkill4()
     {
         //4번째 스킬 사용
-        Debug.Log("r");
+        player.playerPassiveSkills[0].OnActive();
     }
     void OnSkill5()
     {
         //5번째 스킬 사용
-        Debug.Log("t");
+        player.playerActiveSkills[4].OnActive();
     }
     void OnAttack()
     {
@@ -136,6 +113,9 @@ public class PlayerController_ : MonoBehaviour
     void SetColliderEnabled()       //플레이어가 기본 공격시 콜라이더를 켜는 애니메이션 이벤트 함수.
         => boxCol.enabled = true;
     void SetColliderDisabled()      //플레이어가 기본 공격시 콜라이더를 끄는 애니메이션 이벤트 함수.
-        => boxCol.enabled = false;
+    {
+        boxCol.enabled = false;
+        player.DisableBuffEvent?.Invoke();
+    }
     #endregion
 }

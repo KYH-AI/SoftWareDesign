@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class BasicAttack : BasicMonsterController
 {
-    protected int playerLayer = 1 << 10;
     protected override void Attack()
     {
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         if (base.coolTime < 0)
         {
             base.EnemyAnimator.SetTrigger("Attack");
@@ -23,10 +23,9 @@ public class BasicAttack : BasicMonsterController
 
     void AttackPlayer()
     {
-        Collider2D playerCollider = Physics2D.OverlapCircle(gameObject.transform.position, 2f, playerLayer);
-        if (playerCollider != null){
+        Collider2D c = GetComponent<Collider2D>();
+        if (c.gameObject.CompareTag(Define.StringTag.Player.ToString())){
             base.DefaultAttack();
-            print("µ•πÃ¡ˆ ¡‹!");
         }
     }
 }

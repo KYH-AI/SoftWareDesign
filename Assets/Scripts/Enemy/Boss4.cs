@@ -249,7 +249,6 @@ public class Boss4 : Enemy
         yield return new WaitForSeconds(2f);
         StartCoroutine(FadeIn());
     }
-
     IEnumerator FadeIn()
     {
         state = BossState.ATTACK_STATE;

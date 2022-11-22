@@ -4144,13 +4144,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   spawnRateMin: 0
   spawnRateMax: 1
-  MAX: 12
+  MAX: 8
 --- !u!1 &7016535148344218434
 GameObject:
   m_ObjectHideFlags: 0
@@ -4346,7 +4342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632500f630a057e45af43c2b94c2c9b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!1 &7016535148703704988
 GameObject:
   m_ObjectHideFlags: 0
