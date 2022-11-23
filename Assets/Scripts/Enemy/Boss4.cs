@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/*
+
 public class Boss4 : Enemy
 {
     protected int playerLayer = 1 << 10;
@@ -172,4 +172,3 @@ public class Boss4 : Enemy
         }
     }
 }
-*/
