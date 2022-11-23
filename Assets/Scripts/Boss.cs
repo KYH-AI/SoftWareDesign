@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Boss : Enemy
 {
-
+    
 
     #region 보스 관련 변수 선언
     BossFSM bossFSM;            //보스의 행동을 제어하는 BossFSM 클래스로 접근하는 변수
@@ -16,11 +16,16 @@ public class Boss : Enemy
     [SerializeField] GameObject bossProjectileRuinStk;
     readonly float BOSS_DEFAULT_ATTACK_SPEED = 1.5f;
     readonly float BOSS_PROJECTILE_SKULL_SPEED = 10f;
-    float bossHpPercentage;
-    int ruinStrikeQty;
+    readonly float BOSS_PATTERN_DARK_HEAL_COUNT = 90f;     
+
+    private float bossHpPercentage;
+    private int ruinStrikeQty;
     Rigidbody2D boss;
     Animator boss_ani;
-    bool patternCheck = false; 
+    private bool patternCheck = false;      // == isgod. ture이면 무적임. 
+    private float patternCheckTimer=0.0f;     //경과시간 
+    private float darkHealCheckTimer = 0.0f;
+    private int darkHealTempHp = 1000;
     #endregion
 
     #region 플레이어&방향 관련 변수 선언
@@ -47,8 +52,18 @@ public class Boss : Enemy
 
     void Update()
     {
+    
         SwitchSpriteImageDir(transform);
         if(bossFSM != null) bossFSM.Update();
+        patternCheckTimer += Time.deltaTime;
+
+        if(patternCheckTimer > BOSS_PATTERN_DARK_HEAL_COUNT)
+        {
+            Debug.Log(patternCheckTimer+"초");
+            bossFSM.bossState = Define.BossState.PATTERN_DARKHEAL_STATE;
+            patternCheckTimer = 0;
+
+        }
     }
 
     #region 보스 이동 관련 함수
@@ -132,15 +147,15 @@ public class Boss : Enemy
         {
             return;
         }
-
-
+        if(bossFSM.runDarkHeal)       //CASTING 상태 일 때 
+        {
+            darkHealTempHp -= newDamage;
+        }
         StartCoroutine(SwitchMaterial());
         base.TakeDamage(newDamage);
         bossHpPercentage = (bossHpPercentage / (float)MaxHp * 100);
         RunPattern(bossHpPercentage);
     }
-   
-    
     /// <summary>
     /// 피격효과를 일정시간 유지시키는 코루틴-IEnumerator 함수
     /// </summary>
@@ -150,8 +165,6 @@ public class Boss : Enemy
         yield return new WaitForSeconds(0.1f);
         bossSpriteRenderer.material = originalMaterial;
     }
-
-
     /// <summary>
     /// 보스의 현재체력이 0이되면 실행시키는 함수
     /// </summary>
@@ -161,7 +174,6 @@ public class Boss : Enemy
         SetAnimationTrigger("RunDead"); 
         //모든 애니메이션과 스테이트 정리, 오브젝트 파괴가 이루어지면 UI를 호출함 
     }
-
     private void Die()
     {
         Destroy(this);
@@ -214,7 +226,24 @@ public class Boss : Enemy
     /// </summary>
     public void Pattern_DarkHeal()
     {
+        print("DarkHeal시작함");
+        boss.velocity = Vector2.zero;
+        SetPatternCheck();
         SetAnimationTrigger("RunDarkHealMotion");
+        bossFSM.bossState = Define.BossState.CASTING_STATE;
+        darkHealCheckTimer += Time.deltaTime;
+        if(darkHealCheckTimer > 8.0f && darkHealTempHp < 1000)          //시간 카운터가 8초가 지나고 1,000 데미지 이하로 받았을 때
+        {
+            darkHealCheckTimer = 0;
+            Hp += MaxHp * 15 / 100;     //전체값의 15%만큼 증가
+            bossFSM.bossState = Define.BossState.MOVE_STATE;
+            darkHealTempHp = 1000;
+        }
+        else if(darkHealCheckTimer < 8.0f && darkHealTempHp > 1000)     //시간 카운터가 8초가 지나지 않고 1,000데미지 이상으로 받았을 때
+        {
+            darkHealCheckTimer = 0;
+            SetAnimationTrigger("");
+        }
     }
     /// <summary>
     /// 패턴 루인 스트라이크 실행 함수

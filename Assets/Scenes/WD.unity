@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: af11a95e4ee376e4994f7a2819189060, type: 2}
-  contactDistance: 10
+  contactDistance: 6.8
   bossProjectileSkull: {fileID: 7382934670996431563, guid: eb4cd1cbc60c71e4189e42a1ecf37ca5,
     type: 3}
   bossProjectileRuinStk: {fileID: 1421817752121113056, guid: ca77da5b8e140df4bbdb0fdab8945a9d,

@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7382934670996431414}
   - component: {fileID: 1318032392}
   - component: {fileID: 1318032391}
-  - component: {fileID: 1318032393}
+  - component: {fileID: 1485839783382260451}
   m_Layer: 0
   m_Name: BossProjectileSkull
   m_TagString: Untagged
@@ -226,7 +226,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &1318032393
+--- !u!114 &1485839783382260451
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

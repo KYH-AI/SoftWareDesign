@@ -9,7 +9,9 @@ public class BossFSM
 
     public Define.BossState bossState;
     private Boss boss;
-    
+    public bool runDarkHeal = false;
+
+
     public BossFSM(Boss boss) 
     {
         this.boss = boss;
@@ -28,11 +30,11 @@ public class BossFSM
                 break;
             // boss.TakeDamage(); break;
             case Define.BossState.CASTING_STATE:
-                break;
+               break;
             case Define.BossState.DEAD_STATE:
                 break;
             case Define.BossState.PATTERN_DARKHEAL_STATE:
-                boss.Pattern_DarkHeal(); break;
+                boss.Pattern_DarkHeal(); runDarkHeal = true; break;
             case Define.BossState.PATTERN_RUINSTK_STATE:
                 boss.Pattern_RuinStk(); break;
             case Define.BossState.PATTERN_SUMNSKELETON_STATE:
