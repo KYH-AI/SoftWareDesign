@@ -13728,6 +13728,11 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.y
       value: -60
       objectReference: {fileID: 0}
+    - target: {fileID: 5837404987968712185, guid: 580e43e23cb5138429db38606dde29b9,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6044301085738222210, guid: 580e43e23cb5138429db38606dde29b9,
         type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[0].x
