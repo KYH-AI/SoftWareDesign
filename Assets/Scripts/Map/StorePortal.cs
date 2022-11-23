@@ -20,23 +20,26 @@ public class StorePortal : MonoBehaviour
             }
         }
     }*/
+    bool inPortal = false;
+  
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Portal")
         {
-            if (Input.GetKeyDown(KeyCode.C))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
+                print("다음 스테이지로 이동");
                 StartCoroutine(SceneChange());
             }
-           
+
         }
     }
 
-   
 
     IEnumerator SceneChange()
     {
         yield return new WaitForSeconds(1f);
+       // inPortal = false;
         switch (StageManager.GetInstance().stage)
         {
             case Define.Stage.TWO:

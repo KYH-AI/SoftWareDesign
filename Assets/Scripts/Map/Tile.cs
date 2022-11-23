@@ -26,7 +26,7 @@ public class Tile : MonoBehaviour
                 Unitsize = 30;
                 break;
             case Define.Stage.FOUR:
-                Unitsize = 20;
+                Unitsize = 25;
                 break;
         }
 
