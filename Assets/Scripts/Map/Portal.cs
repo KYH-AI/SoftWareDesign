@@ -33,7 +33,7 @@ public class Portal : MonoBehaviour
 
 
         SpawnPortal();
-        
+        /*
         if (myInstance != null)
         {
             distace = Vector2.Distance(myInstance.transform.position, transform.position);
@@ -45,10 +45,20 @@ public class Portal : MonoBehaviour
             {
                 StartCoroutine(ToStore());
             }
-        }
+        }*/
 
     }
-    
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Portal")
+        {
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                StartCoroutine(ToStore());
+            }
+        }
+    }
+ 
     void SpawnPortal()
     {
         if (Input.GetKeyDown(KeyCode.V))
