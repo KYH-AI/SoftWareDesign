@@ -51,7 +51,7 @@ public class Portal : MonoBehaviour
     
     void SpawnPortal()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             for (int i = 0; i < 8; i++)
             {

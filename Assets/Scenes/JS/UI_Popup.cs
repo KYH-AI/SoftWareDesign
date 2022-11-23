@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UI_Popup : Base_UI
 {
-    public override void Init()
+    public void Init()
     {
         //Managers내의 UIManager 객체 호출
         //Mangers.UIManager.SetCanvas(gameObject, true);

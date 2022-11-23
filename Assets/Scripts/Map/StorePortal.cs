@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StorePortal : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    /*[SerializeField] GameObject player;
     float distance;
 
     // Update is called once per frame
@@ -18,6 +18,13 @@ public class StorePortal : MonoBehaviour
             {
                 StartCoroutine(SceneChange());
             }
+        }
+    }*/
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player" )
+        {
+            StartCoroutine(SceneChange());
         }
     }
 
