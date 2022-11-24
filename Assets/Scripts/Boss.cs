@@ -14,6 +14,8 @@ public class Boss : Enemy
     private float scaleX;       //보스의 scaleX값
     [SerializeField] GameObject bossProjectileSkull;
     [SerializeField] GameObject bossProjectileRuinStk;
+    [SerializeField] GameObject bossProjectileDarkHeal;
+    [SerializeField] GameObject bossProjectileDarkHealFailed;
     readonly float BOSS_DEFAULT_ATTACK_SPEED = 1.5f;
     readonly float BOSS_PROJECTILE_SKULL_SPEED = 10f;
     readonly float BOSS_PATTERN_DARK_HEAL_COUNT = 90f;     
@@ -22,7 +24,7 @@ public class Boss : Enemy
     private int ruinStrikeQty;
     Rigidbody2D boss;
     Animator boss_ani;
-    private bool patternCheck = false;      // == isgod. ture이면 무적임. 
+    private bool patternCheck = false;      // == isgod. true이면 무적임. 
     private float patternCheckTimer=0.0f;     //경과시간 
     private float darkHealCheckTimer = 0.0f;
     private int darkHealTempHp = 1000;
@@ -150,6 +152,8 @@ public class Boss : Enemy
         if(bossFSM.runDarkHeal)       //CASTING 상태 일 때 
         {
             darkHealTempHp -= newDamage;
+            StartCoroutine(SwitchMaterial());
+            return;
         }
         StartCoroutine(SwitchMaterial());
         base.TakeDamage(newDamage);
@@ -228,23 +232,62 @@ public class Boss : Enemy
     {
         print("DarkHeal시작함");
         boss.velocity = Vector2.zero;
-        SetPatternCheck();
         SetAnimationTrigger("RunDarkHealMotion");
         bossFSM.bossState = Define.BossState.CASTING_STATE;
-        darkHealCheckTimer += Time.deltaTime;
-        if(darkHealCheckTimer > 8.0f && darkHealTempHp < 1000)          //시간 카운터가 8초가 지나고 1,000 데미지 이하로 받았을 때
-        {
-            darkHealCheckTimer = 0;
-            Hp += MaxHp * 15 / 100;     //전체값의 15%만큼 증가
-            bossFSM.bossState = Define.BossState.MOVE_STATE;
-            darkHealTempHp = 1000;
-        }
-        else if(darkHealCheckTimer < 8.0f && darkHealTempHp > 1000)     //시간 카운터가 8초가 지나지 않고 1,000데미지 이상으로 받았을 때
-        {
-            darkHealCheckTimer = 0;
-            SetAnimationTrigger("");
-        }
+        RunDarkHeal();
+       
     }
+ 
+    public void RunDarkHeal()
+    {
+        StartCoroutine(DarkHealProcess());
+    }
+    IEnumerator DarkHealProcess()
+    {
+        print("다크힐 코루틴");
+
+        GameObject darkHeal = CreateBossProjectileDarkHeal();
+
+        while (true)
+        {
+            
+            darkHealCheckTimer += Time.deltaTime;
+            if (darkHealCheckTimer >= 8.0f && darkHealTempHp > 0)          //시간 카운터가 8초가 지나고 1,000 데미지 이하로 받았을 때
+            {
+                Hp += MaxHp * 15 / 100;     //전체값의 15%만큼 증가
+                break;
+            }
+            else if (darkHealCheckTimer < 8.0f && darkHealTempHp <= 0)     //시간 카운터가 8초가 지나지 않고 1,000데미지 이상으로 받았을 때
+            {
+                CreateBossProjectileDarkHealFailed();
+                break;
+            }
+        }
+        Destroy(darkHeal);
+        darkHealCheckTimer = 0;
+        darkHealTempHp = 1000;
+        bossFSM.runDarkHeal = false;
+        bossFSM.bossState = Define.BossState.MOVE_STATE;
+        yield return new WaitForSeconds(8.0f);
+    }
+  
+    private GameObject CreateBossProjectileDarkHeal()
+    {
+        GameObject projectile = Instantiate(bossProjectileDarkHeal, 
+                                            new Vector2(transform.position.x, transform.position.y + 15),
+                                            Quaternion.identity);
+        projectile.SetActive(true);
+        return projectile;
+    }
+    private void CreateBossProjectileDarkHealFailed()
+    {
+        GameObject projectile = Instantiate(bossProjectileDarkHealFailed,
+                                           new Vector2(transform.position.x, transform.position.y + 15),
+                                           Quaternion.identity);
+        projectile.SetActive(true);
+        
+    }
+
     /// <summary>
     /// 패턴 루인 스트라이크 실행 함수
     /// 보스의 체력이 40%, 25%, 5%가 되었을 때마다 실행 
@@ -277,7 +320,7 @@ public class Boss : Enemy
         bossFSM.bossState = Define.BossState.MOVE_STATE;
     }
 
-    // 투사체를 반복문으로 만들지 말고 함수를 따로 빼자
+    // 투사체를 반복문으로 만들지 말고 함수를 따로 빼자. 어케하노..ㅠ 
     private void CreateBossProjectileRuinStk()
     {
         GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(bossProjectileRuinStk,
