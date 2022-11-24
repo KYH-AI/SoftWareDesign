@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public abstract class Base_UI : MonoBehaviour
+public abstract class UI_Base : MonoBehaviour
 {
     public enum UIEvent
     {

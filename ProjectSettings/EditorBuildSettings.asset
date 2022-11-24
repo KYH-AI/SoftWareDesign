@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/JS/JS.unity
+    guid: 35dc4d2a351072840abeff83aa22f34b
+  - enabled: 1
+    path: Assets/Scenes/JS/temp.unity
+    guid: e0d1ae6adcace944abcafd663fdc7b54
   m_configObjects: {}
