@@ -18,7 +18,11 @@ public class Boss : Enemy
     [SerializeField] GameObject bossProjectileDarkHealFailed;
     readonly float BOSS_DEFAULT_ATTACK_SPEED = 1.5f;
     readonly float BOSS_PROJECTILE_SKULL_SPEED = 10f;
-    readonly float BOSS_PATTERN_DARK_HEAL_COUNT = 90f;     
+    readonly float BOSS_PATTERN_DARK_HEAL_COUNT = 30f;
+    readonly int BOSS_TEMP_HP = 300;
+
+    GameObject darkHealA;
+    GameObject darkHealB;
 
     private float bossHpPercentage;
     private int ruinStrikeQty;
@@ -27,7 +31,7 @@ public class Boss : Enemy
     private bool patternCheck = false;      // == isgod. true이면 무적임. 
     private float patternCheckTimer=0.0f;     //경과시간 
     private float darkHealCheckTimer = 0.0f;
-    private int darkHealTempHp = 1000;
+    private int darkHealTempHp;
     #endregion
 
     #region 플레이어&방향 관련 변수 선언
@@ -42,6 +46,7 @@ public class Boss : Enemy
     SpriteRenderer bossSpriteRenderer;
     void Start()
     {
+        
         base.Start();
         bossFSM = new BossFSM(this);
         scaleX = transform.localScale.x;
@@ -49,7 +54,7 @@ public class Boss : Enemy
         boss_ani = GetComponent<Animator>();
         boss = GetComponent<Rigidbody2D>();
         bossSpriteRenderer = GetComponent<SpriteRenderer>();
-     
+        darkHealTempHp = BOSS_TEMP_HP;
     }
 
     void Update()
@@ -57,7 +62,11 @@ public class Boss : Enemy
     
         SwitchSpriteImageDir(transform);
         if(bossFSM != null) bossFSM.Update();
-        patternCheckTimer += Time.deltaTime;
+        if (bossFSM.bossState != Define.BossState.CASTING_STATE)
+        {
+            patternCheckTimer += Time.deltaTime;
+        }
+  
 
         if(patternCheckTimer > BOSS_PATTERN_DARK_HEAL_COUNT)
         {
@@ -66,6 +75,7 @@ public class Boss : Enemy
             patternCheckTimer = 0;
 
         }
+        
     }
 
     #region 보스 이동 관련 함수
@@ -151,6 +161,7 @@ public class Boss : Enemy
         }
         if(bossFSM.runDarkHeal)       //CASTING 상태 일 때 
         {
+            Debug.Log("임시체력 생성 조건문 들어옴"); 
             darkHealTempHp -= newDamage;
             StartCoroutine(SwitchMaterial());
             return;
@@ -233,9 +244,13 @@ public class Boss : Enemy
         print("DarkHeal시작함");
         boss.velocity = Vector2.zero;
         SetAnimationTrigger("RunDarkHealMotion");
+        
         bossFSM.bossState = Define.BossState.CASTING_STATE;
+        Debug.Log(bossFSM.bossState);
         RunDarkHeal();
-       
+        
+       // print(darkHeal);
+        
     }
  
     public void RunDarkHeal()
@@ -244,49 +259,52 @@ public class Boss : Enemy
     }
     IEnumerator DarkHealProcess()
     {
+        
+        darkHealA= CreateDarkHealAnimation(bossProjectileDarkHeal);
+        print(Hp+"while전");
         print("다크힐 코루틴");
-
-        GameObject darkHeal = CreateBossProjectileDarkHeal();
-
         while (true)
         {
             
-            darkHealCheckTimer += Time.deltaTime;
-            if (darkHealCheckTimer >= 8.0f && darkHealTempHp > 0)          //시간 카운터가 8초가 지나고 1,000 데미지 이하로 받았을 때
+            print(darkHealCheckTimer);
+            if (darkHealCheckTimer >= 7.0f && darkHealTempHp > 0)          //시간 카운터가 8초가 지나고 1,000 데미지 이하로 받았을 때
             {
                 Hp += MaxHp * 15 / 100;     //전체값의 15%만큼 증가
+                print(Hp+"증가");
                 break;
             }
-            else if (darkHealCheckTimer < 8.0f && darkHealTempHp <= 0)     //시간 카운터가 8초가 지나지 않고 1,000데미지 이상으로 받았을 때
+            else if (darkHealCheckTimer < 7.0f && darkHealTempHp <= 0)     //시간 카운터가 8초가 지나지 않고 1,000데미지 이상으로 받았을 때
             {
-                CreateBossProjectileDarkHealFailed();
+                print("실패 조건들어옴");
+                darkHealB = CreateDarkHealAnimation(bossProjectileDarkHealFailed);
+//                Destroy(darkHealB);
                 break;
             }
+            yield return new WaitForSeconds(1.0f);
+            darkHealCheckTimer += 1.0f;
         }
-        Destroy(darkHeal);
-        darkHealCheckTimer = 0;
-        darkHealTempHp = 1000;
-        bossFSM.runDarkHeal = false;
-        bossFSM.bossState = Define.BossState.MOVE_STATE;
-        yield return new WaitForSeconds(8.0f);
+
+        Destroy(darkHealA);
+        if (darkHealB != null) Destroy(darkHealB, 1.0f);
+       
+        darkHealTempHp = BOSS_TEMP_HP;
+        bossFSM.runDarkHeal = false; 
+        PatternReset();
+
+
     }
-  
-    private GameObject CreateBossProjectileDarkHeal()
+ private GameObject CreateDarkHealAnimation(GameObject objname)
     {
-        GameObject projectile = Instantiate(bossProjectileDarkHeal, 
-                                            new Vector2(transform.position.x, transform.position.y + 15),
+        GameObject projectile = Instantiate(objname,
+                                            new Vector2(transform.position.x, transform.position.y + 3),
                                             Quaternion.identity);
         projectile.SetActive(true);
+
         return projectile;
     }
-    private void CreateBossProjectileDarkHealFailed()
-    {
-        GameObject projectile = Instantiate(bossProjectileDarkHealFailed,
-                                           new Vector2(transform.position.x, transform.position.y + 15),
-                                           Quaternion.identity);
-        projectile.SetActive(true);
-        
-    }
+  
+
+
 
     /// <summary>
     /// 패턴 루인 스트라이크 실행 함수
@@ -297,7 +315,7 @@ public class Boss : Enemy
     {
         print("패턴 시작");
         boss.velocity = Vector2.zero;
-        SetPatternCheck();
+        SetBossGodMode();
         RunRuinStk();
         bossFSM.bossState = Define.BossState.CASTING_STATE;
     }
@@ -317,7 +335,7 @@ public class Boss : Enemy
             print(i + "번 발사");
             yield return new WaitForSeconds(0.8f); 
         }
-        bossFSM.bossState = Define.BossState.MOVE_STATE;
+        PatternReset();
     }
 
     // 투사체를 반복문으로 만들지 말고 함수를 따로 빼자. 어케하노..ㅠ 
@@ -339,6 +357,7 @@ public class Boss : Enemy
     public void Pattern_SummonSkeleton()
     {
         SetAnimationTrigger("RunSumnSkeleton");
+        PatternReset();
     }
     /// <summary>
     /// 패턴 바인드 실행 함수
@@ -348,6 +367,7 @@ public class Boss : Enemy
     public void Pattern_Bind()
     {
         SetAnimationTrigger("RunBindMotion");
+        PatternReset();
     }
 
     #endregion
@@ -365,11 +385,19 @@ public class Boss : Enemy
     /// <summary>
     /// 패턴 시작 시 보스를 무적을 만들기 위해 쓰는 함수
     /// </summary>
-    private void SetPatternCheck()
+    private void SetBossGodMode()
     {
         patternCheck = patternCheck != true;
     }
-  
+    /// <summary>
+    /// 패턴 마지막에 보스의 스테이트와 패턴체크 타이머를 초기화 시켜주는 함수
+    /// </summary>ㅠ
+    public void PatternReset()
+    {
+        darkHealCheckTimer = 0;
+        bossFSM.bossState = Define.BossState.MOVE_STATE;
+    }
+
     #endregion
 
 
