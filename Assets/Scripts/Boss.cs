@@ -20,8 +20,6 @@ public class Boss : Enemy
     readonly float BOSS_PROJECTILE_SKULL_SPEED = 10f;
     readonly float BOSS_PATTERN_DARK_HEAL_COUNT = 30f;
     readonly int BOSS_TEMP_HP = 300;
-    int test; 
-
 
     GameObject darkHealA;
     GameObject darkHealB;
