@@ -56,6 +56,7 @@ public class Define
         MOVE_STATE,
         ATTACK_STATE,
         HURT_STATE,
+        CASTING_STATE,
         DEAD_STATE,
         PATTERN_DARKHEAL_STATE,
         PATTERN_RUINSTK_STATE,

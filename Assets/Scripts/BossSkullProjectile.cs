@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossSkillProjectile : Projectile
+public class BossSkullProjectile : Projectile
 {
 
     private Rigidbody2D skullRigidBody;

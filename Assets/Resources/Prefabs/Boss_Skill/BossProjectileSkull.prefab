@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7382934670996431414}
   - component: {fileID: 1318032392}
   - component: {fileID: 1318032391}
-  - component: {fileID: 1318032393}
+  - component: {fileID: 1485839783382260451}
   m_Layer: 0
   m_Name: BossProjectileSkull
   m_TagString: Untagged
@@ -158,7 +158,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: ea2852f4779f86144ab7e21a0ac4a05d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -226,7 +226,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &1318032393
+--- !u!114 &1485839783382260451
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
