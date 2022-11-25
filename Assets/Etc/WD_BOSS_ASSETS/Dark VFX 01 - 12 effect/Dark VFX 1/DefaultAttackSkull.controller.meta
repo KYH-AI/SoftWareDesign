@@ -1,13 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Animations/Monster/animation/NightBorne_0.controller.meta
-<<<<<<< HEAD
-guid: f0b402735a8f04e49bf7e0cdc8b5a6e6
-=======
-guid: bff036209726eac4c9f37e24f7659620
->>>>>>> dc4e4a5d8b5aa0235ce4b336c93d3a39ad86674c
-========
 guid: 4fdcfda84bd53a243984c2b09a5c62b2
->>>>>>>> a98870043d62ca98397abb8edbac5c445534044b:Assets/Etc/WD_BOSS_ASSETS/Dark VFX 01 - 12 effect/Dark VFX 1/DefaultAttackSkull.controller.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 9100000
