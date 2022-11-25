@@ -39,11 +39,14 @@ public class Player : LivingEntity
     public UnityAction DisableBuffEvent;
     #endregion
 
-    #region 플레이어 스킬 정보 변수 선언부
+    #region 플레이어 스킬 활성화 변수
     public Dictionary<int, ActiveSkill> playerActiveSkills = new Dictionary<int, ActiveSkill>();
     public Dictionary<int, PassiveSkill> playerPassiveSkills = new Dictionary<int, PassiveSkill>();
     #endregion
 
+    #region 상점에서 사용하는 스킬종류 변수
+    public Dictionary<int, PlayerSkill> skillList = new Dictionary<int, PlayerSkill>();
+    #endregion
 
     /* 함수 */
 

@@ -9,6 +9,11 @@ public class PlayerSkill : MonoBehaviour
     protected int enemyLayer = 1 << 11;
     protected int wallLayer = 1 << 12;
 
+    #region 스킬 레벨
+    protected short skillLevel = 1;
+    public short SkillLevel { get { return skillLevel; }  set { skillLevel = value; } }
+    #endregion
+
     /// <summary>
     /// 스킬 상태
     /// </summary>
