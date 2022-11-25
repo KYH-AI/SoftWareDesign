@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Player : LivingEntity
 {
+    int testint;
+    
     /* 변수 */
 
     #region 플레이어 머티리얼 변수
