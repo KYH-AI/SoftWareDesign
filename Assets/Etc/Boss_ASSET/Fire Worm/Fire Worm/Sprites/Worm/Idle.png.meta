@@ -16,19 +16,19 @@ TextureImporter:
     second: Idle_3
   - first:
       213: -2834552850196481573
-    second: Idle_5
+    second: Idle_8
   - first:
       213: 3278449094680734212
-    second: Idle_6
+    second: Idle_8
   - first:
       213: 3384493420599841878
-    second: Idle_7
+    second: Idle_8
   - first:
       213: -3914248031228685145
-    second: Idle_9
+    second: Idle_5
   - first:
       213: 7132915409514813599
-    second: Idle_10
+    second: Idle_4
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -215,7 +215,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_5
+      name: Idle_6
       rect:
         serializedVersion: 2
         x: 558
@@ -236,7 +236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_6
+      name: Idle_7
       rect:
         serializedVersion: 2
         x: 648
@@ -257,7 +257,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_7
+      name: Idle_8
       rect:
         serializedVersion: 2
         x: 737
@@ -278,7 +278,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_9
+      name: Idle_5
       rect:
         serializedVersion: 2
         x: 468
@@ -299,7 +299,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_10
+      name: Idle_4
       rect:
         serializedVersion: 2
         x: 378
