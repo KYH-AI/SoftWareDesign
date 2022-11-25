@@ -233,6 +233,9 @@ public class Boss : Enemy
         }
     }
 
+
+
+    #region 다크 힐 패턴 관련 함수들
     /// <summary>
     /// 패턴 다크 힐 실행 함수
     /// 1분 30초마다 반복되고 8초동안 에너지를 모음
@@ -302,10 +305,10 @@ public class Boss : Enemy
 
         return projectile;
     }
-  
 
+    #endregion
 
-
+    #region 루인 스트라이크 패턴 관련 함수들
     /// <summary>
     /// 패턴 루인 스트라이크 실행 함수
     /// 보스의 체력이 40%, 25%, 5%가 되었을 때마다 실행 
@@ -348,6 +351,8 @@ public class Boss : Enemy
         projectile.GetComponent<Projectile>().ProjectileInit(Define.StringTag.Player, Vector2.zero, 400);
         projectile.SetActive(true);
     }
+
+    #endregion
 
     /// <summary>
     /// 패턴 스켈레톤 소환 실행 함수
