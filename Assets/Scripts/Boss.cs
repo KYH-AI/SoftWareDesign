@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Boss : Enemy
 {
-    
+    float tetsetsetstsetstsete;
 
     #region 보스 관련 변수 선언
     BossFSM bossFSM;            //보스의 행동을 제어하는 BossFSM 클래스로 접근하는 변수
