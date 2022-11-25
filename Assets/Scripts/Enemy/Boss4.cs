@@ -202,35 +202,12 @@ public class Boss4 : Enemy
         transform.position = Vector2.MoveTowards(transform.position, playerTarget.transform.position, moveSpeed * Time.deltaTime);
         if (isFadeout)
         {
-            //FadeOut();
            StartCoroutine(FadeOut());
             isFadeout = false;
         }
          
        
     }
-
-    /*IEnumerator FadeIn()
-    {
-        yield return new WaitForSeconds(3f);
-        state = BossState.ATTACK_STATE;
-        isFadeout = true;
-        var color = SpriteRenderer.color;
-        color.a = 255;
-        SpriteRenderer.color = color;
-     
-    }
-    private void FadeOut()
-    {
-        print("¼û±â!");
-        var color = SpriteRenderer.color;
-         //color.a is 0 to 1. So .5*time.deltaTime will take 2 seconds to fade out
-         color.a = 0;
-         SpriteRenderer.color = color;
-        StartCoroutine(FadeIn());
-
-       
-    }*/
     IEnumerator FadeOut()
     {
         while (SpriteRenderer.color.a > 0)

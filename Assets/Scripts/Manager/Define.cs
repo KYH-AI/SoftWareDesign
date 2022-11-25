@@ -46,7 +46,8 @@ public class Define
     {
         Player_Skill,
         Boss_Skill,
-        Monsters
+        Monsters,
+        SubBoss
     }
     /// <summary>
     /// BOSS에서 사용하는 STATE의 열거형 변수 집합
