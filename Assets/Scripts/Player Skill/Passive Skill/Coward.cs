@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Coward : PassiveSkill
 {
+    [SerializeField] GameObject cowardEffect;
 
     #region 스킬 초기 스텟 데이터
     /// <summary>
@@ -47,6 +48,7 @@ public class Coward : PassiveSkill
     private void Start()
     {
         CowardInit();
+        Invoke(nameof(CowardSkillActive), 5f);
     }
 
     private void CowardInit()
@@ -106,9 +108,11 @@ public class Coward : PassiveSkill
 
     private IEnumerator CowardSkillProcess()
     {
+        cowardEffect.SetActive(true);
         playerObject.MoveSpeed += buffSpeed; // 속도 버프 적용
         yield return skillDurationSec;
         playerObject.MoveSpeed -= buffSpeed; // 속도 버프 해체
+        cowardEffect.SetActive(false);
         OnCoolTime();
     }
 }
