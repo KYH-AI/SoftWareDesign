@@ -5,7 +5,7 @@ using UnityEngine;
 public class Boss_spawner : MonoBehaviour
 {
     //public GameObject Boss4;
-    public GameObject Boss3;
+    public GameObject Boss;
     //public GameObject Boss2;
     //public GameObject Boss1;
     private float spawnX;
@@ -30,7 +30,7 @@ public class Boss_spawner : MonoBehaviour
     void SetLocation()
     {
         spawnX = StageManager.GetInstance().Player.transform.position.x;
-        spawny = StageManager.GetInstance().Player.transform.position.y + 10f;
+        spawny = StageManager.GetInstance().Player.transform.position.y + 7f;
     }
     void Spawn()
     {
@@ -49,7 +49,7 @@ public class Boss_spawner : MonoBehaviour
                  ob = Instantiate(Boss4, new Vector2(spawnX, spawny), Quaternion.identity);
                  break;
          }*/
-        ob = Instantiate(Boss3, new Vector2(spawnX, spawny), Quaternion.identity);
+        ob = Instantiate(Boss, new Vector2(spawnX, spawny), Quaternion.identity);
         ob.GetComponent<Enemy>().EnemyInit(StageManager.GetInstance().Player);
     }
 }

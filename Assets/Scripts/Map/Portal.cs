@@ -8,7 +8,6 @@ public class Portal : MonoBehaviour
     [SerializeField] GameObject Portalpref;
     GameObject myInstance;
     int x, y;
-    float distace=10;
     int portal_x;
     int portal_y;
     bool inPortal =false;

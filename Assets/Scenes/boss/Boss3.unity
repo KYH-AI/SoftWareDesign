@@ -142,6 +142,12 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 990524877292455951, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 9187804398835182185, guid: dfed45ff42c70c34d86251a4493bafe7,
+        type: 3}
     - target: {fileID: 2523420501982882025, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4,
         type: 3}
       propertyPath: m_Name
@@ -223,6 +229,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5376053690456208681, guid: e02cd7f180c877c45a84df759e5811a8,
+        type: 3}
+      propertyPath: Boss
+      value: 
+      objectReference: {fileID: 5241715925923550975, guid: b3924768bdb5af64b9bc5ef440042fd9,
+        type: 3}
+    - target: {fileID: 5376053690456208681, guid: e02cd7f180c877c45a84df759e5811a8,
+        type: 3}
+      propertyPath: Boss3
+      value: 
+      objectReference: {fileID: 5241715925923550975, guid: b3924768bdb5af64b9bc5ef440042fd9,
+        type: 3}
     - target: {fileID: 7776066480352017540, guid: e02cd7f180c877c45a84df759e5811a8,
         type: 3}
       propertyPath: m_Name
@@ -560,25 +578,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followingTarget: {fileID: 0}
   moveSpeed: 10
---- !u!1 &1746173117 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7776066480352017540, guid: e02cd7f180c877c45a84df759e5811a8,
-    type: 3}
-  m_PrefabInstance: {fileID: 551988740}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1746173118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1746173117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c10b3ff358dc0b4eb1335f17a4ab787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Boss3: {fileID: 5241715925923550975, guid: b3924768bdb5af64b9bc5ef440042fd9, type: 3}
 --- !u!1 &2050635211
 GameObject:
   m_ObjectHideFlags: 0
