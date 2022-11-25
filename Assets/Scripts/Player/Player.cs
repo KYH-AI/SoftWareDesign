@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class Player : LivingEntity
 {
-
-    [SerializeField] GameObject text;
     /* 변수 */
 
     #region 플레이어 머티리얼 변수
@@ -120,7 +118,8 @@ public class Player : LivingEntity
         StartCoroutine(SwitchMaterial()); // 피격 시 플레이어 색상 변경 코루틴
 
 
-        GameObject floatingText = MemoryPoolManager.GetInstance().OutputGameObject(text
+        GameObject floatingText = MemoryPoolManager.GetInstance().OutputGameObject
+            (Managers.Resource.GetPerfabGameObject("UI/FloatingDamageText")
             ,Define.PrefabType.UI
             ,new Vector3(transform.position.x, transform.position.y)
             ,Quaternion.identity);
