@@ -23,6 +23,7 @@ public class Boss3 : Enemy
     [SerializeField] GameObject Fire;
     float fireDelay = 1f;
     float attackDelay = 3f;
+    private int skillDamage = 5;
 
     // Update is called once per frame
     void Update()
@@ -32,13 +33,6 @@ public class Boss3 : Enemy
         Fsm();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            DefaultAttack();
-        }
-    }
     public override void TakeDamage(int newDamage)
     {
         base.TakeDamage(newDamage);
@@ -116,12 +110,12 @@ public class Boss3 : Enemy
         if(result == 0)
         {
             transform.position = new Vector2(playerTarget.transform.position.x + 3, playerTarget.transform.position.y - 1);
-            SpriteRenderer.flipX = true;
+            gameObject.transform.rotation =Quaternion.Euler(0,0, 0);
         }
         else
         {
             transform.position = new Vector2(playerTarget.transform.position.x -3, playerTarget.transform.position.y - 1);
-            SpriteRenderer.flipX = false;
+            gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         
         GameObject projectile2 = MemoryPoolManager.GetInstance().OutputGameObject(Telpo,
@@ -176,6 +170,7 @@ public class Boss3 : Enemy
                                                                                    Define.PrefabType.SubBoss,
                                                                                    new Vector2(playerTarget.transform.position.x, playerTarget.transform.position.y-1),
                                                                                    Quaternion.identity);
+            projectile.GetComponent<Projectile>().ProjectileInit(Define.StringTag.Player, Vector2.zero, skillDamage);
             projectile.SetActive(true);
             yield return new WaitForSeconds(fireDelay);
         }

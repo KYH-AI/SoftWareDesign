@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e6443d67a4cf241a1179bfa19679a3, type: 3}
   m_Name: boss3_stat
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 100
   moveSpeed: 5
   armor: 5
   defaultAttackDamage: 2
