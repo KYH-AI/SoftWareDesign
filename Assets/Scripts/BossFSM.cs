@@ -26,7 +26,6 @@ public class BossFSM
                 boss.Attack(); break;               
             case Define.BossState.HURT_STATE:
                 break;
-               // boss.TakeDamage(); break;
             case Define.BossState.DEAD_STATE:
                 break;
             case Define.BossState.PATTERN_DARKHEAL_STATE:

@@ -47,7 +47,7 @@ public class Define
         Player_Skill,
         Boss_Skill,
         Monsters,
-        SubBoss
+        UI
     }
     /// <summary>
     /// BOSS에서 사용하는 STATE의 열거형 변수 집합
@@ -57,6 +57,7 @@ public class Define
         MOVE_STATE,
         ATTACK_STATE,
         HURT_STATE,
+        CASTING_STATE,
         DEAD_STATE,
         PATTERN_DARKHEAL_STATE,
         PATTERN_RUINSTK_STATE,

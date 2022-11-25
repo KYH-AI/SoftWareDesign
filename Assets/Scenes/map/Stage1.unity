@@ -551,6 +551,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2985034668825976891, guid: c6fceae9aed4c114ca3429bafb3f024b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2985034669372325181, guid: c6fceae9aed4c114ca3429bafb3f024b,
         type: 3}
       propertyPath: m_RootOrder
@@ -692,6 +697,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1755065270838795931, guid: fd956606606ef844c83aa703a81cc0d3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd956606606ef844c83aa703a81cc0d3, type: 3}
 --- !u!1001 &5391325482240414771
@@ -701,6 +711,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 990524877292455951, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 9187804398835182185, guid: dfed45ff42c70c34d86251a4493bafe7,
+        type: 3}
     - target: {fileID: 2523420501982882025, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4,
         type: 3}
       propertyPath: m_Name
