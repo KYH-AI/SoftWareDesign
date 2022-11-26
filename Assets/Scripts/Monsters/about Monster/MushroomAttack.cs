@@ -14,8 +14,15 @@ public class MushroomAttack : BasicMonsterController
     Vector3 bombPosition;
 
     public Canvas canvas;
+
+    bool isAttack = false;
     protected override void Attack()
     {
+        if (isAttack == true)
+        {
+            return;
+        }
+        isAttack = true;
         mushroomRenderer = GetComponent<SpriteRenderer>();
         c = GetComponent<Collider2D>();
         base.EnemyAnimator.SetTrigger("Attack");
@@ -24,7 +31,7 @@ public class MushroomAttack : BasicMonsterController
         base.EnemyAnimator.SetTrigger("Smoke");
         transform.position = bombPosition;
         c.isTrigger = true;
-        Hp = 10000;
+        Hp = 10000000;
         StartCoroutine(AttackProcess());
     }
 
@@ -33,11 +40,6 @@ public class MushroomAttack : BasicMonsterController
         transform.position = bombPosition;
         this.transform.localScale = (new Vector3(10, 10, 0));
         mushroomRenderer.color = new Color(100/255f, 55/255f, 140/255f, 220/255f);
-
-
-
-
-
         if (Physics2D.OverlapCircle(this.transform.position, mushroomAttackRadius, 1<<10) == true)
         {
             base.DefaultAttack();

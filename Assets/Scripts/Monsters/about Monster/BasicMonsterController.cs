@@ -8,8 +8,6 @@ public abstract class BasicMonsterController : Enemy
 {
     float radius = 0.2f;   
     public int playerLayer = 1<<10;
-
-    public Text DamageInform;
     //public GameObject coinPrephab;
     public enum State
     {
@@ -73,7 +71,6 @@ public abstract class BasicMonsterController : Enemy
     public override sealed void TakeDamage(int newDamage)
     {
         base.TakeDamage(newDamage);
-        DamageInform.text = "-"+newDamage.ToString();
         StartCoroutine(DamageProcess());
         if (base.Hp <= 0)
         {
@@ -95,9 +92,7 @@ public abstract class BasicMonsterController : Enemy
 
     IEnumerator DamageProcess()
     {
-        DamageInform.gameObject.SetActive(true);
         yield return new WaitForSeconds(1.0f);
-        DamageInform.gameObject.SetActive(false);
     }
 
 
