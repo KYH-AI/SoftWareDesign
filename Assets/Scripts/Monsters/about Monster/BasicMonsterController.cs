@@ -30,6 +30,13 @@ public abstract class BasicMonsterController : Enemy
         renderer = GetComponent<SpriteRenderer>();
         state = State.Run;
     }
+
+
+    private void OnEnable()
+    {
+        state = State.Run;
+    }
+
     public void Update()
     {
         if (state == State.Run) Run();
@@ -80,7 +87,7 @@ public abstract class BasicMonsterController : Enemy
 
         floatingText.SetActive(true);
 
-        base.EnemyAnimator.SetTrigger("Damage");
+        base.EnemyAnimator.SetTrigger("MoveToDamage");
         StartCoroutine(DamageProcess());
         if (base.Hp <= 0)
         {
@@ -124,7 +131,6 @@ public abstract class BasicMonsterController : Enemy
 
         //동전 드랍
         //캐릭터 정보에 킬카운트 넘겨주기
-
         gameObject.SetActive(false);
 
     }
