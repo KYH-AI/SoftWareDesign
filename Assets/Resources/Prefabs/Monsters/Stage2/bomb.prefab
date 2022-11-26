@@ -117,3 +117,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crab: {fileID: 8292104439405096295, guid: 123652f2475a1cb45aaecec2b5da6836, type: 3}
+  anim: {fileID: 4957877723922292747}

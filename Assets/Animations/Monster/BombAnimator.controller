@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Explosion
-  m_Speed: 1.2
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2700354019940415011}
@@ -36,7 +36,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: bomb
+    m_ConditionEvent: back
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 618963987813393635}
@@ -44,9 +44,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0.62499976
-  m_ExitTime: 1.1200001
+  m_TransitionDuration: 0.057017535
+  m_TransitionOffset: 0
+  m_ExitTime: 0.9557896
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
