@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class UIManager1 : MonoBehaviour
+public class ShowSettings : UI_Popup
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +18,6 @@ public class UIManager1 : MonoBehaviour
     {
         
     }
+
+
 }

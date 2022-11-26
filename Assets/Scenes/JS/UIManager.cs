@@ -6,18 +6,18 @@ using UnityEngine.EventSystems;
 
 public class UIManager : Managers
 {
-    public Slider playerSlider;
-    public Slider bossSlider;
-    public Text goldAmount;
-
-    public void SetCanvas(GameObject gameObject, bool set)
+    [SerializeField]
+    private Slider playerSlider;
+    private Slider bossSlider;
+    private Text goldAmount;
+    private Image[] skills = new Image[5];
+    public void PopupUI(Canvas canvas)
     {
-
+        canvas.gameObject.SetActive(true);
     }
-
-    public void ClosePopUpUI()
+    public void ClosePopUpUI(Canvas canvas)     //어떤 캔버스를 닫을래?
     {
-
+        canvas.gameObject.SetActive(false);
     }
 
     public void UpdatePlayerHpSlider(float currentHp, float maxHp)
@@ -33,5 +33,15 @@ public class UIManager : Managers
     public void UpdateGoldText()
     {
         goldAmount.text = Managers.Player.PlayerGold.ToString();
+    }
+
+    public void UpdateSkills()
+    {
+        //플레이어 스킬 딕셔너리에 key로 접근해서 value가 있으면 이미지 띄움.
+    }
+
+    public void ShowSkillCoolTime()
+    {
+        //스킬 상태가 쿨타임이면 남은 쿨 표시
     }
 }
