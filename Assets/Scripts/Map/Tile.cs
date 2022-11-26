@@ -6,7 +6,7 @@ public class Tile : MonoBehaviour
 {
     private Transform Player;
 
-    int Unitsize = 10;
+    int Unitsize = 16;
     int Tile_x = 0;
     int Tile_y = 0;
 
@@ -26,7 +26,7 @@ public class Tile : MonoBehaviour
                 Unitsize = 30;
                 break;
             case Define.Stage.FOUR:
-                Unitsize = 20;
+                Unitsize = 25;
                 break;
         }
 

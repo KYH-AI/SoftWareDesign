@@ -31,7 +31,7 @@ public class PlayerController_ : MonoBehaviour
     {
         this.player = player;
         anim = GetComponent<Animator>();
-        boxCol = GetComponent<BoxCollider2D>();
+        boxCol = GetComponentInChildren<BoxCollider2D>();
     }
 
     private void FixedUpdate()

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StorePortal : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    /*[SerializeField] GameObject player;
     float distance;
 
     // Update is called once per frame
@@ -19,11 +19,27 @@ public class StorePortal : MonoBehaviour
                 StartCoroutine(SceneChange());
             }
         }
+    }*/
+    bool inPortal = false;
+  
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Portal")
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                print("다음 스테이지로 이동");
+                StartCoroutine(SceneChange());
+            }
+
+        }
     }
+
 
     IEnumerator SceneChange()
     {
         yield return new WaitForSeconds(1f);
+       // inPortal = false;
         switch (StageManager.GetInstance().stage)
         {
             case Define.Stage.TWO:
