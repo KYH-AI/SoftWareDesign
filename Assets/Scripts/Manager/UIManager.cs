@@ -32,7 +32,10 @@ public class UIManager : MonoBehaviour
     public void UpdateSkills()      //상점에서 스킬 구매시 실행.
     {
         //플레이어 스킬 딕셔너리에 key로 접근해서 value가 있으면 이미지 띄움.
-        StageManager.stageManager.Player.playerActiveSkills[0]
+        if(StageManager.stageManager.Player.playerActiveSkills != null)
+        {
+            //이미지 프리팹을 불러옴.
+        }
     }
 
     public void ShowSkillCoolTime()
