@@ -59,7 +59,7 @@ public class ThunderSlash : ActiveSkill
 
     private Define.CurrentSkillState ThunderSlashSkillAttack()
     {
-        Collider2D[] enemyCollider = Physics2D.OverlapCircleAll(playerObject.transform.position, 10f, enemyLayer);//아트록스 q
+        Collider2D[] enemyCollider = Physics2D.OverlapCircleAll(playerObject.transform.position, 10f, enemyLayer);
 
         if (enemyCollider.Length > 0)
         {
@@ -78,9 +78,11 @@ public class ThunderSlash : ActiveSkill
 
         for(int enemyCount = 0; enemyCount < skillTotalTarget; enemyCount++)
         {
-            lockOnEffect[enemyCount] = Instantiate(thunderSlashLockOnEffect, enemyColiders[enemyCount].transform.position, Quaternion.identity);
-            yield return new WaitForSecondsRealtime(1f);   // 캐싱 하자
-
+            if (enemyColiders[enemyCount] != null)
+            {
+                lockOnEffect[enemyCount] = Instantiate(thunderSlashLockOnEffect, enemyColiders[enemyCount].transform.position, Quaternion.identity);
+                yield return new WaitForSecondsRealtime(1f);   // 캐싱 하자
+            }
         }
 
         for (int enemyCount = 0; enemyCount < skillTotalTarget; enemyCount++)

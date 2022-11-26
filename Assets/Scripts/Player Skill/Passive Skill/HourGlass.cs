@@ -53,8 +53,18 @@ public class HourGlass : PassiveSkill
 
     public override void OnActive()
     {
+        playerObject.HitEvent += HourGlassSkillActive;
+    }
+
+    public override void Upgrade()
+    {
+       
+    }
+
+    private void HourGlassSkillActive()
+    {
         // 플레이어 현재 체력이 30보다 많을경우 무시
-        if (playerObject.Hp < 30) return;
+        if (playerObject.Hp > 30) return;
 
         if (currentSkillState == Define.CurrentSkillState.ACTIVE)
         {
@@ -65,18 +75,6 @@ public class HourGlass : PassiveSkill
         {
             return;
         }
-    }
-
-    public override void Upgrade()
-    {
-       
-    }
-
-    private void HourGlassSkillActive()
-    {
-        Time.timeScale = 0f; // 시간 정지 
-        OnSkillEffect();
-        hourGlassEffectObject.SetActive(true); // Hour Glass Effect 오브젝트 활성화
     }
 
     private void HourGlassSkillDisable()
@@ -92,7 +90,9 @@ public class HourGlass : PassiveSkill
 
     private IEnumerator HourGlassSkillProcess()
     {
-        HourGlassSkillActive();
+        Time.timeScale = 0f; // 시간 정지 
+        OnSkillEffect();
+        hourGlassEffectObject.SetActive(true); // Hour Glass Effect 오브젝트 활성화
 
         yield return skillDurationSec;
 

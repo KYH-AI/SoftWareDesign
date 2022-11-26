@@ -259,6 +259,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage1_Center
       objectReference: {fileID: 0}
+    - target: {fileID: 8967234591947267999, guid: 6cd823db686f90049bbec25e4bac4ce3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cd823db686f90049bbec25e4bac4ce3, type: 3}
 --- !u!1 &830992051
@@ -452,7 +457,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1
   m_VolumeTrigger: {fileID: 938416097}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
@@ -682,8 +687,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5391325482580142875, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4, type: 3}
 --- !u!1001 &5466608205865198619
 PrefabInstance:

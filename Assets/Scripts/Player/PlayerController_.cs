@@ -58,7 +58,7 @@ public class PlayerController_ : MonoBehaviour
             anim.SetFloat("X", moveDirection.x);
             anim.SetFloat("Y", moveDirection.y);
 
-            transform.position += moveDirection * player.MoveSpeed * Time.deltaTime;
+            transform.position += moveDirection * player.MoveSpeed * Time.unscaledDeltaTime;
 
             lastDirection = moveDirection;  //마지막 보고있는 방향 저장
         }
@@ -92,7 +92,7 @@ public class PlayerController_ : MonoBehaviour
     void OnSkill4()
     {
         //4번째 스킬 사용
-        player.playerPassiveSkills[0].OnActive();
+        player.playerActiveSkills[3].OnActive();
     }
     void OnSkill5()
     {

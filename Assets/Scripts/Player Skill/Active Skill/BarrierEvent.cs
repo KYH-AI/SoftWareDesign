@@ -16,5 +16,13 @@ public class BarrierEvent : MonoBehaviour
     {
         barrier.BarrierAnimator.SetTrigger("OnAcitveBarrier");
     }
+
+    private void OnTriggerEnter2D(Collider2D target)
+    {
+        if(target.CompareTag(Define.StringTag.Enemy.ToString()))
+        {
+            target.GetComponent<Enemy>().TakeDamage(barrier.SkillDamage);
+        }
+    }
 }
 

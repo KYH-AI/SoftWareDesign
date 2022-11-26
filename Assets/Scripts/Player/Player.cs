@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class Player : LivingEntity
 {
-    int testint;
-    
     /* 변수 */
 
     #region 플레이어 머티리얼 변수
@@ -60,6 +58,8 @@ public class Player : LivingEntity
         print("플레이어 기본 공격력 : " + DefaultAttackDamage);
         #region 스킬 테스트 중 (김윤호)
         /* 테스트 용도 */
+
+
         GameObject skillObject3 = Managers.Resource.GetPerfabGameObject("Player_Skill/FlameStrike Skill");
         ActiveSkill fpSkill = Instantiate(skillObject3, this.transform).GetComponent<ActiveSkill>();
         fpSkill.Init(this);
@@ -75,10 +75,20 @@ public class Player : LivingEntity
         tdSkill.Init(this);
         playerActiveSkills.Add(2, tdSkill);
 
+        GameObject barrierSkill = Managers.Resource.GetPerfabGameObject("Player_Skill/Barrier Skill");
+        ActiveSkill skill = Instantiate(barrierSkill, this.transform).GetComponent<ActiveSkill>();
+        skill.Init(this);
+        playerActiveSkills.Add(3, skill);
+
+        GameObject windSlashSkill = Managers.Resource.GetPerfabGameObject("Player_Skill/WindDash Skill");
+        ActiveSkill wdskill = Instantiate(windSlashSkill, this.transform).GetComponent<ActiveSkill>();
+        wdskill.Init(this);
+        playerActiveSkills.Add(4, wdskill);
+
         GameObject skillObject0 = Managers.Resource.GetPerfabGameObject("Player_Skill/HourGlass Skill");
         PassiveSkill ttSkill = Instantiate(skillObject0, this.transform).GetComponent<PassiveSkill>();
         ttSkill.Init(this);
-        playerPassiveSkills.Add(0, ttSkill);
+        ttSkill.OnActive();
 
         GameObject cowardSkill = Managers.Resource.GetPerfabGameObject("Player_Skill/Coward Skill");
         PassiveSkill mvSkill = Instantiate(cowardSkill, this.transform).GetComponent<PassiveSkill>();
@@ -95,6 +105,14 @@ public class Player : LivingEntity
         damageSkill.Init(this);
         damageSkill.OnActive();
 
+        GameObject droneSkill = Managers.Resource.GetPerfabGameObject("Player_Skill/Drone Skill");
+        PassiveSkill drSkill = Instantiate(droneSkill, this.transform).GetComponent<PassiveSkill>();
+        drSkill.Init(this);
+        drSkill.OnActive();
+
+
+
+
         #endregion
     }
 
@@ -107,7 +125,6 @@ public class Player : LivingEntity
         playerController = GetComponent<PlayerController_>();
         spriteRenderer = GetComponent<SpriteRenderer>();    
         playerController.PlayerControllerInit(this);
-        TakeDamage(12);
     }
     #endregion
 
@@ -116,16 +133,19 @@ public class Player : LivingEntity
     {
         base.TakeDamage(newDamage);
 
+        print("플레이어가 데미지 받음 " + newDamage);
+
         HitEvent?.Invoke(); // 피격 시 관련된 패시브 기술만 호출함
         StartCoroutine(SwitchMaterial()); // 피격 시 플레이어 색상 변경 코루틴
 
 
         GameObject floatingText = MemoryPoolManager.GetInstance().OutputGameObject
-            (Managers.Resource.GetPerfabGameObject("UI/FloatingDamageText")
+            (Managers.Resource.GetPerfabGameObject("UI/DamageText")
             ,Define.PrefabType.UI
             ,new Vector3(transform.position.x, transform.position.y)
             ,Quaternion.identity);
 
+        floatingText.GetComponent<FloatingText>().DamageText = newDamage.ToString();
         floatingText.SetActive(true);
                                                         
         // TODO : Player UI 체력 게이지 감소
