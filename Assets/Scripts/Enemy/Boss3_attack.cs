@@ -13,7 +13,6 @@ public class Boss3_attack : MonoBehaviour
     {
         if (collision.CompareTag(Define.StringTag.Player.ToString()))
         {
-            print("보스가 데미지줌!");
             collision.GetComponent<Player>().TakeDamage(boss3.DefaultAttackDamage);
         }
     }

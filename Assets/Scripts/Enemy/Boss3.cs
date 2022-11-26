@@ -14,7 +14,6 @@ public class Boss3 : Enemy
     };
     Vector2 dir;
     BossState state = BossState.IDLE_STATE;
-    float distance;
     bool isIdle = true;
     bool isTelpo = false;
     bool isAttack1 = false;
@@ -29,7 +28,6 @@ public class Boss3 : Enemy
     void Update()
     {
         dir = (playerTarget.transform.position - transform.position);
-        distance = dir.magnitude;
         Fsm();
     }
 

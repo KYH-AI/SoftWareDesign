@@ -15,7 +15,6 @@ public class Boss4 : Enemy
     float distance;
     float moveDistance = 15f;
     float attackDistance = 2.5f;
-    float moveSpeed = 4f;
     float attackDelay = 2f;
     Vector2 dir;
     BossState state = BossState.IDLE_STATE;
@@ -36,7 +35,7 @@ public class Boss4 : Enemy
         {
             ChangeDir();
         }
-        distance = dir.magnitude;  //Vector2.Distance(transform.position, playerTarget.transform.position);
+       distance = dir.magnitude; 
         Fsm();
        // print(attackCnt);
     }
@@ -86,7 +85,7 @@ public class Boss4 : Enemy
     {
         if (!isHurt)
         {
-            transform.position = Vector2.MoveTowards(transform.position, playerTarget.transform.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, playerTarget.transform.position, MoveSpeed * Time.deltaTime);
         }
 
         EnemyAnimator.SetBool("isRun", true);
