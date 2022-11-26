@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class BasicAttack : BasicMonsterController
 {
+    public float attackRadius;
     protected override void Attack()
     {
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         if (base.coolTime < 0)
         {
             base.EnemyAnimator.SetTrigger("Attack");
@@ -23,10 +23,11 @@ public class BasicAttack : BasicMonsterController
 
     void AttackPlayer()
     {
-        Collider2D c = GetComponent<Collider2D>();
-        if (c.gameObject.CompareTag(Define.StringTag.Player.ToString())){
+        if(Physics2D.OverlapCircle(this.transform.position, attackRadius, 1<<10))
+        {
             base.DefaultAttack();
         }
+
     }
 }
 

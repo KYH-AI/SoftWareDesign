@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class CrabAttack : BasicMonsterController
 {
+    float crabAttackRadius = 0.8f;
     public GameObject bomb1;
     public GameObject bomb2;
     public GameObject bomb3;
@@ -30,8 +31,8 @@ public class CrabAttack : BasicMonsterController
     {
         bomb1.transform.position = transform.position + new Vector3(0, (float)0.1, 0);
         bomb2.transform.position = transform.position + new Vector3(0, (float)-0.3, 0);
-        bomb3.transform.position = transform.position + new Vector3((float)0.2, 0, 0);
-        bomb4.transform.position = transform.position + new Vector3((float)-0.2, 0, 0);
+        bomb3.transform.position = transform.position + new Vector3((float)0.2, (float)0.1, 0);
+        bomb4.transform.position = transform.position + new Vector3((float)-0.2, (float)0.1, 0);
         bomb5.transform.position = transform.position + new Vector3((float)0.2, (float)-0.2, 0);
         bomb6.transform.position = transform.position + new Vector3((float)-0.2, (float)-0.2, 0);
 
@@ -41,6 +42,17 @@ public class CrabAttack : BasicMonsterController
         bomb4.SetActive(true);
         bomb5.SetActive(true);
         bomb6.SetActive(true);
+
+
         yield return new WaitForSeconds(4.0f);
+    }
+
+    void AttackPlayer()
+    {
+        if (Physics2D.OverlapCircle(this.transform.position, crabAttackRadius, 1<<10) == true)
+        {
+            base.DefaultAttack();
+        }
+
     }
 }
