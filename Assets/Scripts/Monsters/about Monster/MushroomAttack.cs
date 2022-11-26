@@ -32,7 +32,7 @@ public class MushroomAttack : BasicMonsterController
     {
         transform.position = bombPosition;
         this.transform.localScale = (new Vector3(10, 10, 0));
-        mushroomRenderer.color = new Color(45/255f, 100/255f, 65/255f, 200/255f);
+        mushroomRenderer.color = new Color(100/255f, 55/255f, 140/255f, 220/255f);
 
 
 
@@ -45,7 +45,7 @@ public class MushroomAttack : BasicMonsterController
         }
         yield return new WaitForSeconds(2.0f);
 
-        if (time >= 40)
+        if (time >= 5)
         {
             
             this.transform.localScale = (new Vector3(4, 4, 0));

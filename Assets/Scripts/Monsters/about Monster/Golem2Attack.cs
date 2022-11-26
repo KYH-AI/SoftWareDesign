@@ -9,7 +9,7 @@ public class Golem2Attack : BasicMonsterController
     public GameObject beam;
     public Sprite laser;
     public Sprite square;
-    float attackTime = 4.0f, warningTime = 4.0f;
+    float attackTime = 2.0f, warningTime = 4.0f;
     SpriteRenderer beamRenderer;
     public Collider2D beamCollider;
     Vector3 dir;

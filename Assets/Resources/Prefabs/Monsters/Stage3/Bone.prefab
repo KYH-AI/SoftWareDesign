@@ -340,7 +340,7 @@ MonoBehaviour:
   DamageInform: {fileID: 887296638}
   state: 0
   coolTime: -1
-  skillTime: 3
+  skillTime: 4
   minKillCount: 0
   maxKillCount: 0
   Prefab: {fileID: 2717129123398836081, guid: 0a087cf8f5d04cc40a1741525efa102f, type: 3}
