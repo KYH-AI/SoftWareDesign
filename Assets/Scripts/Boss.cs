@@ -2,35 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
 
 
 public class Boss : Enemy
 {
-    float tetsetsetstsetstsete;
+
 
     #region 보스 관련 변수 선언
     BossFSM bossFSM;            //보스의 행동을 제어하는 BossFSM 클래스로 접근하는 변수
     [SerializeField] [Range(0f, 50f)] float contactDistance;    //보스의 사정거리 초기값 10
     private float scaleX;       //보스의 scaleX값
-    [SerializeField] GameObject bossProjectileSkull;
-    [SerializeField] GameObject bossProjectileRuinStk;
-    [SerializeField] GameObject bossProjectileDarkHeal;
-    [SerializeField] GameObject bossProjectileDarkHealFailed;
-    readonly float BOSS_DEFAULT_ATTACK_SPEED = 1.5f;
+    [SerializeField] GameObject finalBossSkull;
+    [SerializeField] GameObject finalBossRuinStk;
+    [SerializeField] GameObject finalBossDarkHeal;
+    [SerializeField] GameObject finalBossDarkHealFailed;
+    [SerializeField] GameObject finalBossBindEye;
+    [SerializeField] GameObject finalBossBindVineFail;
+    [SerializeField] GameObject finalBossBindVineSucess;
+
     readonly float BOSS_PROJECTILE_SKULL_SPEED = 10f;
     readonly float BOSS_PATTERN_DARK_HEAL_COUNT = 30f;
     readonly int BOSS_TEMP_HP = 300;
 
     GameObject darkHealA;
     GameObject darkHealB;
+    GameObject bindEye;
+    GameObject bindVineSucess;
+    GameObject bindVineFail;
+
+
+
+    [SerializeField] GameObject[] keyListObject;
+    GameObject[] iconDestroy = new GameObject[6];
+    GameObject[] qteGameObjectArray = new GameObject[6];
+    char[] qteCharArray = new char[6];
+
+    List<char> inputList = new List<char>(); 
+
+    private float x = -6f;
+
 
     private float bossHpPercentage;
     private int ruinStrikeQty;
     Rigidbody2D boss;
     Animator boss_ani;
     private bool patternCheck = false;      // == isgod. true이면 무적임. 
-    private float patternCheckTimer=0.0f;     //경과시간 
+    private bool qteCheck = true;
+    private float patternCheckTimer = 0.0f;     //경과시간 
     private float darkHealCheckTimer = 0.0f;
+    private float bindCheckTimer = 0.0f;
     private int darkHealTempHp;
     #endregion
 
@@ -39,14 +61,15 @@ public class Boss : Enemy
     Transform target;
     private Vector2 dir;
     #endregion
-  
+
 
     [SerializeField] Material originalMaterial;
     [SerializeField] Material hurtMaterial;
     SpriteRenderer bossSpriteRenderer;
+
     void Start()
     {
-        
+
         base.Start();
         bossFSM = new BossFSM(this);
         scaleX = transform.localScale.x;
@@ -55,27 +78,30 @@ public class Boss : Enemy
         boss = GetComponent<Rigidbody2D>();
         bossSpriteRenderer = GetComponent<SpriteRenderer>();
         darkHealTempHp = BOSS_TEMP_HP;
+
+        RunBind();
+
     }
 
     void Update()
     {
-    
+
         SwitchSpriteImageDir(transform);
-        if(bossFSM != null) bossFSM.Update();
+        if (bossFSM != null) bossFSM.Update();
         if (bossFSM.bossState != Define.BossState.CASTING_STATE)
         {
             patternCheckTimer += Time.deltaTime;
         }
-  
 
-        if(patternCheckTimer > BOSS_PATTERN_DARK_HEAL_COUNT)
+
+        if (patternCheckTimer > BOSS_PATTERN_DARK_HEAL_COUNT)
         {
-            Debug.Log(patternCheckTimer+"초");
+            Debug.Log(patternCheckTimer + "초");
             bossFSM.bossState = Define.BossState.PATTERN_DARKHEAL_STATE;
             patternCheckTimer = 0;
 
         }
-        
+
     }
 
     #region 보스 이동 관련 함수
@@ -87,7 +113,7 @@ public class Boss : Enemy
 
         if (Vector2.Distance(transform.position, target.position) > contactDistance)
         {
-            print(MoveSpeed);
+
             transform.position = Vector2.MoveTowards(transform.position, target.position, MoveSpeed * Time.deltaTime);
             dir = (player.transform.position - transform.position).normalized;
 
@@ -117,7 +143,7 @@ public class Boss : Enemy
     }
     #endregion
 
-    #region 보스 공격, 패턴 함수
+    #region 보스 기본 스테이트, 패턴 시작 함수들
 
     /// <summary>
     /// 보스의 공격사정거리에 따라 플레이어를 공격하거나 MOVE_STATE를 실행시키는 함수
@@ -142,7 +168,7 @@ public class Boss : Enemy
     private void CreateBossProjectileSkull()
     {
         dir = (player.transform.position - transform.position).normalized;
-        GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(bossProjectileSkull,
+        GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(finalBossSkull,
                                                                                 Define.PrefabType.Boss_Skill,
                                                                                 transform.position,
                                                                                 Quaternion.identity);
@@ -154,14 +180,14 @@ public class Boss : Enemy
     /// 이동 중 공격 받을 시 피격효과를 실행시키는 함수
     /// </summary>
     public override sealed void TakeDamage(int newDamage)
-    { 
-        if(patternCheck)
+    {
+        if (patternCheck)
         {
             return;
         }
-        if(bossFSM.runDarkHeal)       //CASTING 상태 일 때 
+        if (bossFSM.runDarkHeal)       //CASTING 상태 일 때 
         {
-            Debug.Log("임시체력 생성 조건문 들어옴"); 
+            Debug.Log("임시체력 생성 조건문 들어옴");
             darkHealTempHp -= newDamage;
             StartCoroutine(SwitchMaterial());
             return;
@@ -186,7 +212,7 @@ public class Boss : Enemy
     protected override void OnDead()
     {
         bossFSM.bossState = Define.BossState.DEAD_STATE;
-        SetAnimationTrigger("RunDead"); 
+        SetAnimationTrigger("RunDead");
         //모든 애니메이션과 스테이트 정리, 오브젝트 파괴가 이루어지면 UI를 호출함 
     }
     private void Die()
@@ -212,19 +238,24 @@ public class Boss : Enemy
         else if (((hpPercentage <= 40f) && (hpPercentage >= 20f)))
         {
             bossFSM.bossState = Define.BossState.PATTERN_RUINSTK_STATE;
-            ruinStrikeQty = 4;
+            ruinStrikeQty = 6;
             //SetAnimationTrigger("RunRuinStk");
         }
         else if (((hpPercentage <= 20f) && (hpPercentage >= 6f)))
         {
             bossFSM.bossState = Define.BossState.PATTERN_RUINSTK_STATE;
-            ruinStrikeQty = 6;
+            ruinStrikeQty = 9;
             //SetAnimationTrigger("RunRuinStk");
+        }
+        else if ((hpPercentage <= 15f) && (hpPercentage >= 1f))
+        {
+            bossFSM.bossState = Define.BossState.PATTERN_BIND_STATE;
+            //SetAnimationTrigger("RunBindMotion");
         }
         else if (((hpPercentage <= 5f) && (hpPercentage >= 1f)))
         {
             bossFSM.bossState = Define.BossState.PATTERN_RUINSTK_STATE;
-            ruinStrikeQty = 9;
+            ruinStrikeQty = 12;
             //SetAnimationTrigger("RunRuinStk");
         }
         else
@@ -232,7 +263,7 @@ public class Boss : Enemy
             return;
         }
     }
-
+    #endregion
 
 
     #region 다크 힐 패턴 관련 함수들
@@ -247,40 +278,32 @@ public class Boss : Enemy
         print("DarkHeal시작함");
         boss.velocity = Vector2.zero;
         SetAnimationTrigger("RunDarkHealMotion");
-        
+
         bossFSM.bossState = Define.BossState.CASTING_STATE;
-        Debug.Log(bossFSM.bossState);
         RunDarkHeal();
-        
-       // print(darkHeal);
-        
+
     }
- 
+
     public void RunDarkHeal()
     {
         StartCoroutine(DarkHealProcess());
     }
     IEnumerator DarkHealProcess()
     {
-        
-        darkHealA= CreateDarkHealAnimation(bossProjectileDarkHeal);
-        print(Hp+"while전");
-        print("다크힐 코루틴");
+        darkHealA = CreateSimpleAnimation(finalBossDarkHeal, this.gameObject, 0, 3);
+
         while (true)
         {
-            
-            print(darkHealCheckTimer);
             if (darkHealCheckTimer >= 7.0f && darkHealTempHp > 0)          //시간 카운터가 8초가 지나고 1,000 데미지 이하로 받았을 때
             {
                 Hp += MaxHp * 15 / 100;     //전체값의 15%만큼 증가
-                print(Hp+"증가");
+                print(Hp + "증가된값");
                 break;
             }
             else if (darkHealCheckTimer < 7.0f && darkHealTempHp <= 0)     //시간 카운터가 8초가 지나지 않고 1,000데미지 이상으로 받았을 때
             {
-                print("실패 조건들어옴");
-                darkHealB = CreateDarkHealAnimation(bossProjectileDarkHealFailed);
-//                Destroy(darkHealB);
+                print("보호막 파괴됨");
+                darkHealB = CreateSimpleAnimation(finalBossDarkHealFailed, this.gameObject, 0, 3);
                 break;
             }
             yield return new WaitForSeconds(1.0f);
@@ -289,22 +312,12 @@ public class Boss : Enemy
 
         Destroy(darkHealA);
         if (darkHealB != null) Destroy(darkHealB, 1.0f);
-       
         darkHealTempHp = BOSS_TEMP_HP;
-        bossFSM.runDarkHeal = false; 
+        bossFSM.runDarkHeal = false;
         PatternReset();
 
-
     }
- private GameObject CreateDarkHealAnimation(GameObject objname)
-    {
-        GameObject projectile = Instantiate(objname,
-                                            new Vector2(transform.position.x, transform.position.y + 3),
-                                            Quaternion.identity);
-        projectile.SetActive(true);
 
-        return projectile;
-    }
 
     #endregion
 
@@ -316,7 +329,7 @@ public class Boss : Enemy
     /// </summary>
     public void Pattern_RuinStk()
     {
-        print("패턴 시작");
+        print("루인스트라이크");
         boss.velocity = Vector2.zero;
         SetBossGodMode();
         RunRuinStk();
@@ -336,15 +349,16 @@ public class Boss : Enemy
         {
             SetAnimationTrigger("RunRuinStk");
             print(i + "번 발사");
-            yield return new WaitForSeconds(0.8f); 
+            yield return new WaitForSeconds(0.8f);
         }
+        SetBossGodMode();
         PatternReset();
     }
 
-    // 투사체를 반복문으로 만들지 말고 함수를 따로 빼자. 어케하노..ㅠ 
+    
     private void CreateBossProjectileRuinStk()
     {
-        GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(bossProjectileRuinStk,
+        GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(finalBossRuinStk,
                                                                                 Define.PrefabType.Boss_Skill,
                                                                                 new Vector2(transform.position.x + Random.Range(-4f, 4f), transform.position.y + Random.Range(-4f, 4f)),
                                                                                 Quaternion.identity);
@@ -364,20 +378,100 @@ public class Boss : Enemy
         SetAnimationTrigger("RunSumnSkeleton");
         PatternReset();
     }
+
+    #region 바인드 패턴 관련 함수들
     /// <summary>
     /// 패턴 바인드 실행 함수
     /// 체력 70%, 15%가 되었을 때 실행됨. 
+    /// 4초 동안 7개의 커맨드를 쳐야 됨. 
     /// Quick Time Event가 동시에 실행되며 이를 실패하면 5초 속박. 
     /// </summary>
     public void Pattern_Bind()
     {
+        print("바인드 패턴 시작함");
+        boss.velocity = Vector2.zero;
+        //플레이어 침묵 상태 되야됨. managers.stagemanager.etc
         SetAnimationTrigger("RunBindMotion");
-        PatternReset();
+        SetBossGodMode();
+        bossFSM.bossState = Define.BossState.CASTING_STATE;
+        RunBind();
     }
+    public void RunBind()
+    {
+        StartCoroutine(BindProcess());
+    }
+    IEnumerator BindProcess()
+    {
+        bindEye = CreateSimpleAnimation(finalBossBindEye, player, 0, 3);
+        Destroy(bindEye, 2.0f);
+        for (int i = 0; i < keyListObject.Length; i++)
+        {
+            qteGameObjectArray[i] = keyListObject[Random.Range(0, 6)];
+            iconDestroy[i] = CreateSimpleAnimation(qteGameObjectArray[i], player, x, 6);
+            x += 2.5f;
 
+            switch (qteGameObjectArray[i].name)         //게임오브젝트 배열에 랜덤으로 저장된 프리팹을 CHAR형 배열로 파싱하는 스위치문
+            {
+                case "BossIconA":
+                    qteCharArray[i] = 'A'; break;
+                case "BossIconS":
+                    qteCharArray[i] = 'S'; break;
+                case "BossIconD":
+                    qteCharArray[i] = 'D'; break;
+                case "BossIconZ":
+                    qteCharArray[i] = 'Z'; break;
+                case "BossIconX":
+                    qteCharArray[i] = 'X'; break;
+                case "BossIconC":
+                    qteCharArray[i] = 'C'; break;
+            }
+        }
+            yield return new WaitForSeconds(6.0f);
+        if (inputList[0].Equals(null)) qteCheck = false;
+            for (int num = 0; num < 6; num++)
+            {
+                if (qteCharArray[num] != inputList[num])
+                {
+                    qteCheck = false;
+                    break;
+                }else if(inputList[num].Equals(null))
+                {
+                    qteCheck = false;
+                }
+                qteCheck = true;
+            }
+    
+        
+
+        if (qteCheck == false)          //5초가 지나고 qte에 실패하면 
+        {
+            print("속박이 시작됨");
+            bindVineFail = CreateSimpleAnimation(finalBossBindVineFail, player, 0, 1f);
+            //managers.statemanager.etc  플레이어 5초 동안
+                
+        }
+        else if (qteCheck == true)     //5초가 지나지 않았고 qte에 성공했으면 
+        {
+            print("속박이 파괴됨");
+            bindVineSucess = CreateSimpleAnimation(finalBossBindVineSucess, player, 0, 1f); 
+            //managers.stagemanager.etc 를 활성화 시켜줌 
+               
+        }
+
+        for (int k = 0; k < keyListObject.Length; k++)  //생성된 오브젝트 삭제 
+        {
+            Destroy(iconDestroy[k]);
+        }
+            
+        if (bindVineSucess != null) Destroy(bindVineSucess, 1.0f);
+        if (bindVineFail != null) Destroy(bindVineFail, 5.0f);
+            SetBossGodMode();
+            PatternReset();                                 //패턴리셋
+            
+    }
     #endregion
 
-    #region 애니메이션 관련 함수
+    #region 애니메이션 관련 함수들
     /// <summary>
     /// 매개변수로 받는 스트링의 값에 따라 미리 설정된 애니메이션을 실행시키는 함수
     /// </summary>
@@ -396,16 +490,62 @@ public class Boss : Enemy
     }
     /// <summary>
     /// 패턴 마지막에 보스의 스테이트와 패턴체크 타이머를 초기화 시켜주는 함수
-    /// </summary>ㅠ
+    /// </summary>
     public void PatternReset()
     {
         darkHealCheckTimer = 0;
+        bindCheckTimer = 0;
+        qteCheck = true;
         bossFSM.bossState = Define.BossState.MOVE_STATE;
+    }
+    /// <summary>
+    /// 단순히 실행시키기만 하면 되는 애니메이션을 실행할 때 사용하는 함수
+    /// </summary>
+    /// <param name="runAnim"></param>        실행시킬 프리팹 애니메이션
+    /// <param name="target"></param>         실행 기준이 될 오브젝트. 보스 사용시 this.gameObject를 사용하면 됨. 
+    /// <param name="distanceX"></param>      애니메이션이 실행될 x좌표
+    /// <param name="distanceY"></param>      애니메이션이 실행될 y좌표
+    /// <returns></returns>
+    private GameObject CreateSimpleAnimation(GameObject runAnim, GameObject target, float distanceX, float distanceY)
+    {
+        GameObject projectile = Instantiate(runAnim,
+                                            new Vector2(target.transform.position.x + distanceX, target.transform.position.y + distanceY),
+                                            Quaternion.identity);
+
+        projectile.SetActive(true);
+
+        return projectile;
     }
 
     #endregion
 
-
+    #region 플레이어 인풋 액션 함수 모음
+    void OnNodeA()
+    {
+        print("A누름");
+        inputList.Add('A');
+    }
+    void OnNodeS()
+    {
+        inputList.Add('S');
+    }
+    void OnNodeD()
+    {
+        inputList.Add('D');
+    }
+    void OnNodeZ()
+    {
+        inputList.Add('Z');
+    }
+    void OnNodeX()
+    {
+        inputList.Add('X');
+    }
+    void OnNodeC()
+    {
+        inputList.Add('C');
+    }
+    #endregion
 
 
 
