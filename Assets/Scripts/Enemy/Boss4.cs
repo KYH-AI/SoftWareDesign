@@ -19,7 +19,6 @@ public class Boss4 : Enemy
     Vector2 dir;
     BossState state = BossState.IDLE_STATE;
     bool isAttack = true;
-    bool onTrigger = true;
     bool isHurt = false;
     int attackCnt = 0;
     bool isFadeout = true;
@@ -150,8 +149,7 @@ public class Boss4 : Enemy
        // yield return new WaitForSeconds(0.1f);//0.2초 동안 idle
         EnemyAnimator.SetBool("isAttack", true);
         
-        yield return new WaitForSeconds(attackDelay);//공격 딜레이
-        onTrigger = true;
+        yield return new WaitForSeconds(attackDelay);//공격 딜레이 
         isAttack = true;
     }
     void AttackToIdle()//attack애니메이션 마지막에 넣음
@@ -165,9 +163,9 @@ public class Boss4 : Enemy
     {
         if(attackCnt == 2)
         {
+            state = BossState.HIDE_STATE;
             yield return new WaitForSeconds(0.8f);
             isFadeout = true;
-            state = BossState.HIDE_STATE;
             attackCnt = 0;
         }
         else
@@ -205,6 +203,7 @@ public class Boss4 : Enemy
     }
     IEnumerator FadeOut()
     {
+        gameObject.tag = "Untagged";
         while (SpriteRenderer.color.a > 0)
         {
             var color = SpriteRenderer.color;
@@ -218,7 +217,6 @@ public class Boss4 : Enemy
             //wait for a frame
             yield return null;
         }
-        gameObject.tag = "dontDamaged";
         isHide = true;
         yield return new WaitForSeconds(2f);
         StartCoroutine(FadeIn());

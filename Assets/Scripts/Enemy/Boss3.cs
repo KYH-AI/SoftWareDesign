@@ -183,7 +183,6 @@ public class Boss3 : Enemy
     {
         state = BossState.Dead_STATE;
         base.OnDead();
-        EnemyCollider.isTrigger = true;
         EnemyAnimator.SetTrigger("isDie");
     }
 

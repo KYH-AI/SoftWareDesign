@@ -23,6 +23,8 @@ public class Boss1 : Enemy
     int skillSpeed = 20;
     [SerializeField] GameObject FireBall;
     [SerializeField] Transform FireBallTransform;
+    [SerializeField] Material HitEffectMaterial;     // 피격 시 머티리얼
+    [SerializeField] Material orignalMaterial;
     void Update()
     {
         attackDir= (playerTarget.transform.position - FireBallTransform.position);
@@ -122,6 +124,14 @@ public class Boss1 : Enemy
     {
         base.TakeDamage(newDamage);
         EnemyAnimator.SetBool("isHit", true);
+        StartCoroutine(SwitchMaterial());
+    }
+
+    private IEnumerator SwitchMaterial()
+    {
+        SpriteRenderer.material = HitEffectMaterial;
+        yield return new WaitForSeconds(0.1f);
+        SpriteRenderer.material = orignalMaterial;
     }
     private void HurtToIdle()
     {

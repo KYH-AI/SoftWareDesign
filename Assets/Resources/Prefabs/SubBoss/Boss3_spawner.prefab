@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7776066480352017541}
   - component: {fileID: 5376053690456208681}
   m_Layer: 0
-  m_Name: Boss_spawner
+  m_Name: Boss3_spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7776066480352017540}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c10b3ff358dc0b4eb1335f17a4ab787, type: 3}
+  m_Script: {fileID: 11500000, guid: dc7424c8305171b44989035ea68c644d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Boss3: {fileID: 0}
+  Boss3: {fileID: 5241715925923550975, guid: b3924768bdb5af64b9bc5ef440042fd9, type: 3}

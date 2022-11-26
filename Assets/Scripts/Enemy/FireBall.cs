@@ -6,7 +6,7 @@ public class FireBall : Projectile
 {
     private Animator Animator;
     private Rigidbody2D Rigidbody;
-    float BombDelay = 3f;
+    float BombDelay = 1f;
     private void Awake()
     {
         Animator = GetComponent<Animator>();
@@ -20,6 +20,7 @@ public class FireBall : Projectile
     private void OnEnable()
     {
         Rigidbody.velocity = Dir * ProjectileSpeed;
+
     }
     private new void DisableObject()
     {
@@ -35,6 +36,8 @@ public class FireBall : Projectile
     {
         if (target.CompareTag(TargetTag.ToString()))
         {
+            Rigidbody.velocity =Vector2.zero;
+            Animator.SetBool("isBomb", true);
             target.GetComponent<Player>().TakeDamage(ProjectileDamage);
         }
     }
