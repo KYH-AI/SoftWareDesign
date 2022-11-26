@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7013631516640934163, guid: b438465a32eb63243a7889eb1f400d29,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -104,11 +104,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 52be0766f6f082342b85740c8157c7e8, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &6434066338891990763
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -157,12 +157,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: 9f613e728c9387a458528bf06ff721c9, type: 2}
+  playerLayer: 1
   DamageInform: {fileID: 1816526121797266884}
   state: 0
   coolTime: -1
   skillTime: 2
   minKillCount: 0
   maxKillCount: 0
+  attackRadius: 0.7
 --- !u!1 &3703412468685431771
 GameObject:
   m_ObjectHideFlags: 0
