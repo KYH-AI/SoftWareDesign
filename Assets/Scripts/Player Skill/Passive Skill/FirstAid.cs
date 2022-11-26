@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FirstAid : PassiveSkill
 {
+    [SerializeField] GameObject firstAidEffect;
+
     #region 스킬 초기 스텟 데이터
     /// <summary>
     /// 스킬 최대 체력의 회복 퍼센트
@@ -99,6 +101,7 @@ public class FirstAid : PassiveSkill
 
     private IEnumerator FirstAidSkillProcess(float buffDuration, int addHP)
     {
+        firstAidEffect.SetActive(true);
         while(buffDuration > 0)
         {
             print("플레이어 체력 회복 중 (남은시간 : " + buffDuration);
@@ -108,5 +111,6 @@ public class FirstAid : PassiveSkill
         }
 
         OnCoolTime();
+        firstAidEffect.SetActive(false);
     }
 }

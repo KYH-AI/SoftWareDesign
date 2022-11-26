@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 4_Golem2 Stat
   m_EditorClassIdentifier: 
   hp: 5
-  moveSpeed: 1
+  moveSpeed: 0
   armor: 5
   defaultAttackDamage: 2

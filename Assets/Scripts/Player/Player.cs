@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Player : LivingEntity
 {
+
+    [SerializeField] GameObject text;
     /* 변수 */
 
     #region 플레이어 머티리얼 변수
@@ -39,11 +41,14 @@ public class Player : LivingEntity
     public UnityAction DisableBuffEvent;
     #endregion
 
-    #region 플레이어 스킬 정보 변수 선언부
+    #region 플레이어 스킬 활성화 변수
     public Dictionary<int, ActiveSkill> playerActiveSkills = new Dictionary<int, ActiveSkill>();
     public Dictionary<int, PassiveSkill> playerPassiveSkills = new Dictionary<int, PassiveSkill>();
     #endregion
 
+    #region 상점에서 사용하는 스킬종류 변수
+    public Dictionary<int, PlayerSkill> skillList = new Dictionary<int, PlayerSkill>();
+    #endregion
 
     /* 함수 */
 
@@ -102,6 +107,7 @@ public class Player : LivingEntity
         playerController = GetComponent<PlayerController_>();
         spriteRenderer = GetComponent<SpriteRenderer>();    
         playerController.PlayerControllerInit(this);
+        TakeDamage(12);
     }
     #endregion
 
@@ -113,6 +119,14 @@ public class Player : LivingEntity
         HitEvent?.Invoke(); // 피격 시 관련된 패시브 기술만 호출함
         StartCoroutine(SwitchMaterial()); // 피격 시 플레이어 색상 변경 코루틴
 
+
+        GameObject floatingText = MemoryPoolManager.GetInstance().OutputGameObject(text
+            ,Define.PrefabType.UI
+            ,new Vector3(transform.position.x, transform.position.y)
+            ,Quaternion.identity);
+
+        floatingText.SetActive(true);
+                                                        
         // TODO : Player UI 체력 게이지 감소
         // TODO : 피격 효과음 재생
     }
@@ -135,14 +149,5 @@ public class Player : LivingEntity
     }
     #endregion
 
-    #region 플레이어 기본 공격 히트박스
-    private void OnTriggerEnter2D(Collider2D target)
-    {
-        if(target.CompareTag(Define.StringTag.Enemy.ToString()))
-        {
-            print(target.name+" 에게 " + DefaultAttackDamage + " 부여 ");
-            target.GetComponent<Enemy>().TakeDamage(DefaultAttackDamage);
-        }
-    }
-    #endregion
+
 }
