@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5466608206491513305}
   - component: {fileID: 5466608206491513306}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: StageManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
