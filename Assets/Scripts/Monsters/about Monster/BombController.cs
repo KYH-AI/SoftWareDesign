@@ -25,19 +25,19 @@ public class BombController : MonoBehaviour
          if (time >= 0.8f)
          {
             time = 0;
-            anim.SetTrigger("bomb");
-            anim.SetTrigger("back");
             StartCoroutine(Bomb());
-         }
+            gameObject.SetActive(false);
+        }
     }
 
     IEnumerator Bomb()
     {
+        anim.SetTrigger("bomb");
         Collider2D target = Physics2D.OverlapCircle(this.transform.position, bombAttackRadius, 1<<10);
         if(target!=null)
             target.gameObject.GetComponent<Player>().TakeDamage(damage);
 
-        yield return new WaitForSeconds(0.4f);
-        gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.6f);
+        anim.SetTrigger("back");
     }
 }

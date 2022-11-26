@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -4795363162621231457, guid: 6d7cd4f7505dc674c891ca8946cfd98b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -156,10 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: d877644bfd2ad5e48852974827422947, type: 2}
-  playerLayer: 1024
   state: 0
   coolTime: -1
   skillTime: 2
   minKillCount: 0
   maxKillCount: 0
-  attackRadius: 0
+  attackRadius: 0.6

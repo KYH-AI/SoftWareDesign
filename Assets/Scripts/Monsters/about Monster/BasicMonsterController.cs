@@ -7,7 +7,6 @@ using UnityEngine.AI;
 public abstract class BasicMonsterController : Enemy
 {
     float radius = 0.2f;   
-    public int playerLayer = 1<<10;
     //public GameObject coinPrephab;
     public enum State
     {
@@ -35,7 +34,7 @@ public abstract class BasicMonsterController : Enemy
     {
         if (state == State.Run) Run();
         if (state == State.Attack) Attack();
-        if (state == State.Die) OnDead();
+        //if (state == State.Die) OnDead();
     }
 
     //달리기
@@ -71,6 +70,17 @@ public abstract class BasicMonsterController : Enemy
     public override sealed void TakeDamage(int newDamage)
     {
         base.TakeDamage(newDamage);
+
+        //Damage text
+        GameObject floatingText = MemoryPoolManager.GetInstance().OutputGameObject
+            (Managers.Resource.GetPerfabGameObject("UI/FloatingDamageText")
+            , Define.PrefabType.UI
+            , new Vector3(transform.position.x, transform.position.y)
+            , Quaternion.identity);
+
+        floatingText.SetActive(true);
+
+        base.EnemyAnimator.SetTrigger("Damage");
         StartCoroutine(DamageProcess());
         if (base.Hp <= 0)
         {
@@ -92,6 +102,7 @@ public abstract class BasicMonsterController : Enemy
 
     IEnumerator DamageProcess()
     {
+
         yield return new WaitForSeconds(1.0f);
     }
 
@@ -101,13 +112,13 @@ public abstract class BasicMonsterController : Enemy
     protected override sealed void OnDead()
     {
         base.OnDead();
-     
+        EnemyRigidbody.velocity = Vector2.zero;
         base.EnemyAnimator.SetTrigger("Die");
         StartCoroutine(DieProcess());
     }
     IEnumerator DieProcess()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
 
         int killCount = Random.Range(minKillCount, maxKillCount);
 
@@ -115,5 +126,11 @@ public abstract class BasicMonsterController : Enemy
         //캐릭터 정보에 킬카운트 넘겨주기
 
         gameObject.SetActive(false);
+
     }
+
+   /* private void OnDisable()
+    {
+        MemoryPoolManager.GetInstance().InputGameObject(gameObject);
+    }*/
 }
