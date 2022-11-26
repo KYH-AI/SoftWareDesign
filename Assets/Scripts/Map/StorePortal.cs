@@ -42,16 +42,16 @@ public class StorePortal : MonoBehaviour
        // inPortal = false;
         switch (StageManager.GetInstance().stage)
         {
-            case Define.Stage.TWO:
+            case Define.Stage.STAGE2:
                 SceneManager.LoadScene("Stage2");
                 break;
-            case Define.Stage.THREE:
+            case Define.Stage.STAGE3:
                 SceneManager.LoadScene("Stage3");
                 break;
-            case Define.Stage.FOUR:
+            case Define.Stage.STAGE4:
                 SceneManager.LoadScene("Stage4");
                 break;
-            case Define.Stage.FIVE:
+            case Define.Stage.STAGE1:
                 SceneManager.LoadScene("Stage5");
                 break;
 

@@ -20,10 +20,10 @@ public class UI_Settings : UI_Base
 
     void OnClosePopup(PointerEventData data)
     {
-        Managers.UI.ClosePopUpUI(settingWindow);
+        //Managers.UI.ClosePopUpUI(settingWindow);
     }
     void OnStoreSettings(PointerEventData data)
     {
-        Managers.UI.ClosePopUpUI(settingWindow);
+        //Managers.UI.ClosePopUpUI(settingWindow);
     }
 }

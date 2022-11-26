@@ -72,21 +72,21 @@ public class Portal : MonoBehaviour
     {
         switch (StageManager.GetInstance().stage)
         {
-            case Define.Stage.ONE:
-                StageManager.GetInstance().stage = Define.Stage.TWO;
-                print("stage2상태");
-                break;
-            case Define.Stage.TWO:
-                StageManager.GetInstance().stage = Define.Stage.THREE;
-                print("stage3상태");
-                break;
-            case Define.Stage.THREE:
-                StageManager.GetInstance().stage = Define.Stage.FOUR;
-                print("stage4상태");
-                break;
-            case Define.Stage.FOUR:
-                StageManager.GetInstance().stage = Define.Stage.FIVE;
-                break;
+            //case Define.Stage.ONE:
+            //    StageManager.GetInstance().stage = Define.Stage.Stage;
+            //    print("stage2상태");
+            //    break;
+            //case Define.Stage.TWO:
+            //    StageManager.GetInstance().stage = Define.Stage.THREE;
+            //    print("stage3상태");
+            //    break;
+            //case Define.Stage.THREE:
+            //    StageManager.GetInstance().stage = Define.Stage.FOUR;
+            //    print("stage4상태");
+            //    break;
+            //case Define.Stage.FOUR:
+            //    StageManager.GetInstance().stage = Define.Stage.FIVE;
+            //    break;
         }
         yield return new WaitForSeconds(1f);
         inPortal = false;
@@ -101,18 +101,18 @@ public class Portal : MonoBehaviour
         inPortal = false;
         switch (StageManager.GetInstance().stage)
         {
-            case Define.Stage.TWO:
-                SceneManager.LoadScene("Stage2");
-                break;
-            case Define.Stage.THREE:
-                SceneManager.LoadScene("Stage3");
-                break;
-            case Define.Stage.FOUR:
-                SceneManager.LoadScene("Stage4");
-                break;
-            case Define.Stage.FIVE:
-                SceneManager.LoadScene("Stage5");
-                break;
+            //case Define.Stage.TWO:
+            //    SceneManager.LoadScene("Stage2");
+            //    break;
+            //case Define.Stage.THREE:
+            //    SceneManager.LoadScene("Stage3");
+            //    break;
+            //case Define.Stage.FOUR:
+            //    SceneManager.LoadScene("Stage4");
+            //    break;
+            //case Define.Stage.FIVE:
+            //    SceneManager.LoadScene("Stage5");
+            //    break;
 
         }
     }

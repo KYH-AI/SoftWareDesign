@@ -22,9 +22,7 @@ public class UI_Title : UI_Base
     void OnGameStart(PointerEventData data)
     {
         //씬 이동
-        Debug.Log("게임시작");
-        SceneManager_.SceneName = "JS";
-        SceneManager_.Instance.LoadScene();
+        //Debug.Log("게임시작");
     }
     void OnShowSettings(PointerEventData data)
     {
