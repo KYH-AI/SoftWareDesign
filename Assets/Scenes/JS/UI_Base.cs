@@ -24,20 +24,6 @@ public abstract class UI_Base : MonoBehaviour
                 evt.OnClickHandler -= action;
                 evt.OnClickHandler += action;
                 break;
-
-            //현재는 클릭 이벤트만 구현
-            //case UIEvent.Enter:
-            //    evt.OnEnterHandler -= action;
-            //    evt.OnEnterHandler += action;
-            //    break;
-            //case UIEvent.Exit:
-            //    evt.OnExitHandler -= action;
-            //    evt.OnExitHandler += action;
-            //    break;
-            //case UIEvent.Up:
-            //    evt.OnUpHandler -= action;
-            //    evt.OnUpHandler += action;
-            //    break;
         }
     }
 

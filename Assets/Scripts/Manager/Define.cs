@@ -32,11 +32,16 @@ public class Define
     /// </summary>
     public enum Stage
     {
-        ONE,
-        TWO,
-        THREE,
-        FOUR,
-        FIVE
+        Tutorial,
+        STAGE1,
+        STORE1,
+        STAGE2,
+        STORE2,
+        STAGE3,
+        STORE3,
+        STAGE4,
+        STORE4,
+        Boss,
     }
 
     /// <summary>
