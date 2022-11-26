@@ -9,22 +9,24 @@ public class Golem2Attack : BasicMonsterController
     public GameObject beam;
     public Sprite laser;
     public Sprite square;
-    float attackTime = 3.0f, warningTime = 3.0f;
+    float attackTime = 4.0f, warningTime = 4.0f;
     SpriteRenderer beamRenderer;
+    public Collider2D beamCollider;
     Vector3 dir;
 
 
     private new void Start()
     {
         base.Start();
-        StartCoroutine("Beam");
         beamRenderer = beam.GetComponent<SpriteRenderer>();
         beamRenderer.sprite = square;
+        state = State.Attack;
+        StartCoroutine("Beam");
     }
 
     protected override void Attack()
     {
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        state = State.Run;
     }
 
 
@@ -33,20 +35,20 @@ public class Golem2Attack : BasicMonsterController
 
         yield return new WaitForSeconds(base.skillTime);
         dir = transform.position - playerTarget.transform.position;
-        Debug.Log("방향"+dir);
-        beam.transform.rotation=Quaternion.FromToRotation(Vector3.up, dir);
-        Debug.Log("회전"+beam.transform.rotation);
-        beam.transform.Rotate(new Vector3(0,0,90));
+        beam.transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
+        beam.transform.Rotate(0, 0, 90);
         beamRenderer.sprite = square;
         beamRenderer.color = new Color(255, 0, 0, 90);
         beam.SetActive(true);
 
         yield return new WaitForSeconds(warningTime);
+
+
         beamRenderer.color = new Color(225, 225, 225, 225);
         beamRenderer.sprite = laser;
-        //공격넣기
-
+        beamCollider.enabled = true;//공격
         yield return new WaitForSeconds(attackTime);
+        beamCollider.enabled = false;
         beam.SetActive(false);
         StartCoroutine("Beam");
     }

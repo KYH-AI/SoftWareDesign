@@ -7,13 +7,16 @@ using UnityEngine.AI;
 
 public class MushroomAttack : BasicMonsterController
 {
+    float mushroomAttackRadius = 0.6f;
     Collider2D c;
     float time = 0;
+    SpriteRenderer mushroomRenderer;
     Vector3 bombPosition;
 
     public Canvas canvas;
     protected override void Attack()
     {
+        mushroomRenderer = GetComponent<SpriteRenderer>();
         c = GetComponent<Collider2D>();
         base.EnemyAnimator.SetTrigger("Attack");
         bombPosition = this.transform.position;
@@ -29,21 +32,31 @@ public class MushroomAttack : BasicMonsterController
     {
         transform.position = bombPosition;
         this.transform.localScale = (new Vector3(10, 10, 0));
-        if (c.gameObject.CompareTag("Player"))
+        mushroomRenderer.color = new Color(45/255f, 100/255f, 65/255f, 200/255f);
+
+
+
+
+
+        if (Physics2D.OverlapCircle(this.transform.position, mushroomAttackRadius, 1<<10) == true)
         {
             base.DefaultAttack();
+            Debug.Log("Monster Attack!");
         }
         yield return new WaitForSeconds(2.0f);
 
         if (time >= 40)
         {
+            
             this.transform.localScale = (new Vector3(4, 4, 0));
             canvas.gameObject.SetActive(true);
+            mushroomRenderer.color = new Color(255, 255, 255,255);
             gameObject.SetActive(false);
         }
         else
         {
             time += Time.deltaTime;
+
             StartCoroutine("AttackProcess");
         }
     }

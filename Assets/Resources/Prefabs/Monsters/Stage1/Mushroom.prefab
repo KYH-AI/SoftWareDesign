@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 4668938655123782945, guid: 179f77b4a77508644bb0e4717e8add6a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -118,7 +118,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 5964092283244195764}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 52be0766f6f082342b85740c8157c7e8, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: 845b5c1c94f054843826f0f48d9dacd3, type: 2}
+  playerLayer: 10
   DamageInform: {fileID: 5964092284375562476}
   state: 0
   coolTime: -1
@@ -330,7 +331,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
+    m_Font: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
     m_FontSize: 5
     m_FontStyle: 0
     m_BestFit: 0
