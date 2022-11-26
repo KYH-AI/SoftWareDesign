@@ -6,6 +6,9 @@ using UnityEngine.AI;
 
 public abstract class BasicMonsterController : Enemy
 {
+    float radius = 0.2f;   
+    public int playerLayer = 1<<10;
+
     public Text DamageInform;
     //public GameObject coinPrephab;
     public enum State
@@ -41,28 +44,22 @@ public abstract class BasicMonsterController : Enemy
     public void Run()
     {
         base.Move();
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         if ((playerTarget.gameObject.transform.position.x - this.transform.position.x) < 0)
             renderer.flipX = true;
         else renderer.flipX = false;
-        if (base.Hp <= 0)
-        {
-            state = State.Die;
-            return;
-        }
     }
 
     //공격
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(Define.StringTag.Player.ToString()))
+        if (other.CompareTag("DamagedRadius"))
         {
             state = State.Attack;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.tag=="Player")
+        if(collision.tag=="DamagedRadius")
             state = State.Run;
         coolTime = -1.0f;
         base.EnemyAnimator.SetTrigger("AttackToMove");
@@ -78,11 +75,21 @@ public abstract class BasicMonsterController : Enemy
         base.TakeDamage(newDamage);
         DamageInform.text = "-"+newDamage.ToString();
         StartCoroutine(DamageProcess());
-        base.EnemyAnimator.SetTrigger("DamageToMove");
         if (base.Hp <= 0)
         {
             state = State.Die;
             return;
+        }
+        //state Run or Attack
+        if (Physics2D.OverlapCircle(this.transform.position, radius, 1<<10) == true)
+        {
+            state = State.Attack;
+            base.EnemyAnimator.SetTrigger("DamageToAttack");
+        }
+        else
+        {
+            state = State.Run;
+            base.EnemyAnimator.SetTrigger("DamageToMove");
         }
     }
 
@@ -91,7 +98,6 @@ public abstract class BasicMonsterController : Enemy
         DamageInform.gameObject.SetActive(true);
         yield return new WaitForSeconds(1.0f);
         DamageInform.gameObject.SetActive(false);
-        state = State.Run;
     }
 
 
@@ -106,17 +112,13 @@ public abstract class BasicMonsterController : Enemy
     }
     IEnumerator DieProcess()
     {
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-        yield return new WaitForSeconds(1.0f);
-        /*GameObject coin = Resources.Load<GameObject>("Prefabs/BlueCoin");
-        coin.transform.position = this.transform.position;
-        Instantiate(coin);*/
-
+        yield return new WaitForSeconds(0.5f);
 
         int killCount = Random.Range(minKillCount, maxKillCount);
 
-        //동전 삽입 알고리즘
+        //동전 드랍
         //캐릭터 정보에 킬카운트 넘겨주기
+
         gameObject.SetActive(false);
     }
 }

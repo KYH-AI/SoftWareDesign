@@ -24,6 +24,7 @@ public class Boss4 : Enemy
     bool isHurt = false;
     int attackCnt = 0;
     bool isFadeout = true;
+    bool isHide = false;
     
 
 
@@ -31,7 +32,10 @@ public class Boss4 : Enemy
     void Update()
     {
         dir = (playerTarget.transform.position - transform.position);
-        ChangeDir();
+        if (!isHurt)
+        {
+            ChangeDir();
+        }
         distance = dir.magnitude;  //Vector2.Distance(transform.position, playerTarget.transform.position);
         Fsm();
        // print(attackCnt);
@@ -41,12 +45,12 @@ public class Boss4 : Enemy
     {
         if (dir.x < 0)
         {
-            SpriteRenderer.flipX = true;
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 
         }
         else
         {
-            SpriteRenderer.flipX = false;
+            gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
     void Fsm()
@@ -66,14 +70,6 @@ public class Boss4 : Enemy
                 Hide();
                 break;
         }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player" && onTrigger)
-        {
-            DefaultAttack();
-        }
-        onTrigger = false;
     }
 
     void Idle()
@@ -99,15 +95,6 @@ public class Boss4 : Enemy
             state = BossState.ATTACK_STATE;
         }
     }
-    private void DamagedIn()
-    {
-        gameObject.tag = "dontDamaged";
-    }
-
-    private void DamagedOut()
-    {
-        gameObject.tag = "Enemy";
-    }
 
     private void Attack()
     {
@@ -119,6 +106,7 @@ public class Boss4 : Enemy
     }
     public override void TakeDamage(int newDamage)
     {
+        print("데미지 받음");
         base.TakeDamage(newDamage);
         Hurt();
     }
@@ -141,16 +129,12 @@ public class Boss4 : Enemy
     {
         EnemyAnimator.SetBool("isDamaged", true);
         isHurt = true;
-        StartCoroutine(HurtToIdle());
     }
     
-    IEnumerator HurtToIdle()
+    void  HurtToIdle()
     {
-        DamagedIn();
-        yield return new WaitForSeconds(1f);
         EnemyAnimator.SetBool("isDamaged", false);
         isHurt = false;
-        DamagedOut();
         state = BossState.IDLE_STATE;
     }
 
@@ -199,38 +183,27 @@ public class Boss4 : Enemy
     }
     private void Hide()
     {
-        transform.position = Vector2.MoveTowards(transform.position, playerTarget.transform.position, moveSpeed * Time.deltaTime);
+        if (isHide)
+        {
+            int result = Random.Range(0, 2);
+            if (result == 0)
+            {
+                transform.position = new Vector2(playerTarget.transform.position.x + 3f, playerTarget.transform.position.y);
+            }
+            else
+            {
+                transform.position = new Vector2(playerTarget.transform.position.x - 3f, playerTarget.transform.position.y);
+            }
+            
+        }
         if (isFadeout)
         {
-            //FadeOut();
            StartCoroutine(FadeOut());
             isFadeout = false;
         }
          
        
     }
-
-    /*IEnumerator FadeIn()
-    {
-        yield return new WaitForSeconds(3f);
-        state = BossState.ATTACK_STATE;
-        isFadeout = true;
-        var color = SpriteRenderer.color;
-        color.a = 255;
-        SpriteRenderer.color = color;
-     
-    }
-    private void FadeOut()
-    {
-        print("숨기!");
-        var color = SpriteRenderer.color;
-         //color.a is 0 to 1. So .5*time.deltaTime will take 2 seconds to fade out
-         color.a = 0;
-         SpriteRenderer.color = color;
-        StartCoroutine(FadeIn());
-
-       
-    }*/
     IEnumerator FadeOut()
     {
         while (SpriteRenderer.color.a > 0)
@@ -246,11 +219,14 @@ public class Boss4 : Enemy
             //wait for a frame
             yield return null;
         }
+        gameObject.tag = "dontDamaged";
+        isHide = true;
         yield return new WaitForSeconds(2f);
         StartCoroutine(FadeIn());
     }
     IEnumerator FadeIn()
     {
+        gameObject.tag = "Enemy";
         state = BossState.ATTACK_STATE;
         while (SpriteRenderer.color.a < 1)
         {
@@ -262,8 +238,9 @@ public class Boss4 : Enemy
             //wait for a frame
             yield return null;
         }
-       
-       
+
+        isHide = false;
+
     }
 
 }
