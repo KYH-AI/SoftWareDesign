@@ -11,8 +11,7 @@ public class Spawner_1by1 : MonoBehaviour
 
     private float spawnRate;
     int idx = 0;
-    int MAX = 100;
-    bool state;
+    int MAX = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -20,12 +19,13 @@ public class Spawner_1by1 : MonoBehaviour
         Monster = new GameObject[MAX];
         for (int i = 0; i < MAX; i++)
         {
+            //GameObject ob = MemoryPoolManager.GetInstance().OutputGameObject(Prefab, Define.PrefabType.Monsters, this.transform.position, Quaternion.identity);
             GameObject ob = Instantiate(Prefab);
+            //ob.GetComponent<Enemy>().EnemyInit(Managers.Player);
             ob.GetComponent<Enemy>().EnemyInit(StageManager.GetInstance().Player);
             Monster[i] = ob;
             ob.SetActive(false);
         }
-        state = true;
         StartCoroutine("Spawn");
     }
 
@@ -33,22 +33,16 @@ public class Spawner_1by1 : MonoBehaviour
     {
         spawnRate = Random.Range(spawnRateMin, spawnRateMax);
         yield return new WaitForSeconds(spawnRate);
-        if (Monster[idx].activeInHierarchy == false)
-        {
-            Monster[idx].transform.position = gameObject.transform.position;
-            Monster[idx].SetActive(true);
-            state = false;
-        }
+        /*GameObject ob = MemoryPoolManager.GetInstance().OutputGameObject(Prefab, Define.PrefabType.Monsters, this.transform.position, Quaternion.identity);
+        //ob.GetComponent<Enemy>().EnemyInit(Managers.Player);
+        ob.GetComponent<Enemy>().EnemyInit(StageManager.GetInstance().Player);
+        ob.SetActive(true);*/
+     
+        Monster[idx].transform.position = gameObject.transform.position;
+        Monster[idx].SetActive(true);
         idx++;
         if (idx == MAX)
-        {
-            if (state == true)//Max까지 최대 오브젝트 setActive(true) 상태
-            {
-
-            }
             idx = 0;
-            state = true;
-        }
         StartCoroutine("Spawn");
     }
 }

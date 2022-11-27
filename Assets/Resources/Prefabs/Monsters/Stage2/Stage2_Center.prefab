@@ -2533,8 +2533,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  spawnRateMin: 0
-  spawnRateMax: 1
+  spawnRateMin: 1
+  spawnRateMax: 5
   MAX: 20
 --- !u!1 &3609847733292037209
 GameObject:

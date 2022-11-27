@@ -7,9 +7,6 @@ using UnityEngine.AI;
 public abstract class BasicMonsterController : Enemy
 {
     float radius = 0.2f;   
-    public int playerLayer = 1<<10;
-
-    public Text DamageInform;
     //public GameObject coinPrephab;
     public enum State
     {
@@ -33,11 +30,18 @@ public abstract class BasicMonsterController : Enemy
         renderer = GetComponent<SpriteRenderer>();
         state = State.Run;
     }
+
+
+    private void OnEnable()
+    {
+        state = State.Run;
+    }
+
     public void Update()
     {
         if (state == State.Run) Run();
         if (state == State.Attack) Attack();
-        if (state == State.Die) OnDead();
+        //if (state == State.Die) OnDead();
     }
 
     //달리기
@@ -73,7 +77,17 @@ public abstract class BasicMonsterController : Enemy
     public override sealed void TakeDamage(int newDamage)
     {
         base.TakeDamage(newDamage);
-        DamageInform.text = "-"+newDamage.ToString();
+
+        //Damage text
+        GameObject floatingText = MemoryPoolManager.GetInstance().OutputGameObject
+            (Managers.Resource.GetPerfabGameObject("UI/FloatingDamageText")
+            , Define.PrefabType.UI
+            , new Vector3(transform.position.x, transform.position.y)
+            , Quaternion.identity);
+
+        floatingText.SetActive(true);
+
+        base.EnemyAnimator.SetTrigger("MoveToDamage");
         StartCoroutine(DamageProcess());
         if (base.Hp <= 0)
         {
@@ -95,9 +109,8 @@ public abstract class BasicMonsterController : Enemy
 
     IEnumerator DamageProcess()
     {
-        DamageInform.gameObject.SetActive(true);
+
         yield return new WaitForSeconds(1.0f);
-        DamageInform.gameObject.SetActive(false);
     }
 
 
@@ -106,19 +119,24 @@ public abstract class BasicMonsterController : Enemy
     protected override sealed void OnDead()
     {
         base.OnDead();
-     
+        EnemyRigidbody.velocity = Vector2.zero;
         base.EnemyAnimator.SetTrigger("Die");
         StartCoroutine(DieProcess());
     }
     IEnumerator DieProcess()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
 
         int killCount = Random.Range(minKillCount, maxKillCount);
 
         //동전 드랍
         //캐릭터 정보에 킬카운트 넘겨주기
-
         gameObject.SetActive(false);
+
     }
+
+   /* private void OnDisable()
+    {
+        MemoryPoolManager.GetInstance().InputGameObject(gameObject);
+    }*/
 }
