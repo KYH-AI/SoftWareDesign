@@ -80,11 +80,12 @@ public abstract class BasicMonsterController : Enemy
 
         //Damage text
         GameObject floatingText = MemoryPoolManager.GetInstance().OutputGameObject
-            (Managers.Resource.GetPerfabGameObject("UI/FloatingDamageText")
-            , Define.PrefabType.UI
+            (Managers.Resource.GetPerfabGameObject("UI/DamageText")
+            , "UI/DamageText"
             , new Vector3(transform.position.x, transform.position.y)
             , Quaternion.identity);
 
+        floatingText.GetComponent<FloatingText>().DamageText = newDamage.ToString();
         floatingText.SetActive(true);
 
         base.EnemyAnimator.SetTrigger("MoveToDamage");
@@ -135,8 +136,8 @@ public abstract class BasicMonsterController : Enemy
 
     }
 
-   /* private void OnDisable()
+    private void OnDisable()
     {
         MemoryPoolManager.GetInstance().InputGameObject(gameObject);
-    }*/
+    }
 }
