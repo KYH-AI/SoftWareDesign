@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Boss1 : Enemy
 {
@@ -8,8 +9,7 @@ public class Boss1 : Enemy
     {
         IDLE_STATE,
         MOVE_STATE,
-        ATTACK_STATE,
-        Dead_STATE
+        ATTACK_STATE
     }
     Vector2 dir;
     Vector2 attackDir;
@@ -17,6 +17,7 @@ public class Boss1 : Enemy
     int attackCnt;
     bool isMove=false;
     bool isAttack=false;
+    bool isDie = false;
     float idleDelay = 5f;
     float moveTime = 3f;
     int skillDamage = 3;
@@ -25,6 +26,8 @@ public class Boss1 : Enemy
     [SerializeField] Transform FireBallTransform;
     [SerializeField] Material HitEffectMaterial;     // 피격 시 머티리얼
     [SerializeField] Material orignalMaterial;
+    [SerializeField] GameObject Portalpref;
+    GameObject myInstance;
     void Update()
     {
         attackDir= (playerTarget.transform.position - FireBallTransform.position);
@@ -56,8 +59,6 @@ public class Boss1 : Enemy
             case BossState.ATTACK_STATE:
                 Attack();
                 break;
-            case BossState.Dead_STATE:
-                break;
         }
     }
     void Idle()
@@ -79,10 +80,10 @@ public class Boss1 : Enemy
 
     new void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, playerTarget.transform.position, MoveSpeed * Time.deltaTime);
-        ChangeDir();
-        if (!isAttack)
+        if (!isDie&& !isAttack)
         {
+            transform.position = Vector2.MoveTowards(transform.position, playerTarget.transform.position, MoveSpeed * Time.deltaTime);
+            ChangeDir();
             StartCoroutine(MoveToAttack());
             isAttack = true;
         }
@@ -96,8 +97,11 @@ public class Boss1 : Enemy
     }
     void Attack()
     {
-        ChangeDir();
-        EnemyAnimator.SetBool("isHit", false);
+        if (!isDie)
+        {
+            ChangeDir();
+            EnemyAnimator.SetBool("isHit", false);
+        }
     }
 
     void MakeFireBall()
@@ -139,7 +143,7 @@ public class Boss1 : Enemy
     }
     protected override void OnDead()
     {
-        state = BossState.Dead_STATE;
+        isDie = true;
         base.OnDead();
         EnemyAnimator.SetTrigger("Die");
     }
@@ -160,6 +164,14 @@ public class Boss1 : Enemy
             //wait for a frame
             yield return null;
         }
+        Invoke(nameof(SpawnPortal), 1f);
+    }
+
+    void SpawnPortal()
+    {
+        myInstance = Instantiate(Portalpref);
+        myInstance.transform.position = transform.position;
         Destroy(gameObject);
+
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Boss4 : Enemy
 {
@@ -20,10 +21,12 @@ public class Boss4 : Enemy
     BossState state = BossState.IDLE_STATE;
     bool isAttack = true;
     bool isHurt = false;
+    bool isDie = false;
     int attackCnt = 0;
     bool isFadeout = true;
     bool isHide = false;
-    
+    [SerializeField] GameObject Portalpref;
+    GameObject myInstance;
 
 
     // Update is called once per frame
@@ -72,7 +75,7 @@ public class Boss4 : Enemy
 
     void Idle()
     {
-        if (distance < moveDistance&&isAttack) 
+        if (distance < moveDistance&&isAttack&&!isDie) 
         {
             state = BossState.MOVE_STATE;
         }
@@ -114,14 +117,23 @@ public class Boss4 : Enemy
     protected override void OnDead()
     {
         base.OnDead();
-        EnemyCollider.isTrigger = true;
+        isDie = true;
         EnemyAnimator.SetTrigger("isDie");
     }
     void DeadProcess()//Die애니메이션에 넣음
     {
-        Destroy(gameObject);
+        var color = SpriteRenderer.color;
+        color.a = 0;
+        SpriteRenderer.color = color;
+        Invoke(nameof(SpawnPortal), 2f);
     }
+    void SpawnPortal()
+    {
+        myInstance = Instantiate(Portalpref);
+        myInstance.transform.position = transform.position;
+        Destroy(gameObject);
 
+    }
 
     private void Hurt()
     {

@@ -152,6 +152,8 @@ MonoBehaviour:
   FireBallTransform: {fileID: 3719535794963966991}
   HitEffectMaterial: {fileID: 2100000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
   orignalMaterial: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  Portalpref: {fileID: 1281781686780813720, guid: 6636f696c591eb44dae7f03d791b0658,
+    type: 3}
 --- !u!50 &2934872790203131106
 Rigidbody2D:
   serializedVersion: 4

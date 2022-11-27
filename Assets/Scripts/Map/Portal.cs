@@ -5,36 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    [SerializeField] GameObject Portalpref;
-    GameObject myInstance;
-    int x, y;
-    int portal_x;
-    int portal_y;
     bool inPortal =false;
-    private void Start()
-    {
-       
-
-        x = Random.Range(-8,9);
-        y = Random.Range(-8, 9);
-        if ( 0 < x || x <= 3) { x = Random.Range(4, 9); }
-        if (-3 <= x || x <= 0) { x = Random.Range(-8, -3); }
-       
-    } 
     // Update is called once per frame
-    void Update()
-    {
-        
-        portal_x = (int)transform.position.x + x;
-        portal_y = (int)transform.position.y + y;
-
-        if (portal_y > 30) { portal_y = 30; }
-        if (portal_y < -32) { portal_y = -32; }
-
-
-        SpawnPortal();
-
-    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Portal")
@@ -58,15 +30,6 @@ public class Portal : MonoBehaviour
             }
 
         }
-    }
-    void SpawnPortal()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            myInstance = Instantiate(Portalpref);
-            myInstance.transform.position = new Vector2(portal_x, portal_y);
-        }
-
     }
     IEnumerator ToStore()
     {

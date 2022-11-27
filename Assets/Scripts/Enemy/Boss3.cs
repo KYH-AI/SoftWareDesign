@@ -17,9 +17,12 @@ public class Boss3 : Enemy
     bool isIdle = true;
     bool isTelpo = false;
     bool isAttack1 = false;
-    bool isAttack2 = false;  
+    bool isAttack2 = false;
+    bool isDie = false;
     [SerializeField] GameObject Telpo;
     [SerializeField] GameObject Fire;
+    [SerializeField] GameObject Portalpref;
+    GameObject myInstance;
     float fireDelay = 1f;
     float attackDelay = 3f;
     private int skillDamage = 5;
@@ -88,7 +91,7 @@ public class Boss3 : Enemy
     }
     private void telpo()
     {
-        if (!isTelpo)
+        if (!isTelpo&&!isDie)
         {
             isTelpo = true;
             StartCoroutine(TelpoToPlayer());
@@ -151,7 +154,7 @@ public class Boss3 : Enemy
     private void Attack2()
     {
         EnemyAnimator.SetBool("isAttack2", true);
-        if (!isAttack2)
+        if (!isAttack2&&!isDie)
         {
             attackDelay = 10f;
             isAttack2 = true;
@@ -182,6 +185,7 @@ public class Boss3 : Enemy
     protected override void OnDead()
     {
         state = BossState.Dead_STATE;
+        isDie = true;
         base.OnDead();
         EnemyAnimator.SetTrigger("isDie");
     }
@@ -202,6 +206,12 @@ public class Boss3 : Enemy
             //wait for a frame
             yield return null;
         }
+        Invoke(nameof(SpawnPortal), 2f);
+    }
+    void SpawnPortal()
+    {
+        myInstance = Instantiate(Portalpref);
+        myInstance.transform.position = new Vector2(transform.position.x-2f, transform.position.y+1f);
         Destroy(gameObject);
     }
 }

@@ -181,6 +181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: 1394d4a2c175ef64a8ac88b6c13c5a90, type: 2}
   Spell: {fileID: 1607688941051808081, guid: bcda6bcbdb036a94b95c6ea628c88268, type: 3}
+  Portalpref: {fileID: 1281781686780813720, guid: 6636f696c591eb44dae7f03d791b0658,
+    type: 3}
 --- !u!61 &7112051667594653125
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Boss2 : Enemy
 {
@@ -16,12 +17,14 @@ public class Boss2 : Enemy
     float distance;
     BossState state = BossState.IDLE_STATE;
     bool isIdle = true;
+    bool isDie = false;
     float attackDelay = 4f;
     float attackdistance = 3f;
     int attack2Cnt =0;
     int skillDamage = 3;
     [SerializeField] GameObject Spell;
-    // Update is called once per frame
+    [SerializeField] GameObject Portalpref;
+    GameObject myInstance;
     void Update()
     {
         dir = (playerTarget.transform.position - transform.position);
@@ -86,24 +89,28 @@ public class Boss2 : Enemy
 
     new void Move()
     {
-        EnemyAnimator.SetBool("isMove", true);
-        ChangeDir();
-        if (dir.x < 0)
+        if (!isDie)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(playerTarget.transform.position.x+2.5f, 
-                playerTarget.transform.position.y-1f) , MoveSpeed * Time.deltaTime);
+            EnemyAnimator.SetBool("isMove", true);
+            ChangeDir();
+            if (dir.x < 0)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(playerTarget.transform.position.x + 2.5f,
+                    playerTarget.transform.position.y - 1f), MoveSpeed * Time.deltaTime);
 
-        }
-        else
-        {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(playerTarget.transform.position.x - 2.5f,
-                playerTarget.transform.position.y-1f), MoveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(playerTarget.transform.position.x - 2.5f,
+                    playerTarget.transform.position.y - 1f), MoveSpeed * Time.deltaTime);
+            }
+
+            if (distance < attackdistance && dir.normalized.y < 0.6f && dir.normalized.y > 0.2f)
+            {
+                state = BossState.ATTACK1_STATE;
+            }
         }
         
-        if (distance < attackdistance && dir.normalized.y < 0.6f&&dir.normalized.y>0.2f) 
-        {
-            state = BossState.ATTACK1_STATE;
-        }
     }
 
     void Attack1ToIdle()
@@ -151,6 +158,7 @@ public class Boss2 : Enemy
     }
     protected override void OnDead()
     {
+        isDie = true;
         state = BossState.Dead_STATE;
         base.OnDead();
         EnemyAnimator.SetTrigger("Die");
@@ -158,7 +166,16 @@ public class Boss2 : Enemy
 
     private void destory()//죽는 애니 마지막에 넣기
     {
+        var color = SpriteRenderer.color;
+        color.a = 0;
+        SpriteRenderer.color = color;
+        Invoke(nameof(SpawnPortal), 2f);
+    }
+    void SpawnPortal()
+    {
+        myInstance = Instantiate(Portalpref);
+        myInstance.transform.position = transform.position;
         Destroy(gameObject);
     }
-  
+
 }
