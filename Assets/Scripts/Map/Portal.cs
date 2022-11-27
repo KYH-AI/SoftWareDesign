@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
+    /*
     bool inPortal =false;
     // Update is called once per frame
     private void OnTriggerStay2D(Collider2D collision)
@@ -35,21 +36,21 @@ public class Portal : MonoBehaviour
     {
         switch (StageManager.GetInstance().stage)
         {
-            //case Define.Stage.ONE:
-            //    StageManager.GetInstance().stage = Define.Stage.Stage;
-            //    print("stage2상태");
-            //    break;
-            //case Define.Stage.TWO:
-            //    StageManager.GetInstance().stage = Define.Stage.THREE;
-            //    print("stage3상태");
-            //    break;
-            //case Define.Stage.THREE:
-            //    StageManager.GetInstance().stage = Define.Stage.FOUR;
-            //    print("stage4상태");
-            //    break;
-            //case Define.Stage.FOUR:
-            //    StageManager.GetInstance().stage = Define.Stage.FIVE;
-            //    break;
+            case Define.Stage.STAGE1:
+                StageManager.GetInstance().stage = Define.Stage.STAGE2;
+                print("stage2상태");
+                break;
+            case Define.Stage.STAGE2:
+                StageManager.GetInstance().stage = Define.Stage.STAGE3;
+                print("stage3상태");
+                break;
+            case Define.Stage.STAGE3:
+               StageManager.GetInstance().stage = Define.Stage.STAGE4;
+                print("stage4상태");
+                break;
+            case Define.Stage.STAGE4:
+               StageManager.GetInstance().stage = Define.Stage.STAGE4;
+                break;
         }
         yield return new WaitForSeconds(1f);
         inPortal = false;
@@ -64,21 +65,21 @@ public class Portal : MonoBehaviour
         inPortal = false;
         switch (StageManager.GetInstance().stage)
         {
-            //case Define.Stage.TWO:
-            //    SceneManager.LoadScene("Stage2");
-            //    break;
-            //case Define.Stage.THREE:
-            //    SceneManager.LoadScene("Stage3");
-            //    break;
-            //case Define.Stage.FOUR:
-            //    SceneManager.LoadScene("Stage4");
-            //    break;
-            //case Define.Stage.FIVE:
-            //    SceneManager.LoadScene("Stage5");
-            //    break;
+            case Define.Stage.TWO:
+               SceneManager.LoadScene("Stage2");
+               break;
+            case Define.Stage.THREE:
+                SceneManager.LoadScene("Stage3");
+                break;
+            case Define.Stage.FOUR:
+                SceneManager.LoadScene("Stage4");
+                break;
+            case Define.Stage.FIVE:
+                SceneManager.LoadScene("Stage5");
+                break;
 
         }
-    }
+    }*/
 
 }
 
