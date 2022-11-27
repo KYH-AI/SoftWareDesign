@@ -44,18 +44,18 @@ public class MushroomAttack : BasicMonsterController
         }
         yield return new WaitForSeconds(1.0f);
 
-        if (time >= 5)
+        if (time > 5)
         {
-            
+
             this.transform.localScale = (new Vector3(4, 4, 0));
-            mushroomRenderer.color = new Color(255, 255, 255,255);
+            mushroomRenderer.color = new Color(255, 255, 255, 255);
             c.enabled = true;
+            time = 0;
             gameObject.SetActive(false);
         }
         else
         {
-            time += Time.deltaTime;
-
+            time += 1;
             StartCoroutine("AttackProcess");
         }
     }

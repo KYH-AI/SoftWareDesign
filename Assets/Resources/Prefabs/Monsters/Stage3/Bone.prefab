@@ -156,10 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: 6e6d5a318a531df49842f30330be2bcb, type: 2}
-  playerLayer: 1024
   state: 0
   coolTime: -1
-  skillTime: 4
+  skillTime: 5
   minKillCount: 0
   maxKillCount: 0
   Prefab: {fileID: 2717129123398836081, guid: 0a087cf8f5d04cc40a1741525efa102f, type: 3}

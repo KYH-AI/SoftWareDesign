@@ -75,9 +75,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -5141046462591385658, guid: 2873142d4130c404697f9e161bb745bb,
+  m_Sprite: {fileID: 4058254702925930087, guid: 711e7a3687098e244af170961d47210f,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7058824, g: 0.54901963, b: 0.9019608, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,7 +134,7 @@ Animator:
   m_GameObject: {fileID: 2717129123398836081}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9129784caef2b7a449fde61ec91b78f5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6e336ef1ce1e48540ad32b9cfcf3ebc6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -155,8 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fbb3c74d4969814ca1f9427392cdf96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicStat: {fileID: 11400000, guid: 0e00f04b633936944a75eb901f148cc5, type: 2}
-  playerLayer: 1
+  basicStat: {fileID: 11400000, guid: c831e4a4eef5aaa459ea8df528a292a7, type: 2}
   state: 0
   coolTime: -1
   skillTime: 2
