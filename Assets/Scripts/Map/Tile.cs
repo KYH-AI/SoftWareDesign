@@ -12,12 +12,12 @@ public class Tile : MonoBehaviour
 
     void Start()
     {
-        Player = StageManager.GetInstance().Player.GetComponent<Transform>();
+        Player = Managers.StageManager.Player.GetComponent<Transform>();
     }
    
     void Update()
     {
-        switch (StageManager.GetInstance().stage)
+        switch (Managers.StageManager.stage)
         {
             case Define.Stage.STAGE2:
                 Unitsize = 16;

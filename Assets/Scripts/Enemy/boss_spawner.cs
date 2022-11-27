@@ -14,7 +14,7 @@ public class boss_spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (StageManager.GetInstance().stage)
+        switch (Managers.StageManager.stage)
         {
             case Define.Stage.STAGE1:
                 StageNum = 0;
@@ -31,19 +31,22 @@ public class boss_spawner : MonoBehaviour
 
         }
         SetLocation();
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Managers.StageManager.IsStageCleared())
         {
+            Managers.UI.bossSlider.gameObject.SetActive(true);
+            Managers.UI.InitBossSlider();
             Spawn();
+            Managers.StageManager.SetStageKillCount();
         }
     }
     void SetLocation()
     {
-        spawnX = StageManager.GetInstance().Player.transform.position.x;
-        spawny = StageManager.GetInstance().Player.transform.position.y + 7f;
+        spawnX = Managers.StageManager.Player.transform.position.x;
+        spawny = Managers.StageManager.Player.transform.position.y + 7f;
     }
     void Spawn()
     {
         ob = Instantiate(Boss[StageNum], new Vector2(spawnX, spawny), Quaternion.identity);
-        ob.GetComponent<Enemy>().EnemyInit(StageManager.GetInstance().Player);
+        ob.GetComponent<Enemy>().EnemyInit(Managers.StageManager.Player);
     }
 }

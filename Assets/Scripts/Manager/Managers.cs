@@ -28,6 +28,10 @@ public class Managers : MonoBehaviour
     private CameraManager cameraManager;
     public static CameraManager CameraManager { get { return Instance.cameraManager; } }
 
+    private StageManager stageManager;
+    public static StageManager StageManager { get { return Instance.stageManager; } }
+
+
 
     private void Awake()
     {
@@ -55,5 +59,7 @@ public class Managers : MonoBehaviour
         skillEffectVolume = GetComponentInChildren<SkillEffectVolumeManager>();
         sceneManager_ = GetComponentInChildren<SceneManager_>();
         cameraManager = GetComponentInChildren<CameraManager>();
+        ui = GetComponentInChildren<UIManager>();
+        stageManager = GetComponentInChildren<StageManager>();
     }
 }

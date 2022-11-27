@@ -21,7 +21,7 @@ public class Spawner_1by1 : MonoBehaviour
         yield return new WaitForSeconds(spawnRate);
         GameObject ob = MemoryPoolManager.GetInstance().OutputGameObject(Prefab, "Monsters/Stage Monster/"+Prefab.name, this.transform.position, Quaternion.identity);
         //ob.GetComponent<Enemy>().EnemyInit(Managers.Player);
-        ob.GetComponent<Enemy>().EnemyInit(StageManager.GetInstance().Player);
+        ob.GetComponent<Enemy>().EnemyInit(Managers.StageManager.Player);
         ob.SetActive(true);
         StartCoroutine("Spawn");
     }

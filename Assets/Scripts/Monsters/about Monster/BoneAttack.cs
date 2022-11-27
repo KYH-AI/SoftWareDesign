@@ -24,7 +24,7 @@ public class BoneAttack :BasicMonsterController
             if (tmp == 0)
                 ob.GetComponent<SpriteRenderer>().color = new Color(150/255f, 210/255f, 255/255f, 255/255f);
             else ob.GetComponent<SpriteRenderer>().color = new Color(180/255f, 140/255f, 230/255f, 255/255f);
-            ob.GetComponent<Enemy>().EnemyInit(StageManager.GetInstance().Player);
+            ob.GetComponent<Enemy>().EnemyInit(Managers.StageManager.Player);
             Monster[i] = ob;
             ob.SetActive(false);
         }

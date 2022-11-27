@@ -6,45 +6,28 @@ using System;
 
 public class StageManager : MonoBehaviour
 {
-    #region 나중에 지워야할 부분
-    public static StageManager stageManager;
-    #endregion
-
     public Player Player;
-    //[SerializeField] GameObject portalPref;
     GameObject portal;
     public int killCount;      //현재 킬 카운트
     public Define.Stage stage;        //현재 스테이지
+    public GameObject[] midBoss = new GameObject[4];
+    public GameObject[] coins = new GameObject[3];
 
     #region 유니티 함수
-    private void Awake()            //나중에 지워야 함.
-    {
-        if (stageManager == null)
-        {
-            stageManager = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
 
-    }
     private void Start()
     {
         SetStageKillCount();
         stage = Define.Stage.STAGE1;
-        Debug.Log("StageManager : " + killCount);
     }
     #endregion
 
     public void DecreaseKillCount()     //킬카운트를 줄이는 방식으로 진행하려고 함. 플레이어가 몬스터를 죽이면 실행.
     {
         if (killCount <= 0)
-        {
-            //MakePortal();
-        }
+            return;
         killCount--;
+        Managers.UI.UpdateKillCounts();
     }
     public bool IsStageCleared()        //스테이지가 클리어 되었는가 확인하는 함수.
     {
@@ -66,18 +49,9 @@ public class StageManager : MonoBehaviour
     {
         stage++;
     }
-    public static StageManager GetInstance()    //나중에 지워야할 함수.
-    {
-        return stageManager;
-    }
     public int ReturnKillCount()
     {
         return killCount;
     }
 
-    public void KillProcess()
-    {
-        DecreaseKillCount();
-        Managers.UI.UpdateKillCounts();
-    }
 }

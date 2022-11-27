@@ -145,6 +145,7 @@ public class Boss1 : Enemy
     {
         base.TakeDamage(newDamage);
         EnemyAnimator.SetBool("isHit", true);
+        Managers.UI.UpdateBossHpSlider(Hp, MaxHp);
         StartCoroutine(SwitchMaterial());
     }
 
@@ -162,6 +163,7 @@ public class Boss1 : Enemy
     {
         isDie = true;
         base.OnDead();
+        Managers.UI.bossSlider.gameObject.SetActive(false);
         EnemyAnimator.SetTrigger("Die");
     }
 

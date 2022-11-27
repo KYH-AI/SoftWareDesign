@@ -120,6 +120,7 @@ public class Boss4 : Enemy
     {
         print("데미지 받음");
         base.TakeDamage(newDamage);
+        Managers.UI.UpdateBossHpSlider(Hp, MaxHp);
         Hurt();
     }
 
@@ -128,6 +129,7 @@ public class Boss4 : Enemy
     protected override void OnDead()
     {
         base.OnDead();
+        Managers.UI.bossSlider.gameObject.SetActive(false);
         isDie = true;
         EnemyAnimator.SetTrigger("isDie");
     }

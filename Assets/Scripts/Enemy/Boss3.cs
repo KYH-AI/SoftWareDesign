@@ -49,6 +49,7 @@ public class Boss3 : Enemy
     public override void TakeDamage(int newDamage)
     {
         base.TakeDamage(newDamage);
+        Managers.UI.UpdateBossHpSlider(Hp, MaxHp);
         EnemyAnimator.SetBool("isHit", true);
     }
     private void HurtToIdle()
@@ -199,6 +200,7 @@ public class Boss3 : Enemy
         state = BossState.Dead_STATE;
         isDie = true;
         base.OnDead();
+        Managers.UI.bossSlider.gameObject.SetActive(false);
         EnemyAnimator.SetTrigger("isDie");
     }
 

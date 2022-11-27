@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    
+    private void Update()
+    {
+        print(Managers.StageManager.stage);
+    }
     bool inPortal =false;
     // Update is called once per frame
     private void OnTriggerStay2D(Collider2D collision)
@@ -15,6 +18,7 @@ public class Portal : MonoBehaviour
        
             if (Input.GetKey(KeyCode.Space)&& !inPortal)
             {
+                Managers.UI.killCount.gameObject.SetActive(false);
                 inPortal = true;
                 print("상점으로 이동!");
                 StartCoroutine(ToStore());
@@ -26,6 +30,7 @@ public class Portal : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Space)&&!inPortal)
             {
+                Managers.UI.killCount.gameObject.SetActive(true);
                 inPortal = true;
                 print("다음 스테이지로 이동");
                 StartCoroutine(SceneChange());
@@ -35,22 +40,22 @@ public class Portal : MonoBehaviour
     }
     IEnumerator ToStore()
     {
-        switch (StageManager.GetInstance().stage)
+        switch (Managers.StageManager.stage)
         {
             case Define.Stage.STAGE1:
-                StageManager.GetInstance().stage = Define.Stage.STAGE2;
+                Managers.StageManager.stage = Define.Stage.STAGE2;
                 print("stage2상태");
                 break;
             case Define.Stage.STAGE2:
-                StageManager.GetInstance().stage = Define.Stage.STAGE3;
+                Managers.StageManager.stage = Define.Stage.STAGE3;
                 print("stage3상태");
                 break;
             case Define.Stage.STAGE3:
-               StageManager.GetInstance().stage = Define.Stage.STAGE4;
+                Managers.StageManager.stage = Define.Stage.STAGE4;
                 print("stage4상태");
                 break;
             case Define.Stage.STAGE4:
-               StageManager.GetInstance().stage = Define.Stage.Boss;
+                Managers.StageManager.stage = Define.Stage.Boss;
                 break;
         }
         yield return new WaitForSeconds(1f);
@@ -64,7 +69,7 @@ public class Portal : MonoBehaviour
         yield return new WaitForSeconds(1f);
         transform.position = new Vector2(0, 0);
         inPortal = false;
-        switch (StageManager.GetInstance().stage)
+        switch (Managers.StageManager.stage)
         {
             case Define.Stage.STAGE2:
                SceneManager.LoadScene("Stage2");
