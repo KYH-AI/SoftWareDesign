@@ -104,7 +104,7 @@ public class FirstAid : PassiveSkill
         firstAidEffect.SetActive(true);
         while(buffDuration > 0)
         {
-            print("플레이어 체력 회복 중 (남은시간 : " + buffDuration);
+         //   print("플레이어 체력 회복 중 (남은시간 : " + buffDuration);
             playerObject.Hp += addHP;
             buffDuration--;
             yield return PER_SECONDS;

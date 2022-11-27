@@ -81,6 +81,7 @@ public class HourGlass : PassiveSkill
     {
         hourGlassAnimator.SetTrigger("ComeBack"); // 돌아오는 시계 애니메이션 재생 및 HourGlassEvent.cs 에서 연출 효과 및 시간 정지 해체 진행
         OnCoolTime();
+        playerObject.PlayerController.IsSilence = false;
     }
 
     private void OnSkillEffect()
@@ -90,6 +91,8 @@ public class HourGlass : PassiveSkill
 
     private IEnumerator HourGlassSkillProcess()
     {
+        playerObject.PlayerController.IsSilence = true;
+
         Time.timeScale = 0f; // 시간 정지 
         OnSkillEffect();
         hourGlassEffectObject.SetActive(true); // Hour Glass Effect 오브젝트 활성화

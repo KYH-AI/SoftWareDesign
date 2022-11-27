@@ -7,11 +7,16 @@ public class Player : LivingEntity
 {
     /* 변수 */
 
+    #region 플레이어 이미지 변수
+    [SerializeField] Sprite[] attackSprites;
+    #endregion
+
     #region 플레이어 머티리얼 변수
     [SerializeField] Material playerHitEffectMaterial;     // 피격 시 머티리얼
     [SerializeField] Material orignalPlayerMaterial;       // 플레이어 원본 머티리얼
     private SpriteRenderer spriteRenderer;                 // SpriteRenderer 컴포넌트
-    private WaitForSecondsRealtime seconds = new WaitForSecondsRealtime(0.5f);  // 머티리얼 변경 딜레이
+    private WaitForSecondsRealtime seconds = new WaitForSecondsRealtime(0.25f);  // 머티리얼 변경 딜레이
+    private WaitForSecondsRealtime spriteSeconds = new WaitForSecondsRealtime(1f); // 스프라이트 변경 딜레이
     #endregion
 
     #region 플레이어 컨트롤러 변수
@@ -55,7 +60,6 @@ public class Player : LivingEntity
     {
         DontDestroyOnLoad(gameObject);
         PlayerInit();
-        print("플레이어 기본 공격력 : " + DefaultAttackDamage);
         #region 스킬 테스트 중 (김윤호)
         /* 테스트 용도 */
 
@@ -110,9 +114,6 @@ public class Player : LivingEntity
         drSkill.Init(this);
         drSkill.OnActive();
 
-
-
-
         #endregion
     }
 
@@ -133,7 +134,7 @@ public class Player : LivingEntity
     {
         base.TakeDamage(newDamage);
 
-        print("플레이어가 데미지 받음 " + newDamage);
+      //  print("플레이어가 데미지 받음 " + newDamage);
 
         HitEvent?.Invoke(); // 피격 시 관련된 패시브 기술만 호출함
         StartCoroutine(SwitchMaterial()); // 피격 시 플레이어 색상 변경 코루틴
@@ -141,7 +142,7 @@ public class Player : LivingEntity
 
         GameObject floatingText = MemoryPoolManager.GetInstance().OutputGameObject
             (Managers.Resource.GetPerfabGameObject("UI/DamageText")
-            ,Define.PrefabType.UI
+            ,"UI/DamageText"
             ,new Vector3(transform.position.x, transform.position.y)
             ,Quaternion.identity);
 
@@ -166,7 +167,49 @@ public class Player : LivingEntity
     #region 플레이어 사망 처리
     protected override void OnDead()
     {
+        gameObject.SetActive(false);
+    }
+    #endregion
 
+    #region 플레이어 이미지 랜더러 변경 함수
+
+    /// <summary>
+    /// 돌진 스킬이용시 이미지를 변경
+    /// </summary>
+    /// <param name="dir">플레이어 방향</param>
+    public void SwitchPlayerSprite(Vector2 dir, bool needDelay)
+    {
+        playerController.Anim.enabled = false;
+        StartCoroutine(SwitchSprite(dir.normalized, needDelay));
+    }
+
+    private IEnumerator SwitchSprite(Vector2 dir, bool isDelay)
+    {
+        /*
+         *  동 = 1, 0
+         *  서 = -1, 0
+         *  남 = 0, -1
+         *  북 = 0, 1
+         */
+
+        if (dir.y > 0) spriteRenderer.sprite = attackSprites[0];
+        else if (dir.y < 0) spriteRenderer.sprite = attackSprites[1];
+        else spriteRenderer.sprite = attackSprites[2];
+        /*
+        else if (dir.x > 0) spriteRenderer.sprite = attackSprites[2];
+        else if (dir.x < 0)
+        {
+          //  spriteRenderer.flipX = true;
+            spriteRenderer.sprite = attackSprites[2];
+        }
+       */
+
+        if (isDelay)
+            yield return spriteSeconds;
+        else
+            yield return seconds;
+
+        playerController.Anim.enabled = true;
     }
     #endregion
 

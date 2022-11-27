@@ -80,7 +80,7 @@ public class ThrowingKnife : ActiveSkill
     private void CreateProjectile()
     {
         GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(knifeObject,
-                                                                                 Define.PrefabType.Player_Skill,
+                                                                                 "Player_Skill/"+knifeObject.name,
                                                                                  (transform.position + new Vector3(playerObject.PlayerController.LastDirection.x, playerObject.PlayerController.LastDirection.y, 0f)) + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)),
                                                                                  Quaternion.Euler(0, 0, Mathf.Atan2(-playerObject.PlayerController.LastDirection.y, -playerObject.PlayerController.LastDirection.x) * Mathf.Rad2Deg));
 

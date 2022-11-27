@@ -17,7 +17,7 @@ public class WindDash : ActiveSkill
     /// <summary>
     /// 스킬 대쉬 최대길이
     /// </summary>
-    private float skillDashDistacne = 3f;
+    private float skillDashDistacne = 5f;
     #endregion
 
     #region 스킬 스텟 프로퍼티
@@ -39,6 +39,7 @@ public class WindDash : ActiveSkill
     private void WindSlashInit()
     {
         windDlashEffect = GetComponentInChildren<TrailRenderer>();
+        windDlashEffect.enabled = true;
         windDlashEffect.enabled = false;
     }
 
@@ -64,6 +65,9 @@ public class WindDash : ActiveSkill
     private void WindSlashSkillAttack()
     {
 
+        playerObject.SwitchPlayerSprite(playerObject.PlayerController.LastDirection, false);
+        playerObject.PlayerController.IsSilence = true;
+        playerObject.PlayerController.IsMoveable = false;
         OnSkillEffect();  // 이펙트 활성화
 
         Vector3 firstPosition = playerObject.transform.position;
@@ -96,13 +100,16 @@ public class WindDash : ActiveSkill
         {
             for (int enemyCount = 0; enemyCount < enemyObjects.Length; enemyCount++)
             {
-                // TODO : 데미지 처리 하기 (10/30)
-                // Destroy(enemyObjects[enemyCount].transform.gameObject, 0.5f);
+                enemyObjects[enemyCount].transform.GetComponent<Enemy>().TakeDamage(skillDamgae);
             }
         }
 
+        playerObject.PlayerController.IsSilence = false;
+        playerObject.PlayerController.IsMoveable = true;
+
         Invoke(nameof(OnSkillEffect), 1.5f); //  이펙트 비활성화
         OnCoolTime();
+
     }
 
     private void OnSkillEffect()
