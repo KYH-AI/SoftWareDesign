@@ -39,9 +39,19 @@ public class Boss4 : Enemy
         }
        distance = dir.magnitude; 
         Fsm();
-       // print(attackCnt);
+        ChangeOrder();
     }
-
+    void ChangeOrder()
+    {
+        if (dir.y < 0)
+        {
+            SpriteRenderer.sortingOrder = 3;
+        }
+        else
+        {
+            SpriteRenderer.sortingOrder = 5;
+        }
+    }
     private void ChangeDir()
     {
         if (dir.x < 0)

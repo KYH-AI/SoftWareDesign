@@ -30,6 +30,18 @@ public class Boss2 : Enemy
         dir = (playerTarget.transform.position - transform.position);
         distance = dir.magnitude;
         Fsm();
+        ChangeOrder();
+    }
+    void ChangeOrder()
+    {
+        if (dir.y < 0)
+        {
+            SpriteRenderer.sortingOrder = 3;
+        }
+        else
+        {
+            SpriteRenderer.sortingOrder = 5;
+        }
     }
     private void ChangeDir()
     {

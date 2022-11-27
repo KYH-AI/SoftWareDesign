@@ -11018,7 +11018,7 @@ GameObject:
   - component: {fileID: 8265119964951890598}
   - component: {fileID: 4431662429941421238}
   - component: {fileID: 6689580196378375793}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Tree_route
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12012,7 +12012,7 @@ GameObject:
   - component: {fileID: 5720107723156850409}
   - component: {fileID: 2546395604868890047}
   - component: {fileID: 4800172779311617618}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Rock_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

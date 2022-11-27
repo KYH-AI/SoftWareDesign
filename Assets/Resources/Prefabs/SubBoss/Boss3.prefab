@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 5241715925250746970}
   - component: {fileID: 45788928357149643}
   - component: {fileID: 4181951326958073013}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: Boss3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -235,14 +235,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5241715925923550975}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

@@ -32,6 +32,18 @@ public class Boss3 : Enemy
     {
         dir = (playerTarget.transform.position - transform.position);
         Fsm();
+        ChangeOrder();
+    }
+    void ChangeOrder()
+    {
+        if (dir.y < 0)
+        {
+            SpriteRenderer.sortingOrder = 3;
+        }
+        else
+        {
+            SpriteRenderer.sortingOrder = 5;
+        }
     }
 
     public override void TakeDamage(int newDamage)
