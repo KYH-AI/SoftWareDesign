@@ -12,7 +12,7 @@ public class CameraManager : MonoBehaviour
         followingTarget = StageManager.GetInstance().Player.GetComponent<Transform>();
     }
 
-    void LateUpdate()                   /* 카메라 이동은 LateUpdate()에서 처리 */
+    void Update()                   /* 카메라 이동은 LateUpdate()에서 처리 */
     {
         FollowTarget();
     }
@@ -25,7 +25,7 @@ public class CameraManager : MonoBehaviour
 
         this.transform.position = Vector3.Lerp(this.transform.position,
                                                targetPosition,
-                                               moveSpeed * Time.deltaTime);
+                                               moveSpeed * Time.unscaledDeltaTime);
         
     }
 }

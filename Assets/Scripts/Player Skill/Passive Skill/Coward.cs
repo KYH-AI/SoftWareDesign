@@ -48,7 +48,6 @@ public class Coward : PassiveSkill
     private void Start()
     {
         CowardInit();
-        Invoke(nameof(CowardSkillActive), 5f);
     }
 
     private void CowardInit()

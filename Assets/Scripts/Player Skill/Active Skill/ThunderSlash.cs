@@ -59,39 +59,57 @@ public class ThunderSlash : ActiveSkill
 
     private Define.CurrentSkillState ThunderSlashSkillAttack()
     {
-        Collider2D[] enemyCollider = Physics2D.OverlapCircleAll(playerObject.transform.position, 10f, enemyLayer);//아트록스 q
+        Collider2D[] enemyCollider = Physics2D.OverlapCircleAll(playerObject.transform.position, 10f, enemyLayer);
 
         if (enemyCollider.Length > 0)
         {
+            playerObject.PlayerController.IsSilence = true; // 침묵 효과
+            playerObject.PlayerController.IsMoveable = false; // 이동제어
+
+
             OnSkillEffect();
             ThunderSlashEffect(); // 번개 효과 이펙트 (Trail Renderer) 활성화
             Time.timeScale = 0.1f;
+           // StageManager.GetInstance().Player.PlayerController.PlayerTimeScale = Time.timeScale;
             StartCoroutine(ThunderSlashSkillAttackSkillProcess(enemyCollider));
             return Define.CurrentSkillState.COOL_TIME;
         }
         return Define.CurrentSkillState.ACTIVE;
     }
 
-    IEnumerator ThunderSlashSkillAttackSkillProcess(Collider2D[] enemyColiders)
+    IEnumerator ThunderSlashSkillAttackSkillProcess(Collider2D[] enemyColliders)
     {
-       GameObject[] lockOnEffect = new GameObject[skillTotalTarget];
+        GameObject[] lockOnEffect = new GameObject[skillTotalTarget];
+        int targetCount = enemyColliders.Length > skillTotalTarget ? skillTotalTarget : enemyColliders.Length;
 
-        for(int enemyCount = 0; enemyCount < skillTotalTarget; enemyCount++)
+        /*
+        // 적이 더 적은경우
+        if (skillTotalTarget > enemyColliders.Length)
         {
-            lockOnEffect[enemyCount] = Instantiate(thunderSlashLockOnEffect, enemyColiders[enemyCount].transform.position, Quaternion.identity);
-            yield return new WaitForSecondsRealtime(1f);   // 캐싱 하자
+            tempTotalTaregt = enemyColliders.Length;
+        }
+        */
 
+        for(int enemyCount = 0; enemyCount < targetCount; enemyCount++)
+        {
+            if (enemyColliders[enemyCount] != null)
+            {
+                lockOnEffect[enemyCount] = Instantiate(thunderSlashLockOnEffect, enemyColliders[enemyCount].transform.position, Quaternion.identity);
+                yield return new WaitForSecondsRealtime(1f);   // 캐싱 하자
+            }
         }
 
-        for (int enemyCount = 0; enemyCount < skillTotalTarget; enemyCount++)
+        for (int enemyCount = 0; enemyCount < targetCount; enemyCount++)
         {
-           // GameManager.Instance.PlayerCameraMoveSpeed = 0f;
-            playerObject.transform.position = enemyColiders[enemyCount].transform.position;
+            playerObject.SwitchPlayerSprite((playerObject.transform.position - enemyColliders[enemyCount].transform.position).normalized, true);
+            // GameManager.Instance.PlayerCameraMoveSpeed = 0f;
+            playerObject.transform.position = enemyColliders[enemyCount].transform.position;
+
 
             // TODO : 데미지 처리 하기 (10/30)
-            enemyColiders[enemyCount].GetComponent<Enemy>().TakeDamage(skillDamage);
+            enemyColliders[enemyCount].GetComponent<Enemy>().TakeDamage(skillDamage);
 
-             yield return new WaitForSecondsRealtime(0.2f);  // 캐싱 하자
+             yield return new WaitForSecondsRealtime(1f);  // 캐싱 하자
           //  GameManager.Instance.PlayerCameraMoveSpeed = 10f;
 
           //  yield return new WaitForSecondsRealtime(1f);   // 캐싱 하자
@@ -99,7 +117,11 @@ public class ThunderSlash : ActiveSkill
         }
         OffSkillEffect();
         Time.timeScale = 1.0f;
- 
+       // StageManager.GetInstance().Player.PlayerController.PlayerTimeScale = Time.timeScale;
+     
+        playerObject.PlayerController.IsSilence = false; // 침묵 효과
+        playerObject.PlayerController.IsMoveable = true; // 이동제어
+
         Invoke(nameof(ThunderSlashEffect), 1f); // 번개 효과 이펙트 (Trail Renderer) 비활성화
         OnCoolTime(); // 스킬 쿨타임 진행
     }

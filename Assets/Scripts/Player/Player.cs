@@ -5,14 +5,18 @@ using UnityEngine.Events;
 
 public class Player : LivingEntity
 {
-
     /* 변수 */
+
+    #region 플레이어 이미지 변수
+    [SerializeField] Sprite[] attackSprites;
+    #endregion
 
     #region 플레이어 머티리얼 변수
     [SerializeField] Material playerHitEffectMaterial;     // 피격 시 머티리얼
     [SerializeField] Material orignalPlayerMaterial;       // 플레이어 원본 머티리얼
     private SpriteRenderer spriteRenderer;                 // SpriteRenderer 컴포넌트
-    private WaitForSecondsRealtime seconds = new WaitForSecondsRealtime(0.5f);  // 머티리얼 변경 딜레이
+    private WaitForSecondsRealtime seconds = new WaitForSecondsRealtime(0.25f);  // 머티리얼 변경 딜레이
+    private WaitForSecondsRealtime spriteSeconds = new WaitForSecondsRealtime(1f); // 스프라이트 변경 딜레이
     #endregion
 
     #region 플레이어 컨트롤러 변수
@@ -56,9 +60,10 @@ public class Player : LivingEntity
     {
         DontDestroyOnLoad(gameObject);
         PlayerInit();
-        print("플레이어 기본 공격력 : " + DefaultAttackDamage);
         #region 스킬 테스트 중 (김윤호)
         /* 테스트 용도 */
+
+
         GameObject skillObject3 = Managers.Resource.GetPerfabGameObject("Player_Skill/FlameStrike Skill");
         ActiveSkill fpSkill = Instantiate(skillObject3, this.transform).GetComponent<ActiveSkill>();
         fpSkill.Init(this);
@@ -74,10 +79,20 @@ public class Player : LivingEntity
         tdSkill.Init(this);
         playerActiveSkills.Add(2, tdSkill);
 
+        GameObject barrierSkill = Managers.Resource.GetPerfabGameObject("Player_Skill/Barrier Skill");
+        ActiveSkill skill = Instantiate(barrierSkill, this.transform).GetComponent<ActiveSkill>();
+        skill.Init(this);
+        playerActiveSkills.Add(3, skill);
+
+        GameObject windSlashSkill = Managers.Resource.GetPerfabGameObject("Player_Skill/WindDash Skill");
+        ActiveSkill wdskill = Instantiate(windSlashSkill, this.transform).GetComponent<ActiveSkill>();
+        wdskill.Init(this);
+        playerActiveSkills.Add(4, wdskill);
+
         GameObject skillObject0 = Managers.Resource.GetPerfabGameObject("Player_Skill/HourGlass Skill");
         PassiveSkill ttSkill = Instantiate(skillObject0, this.transform).GetComponent<PassiveSkill>();
         ttSkill.Init(this);
-        playerPassiveSkills.Add(0, ttSkill);
+        ttSkill.OnActive();
 
         GameObject cowardSkill = Managers.Resource.GetPerfabGameObject("Player_Skill/Coward Skill");
         PassiveSkill mvSkill = Instantiate(cowardSkill, this.transform).GetComponent<PassiveSkill>();
@@ -94,6 +109,11 @@ public class Player : LivingEntity
         damageSkill.Init(this);
         damageSkill.OnActive();
 
+        GameObject droneSkill = Managers.Resource.GetPerfabGameObject("Player_Skill/Drone Skill");
+        PassiveSkill drSkill = Instantiate(droneSkill, this.transform).GetComponent<PassiveSkill>();
+        drSkill.Init(this);
+        drSkill.OnActive();
+
         #endregion
     }
 
@@ -106,7 +126,6 @@ public class Player : LivingEntity
         playerController = GetComponent<PlayerController_>();
         spriteRenderer = GetComponent<SpriteRenderer>();    
         playerController.PlayerControllerInit(this);
-        TakeDamage(12);
     }
     #endregion
 
@@ -115,18 +134,21 @@ public class Player : LivingEntity
     {
         base.TakeDamage(newDamage);
 
+      //  print("플레이어가 데미지 받음 " + newDamage);
+
         HitEvent?.Invoke(); // 피격 시 관련된 패시브 기술만 호출함
         StartCoroutine(SwitchMaterial()); // 피격 시 플레이어 색상 변경 코루틴
 
 
-        /*
-        GameObject floatingText = MemoryPoolManager.GetInstance().OutputGameObject(text
-            ,Define.PrefabType.UI
+        GameObject floatingText = MemoryPoolManager.GetInstance().OutputGameObject
+            (Managers.Resource.GetPerfabGameObject("UI/DamageText")
+            ,"UI/DamageText"
             ,new Vector3(transform.position.x, transform.position.y)
             ,Quaternion.identity);
 
+        floatingText.GetComponent<FloatingText>().DamageText = newDamage.ToString();
         floatingText.SetActive(true);
-          */                                              
+                                                        
         // TODO : Player UI 체력 게이지 감소
         // TODO : 피격 효과음 재생
     }
@@ -145,7 +167,49 @@ public class Player : LivingEntity
     #region 플레이어 사망 처리
     protected override void OnDead()
     {
+        gameObject.SetActive(false);
+    }
+    #endregion
 
+    #region 플레이어 이미지 랜더러 변경 함수
+
+    /// <summary>
+    /// 돌진 스킬이용시 이미지를 변경
+    /// </summary>
+    /// <param name="dir">플레이어 방향</param>
+    public void SwitchPlayerSprite(Vector2 dir, bool needDelay)
+    {
+        playerController.Anim.enabled = false;
+        StartCoroutine(SwitchSprite(dir.normalized, needDelay));
+    }
+
+    private IEnumerator SwitchSprite(Vector2 dir, bool isDelay)
+    {
+        /*
+         *  동 = 1, 0
+         *  서 = -1, 0
+         *  남 = 0, -1
+         *  북 = 0, 1
+         */
+
+        if (dir.y > 0) spriteRenderer.sprite = attackSprites[0];
+        else if (dir.y < 0) spriteRenderer.sprite = attackSprites[1];
+        else spriteRenderer.sprite = attackSprites[2];
+        /*
+        else if (dir.x > 0) spriteRenderer.sprite = attackSprites[2];
+        else if (dir.x < 0)
+        {
+          //  spriteRenderer.flipX = true;
+            spriteRenderer.sprite = attackSprites[2];
+        }
+       */
+
+        if (isDelay)
+            yield return spriteSeconds;
+        else
+            yield return seconds;
+
+        playerController.Anim.enabled = true;
     }
     #endregion
 
