@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    /*
+    
     bool inPortal =false;
     // Update is called once per frame
     private void OnTriggerStay2D(Collider2D collision)
@@ -49,13 +49,13 @@ public class Portal : MonoBehaviour
                 print("stage4ป๓ลย");
                 break;
             case Define.Stage.STAGE4:
-               StageManager.GetInstance().stage = Define.Stage.STAGE4;
+               StageManager.GetInstance().stage = Define.Stage.Boss;
                 break;
         }
         yield return new WaitForSeconds(1f);
         inPortal = false;
         transform.position = new Vector2(0, 0);
-        SceneManager.LoadScene("Store");
+        SceneManager.LoadScene("JinminStore");
     }
 
     IEnumerator SceneChange()
@@ -65,21 +65,21 @@ public class Portal : MonoBehaviour
         inPortal = false;
         switch (StageManager.GetInstance().stage)
         {
-            case Define.Stage.TWO:
+            case Define.Stage.STAGE2:
                SceneManager.LoadScene("Stage2");
                break;
-            case Define.Stage.THREE:
+            case Define.Stage.STAGE3:
                 SceneManager.LoadScene("Stage3");
                 break;
-            case Define.Stage.FOUR:
+            case Define.Stage.STAGE4:
                 SceneManager.LoadScene("Stage4");
                 break;
-            case Define.Stage.FIVE:
+            case Define.Stage.Boss:
                 SceneManager.LoadScene("Stage5");
                 break;
 
         }
-    }*/
+    }
 
 }
 

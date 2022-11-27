@@ -80,10 +80,13 @@ public class Boss1 : Enemy
 
     new void Move()
     {
-        if (!isDie&& !isAttack)
+        if (!isDie)
         {
             transform.position = Vector2.MoveTowards(transform.position, playerTarget.transform.position, MoveSpeed * Time.deltaTime);
             ChangeDir();
+        }
+        if (!isAttack)
+        {
             StartCoroutine(MoveToAttack());
             isAttack = true;
         }
@@ -109,7 +112,7 @@ public class Boss1 : Enemy
         GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(FireBall,
                                                                                  Define.PrefabType.SubBoss,
                                                                                  new Vector2(FireBallTransform.position.x,FireBallTransform.position.y),
-                                                                                 Quaternion.Euler(0, 0, Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg));
+                                                                                 Quaternion.Euler(0, 0, Mathf.Atan2(attackDir.y, attackDir.x) * Mathf.Rad2Deg));
         projectile.GetComponent<Projectile>().ProjectileInit(Define.StringTag.Player, attackDir.normalized, skillDamage, skillSpeed);
         projectile.SetActive(true);
     }
