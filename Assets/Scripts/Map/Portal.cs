@@ -18,6 +18,7 @@ public class Portal : MonoBehaviour
                 inPortal = true;
                 print("상점으로 이동!");
                 StartCoroutine(ToStore());
+                MemoryPoolManager.GetInstance().InitPool();
             }
 
         }

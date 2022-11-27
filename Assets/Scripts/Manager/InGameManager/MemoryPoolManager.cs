@@ -82,4 +82,8 @@ public class MemoryPoolManager : MonoBehaviour
        // temp.SetActive(true);  -> 오브젝트 OnEnable 특성상 외부에서 활성화 해야함
         return temp;
     }
+    public void InitPool()
+    {
+        pools.Clear();
+    }
 }

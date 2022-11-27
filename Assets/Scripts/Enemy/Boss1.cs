@@ -34,6 +34,7 @@ public class Boss1 : Enemy
         dir = (playerTarget.transform.position - transform.position);
         Fsm();
         ChangeOrder();
+        print(EnemyCollider);
     }
 
     void ChangeOrder()

@@ -5,7 +5,8 @@ using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Boss4 : Enemy
 {
-    protected int playerLayer = 1 << 10;
+    protected int Boss = 1 << 14;
+    protected int DontDamaged = 1 << 15;
     public enum BossState
     {
         IDLE_STATE,
@@ -202,7 +203,7 @@ public class Boss4 : Enemy
     }
     private void Hide()
     {
-        if (isHide)
+        if (isHide&!isDie)
         {
             int result = Random.Range(0, 2);
             if (result == 0)
@@ -226,6 +227,7 @@ public class Boss4 : Enemy
     IEnumerator FadeOut()
     {
         gameObject.tag = "Untagged";
+        gameObject.layer = 15;
         while (SpriteRenderer.color.a > 0)
         {
             var color = SpriteRenderer.color;
@@ -246,6 +248,7 @@ public class Boss4 : Enemy
     IEnumerator FadeIn()
     {
         gameObject.tag = "Enemy";
+        gameObject.layer = 14;
         state = BossState.ATTACK_STATE;
         while (SpriteRenderer.color.a < 1)
         {
