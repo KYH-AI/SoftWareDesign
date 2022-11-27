@@ -167,6 +167,7 @@ public class Player : LivingEntity
     #region 플레이어 사망 처리
     protected override void OnDead()
     {
+        StopAllCoroutines();
         gameObject.SetActive(false);
     }
     #endregion

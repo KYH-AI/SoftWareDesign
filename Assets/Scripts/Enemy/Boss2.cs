@@ -142,7 +142,7 @@ public class Boss2 : Enemy
             attack2Cnt = 0;
         }
         GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(Spell,
-                                                                                   Define.PrefabType.SubBoss,
+                                                                                   "SubBoss/"+Spell.name,
                                                                                    new Vector2(playerTarget.transform.position.x, playerTarget.transform.position.y +3.8f),
                                                                                    Quaternion.identity);
         projectile.GetComponent<Projectile>().ProjectileInit(Define.StringTag.Player, Vector2.zero, skillDamage);

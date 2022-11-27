@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbeabe8b6a3e9245971ec56bc36344d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillCoolTime: 1
+  skillCoolTime: 10
   hourGlassEffectObject: {fileID: 8077336067353276835}
   hourGlassProfile: {fileID: 11400000, guid: 033b08aea4eac4e40b1afee6a567b49b, type: 2}
 --- !u!1001 &8192937074309649103

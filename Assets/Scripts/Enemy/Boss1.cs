@@ -124,7 +124,7 @@ public class Boss1 : Enemy
     void MakeFireBall()
     {
         GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(FireBall,
-                                                                                 Define.PrefabType.SubBoss,
+                                                                                 "SubBoss/"+FireBall.name,
                                                                                  new Vector2(FireBallTransform.position.x,FireBallTransform.position.y),
                                                                                  Quaternion.Euler(0, 0, Mathf.Atan2(attackDir.y, attackDir.x) * Mathf.Rad2Deg));
         projectile.GetComponent<Projectile>().ProjectileInit(Define.StringTag.Player, attackDir.normalized, skillDamage, skillSpeed);

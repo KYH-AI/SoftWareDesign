@@ -63,8 +63,8 @@ public class ThunderSlash : ActiveSkill
 
         if (enemyCollider.Length > 0)
         {
-            playerObject.PlayerController.IsSilence = true; // 침묵 효과
-            playerObject.PlayerController.IsMoveable = false; // 이동제어
+            playerObject.PlayerController.isAttackalble = false; // 침묵 효과
+            playerObject.PlayerController.isMoveable = false; // 이동제어
 
 
             OnSkillEffect();
@@ -119,8 +119,8 @@ public class ThunderSlash : ActiveSkill
         Time.timeScale = 1.0f;
        // StageManager.GetInstance().Player.PlayerController.PlayerTimeScale = Time.timeScale;
      
-        playerObject.PlayerController.IsSilence = false; // 침묵 효과
-        playerObject.PlayerController.IsMoveable = true; // 이동제어
+        playerObject.PlayerController.isAttackalble = true; // 침묵 효과
+        playerObject.PlayerController.isMoveable = true; // 이동제어
 
         Invoke(nameof(ThunderSlashEffect), 1f); // 번개 효과 이펙트 (Trail Renderer) 비활성화
         OnCoolTime(); // 스킬 쿨타임 진행

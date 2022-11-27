@@ -66,8 +66,8 @@ public class WindDash : ActiveSkill
     {
 
         playerObject.SwitchPlayerSprite(playerObject.PlayerController.LastDirection, false);
-        playerObject.PlayerController.IsSilence = true;
-        playerObject.PlayerController.IsMoveable = false;
+        playerObject.PlayerController.isAttackalble = false;
+        playerObject.PlayerController.isMoveable = false;
         OnSkillEffect();  // 이펙트 활성화
 
         Vector3 firstPosition = playerObject.transform.position;
@@ -104,8 +104,8 @@ public class WindDash : ActiveSkill
             }
         }
 
-        playerObject.PlayerController.IsSilence = false;
-        playerObject.PlayerController.IsMoveable = true;
+        playerObject.PlayerController.isAttackalble = true;
+        playerObject.PlayerController.isMoveable = true;
 
         Invoke(nameof(OnSkillEffect), 1.5f); //  이펙트 비활성화
         OnCoolTime();
