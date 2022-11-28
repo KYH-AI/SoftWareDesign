@@ -50,7 +50,7 @@ public class CanIBuy : MonoBehaviour
         SelectBtn2.onClick.AddListener(Buy2);
         SelectBtn3.onClick.AddListener(Buy3);
 
-        print(StageManager.GetInstance().Player);
+        print(Managers.StageManager.Player);
     }
 
 
@@ -64,9 +64,9 @@ public class CanIBuy : MonoBehaviour
        
         
         //skillObject.AddComponent<RayForUpgrade> ();
-        if (StageManager.GetInstance().Player.PlayerGold >= item)
+        if (Managers.StageManager.Player.PlayerGold >= item)
                { 
-                StageManager.GetInstance().Player.PlayerGold -= item;
+                Managers.StageManager.Player.PlayerGold -= item;
                 Yes.SetActive(true);
                 Invoke("HideAnswerY", Speed);
             //selectImage = soldout;
@@ -77,9 +77,9 @@ public class CanIBuy : MonoBehaviour
                // skillLevel++;
                     if (isActiveSkill)
                     {
-                        ActiveSkill activeSkill = Instantiate(skillObject, StageManager.GetInstance().Player.transform).GetComponent<ActiveSkill>();
-                        activeSkill.Init(StageManager.GetInstance().Player);
-                        StageManager.GetInstance().Player.playerActiveSkills.Add(0, activeSkill);
+                        ActiveSkill activeSkill = Instantiate(skillObject, Managers.StageManager.Player.transform).GetComponent<ActiveSkill>();
+                        activeSkill.Init(Managers.StageManager.Player);
+                        Managers.StageManager.Player.playerActiveSkills.Add(0, activeSkill);
 
 
                     }
@@ -87,9 +87,9 @@ public class CanIBuy : MonoBehaviour
                     {
 
                         print(skillObject.name);
-                        print(StageManager.GetInstance().Player);
-                        PassiveSkill passiveSkill = Instantiate(skillObject, StageManager.GetInstance().Player.transform).GetComponent<PassiveSkill>();
-                        passiveSkill.Init(StageManager.GetInstance().Player);
+                        print(Managers.StageManager.Player);
+                        PassiveSkill passiveSkill = Instantiate(skillObject, Managers.StageManager.Player.transform).GetComponent<PassiveSkill>();
+                        passiveSkill.Init(Managers.StageManager.Player);
                         passiveSkill.OnActive();
 
 
@@ -102,7 +102,7 @@ public class CanIBuy : MonoBehaviour
                     
                 }*/
 
-            money.text = StageManager.GetInstance().Player.PlayerGold.ToString();
+            money.text = Managers.StageManager.Player.PlayerGold.ToString();
         }
 
 

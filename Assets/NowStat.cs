@@ -16,12 +16,12 @@ public class NowStat : MonoBehaviour
     {
 
         //이동속도 , 체력 , 방어력, 공격력 
-        speed.text = StageManager.GetInstance().Player.MoveSpeed.ToString();
-        sheld.text = StageManager.GetInstance().Player.Armor.ToString();
-        hp.text = StageManager.GetInstance().Player.MaxHp.ToString();
-        attack.text = StageManager.GetInstance().Player.DefaultAttackDamage.ToString();
-        StageManager.GetInstance().Player.PlayerGold = 10000;
-        money.text = StageManager.GetInstance().Player.PlayerGold.ToString();
+        speed.text = Managers.StageManager.Player.MoveSpeed.ToString();
+        sheld.text = Managers.StageManager.Player.Armor.ToString();
+        hp.text = Managers.StageManager.Player.MaxHp.ToString();
+        attack.text = Managers.StageManager.Player.DefaultAttackDamage.ToString();
+        Managers.StageManager.Player.PlayerGold = 10000;
+        money.text = Managers.StageManager.Player.PlayerGold.ToString();
 
     }
 }

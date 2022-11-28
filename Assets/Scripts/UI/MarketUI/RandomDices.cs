@@ -20,10 +20,10 @@ public class RandomDices : MonoBehaviour
 
     {
         RandomInt = Random.Range(1, 8);
-        money.text = StageManager.GetInstance().Player.PlayerGold.ToString();
+        money.text = Managers.StageManager.Player.PlayerGold.ToString();
 
-        if (StageManager.GetInstance().Player.PlayerGold >= 150)
-            StageManager.GetInstance().Player.PlayerGold -= 150;
+        if (Managers.StageManager.Player.PlayerGold >= 150)
+            Managers.StageManager.Player.PlayerGold -= 150;
         {
 
 
@@ -33,7 +33,7 @@ public class RandomDices : MonoBehaviour
                 skill.sprite = simage[0];
                 statResult.text = "공격력 100 증가!";
                 //스텟 +=100; 
-                StageManager.GetInstance().Player.DefaultAttackDamage += 100;
+                Managers.StageManager.Player.DefaultAttackDamage += 100;
 
             }
 
@@ -41,29 +41,29 @@ public class RandomDices : MonoBehaviour
             {
                 skill.sprite = simage[1];
                 statResult.text = "방어력 100 증가!";
-                StageManager.GetInstance().Player.Armor += 100;
+                Managers.StageManager.Player.Armor += 100;
             }
 
             else if (RandomInt == 3)
             {
                 skill.sprite = simage[2];
                 statResult.text = "이동속도 100 증가!";
-                StageManager.GetInstance().Player.MoveSpeed += 100;
+                Managers.StageManager.Player.MoveSpeed += 100;
             }
 
             else if (RandomInt == 4)
             {
                 skill.sprite = simage[3];
                 statResult.text = "체력 100 증가!";
-                StageManager.GetInstance().Player.MaxHp += 100;
+                Managers.StageManager.Player.MaxHp += 100;
             }
 
             else if (RandomInt == 5)
             {
 
-                if (StageManager.GetInstance().Player.DefaultAttackDamage >= 50)
+                if (Managers.StageManager.Player.DefaultAttackDamage >= 50)
                 {
-                    StageManager.GetInstance().Player.DefaultAttackDamage -= 50;
+                    Managers.StageManager.Player.DefaultAttackDamage -= 50;
                     skill.sprite = simage[4];
                     statResult.text = "공격력 50 감소!";
                 }
@@ -74,9 +74,9 @@ public class RandomDices : MonoBehaviour
             else if (RandomInt == 6)
             {
 
-                if (StageManager.GetInstance().Player.Armor >= 50)
+                if (Managers.StageManager.Player.Armor >= 50)
                 {
-                    StageManager.GetInstance().Player.Armor -= 50;
+                    Managers.StageManager.Player.Armor -= 50;
                     skill.sprite = simage[5];
                     statResult.text = "방어력 50 감소!";
                 }
@@ -87,10 +87,10 @@ public class RandomDices : MonoBehaviour
             else if (RandomInt == 7)
             {
 
-                if (StageManager.GetInstance().Player.MoveSpeed >= 50)
+                if (Managers.StageManager.Player.MoveSpeed >= 50)
                 { skill.sprite = simage[6];
                 statResult.text = "이동속도 50 감소!";
-                StageManager.GetInstance().Player.MoveSpeed -= 50;
+                Managers.StageManager.Player.MoveSpeed -= 50;
             }
                 else
                 statResult.text = "구매 불가능합니다. ";
@@ -100,8 +100,8 @@ public class RandomDices : MonoBehaviour
             {
                 skill.sprite = simage[7];
                 statResult.text = "체력 50 증가!";
-                if (StageManager.GetInstance().Player.MaxHp >= 50) {
-                    StageManager.GetInstance().Player.MaxHp -= 50;
+                if (Managers.StageManager.Player.MaxHp >= 50) {
+                    Managers.StageManager.Player.MaxHp -= 50;
                     skill.sprite = simage[7];
                     statResult.text = "체력 50 증가!";
                              
