@@ -55,12 +55,13 @@ public class Managers : MonoBehaviour
 
     private void MangersInit()
     {
+        stageManager = GetComponentInChildren<StageManager>();
         sound = GetComponentInChildren<SoundManager>();
         button = GetComponentInChildren<ButtonManager>();
         skillEffectVolume = GetComponentInChildren<SkillEffectVolumeManager>();
         sceneManager_ = GetComponentInChildren<SceneManager_>();
         cameraManager = GetComponentInChildren<CameraManager>();
         ui = GetComponentInChildren<UIManager>();
-        stageManager = GetComponentInChildren<StageManager>();
+ 
     }
 }

@@ -31,16 +31,20 @@ public class SkeletonSeekerController : Enemy
         renderer = GetComponent<SpriteRenderer>();
         state = State.Ready;
 
-
         //Boss쪽에서 아래 함수를 불러주면 완료
-        //Ready();
+         //Ready();
     }
 
-    void Ready()
+    public void Ready()
     {
+        Debug.Log("hello");
+        base.EnemyAnimator.SetTrigger("RunSpawnToWalk");
+        Debug.Log("hi");
+        this.GetComponent<Collider2D>().enabled = true;
+        this.GetComponent<Animator>().enabled = true;
+        Debug.Log("레디함수 들어옴");
         StartCoroutine(ReadyProcess());
         state = State.Run;
-        base.EnemyAnimator.SetTrigger("RunSpawnToWalk");
     }
 
     IEnumerator ReadyProcess()

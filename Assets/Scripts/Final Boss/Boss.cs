@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+
 public class Boss : Enemy
 {
+    
+
     #region 사용된 모든 상수
     readonly float BOSS_PROJECTILE_SKULL_SPEED = 10f;       //기본공격 투사체 속도
     readonly float BOSS_PATTERN_DARK_HEAL_COUNT = 30f;      //다크힐 패턴의 시작 쿨타임 통제 변수
@@ -24,6 +27,9 @@ public class Boss : Enemy
     [SerializeField] Material originalMaterial;
     [SerializeField] Material hurtMaterial;
     [SerializeField] GameObject player;         //플레이어 프리팹 
+
+    [SerializeField] GameObject seekerPrefab;
+    GameObject[] seeker;
     #endregion
 
     #region Destroy처리에 사용한 GameObject 변수
@@ -75,24 +81,35 @@ public class Boss : Enemy
     private bool patternCheck = false;          // == isgod. true이면 무적임. 
     #endregion
 
+    [SerializeField] Spawner_SkeletonSeeker SkeletonSeekerSpawner;
+
     /// <summary>
     /// 클래스를 실행 시키기 전 필요한 정보를 모두 대입함
     /// </summary>
-    void Start()
+    new void Start()
     {
         base.Start();
+        seeker = new GameObject[3];
         bossFSM = new BossFSM(this);
         scaleX = transform.localScale.x;
+        
         targetIsPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         bossAnimator = GetComponent<Animator>();
         bossRigidBody = GetComponent<Rigidbody2D>();
         bossSpriteRenderer = GetComponent<SpriteRenderer>();
         darkHealTempHp = BOSS_TEMP_HP;
+
+       // Invoke(nameof(test), 5f);
         //bossFSM.bossState = Define.BossState.CASTING_STATE; //연출효과 대기
     }
+    
+    private void test()
+    { SkeletonSeekerSpawner.go(); }
 
     void Update()
     {
+        
+
         SwitchSpriteImageDir(transform);
         if (bossFSM != null) bossFSM.Update();                      //보스의 STATE값이 있을 때만 동작함. 
         if (bossFSM.bossState != Define.BossState.CASTING_STATE)    //보스가 패턴 중일 때는 패턴체크타이머를 증가하지 않음
