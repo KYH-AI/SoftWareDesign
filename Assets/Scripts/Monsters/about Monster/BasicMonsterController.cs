@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public abstract class BasicMonsterController : Enemy
 {
-    public Text DamageInform;
+   // public Text DamageInform;
     //public GameObject coinPrephab;
     public enum State
     {
@@ -28,6 +28,15 @@ public abstract class BasicMonsterController : Enemy
     {
         base.Start();
         renderer = GetComponent<SpriteRenderer>();
+       // state = State.Run;
+        StartCoroutine("ready");
+    }
+
+    IEnumerator ready()
+    {
+        Debug.Log("ready");
+        base.EnemyAnimator.SetTrigger("RunSpawnToWalk");
+        yield return new WaitForSeconds(2.0f);
         state = State.Run;
     }
     public void Update()
@@ -76,7 +85,7 @@ public abstract class BasicMonsterController : Enemy
     public override sealed void TakeDamage(int newDamage)
     {
         base.TakeDamage(newDamage);
-        DamageInform.text = "-"+newDamage.ToString();
+        //DamageInform.text = "-"+newDamage.ToString();
         StartCoroutine(DamageProcess());
         base.EnemyAnimator.SetTrigger("DamageToMove");
         if (base.Hp <= 0)
@@ -88,9 +97,9 @@ public abstract class BasicMonsterController : Enemy
 
     IEnumerator DamageProcess()
     {
-        DamageInform.gameObject.SetActive(true);
+       // DamageInform.gameObject.SetActive(true);
         yield return new WaitForSeconds(1.0f);
-        DamageInform.gameObject.SetActive(false);
+        //sDamageInform.gameObject.SetActive(false);
         state = State.Run;
     }
 

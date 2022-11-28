@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69e6443d67a4cf241a1179bfa19679a3, type: 3}
-  m_Name: Boss Stat
+  m_Name: Skeleton_Seeker_Stat
   m_EditorClassIdentifier: 
-  hp: 200
+  hp: 150
   moveSpeed: 2
   armor: 0
   defaultAttackDamage: 10

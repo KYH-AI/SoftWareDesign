@@ -45,7 +45,7 @@ public class Define
     public enum PrefabType
     {
         Player_Skill,
-        Boss_Skill,
+        Final_Boss_Skill,
         Monsters,
         UI
     }
