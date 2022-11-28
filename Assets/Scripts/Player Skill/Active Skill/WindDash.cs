@@ -82,8 +82,9 @@ public class WindDash : ActiveSkill
 
         if (hitObject)  // RayCast가 벽에 충돌했다는 의미
         {
-            maxDistance = hitObject.distance;     // 벽 충돌 위치까지만 Ray를 쏘기 위한 거리 측정
-            playerObject.transform.position = hitObject.normal; // 충돌한 벽 앞 까지만 이동
+            maxDistance = hitObject.distance-1f;     // 벽 충돌 위치까지만 Ray를 쏘기 위한 거리 측정
+           // playerObject.transform.position = hitObject.normal; // 충돌한 벽 앞 까지만 이동
+            playerObject.transform.Translate(playerObject.PlayerController.LastDirection.normalized * maxDistance); // 마지막으로 본 방향 + dashDistance 길이 만큼 이동
         }
 
         else

@@ -80,8 +80,10 @@ public class Drone : PassiveSkill
 
     private void Update()  // 드론 사격 여부 확인
     {
-        if(!isDroneStop && currentSkillState == Define.CurrentSkillState.ACTIVE)
+        //  print("연출중 : " + playerObject.PlayerController.isAttackalble);
+        if (!isDroneStop && currentSkillState == Define.CurrentSkillState.ACTIVE)
         {
+            print("드론 공격중");
             currentSkillState = DroneSkillAttack();
         }
     }
@@ -116,12 +118,11 @@ public class Drone : PassiveSkill
         {
             isDroneStop = false;
             droneRotateCheck = StartCoroutine(DroneAroundRotate(playerObject.transform));
-            
         }
     }
 
     private Define.CurrentSkillState DroneSkillAttack()
-    { 
+    {
         Collider2D[] enemyCollider = Physics2D.OverlapCircleAll(playerObject.transform.position, skillRange, enemyLayer); // 플레이어 기준 10범위에 적을 탐지
 
         if (enemyCollider.Length > 0) // 적 배열이 0보다 많으면
@@ -129,7 +130,7 @@ public class Drone : PassiveSkill
             StartCoroutine(DroneSkillAttackProcess(enemyCollider));
             return Define.CurrentSkillState.COOL_TIME;
         }
-        return Define.CurrentSkillState.ACTIVE; ;
+        return Define.CurrentSkillState.ACTIVE;
     }
 
     private IEnumerator DroneSkillAttackProcess(Collider2D[] enemyColliders)
@@ -140,6 +141,9 @@ public class Drone : PassiveSkill
         {
             if (enemyColliders[enemyCount] != null)
             {
+                if (playerObject.PlayerController.isAttackalble == false) StopAllCoroutines();
+
+
                 Enemy enemy = enemyColliders[enemyCount].GetComponent<Enemy>();
                 StartCoroutine(DroneBulletEffect(enemy.transform.position));
                 enemy.TakeDamage(skillDamage);
@@ -165,7 +169,6 @@ public class Drone : PassiveSkill
     {
         while (!isDroneStop)
         {
-            // 소스 참고 : https://sharp2studio.tistory.com/4?category=884092 //
             deg += Time.deltaTime * DRONE_MOVE_SPEED;
             if (deg < 360)
             {

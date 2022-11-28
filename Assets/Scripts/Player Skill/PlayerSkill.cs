@@ -6,8 +6,9 @@ public class PlayerSkill : MonoBehaviour
 { 
     protected Player playerObject;
 
-    protected int enemyLayer = 1 << 11;
+    protected int enemyLayer = 1 << 11 | 1 << 14;
     protected int wallLayer = 1 << 12;
+
 
     #region 스킬 레벨
     protected short skillLevel = 1;

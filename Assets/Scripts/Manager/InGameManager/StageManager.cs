@@ -10,7 +10,6 @@ public class StageManager : MonoBehaviour
     GameObject portal;
     public int killCount;      //현재 킬 카운트
     public Define.Stage stage;        //현재 스테이지
-    public GameObject[] midBoss = new GameObject[4];
     public GameObject[] coins = new GameObject[3];
 
     #region 유니티 함수

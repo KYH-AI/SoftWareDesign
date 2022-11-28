@@ -29,6 +29,7 @@ public class KnifeProjectile : Projectile
     {
         if (target.CompareTag(TargetTag.ToString()))
         {
+            print("표창 뎀지 : " + ProjectileDamage);
             target.GetComponent<Enemy>().TakeDamage(ProjectileDamage);
             DisableObject();
         }
