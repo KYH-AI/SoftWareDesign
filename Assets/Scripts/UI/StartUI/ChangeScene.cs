@@ -7,6 +7,6 @@ public class ChangeScene : MonoBehaviour
 {
     public void ChangeStart()
     {
-        SceneManager.LoadScene("Jinmin");
+        SceneManager.LoadScene("Stage1");
     } 
 }
