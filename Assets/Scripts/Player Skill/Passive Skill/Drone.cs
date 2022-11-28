@@ -13,7 +13,7 @@ public class Drone : PassiveSkill
     private Coroutine droneRotateCheck;
     private bool isDroneStop = false;
 
-
+    private float lastTime = 0f;        // 드론 마지막 사격 시간
     private readonly float DRONE_MOVE_SPEED = 50f;              // 드론 이동 속도 (상수 값)
     private readonly float DRONE_BULLET_LINE_DURATION = 0.1f;   // 드론 공격 이펙트 지속 시간(상수 값)
     private readonly float CIRCLE_R = 3f;                       //반지름(상수 값)
@@ -21,13 +21,11 @@ public class Drone : PassiveSkill
     private WaitForSeconds droneBulletLineDuration;    // 드론 공격 이펙트 지속시간 (상수 값)
     #endregion
 
-    private float lastTime = 0f;        // 드론 마지막 사격 시간
-
     #region 스킬 기본 스텟 데이터
     /// <summary>
     /// 스킬 데미지
     /// </summary>
-    private int skillDamage = 3;
+    private int skillDamage = 5;
     /// <summary>
     /// 스킬 공격 범위
     /// </summary>
@@ -105,7 +103,11 @@ public class Drone : PassiveSkill
 
     public override void Upgrade()
     {
-        
+        skillDamage += 3;
+        SkillCoolTime -= 2f;
+        skillTargetCount += 3;
+        skillAttackDelay -= 0.25f;
+        skillRange += 2;
     }
 
     private void DroneSkillActive() // 드론 이동 여부 확인

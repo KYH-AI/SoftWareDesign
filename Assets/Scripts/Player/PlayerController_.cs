@@ -106,7 +106,7 @@ public class PlayerController_ : MonoBehaviour
         //첫번째 스킬 사용
         //if (isAttackalble == true && ) isAttackable이 true이고 스킬이 존재할 때,
         if (isAttackalble == true && StageManager.stageManager.Player.playerActiveSkills[0] != null)
-        player.playerActiveSkills[0].OnActive();
+             player.playerActiveSkills[0].OnActive();
 
     }
     void OnSkill2()
@@ -125,7 +125,7 @@ public class PlayerController_ : MonoBehaviour
     {
         //4번째 스킬 사용
         if (isAttackalble == true && StageManager.stageManager.Player.playerActiveSkills[3] != null)
-            player.playerPassiveSkills[3].OnActive();
+            player.playerActiveSkills[3].OnActive();
     }
     void OnSkill5()
     {

@@ -18,7 +18,6 @@ public class Portal : MonoBehaviour
                 inPortal = true;
                 print("상점으로 이동!");
                 StartCoroutine(ToStore());
-                MemoryPoolManager.GetInstance().InitPool();
             }
 
         }
@@ -56,6 +55,7 @@ public class Portal : MonoBehaviour
         yield return new WaitForSeconds(1f);
         inPortal = false;
         transform.position = new Vector2(0, 0);
+        MemoryPoolManager.GetInstance().InitPool();
         SceneManager.LoadScene("JinminStore");
     }
 
@@ -64,6 +64,7 @@ public class Portal : MonoBehaviour
         yield return new WaitForSeconds(1f);
         transform.position = new Vector2(0, 0);
         inPortal = false;
+        MemoryPoolManager.GetInstance().InitPool();
         switch (StageManager.GetInstance().stage)
         {
             case Define.Stage.STAGE2:

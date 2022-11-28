@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15e5dada84f5854e8bdfd74813873d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillCoolTime: 16
+  skillCoolTime: 10
   barrierEffectObject: {fileID: 3733073264514076863}
 --- !u!1001 &10988090816694246
 PrefabInstance:

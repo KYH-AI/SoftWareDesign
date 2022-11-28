@@ -26,7 +26,15 @@ public class Player : LivingEntity
 
     #region 플레이어 재화 변수
     private int playerGold = 0;
-    public int PlayerGold { get { return playerGold; } set { playerGold = value; } }
+    public int PlayerGold 
+    { 
+        get { return playerGold; }
+        set 
+        { 
+            playerGold = value; 
+            Managers.UI.UpdateGoldText();
+        } 
+    }
     #endregion
 
     #region 플레이어 스킬 이벤트 변수
@@ -148,8 +156,9 @@ public class Player : LivingEntity
 
         floatingText.GetComponent<FloatingText>().DamageText = newDamage.ToString();
         floatingText.SetActive(true);
-                                                        
-        // TODO : Player UI 체력 게이지 감소
+
+
+        Managers.UI.UpdatePlayerHpSlider(Hp, MaxHp);
         // TODO : 피격 효과음 재생
     }
 

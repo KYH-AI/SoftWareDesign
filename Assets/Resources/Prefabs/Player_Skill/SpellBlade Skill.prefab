@@ -9796,7 +9796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff2e1a17829f0d4fb6e96653e9d21e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillCoolTime: 10
+  skillCoolTime: 15
   spellBladeEffect: {fileID: 2138985230554491972}
 --- !u!1 &6524563514105660707
 GameObject:

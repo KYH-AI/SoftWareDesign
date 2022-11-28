@@ -54,6 +54,9 @@ public class ThunderSlash : ActiveSkill
 
     public override void Upgrade()
     {
+        skillDamage += 10;
+        SkillCoolTime -= 2;
+        skillTotalTarget += 3;
         // TODO : 상점에서 업그레이드 방식이 정해지면 진행 하자 (09/28)
     }
 
