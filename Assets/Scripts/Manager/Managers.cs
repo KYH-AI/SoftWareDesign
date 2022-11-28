@@ -45,6 +45,7 @@ public class Managers : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+
     }
 
     private void Start()
