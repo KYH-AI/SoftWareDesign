@@ -15,7 +15,7 @@ public class CoinController : MonoBehaviour
     {
         if(target.CompareTag(Define.StringTag.Player.ToString()))
         {
-            StageManager.GetInstance().Player.PlayerGold += coinValue;
+            Managers.StageManager.Player.PlayerGold += coinValue;
             // TODO 동전 효과음 재생
             gameObject.SetActive(false);
         }
