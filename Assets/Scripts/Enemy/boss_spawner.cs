@@ -31,22 +31,29 @@ public class boss_spawner : MonoBehaviour
 
         }
         SetLocation();
-        //if (Managers.StageManager.IsStageCleared())
-        if(Input.GetKeyDown(KeyCode.C))
+
+       if (Managers.StageManager.IsStageCleared())
         {
-            
             Managers.UI.bossSlider.gameObject.SetActive(true);
             Managers.UI.InitBossSlider();
             Spawn();
-            Managers.CameraManager.SetFollow(this.transform); 
+            Managers.CameraManager.SetFollow(this.transform);
             bossSpawn.PlayFromTimeline();
             Managers.StageManager.SetStageKillCount();
+
         }
+
+               /*
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+
+        }
+               */
     }
     void SetLocation()
     {
         spawnX = Managers.StageManager.Player.transform.position.x;
-        spawny = Managers.StageManager.Player.transform.position.y + 7f;
+        spawny = Managers.StageManager.Player.transform.position.y + 14f;
         this.transform.position = new Vector2(spawnX, spawny + 3f);
     }
     void Spawn()    
