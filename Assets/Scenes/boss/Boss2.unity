@@ -296,75 +296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a43b8a062b7dca4ea07572a0657a90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &528876391
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7776066480352017540, guid: 08ec27a89591f344e85c5607eb4d7c72,
-        type: 3}
-      propertyPath: m_Name
-      value: Boss2_spawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776066480352017541, guid: 08ec27a89591f344e85c5607eb4d7c72,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776066480352017541, guid: 08ec27a89591f344e85c5607eb4d7c72,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776066480352017541, guid: 08ec27a89591f344e85c5607eb4d7c72,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776066480352017541, guid: 08ec27a89591f344e85c5607eb4d7c72,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776066480352017541, guid: 08ec27a89591f344e85c5607eb4d7c72,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776066480352017541, guid: 08ec27a89591f344e85c5607eb4d7c72,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776066480352017541, guid: 08ec27a89591f344e85c5607eb4d7c72,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776066480352017541, guid: 08ec27a89591f344e85c5607eb4d7c72,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776066480352017541, guid: 08ec27a89591f344e85c5607eb4d7c72,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776066480352017541, guid: 08ec27a89591f344e85c5607eb4d7c72,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776066480352017541, guid: 08ec27a89591f344e85c5607eb4d7c72,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 08ec27a89591f344e85c5607eb4d7c72, type: 3}
 --- !u!1001 &1115825984
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -672,8 +603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2c6071c282c974e93b9fa59b5b49ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followingTarget: {fileID: 0}
-  moveSpeed: 10
+  bossCamera: {fileID: 0}
+  playerCamera: {fileID: 0}
 --- !u!114 &2121201301
 MonoBehaviour:
   m_ObjectHideFlags: 0

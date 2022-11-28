@@ -61,7 +61,7 @@ TextureImporter:
     second: NightBorne_18
   - first:
       213: 5083154300484032116
-    second: NightBorne_19
+    second: NightBorne_
   - first:
       213: -4829220664459573023
     second: NightBorne_20
@@ -1438,7 +1438,7 @@ TextureImporter:
         serializedVersion: 2
         x: 1705
         y: 24
-        width: 91
+        width: 16
         height: 17
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1470,6 +1470,27 @@ TextureImporter:
       bones: []
       spriteID: 7fa2855c6f7745ab0800000000000000
       internalID: -5020255782854710537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NightBorne_
+      rect:
+        serializedVersion: 2
+        x: 1789
+        y: 29
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47699d297edfa8640800000000000000
+      internalID: 5083154300484032116
       vertices: []
       indices: 
       edges: []

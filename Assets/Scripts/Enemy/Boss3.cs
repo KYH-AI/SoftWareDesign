@@ -146,7 +146,7 @@ public class Boss3 : Enemy
         
         GameObject projectile2 = MemoryPoolManager.GetInstance().OutputGameObject(Telpo,
                                                                                      "SubBoss/" + Telpo.name,
-                                                                                    new Vector2(transform.position.x -1.07f, transform.position.y + 1.33f),
+                                                                                    new Vector2(transform.position.x -2.71f, transform.position.y + 1.33f),
                                                                                     Quaternion.identity);
         projectile2.SetActive(true);
         state = BossState.ATTACK1_STATE;
