@@ -149,7 +149,7 @@ public abstract class BasicMonsterController : Enemy
 
         coin.SetActive(true);
 
-        StageManager.GetInstance().DecreaseKillCount();
+        Managers.StageManager.DecreaseKillCount();
         //캐릭터 정보에 킬카운트 넘겨주기
         gameObject.SetActive(false);
 
