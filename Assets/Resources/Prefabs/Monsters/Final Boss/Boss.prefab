@@ -75,13 +75,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5810491031328419611, guid: fb154f15bf8370d4abcd4540af75a4b9,
+  m_Sprite: {fileID: 8014877367899294284, guid: 82d28e785af996e42a707d0a2ac4a66b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.42, y: 0.52}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -120,17 +120,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: af11a95e4ee376e4994f7a2819189060, type: 2}
   contactDistance: 10
-  bossProjectileSkull: {fileID: 7382934670996431563, guid: eb4cd1cbc60c71e4189e42a1ecf37ca5,
+  finalBossSkull: {fileID: 7382934670996431563, guid: eb4cd1cbc60c71e4189e42a1ecf37ca5,
     type: 3}
-  bossProjectileRuinStk: {fileID: 1421817752121113056, guid: ca77da5b8e140df4bbdb0fdab8945a9d,
+  finalBossRuinStk: {fileID: 1421817752121113056, guid: ca77da5b8e140df4bbdb0fdab8945a9d,
     type: 3}
-  bossProjectileDarkHeal: {fileID: 7854267774851678729, guid: a1de7fd2760b04c45833e07480a0c87b,
+  finalBossDarkHeal: {fileID: 7854267774851678729, guid: a1de7fd2760b04c45833e07480a0c87b,
     type: 3}
-  bossProjectileDarkHealFailed: {fileID: 207980064387310228, guid: d517c3978168f4141ad6b92e7ecc2fd7,
+  finalBossDarkHealFailed: {fileID: 207980064387310228, guid: d517c3978168f4141ad6b92e7ecc2fd7,
     type: 3}
-  player: {fileID: 0}
+  finalBossBindEye: {fileID: 7369592150869245040, guid: 9e60cd61ee95efa4a9aaa2dcc313b91b,
+    type: 3}
+  finalBossBindVineFail: {fileID: 8459095421408001034, guid: 9adc35ef391e16e42b18a1b5345d0dd3,
+    type: 3}
+  finalBossBindVineSucess: {fileID: 5121837385523639332, guid: 088cc7d67058b884d997d60a1c8b93f1,
+    type: 3}
+  keyListObject:
+  - {fileID: 4846550061063696024, guid: d0fd21ef09b04f24db162232b126a8ca, type: 3}
+  - {fileID: 9010369884233583597, guid: 40a1808f6b8bdf941bd531987e1526ca, type: 3}
+  - {fileID: 7952206987465891535, guid: 77c1230ba139d1146803c9dd68d46760, type: 3}
+  - {fileID: 5465042396692135023, guid: 9015f11cebf97eb448ada415d43f38e2, type: 3}
+  - {fileID: 7103909738848188010, guid: 090589f7f32f38d4689f224f0656b327, type: 3}
+  - {fileID: 8865842915923590607, guid: aa53fb6ccd3218d4e8ada19ddfce5846, type: 3}
   originalMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   hurtMaterial: {fileID: 2100000, guid: c839255fc8f6b4b4d90bf8c1af9f9bd1, type: 3}
+  player: {fileID: 2523420501982882025, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4, type: 3}
 --- !u!50 &1203287939554438051
 Rigidbody2D:
   serializedVersion: 4

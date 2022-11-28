@@ -43,5 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52fc4bbb1edc33418678c00c9e3d5a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillCoolTime: 3
-  knifeObject: {fileID: 5609101580249013157, guid: 25ded24f7da54ba4b96d1e3969b31e31, type: 3}
+  skillCoolTime: 3.5
+  knifeObject: {fileID: 5609101580249013157, guid: 25ded24f7da54ba4b96d1e3969b31e31,
+    type: 3}
