@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - DamagedRadius
   - Portal
   - StorePortal
   layers:
@@ -22,8 +23,8 @@ TagManager:
   - Enemy
   - Wall
   - VolumeEffect
-  - 
-  - 
+  - Boss
+  - DontDamaged
   - 
   - 
   - 

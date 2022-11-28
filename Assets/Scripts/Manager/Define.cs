@@ -32,11 +32,16 @@ public class Define
     /// </summary>
     public enum Stage
     {
-        ONE,
-        TWO,
-        THREE,
-        FOUR,
-        FIVE
+        Tutorial,
+        STAGE1,
+        STORE1,
+        STAGE2,
+        STORE2,
+        STAGE3,
+        STORE3,
+        STAGE4,
+        STORE4,
+        Boss,
     }
 
     /// <summary>
@@ -47,7 +52,8 @@ public class Define
         Player_Skill,
         Final_Boss_Skill,
         Monsters,
-        UI
+        UI,
+        SubBoss,
     }
     /// <summary>
     /// BOSS에서 사용하는 STATE의 열거형 변수 집합

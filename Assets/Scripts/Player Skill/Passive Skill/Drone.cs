@@ -82,11 +82,9 @@ public class Drone : PassiveSkill
 
     private void Update()  // 드론 사격 여부 확인
     {
-        if(!isDroneStop && currentSkillState == Define.CurrentSkillState.ACTIVE) //Time.time >= lastTime + skillDelayTime) // 마지막 공격 시간 + 공격 쿨타임
+        if(!isDroneStop && currentSkillState == Define.CurrentSkillState.ACTIVE)
         {
-           // lastTime = Time.time;
-            currentSkillState = Define.CurrentSkillState.COOL_TIME;
-            droneAttackCheck = StartCoroutine(DroneSkillAttackProcess());
+            currentSkillState = DroneSkillAttack();
         }
     }
 
@@ -120,27 +118,32 @@ public class Drone : PassiveSkill
         }
     }
 
-    private IEnumerator DroneSkillAttackProcess()
-    {
-        int targetCount;
-      //  Debug.Log("공격 시작");
+    private Define.CurrentSkillState DroneSkillAttack()
+    { 
         Collider2D[] enemyCollider = Physics2D.OverlapCircleAll(playerObject.transform.position, skillRange, enemyLayer); // 플레이어 기준 10범위에 적을 탐지
 
         if (enemyCollider.Length > 0) // 적 배열이 0보다 많으면
         {
-            
-            targetCount = enemyCollider.Length > skillTargetCount ? skillTargetCount : enemyCollider.Length;
-            for (int enemyCount=0; enemyCount < targetCount; enemyCount++)
-            {
-                if (enemyCollider[enemyCount] != null)
-                {
-                    Enemy enemy = enemyCollider[enemyCount].GetComponent<Enemy>();
-                    StartCoroutine(DroneBulletEffect(enemy.transform.position));
-                    enemy.TakeDamage(skillDamage);
+            StartCoroutine(DroneSkillAttackProcess(enemyCollider));
+            return Define.CurrentSkillState.COOL_TIME;
+        }
+        return Define.CurrentSkillState.ACTIVE; ;
+    }
 
-                    lastTime += skillAttackDelay;   // 공격 쿨타임에 타켓변경 시간까지 추가
-                    yield return skillAttackDelayTimeSec;
-                }
+    private IEnumerator DroneSkillAttackProcess(Collider2D[] enemyColliders)
+    {
+        int targetCount = enemyColliders.Length > skillTargetCount ? skillTargetCount : enemyColliders.Length;
+
+        for (int enemyCount=0; enemyCount < targetCount; enemyCount++)
+        {
+            if (enemyColliders[enemyCount] != null)
+            {
+                Enemy enemy = enemyColliders[enemyCount].GetComponent<Enemy>();
+                StartCoroutine(DroneBulletEffect(enemy.transform.position));
+                enemy.TakeDamage(skillDamage);
+
+                lastTime += skillAttackDelay;   // 공격 쿨타임에 타켓변경 시간까지 추가
+                yield return skillAttackDelayTimeSec;
             }
         }
         droneAttackCheck = null;

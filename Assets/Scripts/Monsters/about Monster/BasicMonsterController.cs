@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public abstract class BasicMonsterController : Enemy
 {
-   // public Text DamageInform;
+    float radius = 0.2f;   
     //public GameObject coinPrephab;
     public enum State
     {
@@ -28,50 +28,42 @@ public abstract class BasicMonsterController : Enemy
     {
         base.Start();
         renderer = GetComponent<SpriteRenderer>();
-       // state = State.Run;
-        StartCoroutine("ready");
-    }
-
-    IEnumerator ready()
-    {
-        Debug.Log("ready");
-        base.EnemyAnimator.SetTrigger("RunSpawnToWalk");
-        yield return new WaitForSeconds(2.0f);
         state = State.Run;
     }
+
+
+    private void OnEnable()
+    {
+        state = State.Run;
+    }
+
     public void Update()
     {
         if (state == State.Run) Run();
         if (state == State.Attack) Attack();
-        if (state == State.Die) OnDead();
+        //if (state == State.Die) OnDead();
     }
 
     //달리기
     public void Run()
     {
         base.Move();
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         if ((playerTarget.gameObject.transform.position.x - this.transform.position.x) < 0)
             renderer.flipX = true;
         else renderer.flipX = false;
-        if (base.Hp <= 0)
-        {
-            state = State.Die;
-            return;
-        }
     }
 
     //공격
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(Define.StringTag.Player.ToString()))
+        if (other.CompareTag("DamagedRadius"))
         {
             state = State.Attack;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.tag=="Player")
+        if(collision.tag=="DamagedRadius")
             state = State.Run;
         coolTime = -1.0f;
         base.EnemyAnimator.SetTrigger("AttackToMove");
@@ -85,22 +77,41 @@ public abstract class BasicMonsterController : Enemy
     public override sealed void TakeDamage(int newDamage)
     {
         base.TakeDamage(newDamage);
-        //DamageInform.text = "-"+newDamage.ToString();
+
+        //Damage text
+        GameObject floatingText = MemoryPoolManager.GetInstance().OutputGameObject
+            (Managers.Resource.GetPerfabGameObject("UI/DamageText")
+            , "UI/DamageText"
+            , new Vector3(transform.position.x, transform.position.y)
+            , Quaternion.identity);
+
+        floatingText.GetComponent<FloatingText>().DamageText = newDamage.ToString();
+        floatingText.SetActive(true);
+
+        base.EnemyAnimator.SetTrigger("MoveToDamage");
         StartCoroutine(DamageProcess());
-        base.EnemyAnimator.SetTrigger("DamageToMove");
         if (base.Hp <= 0)
         {
             state = State.Die;
             return;
         }
+        //state Run or Attack
+        if (Physics2D.OverlapCircle(this.transform.position, radius, 1<<10) == true)
+        {
+            state = State.Attack;
+            base.EnemyAnimator.SetTrigger("DamageToAttack");
+        }
+        else
+        {
+            state = State.Run;
+            base.EnemyAnimator.SetTrigger("DamageToMove");
+        }
     }
 
     IEnumerator DamageProcess()
     {
-       // DamageInform.gameObject.SetActive(true);
+
         yield return new WaitForSeconds(1.0f);
-        //sDamageInform.gameObject.SetActive(false);
-        state = State.Run;
     }
 
 
@@ -109,23 +120,24 @@ public abstract class BasicMonsterController : Enemy
     protected override sealed void OnDead()
     {
         base.OnDead();
-     
+        EnemyRigidbody.velocity = Vector2.zero;
         base.EnemyAnimator.SetTrigger("Die");
         StartCoroutine(DieProcess());
     }
     IEnumerator DieProcess()
     {
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         yield return new WaitForSeconds(1.0f);
-        /*GameObject coin = Resources.Load<GameObject>("Prefabs/BlueCoin");
-        coin.transform.position = this.transform.position;
-        Instantiate(coin);*/
-
 
         int killCount = Random.Range(minKillCount, maxKillCount);
 
-        //동전 삽입 알고리즘
+        //동전 드랍
         //캐릭터 정보에 킬카운트 넘겨주기
         gameObject.SetActive(false);
+
+    }
+
+    private void OnDisable()
+    {
+        MemoryPoolManager.GetInstance().InputGameObject(gameObject);
     }
 }

@@ -90,6 +90,7 @@ public class SpellBlade : PassiveSkill
     {
         if (currentSkillState == Define.CurrentSkillState.ACTIVE)
         {
+            print("호출됨");
             currentSkillState = Define.CurrentSkillState.COOL_TIME;
             buffCoroutine = StartCoroutine(SpellBladeSkillProcess());
         }
@@ -101,7 +102,7 @@ public class SpellBlade : PassiveSkill
 
     private IEnumerator SpellBladeSkillProcess()
     {
-        print("스킬 버프 작동");
+   //     print("스킬 버프 작동");
         // 플레이어 기본공격력이 달라진 경우 다시 버프 데미지 재계산
         if (playerObject.DefaultAttackDamage != lastDefaultAttackDamage)
         {
@@ -112,7 +113,7 @@ public class SpellBlade : PassiveSkill
         playerObject.DefaultAttackDamage += lastBuffDamage;  // 버프 데미지 적용
         yield return skillDurationSec;
         StopSkillProcess();
-        print("스킬 지속시간이 모두 종료됨");
+    //    print("스킬 지속시간이 모두 종료됨");
     }
 
     /// <summary>
@@ -127,8 +128,8 @@ public class SpellBlade : PassiveSkill
         buffCoroutine = null;          // 코루틴 초기화
         OnCoolTime();
         playerObject.DefaultAttackDamage -= lastBuffDamage;  // 버프 데미지 해체
-        print(playerObject.DefaultAttackDamage + " 버프 해체 데미지");
-        print("스킬 지속시간이 모두 종료됨");
+    //    print(playerObject.DefaultAttackDamage + " 버프 해체 데미지");
+    //    print("스킬 지속시간이 모두 종료됨");
         spellBladeEffect.SetActive(false);
     }
 }

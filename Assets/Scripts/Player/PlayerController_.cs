@@ -4,22 +4,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class PlayerController_ : MonoBehaviour
 {
     #region 이동 관련 변수 선언부
     Vector3 moveDirection;                  //이동방향
     Vector2 lastDirection;                  //마지막 이동방향
+
+    float playerTimeScale = 1.0f;    // 플레이어 시간정지 영향을 받는 속도
+    public float PlayerTimeScale
+    {
+        set
+        {
+            playerTimeScale = value;
+            customDeltaTime = playerTimeScale * Time.deltaTime;
+        }
+    } // 플레이어 시간정지 영향을 받는 속도
+    float customDeltaTime;           // 플레이어 시간정지 영향을 받는 속도
     public Vector2 LastDirection { get { return lastDirection; } }
     #endregion
 
     #region 애니메이션 관련 변수 선언부
     Animator anim;                          
+    public Animator Anim
+    {
+        get { return anim; }
+    }
     BoxCollider2D boxCol;                   //콜라이더의 크기를 애니메이션에 맞게 조절하기 위해 사용
     #endregion
 
     #region 상태 제어 변수 선언부
-    bool isMoveable = true;
+    public bool isMoveable = true;             //기본 공격 때 움직임을 제한하기 위한 변수.
+    public bool isAttackalble = true;   //스킬 사용 중 혹은 보스 몬스터에게 침묵이 걸렸을 때 스킬 사용을 제한하기 위한 변수.
     #endregion
 
     #region 플레이어 정보 변수 선언부
@@ -33,10 +50,20 @@ public class PlayerController_ : MonoBehaviour
         anim = GetComponent<Animator>();
         boxCol = GetComponentInChildren<BoxCollider2D>();
     }
-
-    private void FixedUpdate()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(isMoveable == true)              //기본 공격시 이동을 막기 위함.
+        if (collision.gameObject.tag == "Portal")
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                Managers.SceneManager_.LoadScene();
+            }
+
+        }
+    }
+    private void Update()
+    {
+        if (isMoveable == true)              //기본 공격시 이동을 막기 위함.
             Move();
     }
     #endregion
@@ -58,7 +85,7 @@ public class PlayerController_ : MonoBehaviour
             anim.SetFloat("X", moveDirection.x);
             anim.SetFloat("Y", moveDirection.y);
 
-            transform.position += moveDirection * player.MoveSpeed * Time.deltaTime;
+            transform.position += moveDirection * player.MoveSpeed * Time.unscaledDeltaTime;
 
             lastDirection = moveDirection;  //마지막 보고있는 방향 저장
         }
@@ -77,27 +104,34 @@ public class PlayerController_ : MonoBehaviour
     void OnSkill1()
     {
         //첫번째 스킬 사용
+        //if (isAttackalble == true && ) isAttackable이 true이고 스킬이 존재할 때,
+        if (isAttackalble == true && Managers.StageManager.Player.playerActiveSkills[0] != null)
         player.playerActiveSkills[0].OnActive();
+
     }
     void OnSkill2()
     {
         //2번째 스킬 사용
-        player.playerActiveSkills[1].OnActive();
+        if (isAttackalble == true && Managers.StageManager.Player.playerActiveSkills[1] != null)
+            player.playerActiveSkills[1].OnActive();
     }
     void OnSkill3()
     {
         //3번째 스킬 사용
-        player.playerActiveSkills[2].OnActive();
+        if (isAttackalble == true && Managers.StageManager.Player.playerActiveSkills[2] != null)
+            player.playerActiveSkills[2].OnActive();
     }
     void OnSkill4()
     {
         //4번째 스킬 사용
-        player.playerPassiveSkills[0].OnActive();
+        if (isAttackalble == true && Managers.StageManager.Player.playerActiveSkills[3] != null)
+            player.playerPassiveSkills[3].OnActive();
     }
     void OnSkill5()
     {
         //5번째 스킬 사용
-        player.playerActiveSkills[4].OnActive();
+        if (isAttackalble == true && Managers.StageManager.Player.playerActiveSkills[4] != null)
+            player.playerActiveSkills[4].OnActive();
     }
     void OnAttack()
     {

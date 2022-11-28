@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +9,7 @@ public class OpenMarket : MonoBehaviour
    public  Button mbtn;
    public GameObject MarketTool;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
       //  mbtn = transform.Find("market").GetComponent<Button>();
        // MarketTool = transform.Find("MarketTool").GetComponent<GameObject>();
@@ -22,4 +22,4 @@ public class OpenMarket : MonoBehaviour
     {
         MarketTool.SetActive(true);
     }
-}
+}*/

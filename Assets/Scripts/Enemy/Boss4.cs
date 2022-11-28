@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Boss4 : Enemy
 {
-    protected int playerLayer = 1 << 10;
+    protected int Boss = 1 << 14;
+    protected int DontDamaged = 1 << 15;
     public enum BossState
     {
         IDLE_STATE,
@@ -15,38 +17,52 @@ public class Boss4 : Enemy
     float distance;
     float moveDistance = 15f;
     float attackDistance = 2.5f;
-    float moveSpeed = 4f;
     float attackDelay = 2f;
     Vector2 dir;
     BossState state = BossState.IDLE_STATE;
     bool isAttack = true;
-    bool onTrigger = true;
     bool isHurt = false;
+    bool isDie = false;
     int attackCnt = 0;
     bool isFadeout = true;
-    
+    bool isHide = false;
+    [SerializeField] GameObject Portalpref;
+    GameObject myInstance;
 
 
     // Update is called once per frame
     void Update()
     {
         dir = (playerTarget.transform.position - transform.position);
-        ChangeDir();
-        distance = dir.magnitude;  //Vector2.Distance(transform.position, playerTarget.transform.position);
+        if (!isHurt)
+        {
+            ChangeDir();
+        }
+       distance = dir.magnitude; 
         Fsm();
-       // print(attackCnt);
+        ChangeOrder();
     }
-
+    void ChangeOrder()
+    {
+        if (dir.y < 0)
+        {
+            SpriteRenderer.sortingOrder = 3;
+        }
+        else
+        {
+            SpriteRenderer.sortingOrder = 5;
+        }
+    }
     private void ChangeDir()
     {
         if (dir.x < 0)
         {
-            SpriteRenderer.flipX = true;
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 
         }
         else
         {
-            SpriteRenderer.flipX = false;
+            gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
     void Fsm()
@@ -67,18 +83,10 @@ public class Boss4 : Enemy
                 break;
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player" && onTrigger)
-        {
-            DefaultAttack();
-        }
-        onTrigger = false;
-    }
 
     void Idle()
     {
-        if (distance < moveDistance&&isAttack) 
+        if (distance < moveDistance&&isAttack&&!isDie) 
         {
             state = BossState.MOVE_STATE;
         }
@@ -90,7 +98,7 @@ public class Boss4 : Enemy
     {
         if (!isHurt)
         {
-            transform.position = Vector2.MoveTowards(transform.position, playerTarget.transform.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, playerTarget.transform.position, MoveSpeed * Time.deltaTime);
         }
 
         EnemyAnimator.SetBool("isRun", true);
@@ -98,15 +106,6 @@ public class Boss4 : Enemy
         {
             state = BossState.ATTACK_STATE;
         }
-    }
-    private void DamagedIn()
-    {
-        gameObject.tag = "dontDamaged";
-    }
-
-    private void DamagedOut()
-    {
-        gameObject.tag = "Enemy";
     }
 
     private void Attack()
@@ -119,7 +118,9 @@ public class Boss4 : Enemy
     }
     public override void TakeDamage(int newDamage)
     {
+        print("데미지 받음");
         base.TakeDamage(newDamage);
+        Managers.UI.UpdateBossHpSlider(Hp, MaxHp);
         Hurt();
     }
 
@@ -128,29 +129,35 @@ public class Boss4 : Enemy
     protected override void OnDead()
     {
         base.OnDead();
-        EnemyCollider.isTrigger = true;
+        Managers.UI.bossSlider.gameObject.SetActive(false);
+        isDie = true;
         EnemyAnimator.SetTrigger("isDie");
     }
     void DeadProcess()//Die애니메이션에 넣음
     {
-        Destroy(gameObject);
+        var color = SpriteRenderer.color;
+        color.a = 0;
+        SpriteRenderer.color = color;
+        Invoke(nameof(SpawnPortal), 2f);
     }
+    void SpawnPortal()
+    {
+        myInstance = Instantiate(Portalpref);
+        myInstance.transform.position = transform.position;
+        Destroy(gameObject);
 
+    }
 
     private void Hurt()
     {
         EnemyAnimator.SetBool("isDamaged", true);
         isHurt = true;
-        StartCoroutine(HurtToIdle());
     }
     
-    IEnumerator HurtToIdle()
+    void  HurtToIdle()
     {
-        DamagedIn();
-        yield return new WaitForSeconds(1f);
         EnemyAnimator.SetBool("isDamaged", false);
         isHurt = false;
-        DamagedOut();
         state = BossState.IDLE_STATE;
     }
 
@@ -167,8 +174,7 @@ public class Boss4 : Enemy
        // yield return new WaitForSeconds(0.1f);//0.2초 동안 idle
         EnemyAnimator.SetBool("isAttack", true);
         
-        yield return new WaitForSeconds(attackDelay);//공격 딜레이
-        onTrigger = true;
+        yield return new WaitForSeconds(attackDelay);//공격 딜레이 
         isAttack = true;
     }
     void AttackToIdle()//attack애니메이션 마지막에 넣음
@@ -182,9 +188,9 @@ public class Boss4 : Enemy
     {
         if(attackCnt == 2)
         {
+            state = BossState.HIDE_STATE;
             yield return new WaitForSeconds(0.8f);
             isFadeout = true;
-            state = BossState.HIDE_STATE;
             attackCnt = 0;
         }
         else
@@ -199,40 +205,31 @@ public class Boss4 : Enemy
     }
     private void Hide()
     {
-        transform.position = Vector2.MoveTowards(transform.position, playerTarget.transform.position, moveSpeed * Time.deltaTime);
+        if (isHide&!isDie)
+        {
+            int result = Random.Range(0, 2);
+            if (result == 0)
+            {
+                transform.position = new Vector2(playerTarget.transform.position.x + 3f, playerTarget.transform.position.y);
+            }
+            else
+            {
+                transform.position = new Vector2(playerTarget.transform.position.x - 3f, playerTarget.transform.position.y);
+            }
+            
+        }
         if (isFadeout)
         {
-            //FadeOut();
            StartCoroutine(FadeOut());
             isFadeout = false;
         }
          
        
     }
-
-    /*IEnumerator FadeIn()
-    {
-        yield return new WaitForSeconds(3f);
-        state = BossState.ATTACK_STATE;
-        isFadeout = true;
-        var color = SpriteRenderer.color;
-        color.a = 255;
-        SpriteRenderer.color = color;
-     
-    }
-    private void FadeOut()
-    {
-        print("숨기!");
-        var color = SpriteRenderer.color;
-         //color.a is 0 to 1. So .5*time.deltaTime will take 2 seconds to fade out
-         color.a = 0;
-         SpriteRenderer.color = color;
-        StartCoroutine(FadeIn());
-
-       
-    }*/
     IEnumerator FadeOut()
     {
+        gameObject.tag = "Untagged";
+        gameObject.layer = 15;
         while (SpriteRenderer.color.a > 0)
         {
             var color = SpriteRenderer.color;
@@ -246,11 +243,14 @@ public class Boss4 : Enemy
             //wait for a frame
             yield return null;
         }
+        isHide = true;
         yield return new WaitForSeconds(2f);
         StartCoroutine(FadeIn());
     }
     IEnumerator FadeIn()
     {
+        gameObject.tag = "Enemy";
+        gameObject.layer = 14;
         state = BossState.ATTACK_STATE;
         while (SpriteRenderer.color.a < 1)
         {
@@ -262,8 +262,9 @@ public class Boss4 : Enemy
             //wait for a frame
             yield return null;
         }
-       
-       
+
+        isHide = false;
+
     }
 
 }

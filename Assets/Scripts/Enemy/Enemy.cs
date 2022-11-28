@@ -21,10 +21,10 @@ public class Enemy : LivingEntity, IBasicMovement
         BasicStatInit();
     }
 
-    private void FixedUpdate()
+    /*private void FixedUpdate()
     {
         //Move();
-    }
+    }*/
 
     public void EnemyInit(Player playerTarget)
     {

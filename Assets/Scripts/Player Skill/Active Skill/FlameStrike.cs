@@ -99,7 +99,7 @@ public class FlameStrike : ActiveSkill
         for (int i = 0; i < skillProjectileCount; i++)
         { 
             GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(firePillarObject, 
-                                                                                     Define.PrefabType.Player_Skill,
+                                                                                     "Player_Skill/"+firePillarObject.name,
                                                                                      new Vector2(transform.position.x + Random.Range(-4f, 4f), transform.position.y + Random.Range(-4f, 4f)),
                                                                                      Quaternion.identity); 
             projectile.GetComponent<Projectile>().ProjectileInit(Define.StringTag.Enemy, Vector2.zero, skillDamgae);
