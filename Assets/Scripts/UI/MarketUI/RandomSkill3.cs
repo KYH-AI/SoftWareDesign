@@ -13,7 +13,7 @@ public class RandomSkill3 : MonoBehaviour
     public Text stext; //구매창에 뜨는 텍스트
     public Text itemDetailExplan; //무기 설명 
     public int product; //물건 가격
-    public int skillLevel = 0;
+    public int skillLevel;
 
 
     // Start is called before the first frame update
