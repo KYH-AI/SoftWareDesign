@@ -45,11 +45,11 @@ public class Portal : MonoBehaviour
                 print("stage3상태");
                 break;
             case Define.Stage.STAGE3:
-               Managers.StageManager.stage = Define.Stage.STAGE4;
+                Managers.StageManager.stage = Define.Stage.STAGE4;
                 print("stage4상태");
                 break;
             case Define.Stage.STAGE4:
-               Managers.StageManager.stage = Define.Stage.Boss;
+                Managers.StageManager.stage = Define.Stage.Boss;
                 break;
         }
         yield return new WaitForSeconds(1f);

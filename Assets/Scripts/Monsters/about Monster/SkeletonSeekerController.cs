@@ -36,11 +36,14 @@ public class SkeletonSeekerController : Enemy
         //Ready();
     }
 
-    void Ready()
+    public void Ready()
     {
+        this.EnemyRigidbody.velocity = Vector2.zero;
+        base.EnemyAnimator.enabled = true;
+        Debug.Log("레디함수 들어옴");
         StartCoroutine(ReadyProcess());
-        state = State.Run;
         base.EnemyAnimator.SetTrigger("RunSpawnToWalk");
+        state = State.Run;
     }
 
     IEnumerator ReadyProcess()

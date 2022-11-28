@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+
 public class Boss : Enemy
 {
+    
+
     #region 사용된 모든 상수
     readonly float BOSS_PROJECTILE_SKULL_SPEED = 10f;       //기본공격 투사체 속도
     readonly float BOSS_PATTERN_DARK_HEAL_COUNT = 30f;      //다크힐 패턴의 시작 쿨타임 통제 변수
@@ -24,6 +27,9 @@ public class Boss : Enemy
     [SerializeField] Material originalMaterial;
     [SerializeField] Material hurtMaterial;
     [SerializeField] GameObject player;         //플레이어 프리팹 
+
+    [SerializeField] GameObject seekerPrefab;
+    GameObject[] seeker;
     #endregion
 
     #region Destroy처리에 사용한 GameObject 변수
@@ -83,16 +89,39 @@ public class Boss : Enemy
         base.Start();
         bossFSM = new BossFSM(this);
         scaleX = transform.localScale.x;
+        
         targetIsPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         bossAnimator = GetComponent<Animator>();
         bossRigidBody = GetComponent<Rigidbody2D>();
         bossSpriteRenderer = GetComponent<SpriteRenderer>();
         darkHealTempHp = BOSS_TEMP_HP;
+
+        fuck();
+
+        //seeker[0].GetComponent<SkeletonSeekerController>().Ready();
+        //seeker[1].GetComponent<SkeletonSeekerController>().Ready();
         //bossFSM.bossState = Define.BossState.CASTING_STATE; //연출효과 대기
+    }
+    public void fuck()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            GameObject ob = Instantiate(seekerPrefab);
+            Debug.Log("1");
+            ob.GetComponent<Enemy>().EnemyInit(player.GetComponent<Player>());//Managers.StageManager.Player
+            Debug.Log("2");
+            seeker[i].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            Debug.Log("3");
+            ob.GetComponent<Animator>().enabled = false;
+            seeker[i] = ob;
+            Debug.Log("3");
+        }
     }
 
     void Update()
     {
+        
+
         SwitchSpriteImageDir(transform);
         if (bossFSM != null) bossFSM.Update();                      //보스의 STATE값이 있을 때만 동작함. 
         if (bossFSM.bossState != Define.BossState.CASTING_STATE)    //보스가 패턴 중일 때는 패턴체크타이머를 증가하지 않음

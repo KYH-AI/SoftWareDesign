@@ -8,7 +8,11 @@ public class drop : MonoBehaviour
     void Start()
     {
         LeanTween.moveY(gameObject, 0.1f, 3).setEaseOutBounce();
+
+
+        
     }
 
    
 }
+
