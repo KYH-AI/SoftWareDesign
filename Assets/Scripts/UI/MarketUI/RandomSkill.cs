@@ -5,14 +5,18 @@ using UnityEngine.UI;
 
 public class RandomSkill : MonoBehaviour
 {
+
+
     public Image skill;
     public Sprite[] simage;
     public Text ItemName;
-    int RandomInt;
+    public int RandomInt;
     public Text stext; //구매창에 뜨는 텍스트
     public Text itemDetailExplan; //무기 설명 
-    int product; //물건 가격
-   
+    public int product; //물건 가격
+    public int skillLevel = 0; 
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,33 +29,39 @@ public class RandomSkill : MonoBehaviour
         if (RandomInt == 1)
         {
             skill.sprite = simage[0];
-            stext.text = " <스킬1> 가격:100 구매하시겠습니까?";
-            ItemName.text = "<스킬1>";
+            stext.text = " <벽력일섬> 가격:100 구매하시겠습니까?";
+            ItemName.text = "벽력일섬";
             product = 100;
-            itemDetailExplan.text = "스킬1";
+            itemDetailExplan.text = "플레이어 기준에서 특정 반경 적에게 돌진하여 공격을 한다.";
+            skillLevel = 0; 
+            
 
         }
         else if (RandomInt == 2)
         {
 
             skill.sprite = simage[1];
-            stext.text = "  <스킬2> 가격:200 구매하시겠습니까?";
-            ItemName.text = "<스킬2>";
+            stext.text = "  <화염기둥> 가격:200 구매하시겠습니까?";
+            ItemName.text = "화염기둥";
             product = 200;
-            itemDetailExplan.text = "스킬2";
+            itemDetailExplan.text = "플레이어 기준에서 원형태로 불기둥을 소환하여 공격을 한다.";
+            skillLevel = 0;
         }
         else if (RandomInt == 3)
         {
             skill.sprite = simage[2];
-            stext.text = "  <스킬3> 가격:300 구매하시겠습니까?";
-            ItemName.text = "<스킬3>";
+            stext.text = "  <질풍참> 가격:300 구매하시겠습니까?";
+            ItemName.text = "<질풍참>";
             product = 300;
-            itemDetailExplan.text = "스킬3";
+            itemDetailExplan.text = "플레이어가 마지막으로 보고 있는 방향으로 돌진하여 공격한다.";
+            skillLevel = 0;
         }
 
 
 
     }
+
+
 
 }
 

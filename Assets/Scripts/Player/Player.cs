@@ -59,6 +59,8 @@ public class Player : LivingEntity
         print("플레이어 기본 공격력 : " + DefaultAttackDamage);
         #region 스킬 테스트 중 (김윤호)
         /* 테스트 용도 */
+
+        /*
         GameObject skillObject3 = Managers.Resource.GetPerfabGameObject("Player_Skill/FlameStrike Skill");
         ActiveSkill fpSkill = Instantiate(skillObject3, this.transform).GetComponent<ActiveSkill>();
         fpSkill.Init(this);
@@ -93,7 +95,7 @@ public class Player : LivingEntity
         PassiveSkill damageSkill = Instantiate(spellBladeSkill, this.transform).GetComponent<PassiveSkill>();
         damageSkill.Init(this);
         damageSkill.OnActive();
-
+        */
         #endregion
     }
 
