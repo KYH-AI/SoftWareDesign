@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
-public abstract class BasicMonsterController : Enemy
+public class SkeletonSeekerController : Enemy
 {
-    float radius = 0.2f;   
+    float radius = 0.2f;
     //public GameObject coinPrephab;
     public enum State
     {
+        Ready,
         Run,
         Attack,
         Damage,
@@ -17,9 +18,9 @@ public abstract class BasicMonsterController : Enemy
     }
     public State state;
 
-    public float coolTime=-1.0f, skillTime = 2.0f;
+    public float coolTime = -1.0f, skillTime = 2.0f;
     new SpriteRenderer renderer;
-
+    float attackRadius=2.5f;
 
     public int minKillCount;
     public int maxKillCount;
@@ -28,13 +29,23 @@ public abstract class BasicMonsterController : Enemy
     {
         base.Start();
         renderer = GetComponent<SpriteRenderer>();
-        state = State.Run;
+        state = State.Ready;
+
+
+        //Boss쪽에서 아래 함수를 불러주면 완료
+        //Ready();
     }
 
-
-    private void OnEnable()
+    void Ready()
     {
+        StartCoroutine(ReadyProcess());
         state = State.Run;
+        base.EnemyAnimator.SetTrigger("RunSpawnToWalk");
+    }
+
+    IEnumerator ReadyProcess()
+    {
+        yield return new WaitForSeconds(2.0f);
     }
 
     public void Update()
@@ -62,13 +73,37 @@ public abstract class BasicMonsterController : Enemy
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.tag=="DamagedRadius")
+        if (collision.tag == "DamagedRadius")
             state = State.Run;
         coolTime = -1.0f;
         base.EnemyAnimator.SetTrigger("AttackToMove");
     }
 
-    protected abstract void Attack();
+    protected void Attack()
+    {
+        if (coolTime < 0)
+        {
+            base.EnemyAnimator.SetTrigger("Attack");
+            StartCoroutine(AttackProcess());
+            base.EnemyAnimator.SetTrigger("AttackToMove");
+            coolTime = skillTime;
+        }
+        coolTime -= Time.deltaTime;
+    }
+
+    IEnumerator AttackProcess()
+    {
+        yield return new WaitForSeconds(1.0f);
+    }
+
+    void AttackPlayer()
+    {
+        if (Physics2D.OverlapCircle(this.transform.position, attackRadius , 1 << 10))
+        {
+            base.DefaultAttack();
+        }
+
+    }
 
 
     //데미지 받기
@@ -95,7 +130,7 @@ public abstract class BasicMonsterController : Enemy
             return;
         }
         //state Run or Attack
-        if (Physics2D.OverlapCircle(this.transform.position, radius, 1<<10) == true)
+        if (Physics2D.OverlapCircle(this.transform.position, radius, 1 << 10) == true)
         {
             state = State.Attack;
             base.EnemyAnimator.SetTrigger("DamageToAttack");
@@ -127,36 +162,10 @@ public abstract class BasicMonsterController : Enemy
     {
         yield return new WaitForSeconds(1.0f);
 
-        int killCount = Random.Range(minKillCount, maxKillCount);
-        int coinLevel = Random.Range(0, 3);
+        //int killCount = Random.Range(minKillCount, maxKillCount);
+        //gameObject.SetActive(false);
 
-        //동전 드랍  (22/11/28 새벽 오전3시 추가함 (김윤호)
-        /*
-        GameObject coin = MemoryPoolManager.GetInstance().OutputGameObject
-                       (StageManager.GetInstance().coins[coinLevel],
-                        "Coin/" + coins[coinLevel].gameObject.name,
-                        transform.position,
-                        Quaternion.identity);
+        Destroy(gameObject);
 
-        coin.SetActive(true);
-        */
-
-        GameObject coin = MemoryPoolManager.GetInstance().OutputGameObject
-               (Managers.Resource.GetPerfabGameObject("Coin/Level1_Coin"),
-                "Coin/" + Managers.Resource.GetPerfabGameObject("Coin/Level1_Coin").name,
-                transform.position,
-                Quaternion.identity);
-
-        coin.SetActive(true);
-
-        StageManager.GetInstance().DecreaseKillCount();
-        //캐릭터 정보에 킬카운트 넘겨주기
-        gameObject.SetActive(false);
-
-    }
-
-    private void OnDisable()
-    {
-        MemoryPoolManager.GetInstance().InputGameObject(gameObject);
     }
 }

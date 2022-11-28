@@ -59,6 +59,9 @@ public class WindDash : ActiveSkill
 
     public override void Upgrade()
     {
+        skillDamgae += 2;
+        SkillCoolTime -= 1;
+        skillDashDistacne += 1.5f;
         // TODO : 상점에서 업그레이드 방식이 정해지면 진행 하자 (09/28)
     }
 
