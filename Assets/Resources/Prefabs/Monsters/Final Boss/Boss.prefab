@@ -134,6 +134,8 @@ MonoBehaviour:
     type: 3}
   finalBossBindVineSucess: {fileID: 5121837385523639332, guid: 088cc7d67058b884d997d60a1c8b93f1,
     type: 3}
+  finalBossInputSoul: {fileID: 5242094935792952801, guid: 21e41e92f89dcf045a7f16553f7fd419,
+    type: 3}
   keyListObject:
   - {fileID: 4846550061063696024, guid: d0fd21ef09b04f24db162232b126a8ca, type: 3}
   - {fileID: 9010369884233583597, guid: 40a1808f6b8bdf941bd531987e1526ca, type: 3}
@@ -146,7 +148,8 @@ MonoBehaviour:
   player: {fileID: 2523420501982882025, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4, type: 3}
   seekerPrefab: {fileID: 6279684435295860098, guid: be28ad4073d11ba47a42653371305c36,
     type: 3}
-  SkeletonSeekerSpawner: {fileID: 0}
+  SkeletonSeekerSpawner: {fileID: 2084283507, guid: 5dbf7f272ac796c499f8c92017fe721d,
+    type: 3}
 --- !u!50 &1203287939554438051
 Rigidbody2D:
   serializedVersion: 4
