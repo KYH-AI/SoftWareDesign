@@ -10,10 +10,7 @@ public class boss_spawner : MonoBehaviour
     private float spawny;
     GameObject ob;
     public BossSpawnEffect bossSpawn;
-    private void Start()
-    {
-        bossSpawn = GetComponent<BossSpawnEffect>();
-    }
+
     // Update is called once per frame
     void Update()
     {
@@ -41,8 +38,7 @@ public class boss_spawner : MonoBehaviour
             Managers.UI.bossSlider.gameObject.SetActive(true);
             Managers.UI.InitBossSlider();
             Spawn();
-            Managers.CameraManager.SetFollow(ob.transform);
-            Managers.CameraManager.SetPriority(11);
+            Managers.CameraManager.SetFollow(this.transform); 
             bossSpawn.PlayFromTimeline();
             Managers.StageManager.SetStageKillCount();
         }
@@ -51,6 +47,7 @@ public class boss_spawner : MonoBehaviour
     {
         spawnX = Managers.StageManager.Player.transform.position.x;
         spawny = Managers.StageManager.Player.transform.position.y + 7f;
+        this.transform.position = new Vector2(spawnX, spawny + 3f);
     }
     void Spawn()
     {

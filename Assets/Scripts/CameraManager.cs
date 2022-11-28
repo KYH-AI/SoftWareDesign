@@ -1,22 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
-public class CameraManager : Managers
+public class CameraManager : MonoBehaviour
 {
-    public Camera bossCamera;
+    public CinemachineVirtualCamera bossCamera;
+    public CinemachineVirtualCamera playerCamera;
 
     #region 보스 카메라 설정
     public void SetFollow(Transform Boss)   //보스 등장시 본인의 Transform을 전달해주어야 함.
     {
-        //bossCamera.Follow = Boss;
-        print("SetFollow");
+        bossCamera.Follow = Boss;
+        Managers.CameraManager.playerCamera.Priority = 9;
+        Managers.CameraManager.bossCamera.Priority = 11;
     }
 
     public void SetPriority(int priority)
     {
-        //bossCamera.Priority = priority;
-        print("SetPriority");
+        print("setpriority");
+        bossCamera.Priority = priority;
     }
     #endregion
 }

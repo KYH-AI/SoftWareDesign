@@ -43,7 +43,7 @@ public class BossSpawnEffect : MonoBehaviour
 
     public void TimeLineEndSignal()
     {
-        Managers.CameraManager.SetPriority(9);
+        bossCamera.gameObject.SetActive(false);
         //중간보스는 얘기해봐야한다.
         //보스의 state를 move로 바꿔주자.
     }
