@@ -13,7 +13,7 @@ public class Drone : PassiveSkill
     private Coroutine droneRotateCheck;
     private bool isDroneStop = false;
 
-
+    private float lastTime = 0f;        // 드론 마지막 사격 시간
     private readonly float DRONE_MOVE_SPEED = 50f;              // 드론 이동 속도 (상수 값)
     private readonly float DRONE_BULLET_LINE_DURATION = 0.1f;   // 드론 공격 이펙트 지속 시간(상수 값)
     private readonly float CIRCLE_R = 3f;                       //반지름(상수 값)
@@ -21,13 +21,11 @@ public class Drone : PassiveSkill
     private WaitForSeconds droneBulletLineDuration;    // 드론 공격 이펙트 지속시간 (상수 값)
     #endregion
 
-    private float lastTime = 0f;        // 드론 마지막 사격 시간
-
     #region 스킬 기본 스텟 데이터
     /// <summary>
     /// 스킬 데미지
     /// </summary>
-    private int skillDamage = 3;
+    private int skillDamage = 5;
     /// <summary>
     /// 스킬 공격 범위
     /// </summary>
@@ -82,11 +80,9 @@ public class Drone : PassiveSkill
 
     private void Update()  // 드론 사격 여부 확인
     {
-        if(!isDroneStop && currentSkillState == Define.CurrentSkillState.ACTIVE) //Time.time >= lastTime + skillDelayTime) // 마지막 공격 시간 + 공격 쿨타임
+        if(!isDroneStop && currentSkillState == Define.CurrentSkillState.ACTIVE)
         {
-           // lastTime = Time.time;
-            currentSkillState = Define.CurrentSkillState.COOL_TIME;
-            droneAttackCheck = StartCoroutine(DroneSkillAttackProcess());
+            currentSkillState = DroneSkillAttack();
         }
     }
 
@@ -107,7 +103,11 @@ public class Drone : PassiveSkill
 
     public override void Upgrade()
     {
-        
+        skillDamage += 3;
+        SkillCoolTime -= 2f;
+        skillTargetCount += 3;
+        skillAttackDelay -= 0.25f;
+        skillRange += 2;
     }
 
     private void DroneSkillActive() // 드론 이동 여부 확인
@@ -120,27 +120,32 @@ public class Drone : PassiveSkill
         }
     }
 
-    private IEnumerator DroneSkillAttackProcess()
-    {
-        int targetCount;
-      //  Debug.Log("공격 시작");
+    private Define.CurrentSkillState DroneSkillAttack()
+    { 
         Collider2D[] enemyCollider = Physics2D.OverlapCircleAll(playerObject.transform.position, skillRange, enemyLayer); // 플레이어 기준 10범위에 적을 탐지
 
         if (enemyCollider.Length > 0) // 적 배열이 0보다 많으면
         {
-            
-            targetCount = enemyCollider.Length > skillTargetCount ? skillTargetCount : enemyCollider.Length;
-            for (int enemyCount=0; enemyCount < targetCount; enemyCount++)
-            {
-                if (enemyCollider[enemyCount] != null)
-                {
-                    Enemy enemy = enemyCollider[enemyCount].GetComponent<Enemy>();
-                    StartCoroutine(DroneBulletEffect(enemy.transform.position));
-                    enemy.TakeDamage(skillDamage);
+            StartCoroutine(DroneSkillAttackProcess(enemyCollider));
+            return Define.CurrentSkillState.COOL_TIME;
+        }
+        return Define.CurrentSkillState.ACTIVE; ;
+    }
 
-                    lastTime += skillAttackDelay;   // 공격 쿨타임에 타켓변경 시간까지 추가
-                    yield return skillAttackDelayTimeSec;
-                }
+    private IEnumerator DroneSkillAttackProcess(Collider2D[] enemyColliders)
+    {
+        int targetCount = enemyColliders.Length > skillTargetCount ? skillTargetCount : enemyColliders.Length;
+
+        for (int enemyCount=0; enemyCount < targetCount; enemyCount++)
+        {
+            if (enemyColliders[enemyCount] != null)
+            {
+                Enemy enemy = enemyColliders[enemyCount].GetComponent<Enemy>();
+                StartCoroutine(DroneBulletEffect(enemy.transform.position));
+                enemy.TakeDamage(skillDamage);
+
+                lastTime += skillAttackDelay;   // 공격 쿨타임에 타켓변경 시간까지 추가
+                yield return skillAttackDelayTimeSec;
             }
         }
         droneAttackCheck = null;

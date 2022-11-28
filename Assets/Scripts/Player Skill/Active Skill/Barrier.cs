@@ -17,7 +17,7 @@ public class Barrier : ActiveSkill
     /// <summary>
     /// 스킬 지속시간
     /// </summary>
-    private float skillDuration = 4f;
+    private float skillDuration = 5f;
     /// <summary>
     /// 스킬 지속시간 코루틴
     /// </summary>
@@ -56,9 +56,13 @@ public class Barrier : ActiveSkill
         }
     }
     /// <summary>
-    /// 스킬 데미지 프로퍼티 ( set : 스킬 데미지 값 변경 )
+    /// 스킬 데미지 프로퍼티 ( get : 스킬 데미지 값, set : 스킬 데미지 값 변경 )
     /// </summary>
-    public int SkillDamage { set { skillDamage = value; } } 
+    public int SkillDamage 
+    { 
+        get { return skillDamage; }
+        set { skillDamage = value; }
+    } 
     /// <summary>
     /// 방벽 스킬 크기 프로퍼티 ( set : 방벽 스킬 Scale 값 변경 )
     /// </summary>
@@ -110,6 +114,11 @@ public class Barrier : ActiveSkill
 
     public override void Upgrade()
     {
+        skillDamage += 1;
+        SkillCoolTime -= 2f;
+        barrierSize.localScale += new Vector3(0.5f, 0.5f, 1f);
+        barrierAttackDelay -= 0.2f;
+        skillDuration += 1f;
         //  barrierSize.localScale += new Vector3(0.5f, 0.5f, 1f);
         // TODO : 상점에서 업그레이드 방식이 정해지면 진행 하자 (09/28)
     }
@@ -118,6 +127,7 @@ public class Barrier : ActiveSkill
     {
         barrierEffectObject.SetActive(true);
         barrierCollider.enabled = true;
+        StartCoroutine(BarrierHitBox());
         // TODO : barrier 오브젝트 콜라이더 활성화
     }
 
@@ -128,6 +138,7 @@ public class Barrier : ActiveSkill
             StopCoroutine(barrierCheck);
        }
 
+        StopCoroutine(BarrierHitBox());
         barrierCheck = null;
         barrierCollider.enabled = false;
         barrierEffectObject.SetActive(false);
@@ -144,4 +155,16 @@ public class Barrier : ActiveSkill
 
         BarrierSkillDisable();
     }
+
+    // Barrier 콜라이더 On/Off
+    private IEnumerator BarrierHitBox()
+    {
+        while (true)
+        {
+            barrierCollider.enabled = true;
+            yield return barrierAttackDelayTimeSec;
+            barrierCollider.enabled = false;
+        }
+    }
+
 }

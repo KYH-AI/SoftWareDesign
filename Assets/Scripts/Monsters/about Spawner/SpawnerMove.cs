@@ -8,7 +8,7 @@ public class SpawnerMove : MonoBehaviour
 
     private void Start()
     {
-       target = StageManager.GetInstance().Player.GetComponent<Transform>();    
+       target = Managers.StageManager.Player.GetComponent<Transform>();    
     }
     void Update()
     {

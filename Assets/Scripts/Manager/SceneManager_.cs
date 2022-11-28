@@ -11,18 +11,18 @@ public class SceneManager_ : MonoBehaviour
         Debug.Log("GoToNextScene 접속");
         //현재 씬을 받아와서 Define.stage와 이름이 같으면 Define.stage++하고 그 이름으로 씬 이동
 
-        if (StageManager.stageManager.stage.ToString().StartsWith("STAGE"))
+        if (Managers.StageManager.stage.ToString().StartsWith("STAGE"))
         {
             Debug.Log("if 접속");
-            StageManager.stageManager.ChangeStage();
+            Managers.StageManager.ChangeStage();
             SceneManager.LoadScene("Store");
         }
 
-        else if (StageManager.stageManager.stage.ToString().StartsWith("STORE"))
+        else if (Managers.StageManager.stage.ToString().StartsWith("STORE"))
         {
             Debug.Log("else if 접속");
-            StageManager.stageManager.ChangeStage();
-            SceneManager.LoadScene(StageManager.stageManager.stage.ToString());
+            Managers.StageManager.ChangeStage();
+            SceneManager.LoadScene(Managers.StageManager.stage.ToString());
         }
         else
         {

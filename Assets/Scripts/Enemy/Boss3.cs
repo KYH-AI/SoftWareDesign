@@ -49,6 +49,7 @@ public class Boss3 : Enemy
     public override void TakeDamage(int newDamage)
     {
         base.TakeDamage(newDamage);
+        Managers.UI.UpdateBossHpSlider(Hp, MaxHp);
         EnemyAnimator.SetBool("isHit", true);
     }
     private void HurtToIdle()
@@ -115,7 +116,7 @@ public class Boss3 : Enemy
         
         yield return new WaitForSeconds(0.5f);
         GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(Telpo,
-                                                                                    Define.PrefabType.SubBoss,
+                                                                                    "SubBoss/"+Telpo.name,
                                                                                     new Vector2(transform.position.x - 1.07f, transform.position.y + 1.33f),
                                                                                     Quaternion.identity);
         projectile.SetActive(true);
@@ -132,7 +133,7 @@ public class Boss3 : Enemy
         }
         
         GameObject projectile2 = MemoryPoolManager.GetInstance().OutputGameObject(Telpo,
-                                                                                    Define.PrefabType.SubBoss,
+                                                                                     "SubBoss/" + Telpo.name,
                                                                                     new Vector2(transform.position.x -1.07f, transform.position.y + 1.33f),
                                                                                     Quaternion.identity);
         projectile2.SetActive(true);
@@ -180,7 +181,7 @@ public class Boss3 : Enemy
         for (int i = 0; i < 8; i++)
         {
             GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(Fire,
-                                                                                   Define.PrefabType.SubBoss,
+                                                                                   "SubBoss/"+Fire.name,
                                                                                    new Vector2(playerTarget.transform.position.x, playerTarget.transform.position.y-1),
                                                                                    Quaternion.identity);
             projectile.GetComponent<Projectile>().ProjectileInit(Define.StringTag.Player, Vector2.zero, skillDamage);
@@ -199,6 +200,7 @@ public class Boss3 : Enemy
         state = BossState.Dead_STATE;
         isDie = true;
         base.OnDead();
+        Managers.UI.bossSlider.gameObject.SetActive(false);
         EnemyAnimator.SetTrigger("isDie");
     }
 

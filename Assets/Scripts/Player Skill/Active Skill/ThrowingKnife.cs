@@ -17,11 +17,11 @@ public class ThrowingKnife : ActiveSkill
     /// <summary>
     /// 표창 소환 개수
     /// </summary>
-    private int skillProjectileCount = 10; 
+    private int skillProjectileCount = 2; 
     /// <summary>
     /// 표창 투척속도
     /// </summary>
-    private float skillProjectileSpeed = 10f; // 초기 값은 15
+    private float skillProjectileSpeed = 15f; // 초기 값은 15
     /// <summary>
     /// 표창 소환간격 (상수 값)
     /// </summary>
@@ -58,6 +58,10 @@ public class ThrowingKnife : ActiveSkill
     }
     public override void Upgrade()
     {
+        skillDamgae += 2;
+        SkillCoolTime -= 0.5f;
+        skillProjectileCount += 2;
+        skillProjectileSpeed += 2f;
         // TODO : 상점에서 업그레이드 방식이 정해지면 진행 하자 (09/28)
     }
 
@@ -80,7 +84,7 @@ public class ThrowingKnife : ActiveSkill
     private void CreateProjectile()
     {
         GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(knifeObject,
-                                                                                 Define.PrefabType.Player_Skill,
+                                                                                 "Player_Skill/"+knifeObject.name,
                                                                                  (transform.position + new Vector3(playerObject.PlayerController.LastDirection.x, playerObject.PlayerController.LastDirection.y, 0f)) + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)),
                                                                                  Quaternion.Euler(0, 0, Mathf.Atan2(-playerObject.PlayerController.LastDirection.y, -playerObject.PlayerController.LastDirection.x) * Mathf.Rad2Deg));
 

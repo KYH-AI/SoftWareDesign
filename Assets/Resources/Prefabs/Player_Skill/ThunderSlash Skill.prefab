@@ -70,7 +70,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1869315837
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 10
   m_Time: 1
   m_Parameters:
@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c65d80ec7fb8d4048a6aef03d254a6b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillCoolTime: 1
-  thunderSlashLockOnEffect: {fileID: 7943286371813013178, guid: 7ff06f8adf5b8004e8de83398b55f2fe, type: 3}
+  skillCoolTime: 22
+  thunderSlashLockOnEffect: {fileID: 7943286371813013178, guid: 7ff06f8adf5b8004e8de83398b55f2fe,
+    type: 3}
   thunderClapProfile: {fileID: 11400000, guid: bba114ca57152d446b045f9e901560a3, type: 2}

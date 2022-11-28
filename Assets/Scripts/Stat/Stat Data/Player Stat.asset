@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Player Stat
   m_EditorClassIdentifier: 
   hp: 100
-  moveSpeed: 5
+  moveSpeed: 3
   armor: 0
   defaultAttackDamage: 10

@@ -50,10 +50,10 @@ public class Define
     public enum PrefabType
     {
         Player_Skill,
-        Boss_Skill,
+        Final_Boss_Skill,
         Monsters,
         UI,
-        SubBoss
+        SubBoss,
     }
     /// <summary>
     /// BOSS에서 사용하는 STATE의 열거형 변수 집합

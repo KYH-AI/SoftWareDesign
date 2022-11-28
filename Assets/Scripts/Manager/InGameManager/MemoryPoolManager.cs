@@ -6,7 +6,7 @@ public class MemoryPoolManager : MonoBehaviour
 {
     private static MemoryPoolManager instance;
 
-    private Dictionary<string, Queue<GameObject>> pools = new Dictionary<string, Queue<GameObject>>();
+    private Dictionary<string, Queue<GameObject>> pools;
 
     private void Awake()
     {
@@ -36,6 +36,10 @@ public class MemoryPoolManager : MonoBehaviour
     /// <param name="gameObject">반납 SetActive(ture)오브젝트</param>
     public void InputGameObject(GameObject gameObject)
     {
+        // 반납할 Queue가 없으면 그대로 실행 X
+        if (!pools.ContainsKey(gameObject.name)) return;
+
+        print(gameObject.name + " 반납");
         gameObject.SetActive(false);
         pools[gameObject.name].Enqueue(gameObject);
     }
@@ -48,7 +52,7 @@ public class MemoryPoolManager : MonoBehaviour
     /// <param name="spawnPosition">오브젝트 생성 위치</param>
     /// <param name="quaternion">오브젝트 회전 위치</param>
     /// <returns>Queue에서 반환된 SetActive(false)오브젝트</returns>
-    public GameObject OutputGameObject(GameObject gameObject, Define.PrefabType prefabType, Vector2 spawnPosition, Quaternion quaternion)
+    public GameObject OutputGameObject(GameObject gameObject, string perfabPath, Vector2 spawnPosition, Quaternion quaternion)
     {
         GameObject temp;
 
@@ -57,18 +61,18 @@ public class MemoryPoolManager : MonoBehaviour
         {
             // 해당 오브젝트 전용 큐를 만든다.
             pools.Add(gameObject.name, new Queue<GameObject>());
-            Debug.Log($"{gameObject.name}전용 큐 생성");
+         //   Debug.Log($"{gameObject.name}전용 큐 생성");
         }
 
         // 오브젝트 전용 큐가 비웠으면
         if (pools[gameObject.name].Count <= 0)
         {
             // 즉석으로 오브젝트를 동적생성하여 큐에 넣는다.
-            temp = Instantiate(Managers.Resource.GetPerfabGameObject(prefabType.ToString() +"/"+ gameObject.name));
+            temp = Instantiate(Managers.Resource.GetPerfabGameObject(perfabPath));
             temp.name = gameObject.name; // 프리팹 (Clone) 이름 삭제
             temp.SetActive(false);
             //  pools[gameObject.name].Enqueue(temp);             // -> 각 오브젝트.cs OnDisable()에서 Enqueue 진행
-            Debug.Log($"{gameObject.name}전용 큐가 비워서 EnQueue");
+         //   Debug.Log($"{gameObject.name}전용 큐가 비워서 EnQueue");
         }
 
 
@@ -77,7 +81,7 @@ public class MemoryPoolManager : MonoBehaviour
         // 오브젝트 생성될 위치와 회전값 설정
         temp.transform.SetPositionAndRotation(spawnPosition, quaternion);   
 
-        Debug.Log($"{gameObject.name}전용 큐 DeQueue");
+    //    Debug.Log($"{gameObject.name}전용 큐 DeQueue");
         print(temp.gameObject.name);
        // temp.SetActive(true);  -> 오브젝트 OnEnable 특성상 외부에서 활성화 해야함
         return temp;
@@ -85,5 +89,10 @@ public class MemoryPoolManager : MonoBehaviour
     public void InitPool()
     {
         pools.Clear();
+    }
+
+    private void OnEnable()
+    {
+        pools = new Dictionary<string, Queue<GameObject>>();
     }
 }

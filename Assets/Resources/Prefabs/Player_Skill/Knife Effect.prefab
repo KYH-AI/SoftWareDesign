@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5609101580249013157}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -120,9 +120,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.75, y: 0.03}
   serializedVersion: 2
-  m_Radius: 0.24
+  m_Radius: 0.1
 --- !u!114 &2729757847088875943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 3
   m_Time: 1
   m_Parameters:
     serializedVersion: 3
@@ -185,7 +185,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.3383484
+        value: 0.22982025
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -193,7 +193,7 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.52504563
+        time: 1
         value: 0
         inSlope: 0
         outSlope: 0
