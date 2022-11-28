@@ -130,19 +130,8 @@ public abstract class BasicMonsterController : Enemy
         int killCount = Random.Range(minKillCount, maxKillCount);
         int coinLevel = Random.Range(0, 3);
 
-        //동전 드랍  (22/11/28 새벽 오전3시 추가함 (김윤호)
-        /*
         GameObject coin = MemoryPoolManager.GetInstance().OutputGameObject
-                       (StageManager.GetInstance().coins[coinLevel],
-                        "Coin/" + coins[coinLevel].gameObject.name,
-                        transform.position,
-                        Quaternion.identity);
-
-        coin.SetActive(true);
-        */
-
-        GameObject coin = MemoryPoolManager.GetInstance().OutputGameObject
-               (Managers.StageManager.coins[3],
+               (Managers.StageManager.coins[coinLevel],
                 "Coin/" + Managers.Resource.GetPerfabGameObject("Coin/Level1_Coin").name,
                 transform.position,
                 Quaternion.identity);

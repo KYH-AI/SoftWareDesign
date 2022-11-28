@@ -39,7 +39,7 @@ public class MemoryPoolManager : MonoBehaviour
         // 반납할 Queue가 없으면 그대로 실행 X
         if (!pools.ContainsKey(gameObject.name)) return;
 
-        print(gameObject.name + " 반납");
+      //  print(gameObject.name + " 반납");
         gameObject.SetActive(false);
         pools[gameObject.name].Enqueue(gameObject);
     }
@@ -82,8 +82,7 @@ public class MemoryPoolManager : MonoBehaviour
         temp.transform.SetPositionAndRotation(spawnPosition, quaternion);   
 
     //    Debug.Log($"{gameObject.name}전용 큐 DeQueue");
-        print(temp.gameObject.name);
-       // temp.SetActive(true);  -> 오브젝트 OnEnable 특성상 외부에서 활성화 해야함
+    //    print(temp.gameObject.name);
         return temp;
     }
     public void InitPool()
