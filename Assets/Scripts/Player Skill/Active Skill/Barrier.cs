@@ -17,7 +17,7 @@ public class Barrier : ActiveSkill
     /// <summary>
     /// 스킬 지속시간
     /// </summary>
-    private float skillDuration = 10f; // 10f
+    private float skillDuration = 5f;
     /// <summary>
     /// 스킬 지속시간 코루틴
     /// </summary>
@@ -114,7 +114,11 @@ public class Barrier : ActiveSkill
 
     public override void Upgrade()
     {
-
+        skillDamage += 1;
+        SkillCoolTime -= 2f;
+        barrierSize.localScale += new Vector3(0.5f, 0.5f, 1f);
+        barrierAttackDelay -= 0.2f;
+        skillDuration += 1f;
         //  barrierSize.localScale += new Vector3(0.5f, 0.5f, 1f);
         // TODO : 상점에서 업그레이드 방식이 정해지면 진행 하자 (09/28)
     }

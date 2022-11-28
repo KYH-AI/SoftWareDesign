@@ -10,7 +10,7 @@ public class FirstAid : PassiveSkill
     /// <summary>
     /// 스킬 최대 체력의 회복 퍼센트
     /// </summary>
-    private int buffHpRegenPercent = 8;
+    private int buffHpRegenPercent = 10;
     /// <summary>
     /// 스킬 지속시간
     /// </summary>
@@ -61,11 +61,9 @@ public class FirstAid : PassiveSkill
 
     public override void Upgrade()
     {
-        /*
-         *  지속시간 증가
-         *  속도 버프 증가
-         *  쿨타임 감소
-         */
+        skillDuration += 1;
+        SkillCoolTime -= 3f;
+        buffHpRegenPercent += 5;
     }
 
     private void FirstAidSkillActive()
@@ -79,24 +77,6 @@ public class FirstAid : PassiveSkill
         {
             return;
         }
-
-        /*  
-        // playerController.MoveSpeed *= buffSpeed;
-
-        // 버프 효과 시작
-        // 전체값 X 퍼센트 ÷ 100 //
-        playerController.MoveSpeed = (buffSpeed * buffStat) / 100;
-        // 프로퍼티 접근이 아닌 다이렉트로 접근 (일시적으로 바꾸는 값)
-        copyMoveSpeed = buffSpeed; // 현재 속도를 buffSpeed 로 변경
-
-        // buffDuration 시작
-        // 코루틴 
-
-
-        // 버브 효과 종료
-        buffSpeed = moveSpeed;      // 버프 값을 buffStat 만큼 다시 역계산해서 buffSpeed 초기 값으로 돌림
-        copyMoveSpeed = buffSpeed;  // 현재 속도를 버프를 받기 전 buffSpeed 값으로 돌림 
-        */
     }
 
     private IEnumerator FirstAidSkillProcess(float buffDuration, int addHP)
@@ -106,6 +86,7 @@ public class FirstAid : PassiveSkill
         {
          //   print("플레이어 체력 회복 중 (남은시간 : " + buffDuration);
             playerObject.Hp += addHP;
+        //    Managers.UI.UpdatePlayerHpSlider(playerObject.Hp, playerObject.MaxHp);
             buffDuration--;
             yield return PER_SECONDS;
         }

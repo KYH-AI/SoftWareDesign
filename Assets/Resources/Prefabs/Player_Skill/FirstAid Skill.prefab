@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e932cd95c5c244a906c2afc223b4a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillCoolTime: 10
+  skillCoolTime: 20
   firstAidEffect: {fileID: 2665851280157247756}
 --- !u!1 &2253171798726475159
 GameObject:
