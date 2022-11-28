@@ -26,6 +26,7 @@ public class Boss4 : Enemy
     int attackCnt = 0;
     bool isFadeout = true;
     bool isHide = false;
+    bool isIdle = true;
     [SerializeField] GameObject Portalpref;
     GameObject myInstance;
 
@@ -34,13 +35,10 @@ public class Boss4 : Enemy
     void Update()
     {
         dir = (playerTarget.transform.position - transform.position);
-        if (!isHurt)
-        {
-            ChangeDir();
-        }
        distance = dir.magnitude; 
         Fsm();
         ChangeOrder();
+        print(state);
     }
     void ChangeOrder()
     {
@@ -86,21 +84,30 @@ public class Boss4 : Enemy
 
     void Idle()
     {
-        if (distance < moveDistance&&isAttack&&!isDie) 
+        if (isIdle&&isAttack&&!isDie) 
         {
-            state = BossState.MOVE_STATE;
+            isIdle = false;
+            StartCoroutine(IdleToMove());
         }
         EnemyAnimator.SetBool("isRun", false);
     }
-    
+
+    IEnumerator IdleToMove()
+    {
+        yield return new WaitForSeconds(2f);
+        state = BossState.MOVE_STATE;
+        isIdle = true;
+    }
+
 
     private new  void Move()
     {
         if (!isHurt)
         {
             transform.position = Vector2.MoveTowards(transform.position, playerTarget.transform.position, MoveSpeed * Time.deltaTime);
+            ChangeDir();
         }
-
+       
         EnemyAnimator.SetBool("isRun", true);
         if (distance <= attackDistance)
         {
@@ -114,7 +121,7 @@ public class Boss4 : Enemy
         {
             StartCoroutine(AttackDelay());
         }
-            
+        ChangeDir();
     }
     public override void TakeDamage(int newDamage)
     {
@@ -161,11 +168,6 @@ public class Boss4 : Enemy
         state = BossState.IDLE_STATE;
     }
 
-    IEnumerator IdleTOMove()
-    {
-        yield return new WaitForSeconds(1f);
-        state = BossState.MOVE_STATE;
-    }
 
     IEnumerator AttackDelay()
     {
@@ -196,10 +198,7 @@ public class Boss4 : Enemy
         else
         {
             yield return new WaitForSeconds(0.5f);
-            if (distance > attackDistance)//멀어지면 idle 상태로 돌아가서 플레이어 추적하기
-            {
-                state = BossState.IDLE_STATE;
-            }
+            state = BossState.IDLE_STATE;
         }
        
     }

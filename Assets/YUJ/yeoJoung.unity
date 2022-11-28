@@ -8213,7 +8213,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0f5560b96b400c44cab2dabc291db056, type: 3}
   - {fileID: 21300000, guid: c06b52e768643924dabb4e6863d9ed1d, type: 3}
   - {fileID: 21300000, guid: e54101173bdf1fa488e7866a10a1e8de, type: 3}
-  money: {fileID: 0}
+  money: {fileID: 2011890650}
 --- !u!1 &1689698074
 GameObject:
   m_ObjectHideFlags: 0
