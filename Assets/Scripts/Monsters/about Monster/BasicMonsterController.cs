@@ -142,7 +142,7 @@ public abstract class BasicMonsterController : Enemy
         */
 
         GameObject coin = MemoryPoolManager.GetInstance().OutputGameObject
-               (Managers.Resource.GetPerfabGameObject("Coin/Level1_Coin"),
+               (Managers.StageManager.coins[3],
                 "Coin/" + Managers.Resource.GetPerfabGameObject("Coin/Level1_Coin").name,
                 transform.position,
                 Quaternion.identity);

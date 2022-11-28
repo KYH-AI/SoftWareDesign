@@ -58,7 +58,15 @@ public class Player : LivingEntity
     #endregion
 
     #region 상점에서 사용하는 스킬종류 변수
-    public Dictionary<int, PlayerSkill> skillList = new Dictionary<int, PlayerSkill>();
+    public Dictionary<string, PlayerSkill> skillList = new Dictionary<string, PlayerSkill>();
+    
+    // 플레이어 액티브 스킬 슬롯
+    private int activeSkillSlot_Index = 0;
+    public int ActiveSkillSlot_Index
+    {
+        get { return activeSkillSlot_Index;}
+        set { activeSkillSlot_Index = value; }
+    }
     #endregion
 
     /* 함수 */
