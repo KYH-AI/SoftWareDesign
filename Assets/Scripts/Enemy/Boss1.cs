@@ -5,9 +5,10 @@ using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Boss1 : Enemy
 {
+    protected int Boss = 1 << 14;
     public enum BossState
     {
-        IDLE_STATE,
+        IDLE_STATE, 
         MOVE_STATE,
         ATTACK_STATE
     }
@@ -18,16 +19,24 @@ public class Boss1 : Enemy
     bool isMove=false;
     bool isAttack=false;
     bool isDie = false;
-    float idleDelay = 5f;
+    bool isStart = false;
+    float idleDelay = 3f;
     float moveTime = 3f;
     int skillDamage = 3;
-    int skillSpeed = 20;
+    int skillSpeed = 10;
     [SerializeField] GameObject FireBall;
     [SerializeField] Transform FireBallTransform;
     [SerializeField] Material HitEffectMaterial;     // 피격 시 머티리얼
     [SerializeField] Material orignalMaterial;
     [SerializeField] GameObject Portalpref;
     GameObject myInstance;
+
+    private void Start()
+    {
+        base.Start();
+        Invoke(nameof(GetBossLayer),4.5f);
+        
+    }
     void Update()
     {
         attackDir= (playerTarget.transform.position - FireBallTransform.position);
@@ -35,6 +44,12 @@ public class Boss1 : Enemy
         Fsm();
         ChangeOrder();
         print(EnemyCollider);
+    }
+
+    private void GetBossLayer()
+    {
+        gameObject.layer = 14;
+        isStart = true;
     }
 
     void ChangeOrder()
@@ -77,7 +92,7 @@ public class Boss1 : Enemy
     }
     void Idle()
     {
-        if (!isMove)
+        if (!isMove && isStart)
         {
             StartCoroutine(IdleToMove());
             isMove = true;

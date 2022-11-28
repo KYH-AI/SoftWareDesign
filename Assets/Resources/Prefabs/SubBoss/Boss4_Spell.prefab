@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8120241515129024045}
   - component: {fileID: 1820086628616861111}
   m_Layer: 0
-  m_Name: Boss2_Spell
+  m_Name: Boss4_Spell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

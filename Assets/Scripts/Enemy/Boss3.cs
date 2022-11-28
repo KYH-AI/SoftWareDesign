@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boss3 : Enemy
 {
+    protected int Boss = 1 << 14;
     public enum BossState
     {
         IDLE_STATE,
@@ -19,6 +20,7 @@ public class Boss3 : Enemy
     bool isAttack1 = false;
     bool isAttack2 = false;
     bool isDie = false;
+    bool isStart = false;
     [SerializeField] GameObject Telpo;
     [SerializeField] GameObject Fire;
     [SerializeField] GameObject Portalpref;
@@ -27,7 +29,17 @@ public class Boss3 : Enemy
     float attackDelay = 3f;
     private int skillDamage = 5;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        base.Start();
+        Invoke(nameof(GetBossLayer), 4.5f);
+
+    }
+    private void GetBossLayer()
+    {
+        gameObject.layer = 14;
+        isStart = true;
+    }
     void Update()
     {
         dir = (playerTarget.transform.position - transform.position);
@@ -79,7 +91,7 @@ public class Boss3 : Enemy
     }
     private void Idle()
     {
-        if (isIdle)
+        if (isIdle && isStart)
         {
             isIdle = false;
             Invoke(nameof(IdleToAttack), attackDelay);
@@ -153,7 +165,7 @@ public class Boss3 : Enemy
 
     IEnumerator Attack_1()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(1f);
         EnemyAnimator.SetBool("isAttack1", true);
     }
 
