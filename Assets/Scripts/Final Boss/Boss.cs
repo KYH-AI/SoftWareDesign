@@ -23,13 +23,13 @@ public class Boss : Enemy
     [SerializeField] GameObject finalBossBindEye;           //바인드 패턴 시 플레이어 감시 프리팹
     [SerializeField] GameObject finalBossBindVineFail;      //바인드 패턴 실패 프리팹 
     [SerializeField] GameObject finalBossBindVineSucess;    //바인드 패턴 성공 프리팹
+    [SerializeField] GameObject finalBossInputSoul;         //Seeker 소환 시 사용할 프리팹 
     [SerializeField] GameObject[] keyListObject;            //바인드 패턴 키 모양 출력 프리팹
     [SerializeField] Material originalMaterial;
     [SerializeField] Material hurtMaterial;
     [SerializeField] GameObject player;         //플레이어 프리팹 
-
     [SerializeField] GameObject seekerPrefab;
-    GameObject[] seeker;
+ 
     #endregion
 
     #region Destroy처리에 사용한 GameObject 변수
@@ -38,6 +38,7 @@ public class Boss : Enemy
     GameObject bindEye;
     GameObject bindVineSucess;
     GameObject bindVineFail;
+    GameObject skeletonSeekrer;
     #endregion
 
     #region Pattern1_DefaultAttack_Flying Skull 관련 전역변수
@@ -89,27 +90,21 @@ public class Boss : Enemy
     new void Start()
     {
         base.Start();
-        seeker = new GameObject[3];
         bossFSM = new BossFSM(this);
         scaleX = transform.localScale.x;
-        
         targetIsPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         bossAnimator = GetComponent<Animator>();
         bossRigidBody = GetComponent<Rigidbody2D>();
         bossSpriteRenderer = GetComponent<SpriteRenderer>();
         darkHealTempHp = BOSS_TEMP_HP;
-
-       // Invoke(nameof(test), 5f);
+    
         //bossFSM.bossState = Define.BossState.CASTING_STATE; //연출효과 대기
     }
     
-    private void test()
-    { SkeletonSeekerSpawner.go(); }
+   
 
     void Update()
     {
-        
-
         SwitchSpriteImageDir(transform);
         if (bossFSM != null) bossFSM.Update();                      //보스의 STATE값이 있을 때만 동작함. 
         if (bossFSM.bossState != Define.BossState.CASTING_STATE)    //보스가 패턴 중일 때는 패턴체크타이머를 증가하지 않음
@@ -360,10 +355,16 @@ public class Boss : Enemy
     public void Pattern_SummonSkeleton()
     {
         SetAnimationTrigger("RunSumnSkeleton");
+        SetBossGodMode();
+        test();
+        skeletonSeekrer = CreateSimpleAnimation(finalBossInputSoul, seekerPrefab, 0f, 1f);
+        
+
         PatternReset();
     }
     #endregion
-
+    private void test()
+    { SkeletonSeekerSpawner.go(); }
     #region 바인드 패턴 관련 함수들
     /// <summary>
     /// 패턴 바인드 실행 함수
