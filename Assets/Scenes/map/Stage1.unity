@@ -211,18 +211,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8967234591656830304, guid: 6cd823db686f90049bbec25e4bac4ce3,
         type: 3}
+      propertyPath: MAX
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967234591656830304, guid: 6cd823db686f90049bbec25e4bac4ce3,
+        type: 3}
       propertyPath: spawnRateMax
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8967234591656830304, guid: 6cd823db686f90049bbec25e4bac4ce3,
         type: 3}
       propertyPath: spawnRateMin
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8967234591656830304, guid: 6cd823db686f90049bbec25e4bac4ce3,
         type: 3}
       propertyPath: Monster.Array.size
-      value: 12
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8967234591656830306, guid: 6cd823db686f90049bbec25e4bac4ce3,
         type: 3}
@@ -433,7 +438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830992051}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.189115, y: -2.424664, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -552,7 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9cea78642677304690cd7eec7f8b44e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1776514106}
 --- !u!114 &1893613208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,7 +654,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2985034669514292794
 PrefabInstance:
@@ -658,6 +663,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1050648713, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050648713, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306368381, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2985034669372325181, guid: c6fceae9aed4c114ca3429bafb3f024b,
         type: 3}
       propertyPath: m_RootOrder

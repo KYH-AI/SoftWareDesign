@@ -58,7 +58,7 @@ public class Player : LivingEntity
     #endregion
 
     #region 상점에서 사용하는 스킬종류 변수
-    public Dictionary<int, PlayerSkill> skillList = new Dictionary<int, PlayerSkill>();
+    public Dictionary<string, PlayerSkill> skillList = new Dictionary<string, PlayerSkill>();
     #endregion
 
     /* 함수 */
@@ -68,10 +68,10 @@ public class Player : LivingEntity
     {
         DontDestroyOnLoad(gameObject);
         PlayerInit();
-        #region 스킬 테스트 중 (김윤호)
+       // #region 스킬 테스트 중 (김윤호)
         /* 테스트 용도 */
 
-
+        /*
         GameObject skillObject3 = Managers.Resource.GetPerfabGameObject("Player_Skill/FlameStrike Skill");
         ActiveSkill fpSkill = Instantiate(skillObject3, this.transform).GetComponent<ActiveSkill>();
         fpSkill.Init(this);
@@ -123,6 +123,7 @@ public class Player : LivingEntity
         drSkill.OnActive();
 
         #endregion
+        */
     }
 
     /// <summary>
@@ -223,5 +224,5 @@ public class Player : LivingEntity
     }
     #endregion
 
-
+    
 }

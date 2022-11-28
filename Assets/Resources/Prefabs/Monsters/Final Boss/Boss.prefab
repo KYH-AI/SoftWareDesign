@@ -144,6 +144,8 @@ MonoBehaviour:
   originalMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   hurtMaterial: {fileID: 2100000, guid: c839255fc8f6b4b4d90bf8c1af9f9bd1, type: 3}
   player: {fileID: 2523420501982882025, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4, type: 3}
+  seekerPrefab: {fileID: 6279684435295860098, guid: be28ad4073d11ba47a42653371305c36,
+    type: 3}
 --- !u!50 &1203287939554438051
 Rigidbody2D:
   serializedVersion: 4

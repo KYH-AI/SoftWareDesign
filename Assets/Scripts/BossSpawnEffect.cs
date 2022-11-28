@@ -36,15 +36,14 @@ public class BossSpawnEffect : MonoBehaviour
     #region 타임라인 시그널 함수
     public void TimeLineStartSignal()
     {
-        SetBossCameraPriority(11);
         //플레이어의 움직임을 제한. -> 윤호
         //보스들은 signal이 없어도 그냥 대기상태에 있도록.
-        //카메라의 priority도 바꿔줘야함.
+        //카메라의 priority는 BossSpawn에서 바꿔줬음.
     }
 
     public void TimeLineEndSignal()
     {
-        SetBossCameraPriority(9);
+        bossCamera.gameObject.SetActive(false);
         //중간보스는 얘기해봐야한다.
         //보스의 state를 move로 바꿔주자.
     }
@@ -73,8 +72,4 @@ public class BossSpawnEffect : MonoBehaviour
         }
     }
 
-    public void SetBossCameraPriority(int priority)
-    {
-        bossCamera.Priority = priority;
-    }
 }
