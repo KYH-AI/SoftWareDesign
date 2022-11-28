@@ -14,7 +14,6 @@ public class Boss4_attack : MonoBehaviour
     {
         if (collision.CompareTag(Define.StringTag.Player.ToString()))
         {
-            print("보스가 데미지줌!");
             collision.GetComponent<Player>().TakeDamage(boss4.DefaultAttackDamage);
         }
     }

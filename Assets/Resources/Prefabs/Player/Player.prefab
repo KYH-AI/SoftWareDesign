@@ -135,7 +135,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: cb5a106e2e8ca3c4cb26a487dd2e3d96, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -155,6 +155,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: 6ac829316f1142046b3629755c6c6238, type: 2}
+  attackSprites:
+  - {fileID: -6338447497850269112, guid: fd267eeb53623d2459b655ccd985262e, type: 3}
+  - {fileID: -7714797751209533692, guid: 00ecaf2af2b7056479cc9e575561ee37, type: 3}
+  - {fileID: -3029667434220052452, guid: 969781d54818eef4cbd3aa1394efe101, type: 3}
   playerHitEffectMaterial: {fileID: 2100000, guid: 585188cdc4600544eb408bee749e4b3a,
     type: 3}
   orignalPlayerMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -232,7 +236,6 @@ GameObject:
   - component: {fileID: 7617842824943637037}
   - component: {fileID: 7059410380914127864}
   - component: {fileID: 316880138}
-  - component: {fileID: 478228420019129374}
   m_Layer: 0
   m_Name: BaseAttackCollider
   m_TagString: Untagged
@@ -281,18 +284,6 @@ BoxCollider2D:
   m_Size: {x: 0.86, y: 2.05}
   m_EdgeRadius: 0
 --- !u!114 &316880138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7286166923515270560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e540089fc038b5a4d8d9d5d7ae0d0eb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &478228420019129374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

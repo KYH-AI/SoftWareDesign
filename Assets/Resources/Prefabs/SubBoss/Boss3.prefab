@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 36638834}
   - component: {fileID: 36638835}
   - component: {fileID: 4946790478304152512}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: attackArea
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 5241715925250746970}
   - component: {fileID: 45788928357149643}
   - component: {fileID: 4181951326958073013}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: Boss3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 3234629978573100161, guid: 7ef7c891d27aa964e992ae53de692bc5,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -209,6 +209,8 @@ MonoBehaviour:
   basicStat: {fileID: 11400000, guid: 616d1285447bf5b4f9f762ba9b3a71eb, type: 2}
   Telpo: {fileID: 1967835574231978638, guid: 3e196c9e632c76841a71cb6e2dc6d010, type: 3}
   Fire: {fileID: 3478226396312825448, guid: 3bb358cb6589ef84aad22c97619c6766, type: 3}
+  Portalpref: {fileID: 1281781686780813720, guid: 6636f696c591eb44dae7f03d791b0658,
+    type: 3}
 --- !u!70 &45788928357149643
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -233,14 +235,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5241715925923550975}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

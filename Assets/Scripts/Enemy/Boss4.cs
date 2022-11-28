@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Boss4 : Enemy
 {
-    protected int playerLayer = 1 << 10;
+    protected int Boss = 1 << 14;
+    protected int DontDamaged = 1 << 15;
     public enum BossState
     {
         IDLE_STATE,
@@ -15,17 +17,17 @@ public class Boss4 : Enemy
     float distance;
     float moveDistance = 15f;
     float attackDistance = 2.5f;
-    float moveSpeed = 4f;
     float attackDelay = 2f;
     Vector2 dir;
     BossState state = BossState.IDLE_STATE;
     bool isAttack = true;
-    bool onTrigger = true;
     bool isHurt = false;
+    bool isDie = false;
     int attackCnt = 0;
     bool isFadeout = true;
     bool isHide = false;
-    
+    [SerializeField] GameObject Portalpref;
+    GameObject myInstance;
 
 
     // Update is called once per frame
@@ -36,11 +38,21 @@ public class Boss4 : Enemy
         {
             ChangeDir();
         }
-        distance = dir.magnitude;  //Vector2.Distance(transform.position, playerTarget.transform.position);
+       distance = dir.magnitude; 
         Fsm();
-       // print(attackCnt);
+        ChangeOrder();
     }
-
+    void ChangeOrder()
+    {
+        if (dir.y < 0)
+        {
+            SpriteRenderer.sortingOrder = 3;
+        }
+        else
+        {
+            SpriteRenderer.sortingOrder = 5;
+        }
+    }
     private void ChangeDir()
     {
         if (dir.x < 0)
@@ -74,7 +86,7 @@ public class Boss4 : Enemy
 
     void Idle()
     {
-        if (distance < moveDistance&&isAttack) 
+        if (distance < moveDistance&&isAttack&&!isDie) 
         {
             state = BossState.MOVE_STATE;
         }
@@ -86,7 +98,7 @@ public class Boss4 : Enemy
     {
         if (!isHurt)
         {
-            transform.position = Vector2.MoveTowards(transform.position, playerTarget.transform.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, playerTarget.transform.position, MoveSpeed * Time.deltaTime);
         }
 
         EnemyAnimator.SetBool("isRun", true);
@@ -108,6 +120,7 @@ public class Boss4 : Enemy
     {
         print("데미지 받음");
         base.TakeDamage(newDamage);
+        Managers.UI.UpdateBossHpSlider(Hp, MaxHp);
         Hurt();
     }
 
@@ -116,14 +129,24 @@ public class Boss4 : Enemy
     protected override void OnDead()
     {
         base.OnDead();
-        EnemyCollider.isTrigger = true;
+        Managers.UI.bossSlider.gameObject.SetActive(false);
+        isDie = true;
         EnemyAnimator.SetTrigger("isDie");
     }
     void DeadProcess()//Die애니메이션에 넣음
     {
-        Destroy(gameObject);
+        var color = SpriteRenderer.color;
+        color.a = 0;
+        SpriteRenderer.color = color;
+        Invoke(nameof(SpawnPortal), 2f);
     }
+    void SpawnPortal()
+    {
+        myInstance = Instantiate(Portalpref);
+        myInstance.transform.position = transform.position;
+        Destroy(gameObject);
 
+    }
 
     private void Hurt()
     {
@@ -151,8 +174,7 @@ public class Boss4 : Enemy
        // yield return new WaitForSeconds(0.1f);//0.2초 동안 idle
         EnemyAnimator.SetBool("isAttack", true);
         
-        yield return new WaitForSeconds(attackDelay);//공격 딜레이
-        onTrigger = true;
+        yield return new WaitForSeconds(attackDelay);//공격 딜레이 
         isAttack = true;
     }
     void AttackToIdle()//attack애니메이션 마지막에 넣음
@@ -166,9 +188,9 @@ public class Boss4 : Enemy
     {
         if(attackCnt == 2)
         {
+            state = BossState.HIDE_STATE;
             yield return new WaitForSeconds(0.8f);
             isFadeout = true;
-            state = BossState.HIDE_STATE;
             attackCnt = 0;
         }
         else
@@ -183,7 +205,7 @@ public class Boss4 : Enemy
     }
     private void Hide()
     {
-        if (isHide)
+        if (isHide&!isDie)
         {
             int result = Random.Range(0, 2);
             if (result == 0)
@@ -206,6 +228,8 @@ public class Boss4 : Enemy
     }
     IEnumerator FadeOut()
     {
+        gameObject.tag = "Untagged";
+        gameObject.layer = 15;
         while (SpriteRenderer.color.a > 0)
         {
             var color = SpriteRenderer.color;
@@ -219,7 +243,6 @@ public class Boss4 : Enemy
             //wait for a frame
             yield return null;
         }
-        gameObject.tag = "dontDamaged";
         isHide = true;
         yield return new WaitForSeconds(2f);
         StartCoroutine(FadeIn());
@@ -227,6 +250,7 @@ public class Boss4 : Enemy
     IEnumerator FadeIn()
     {
         gameObject.tag = "Enemy";
+        gameObject.layer = 14;
         state = BossState.ATTACK_STATE;
         while (SpriteRenderer.color.a < 1)
         {

@@ -14,13 +14,15 @@ public class Boss3 : Enemy
     };
     Vector2 dir;
     BossState state = BossState.IDLE_STATE;
-    float distance;
     bool isIdle = true;
     bool isTelpo = false;
     bool isAttack1 = false;
-    bool isAttack2 = false;  
+    bool isAttack2 = false;
+    bool isDie = false;
     [SerializeField] GameObject Telpo;
     [SerializeField] GameObject Fire;
+    [SerializeField] GameObject Portalpref;
+    GameObject myInstance;
     float fireDelay = 1f;
     float attackDelay = 3f;
     private int skillDamage = 5;
@@ -29,13 +31,25 @@ public class Boss3 : Enemy
     void Update()
     {
         dir = (playerTarget.transform.position - transform.position);
-        distance = dir.magnitude;
         Fsm();
+        ChangeOrder();
+    }
+    void ChangeOrder()
+    {
+        if (dir.y < 0)
+        {
+            SpriteRenderer.sortingOrder = 3;
+        }
+        else
+        {
+            SpriteRenderer.sortingOrder = 5;
+        }
     }
 
     public override void TakeDamage(int newDamage)
     {
         base.TakeDamage(newDamage);
+        Managers.UI.UpdateBossHpSlider(Hp, MaxHp);
         EnemyAnimator.SetBool("isHit", true);
     }
     private void HurtToIdle()
@@ -90,7 +104,7 @@ public class Boss3 : Enemy
     }
     private void telpo()
     {
-        if (!isTelpo)
+        if (!isTelpo&&!isDie)
         {
             isTelpo = true;
             StartCoroutine(TelpoToPlayer());
@@ -102,7 +116,7 @@ public class Boss3 : Enemy
         
         yield return new WaitForSeconds(0.5f);
         GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(Telpo,
-                                                                                    Define.PrefabType.SubBoss,
+                                                                                    "SubBoss/"+Telpo.name,
                                                                                     new Vector2(transform.position.x - 1.07f, transform.position.y + 1.33f),
                                                                                     Quaternion.identity);
         projectile.SetActive(true);
@@ -119,7 +133,7 @@ public class Boss3 : Enemy
         }
         
         GameObject projectile2 = MemoryPoolManager.GetInstance().OutputGameObject(Telpo,
-                                                                                    Define.PrefabType.SubBoss,
+                                                                                     "SubBoss/" + Telpo.name,
                                                                                     new Vector2(transform.position.x -1.07f, transform.position.y + 1.33f),
                                                                                     Quaternion.identity);
         projectile2.SetActive(true);
@@ -153,7 +167,7 @@ public class Boss3 : Enemy
     private void Attack2()
     {
         EnemyAnimator.SetBool("isAttack2", true);
-        if (!isAttack2)
+        if (!isAttack2&&!isDie)
         {
             attackDelay = 10f;
             isAttack2 = true;
@@ -167,7 +181,7 @@ public class Boss3 : Enemy
         for (int i = 0; i < 8; i++)
         {
             GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(Fire,
-                                                                                   Define.PrefabType.SubBoss,
+                                                                                   "SubBoss/"+Fire.name,
                                                                                    new Vector2(playerTarget.transform.position.x, playerTarget.transform.position.y-1),
                                                                                    Quaternion.identity);
             projectile.GetComponent<Projectile>().ProjectileInit(Define.StringTag.Player, Vector2.zero, skillDamage);
@@ -184,8 +198,9 @@ public class Boss3 : Enemy
     protected override void OnDead()
     {
         state = BossState.Dead_STATE;
+        isDie = true;
         base.OnDead();
-        EnemyCollider.isTrigger = true;
+        Managers.UI.bossSlider.gameObject.SetActive(false);
         EnemyAnimator.SetTrigger("isDie");
     }
 
@@ -205,6 +220,12 @@ public class Boss3 : Enemy
             //wait for a frame
             yield return null;
         }
+        Invoke(nameof(SpawnPortal), 2f);
+    }
+    void SpawnPortal()
+    {
+        myInstance = Instantiate(Portalpref);
+        myInstance.transform.position = new Vector2(transform.position.x-2f, transform.position.y+1f);
         Destroy(gameObject);
     }
 }

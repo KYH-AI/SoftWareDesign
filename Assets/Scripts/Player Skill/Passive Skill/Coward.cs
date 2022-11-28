@@ -48,7 +48,6 @@ public class Coward : PassiveSkill
     private void Start()
     {
         CowardInit();
-        Invoke(nameof(CowardSkillActive), 5f);
     }
 
     private void CowardInit()
@@ -77,7 +76,7 @@ public class Coward : PassiveSkill
     {
         if (currentSkillState == Define.CurrentSkillState.ACTIVE)
         {
-            Debug.Log("겁쟁이 패시브 작동");
+         //   Debug.Log("겁쟁이 패시브 작동");
             currentSkillState = Define.CurrentSkillState.COOL_TIME;
             StartCoroutine(CowardSkillProcess());
         }

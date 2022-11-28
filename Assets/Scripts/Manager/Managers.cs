@@ -22,8 +22,16 @@ public class Managers : MonoBehaviour
     private UIManager ui;
     public static UIManager UI { get { return Instance.ui; } }
 
-    private Player player;
-    public static Player Player { get { return Instance.player; } }
+    private SceneManager_ sceneManager_;
+    public static SceneManager_ SceneManager_ { get { return Instance.sceneManager_; } }
+
+    private CameraManager cameraManager;
+    public static CameraManager CameraManager { get { return Instance.cameraManager; } }
+
+    private StageManager stageManager;
+    public static StageManager StageManager { get { return Instance.stageManager; } }
+
+
 
     private void Awake()
     {
@@ -49,5 +57,9 @@ public class Managers : MonoBehaviour
         sound = GetComponentInChildren<SoundManager>();
         button = GetComponentInChildren<ButtonManager>();
         skillEffectVolume = GetComponentInChildren<SkillEffectVolumeManager>();
+        sceneManager_ = GetComponentInChildren<SceneManager_>();
+        cameraManager = GetComponentInChildren<CameraManager>();
+        ui = GetComponentInChildren<UIManager>();
+        stageManager = GetComponentInChildren<StageManager>();
     }
 }
