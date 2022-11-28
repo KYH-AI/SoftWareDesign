@@ -146,7 +146,7 @@ public class Boss : Enemy
     {
         dir = (player.transform.position - transform.position).normalized;
         GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(finalBossSkull,
-                                                                                Define.PrefabType.Final_Boss_Skill,
+                                                                                "Final_Boss_Skill/"+ finalBossSkull.name,
                                                                                 transform.position,
                                                                                 Quaternion.identity);
         SwitchSpriteImageDir(projectile.transform);
@@ -326,7 +326,7 @@ public class Boss : Enemy
     private void CreateBossProjectileRuinStk()
     {
         GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(finalBossRuinStk,
-                                                                                Define.PrefabType.Final_Boss_Skill,
+                                                                                "Final_Boss_Skill/"+ finalBossRuinStk.name,
                                                                                 new Vector2(transform.position.x + Random.Range(-4f, 4f), transform.position.y + Random.Range(-4f, 4f)),
                                                                                 Quaternion.identity);
         projectile.GetComponent<Projectile>().ProjectileInit(Define.StringTag.Player, Vector2.zero, 400);
