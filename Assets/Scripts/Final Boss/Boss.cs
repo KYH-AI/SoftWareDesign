@@ -81,12 +81,15 @@ public class Boss : Enemy
     private bool patternCheck = false;          // == isgod. true이면 무적임. 
     #endregion
 
+    [SerializeField] Spawner_SkeletonSeeker SkeletonSeekerSpawner;
+
     /// <summary>
     /// 클래스를 실행 시키기 전 필요한 정보를 모두 대입함
     /// </summary>
-    void Start()
+    new void Start()
     {
         base.Start();
+        seeker = new GameObject[3];
         bossFSM = new BossFSM(this);
         scaleX = transform.localScale.x;
         
@@ -96,27 +99,12 @@ public class Boss : Enemy
         bossSpriteRenderer = GetComponent<SpriteRenderer>();
         darkHealTempHp = BOSS_TEMP_HP;
 
-        fuck();
-
-        //seeker[0].GetComponent<SkeletonSeekerController>().Ready();
-        //seeker[1].GetComponent<SkeletonSeekerController>().Ready();
+       // Invoke(nameof(test), 5f);
         //bossFSM.bossState = Define.BossState.CASTING_STATE; //연출효과 대기
     }
-    public void fuck()
-    {
-        for (int i = 0; i < 2; i++)
-        {
-            GameObject ob = Instantiate(seekerPrefab);
-            Debug.Log("1");
-            ob.GetComponent<Enemy>().EnemyInit(player.GetComponent<Player>());//Managers.StageManager.Player
-            Debug.Log("2");
-            seeker[i].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            Debug.Log("3");
-            ob.GetComponent<Animator>().enabled = false;
-            seeker[i] = ob;
-            Debug.Log("3");
-        }
-    }
+    
+    private void test()
+    { SkeletonSeekerSpawner.go(); }
 
     void Update()
     {
