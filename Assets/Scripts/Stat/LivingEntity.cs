@@ -95,11 +95,14 @@ public abstract class LivingEntity : MonoBehaviour
     /// <param name="newDamage">받은 데미지</param>
     public virtual void TakeDamage(int newDamage)
     {
-        if (newDamage <= armor) newDamage = 1;
+        // 간단하게 공격력 - 방어력으로 계산
 
-        hp  -= newDamage ;  // 간단하게 공격력 - 방어력으로 계산
+        if (newDamage <= armor) hp -= 1;
+        else hp -= (newDamage - armor);  
 
-        if(hp <= 0)
+
+
+        if (hp <= 0)
         {
             OnDead();
         }
