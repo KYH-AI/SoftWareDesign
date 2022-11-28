@@ -19,7 +19,7 @@ public class FlameStrike : ActiveSkill
     /// <summary>
     /// 불기둥 소환 간격시간
     /// </summary>
-    private float skillAttackDelay = 0.0f; // 초기 값 0초
+    private float skillAttackDelay = 0.25f; // 초기 값 0초
     /// <summary>
     /// 불기둥 소환간격 시간 코루틴  
     /// </summary>
@@ -35,20 +35,6 @@ public class FlameStrike : ActiveSkill
     /// 불기둥 스킬 소환 개수 프로퍼티 ( set : 불기둥 스킬 소환 개수 값 변경 )
     /// </summary>
     public float SkillProjectile { set { SkillProjectile = value; } }
-    /// <summary>
-    /// 불기둥 스킬 소환간격 시간 프로퍼티 ( set : 불기둥 소환간격 시간 코루틴 WaitForSeconds 값 변경 )
-    /// </summary>
-    public float SkillAttackDelay
-    {
-        set
-        {
-            if(skillAttackDelay != value)
-            {
-                skillAttackDelayTimeSec = new WaitForSeconds(value);
-            }
-            skillAttackDelay = value;
-        }
-    }
     #endregion
 
     private void Start()
@@ -79,6 +65,9 @@ public class FlameStrike : ActiveSkill
 
     public override void Upgrade()
     {
+        skillDamgae += 20;
+        SkillCoolTime -= 2;
+        skillProjectileCount += 2;
         // TODO : 상점에서 업그레이드 방식이 정해지면 진행 하자 (09/28)
     }
 

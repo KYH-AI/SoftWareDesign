@@ -6,7 +6,7 @@ public class MemoryPoolManager : MonoBehaviour
 {
     private static MemoryPoolManager instance;
 
-    private Dictionary<string, Queue<GameObject>> pools = new Dictionary<string, Queue<GameObject>>();
+    private Dictionary<string, Queue<GameObject>> pools;
 
     private void Awake()
     {
@@ -37,7 +37,7 @@ public class MemoryPoolManager : MonoBehaviour
     public void InputGameObject(GameObject gameObject)
     {
         // 반납할 Queue가 없으면 그대로 실행 X
-        if (!pools.TryGetValue(gameObject.name, out _)) return;
+        if (!pools.ContainsKey(gameObject.name)) return;
 
         print(gameObject.name + " 반납");
         gameObject.SetActive(false);
@@ -89,5 +89,10 @@ public class MemoryPoolManager : MonoBehaviour
     public void InitPool()
     {
         pools.Clear();
+    }
+
+    private void OnEnable()
+    {
+        pools = new Dictionary<string, Queue<GameObject>>();
     }
 }

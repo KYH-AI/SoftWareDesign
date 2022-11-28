@@ -41,6 +41,7 @@ public class PlayerSkill : MonoBehaviour
             }
             skillCoolTime = value;
         }
+        get { return skillCoolTime; }
     }
     #endregion
 

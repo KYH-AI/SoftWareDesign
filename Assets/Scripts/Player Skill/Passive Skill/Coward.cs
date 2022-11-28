@@ -10,7 +10,7 @@ public class Coward : PassiveSkill
     /// <summary>
     /// 스킬 이동속도
     /// </summary>
-    private int buffSpeed = 3;  //초기 데이터 1
+    private int buffSpeed = 2;  //초기 데이터 1
     /// <summary>
     /// 스킬 지속시간
     /// </summary>
@@ -65,11 +65,9 @@ public class Coward : PassiveSkill
 
     public override void Upgrade()
     {
-        /*
-         *  지속시간 증가
-         *  속도 버프 증가
-         *  쿨타임 감소
-         */
+        skillDuration += 1f;
+        SkillCoolTime -= 2f;
+        buffSpeed += 2;
     }
 
     private void CowardSkillActive()

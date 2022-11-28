@@ -14,7 +14,7 @@ public class HourGlass : PassiveSkill
     /// <summary>
     /// 스킬 지속시간 
     /// </summary>
-    private float skillDuration = 5f; // 초기 값 5초
+    private float skillDuration = 5f;
     /// <summary>
     /// 스킬 지속시간 코루틴
     /// </summary>
@@ -58,7 +58,8 @@ public class HourGlass : PassiveSkill
 
     public override void Upgrade()
     {
-       
+        skillDuration += 1f;
+        SkillCoolTime -= 5f;
     }
 
     private void HourGlassSkillActive()
