@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4741335698295457232}
-  - component: {fileID: 4741335698295457233}
+  - component: {fileID: 2084283507}
   m_Layer: 11
   m_Name: SkeletonSeekerSpawn
   m_TagString: Player
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4741335698295457233
+--- !u!114 &2084283507
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4741335698295457238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f3cdc7a58efbf6448b386d40636bf54, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c203f22ae2cae542a296afad854ab76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: 6279684435295860098, guid: be28ad4073d11ba47a42653371305c36, type: 3}
@@ -48,5 +48,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   spawnRateMin: 0
-  spawnRateMax: 1
+  spawnRateMax: 0
   MAX: 2

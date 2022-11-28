@@ -146,6 +146,7 @@ MonoBehaviour:
   player: {fileID: 2523420501982882025, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4, type: 3}
   seekerPrefab: {fileID: 6279684435295860098, guid: be28ad4073d11ba47a42653371305c36,
     type: 3}
+  SkeletonSeekerSpawner: {fileID: 0}
 --- !u!50 &1203287939554438051
 Rigidbody2D:
   serializedVersion: 4
