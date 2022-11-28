@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 2523420501982882028}
   - component: {fileID: 990524877292455951}
   - component: {fileID: 2523420501982882029}
-  - component: {fileID: 2093446425}
   - component: {fileID: 2093446419}
   - component: {fileID: 278417478}
+  - component: {fileID: 1082117272614435722}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -174,27 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa135fa73079f4548a4858c61aecdfa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &2093446425
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2523420501982882025}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  isMoveable: 1
+  isAttackalble: 1
 --- !u!70 &2093446419
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -223,8 +204,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e8ea58cd38b374e94d9401bc9f32e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Portalpref: {fileID: 1281781686780813720, guid: 6636f696c591eb44dae7f03d791b0658,
-    type: 3}
+--- !u!50 &1082117272614435722
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2523420501982882025}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10000
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &7286166923515270560
 GameObject:
   m_ObjectHideFlags: 0

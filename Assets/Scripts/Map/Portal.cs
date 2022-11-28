@@ -5,10 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    private void Update()
-    {
-        print(Managers.StageManager.stage);
-    }
+    
     bool inPortal =false;
     // Update is called once per frame
     private void OnTriggerStay2D(Collider2D collision)
@@ -18,11 +15,9 @@ public class Portal : MonoBehaviour
        
             if (Input.GetKey(KeyCode.Space)&& !inPortal)
             {
-                Managers.UI.killCount.gameObject.SetActive(false);
                 inPortal = true;
                 print("상점으로 이동!");
                 StartCoroutine(ToStore());
-                MemoryPoolManager.GetInstance().InitPool();
             }
 
         }
@@ -30,7 +25,6 @@ public class Portal : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Space)&&!inPortal)
             {
-                Managers.UI.killCount.gameObject.SetActive(true);
                 inPortal = true;
                 print("다음 스테이지로 이동");
                 StartCoroutine(SceneChange());
@@ -61,6 +55,7 @@ public class Portal : MonoBehaviour
         yield return new WaitForSeconds(1f);
         inPortal = false;
         transform.position = new Vector2(0, 0);
+        MemoryPoolManager.GetInstance().InitPool();
         SceneManager.LoadScene("JinminStore");
     }
 
@@ -69,6 +64,7 @@ public class Portal : MonoBehaviour
         yield return new WaitForSeconds(1f);
         transform.position = new Vector2(0, 0);
         inPortal = false;
+        MemoryPoolManager.GetInstance().InitPool();
         switch (Managers.StageManager.stage)
         {
             case Define.Stage.STAGE2:

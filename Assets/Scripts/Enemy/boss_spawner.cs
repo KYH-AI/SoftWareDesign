@@ -9,8 +9,11 @@ public class boss_spawner : MonoBehaviour
     private float spawnX;
     private float spawny;
     GameObject ob;
-    
-
+    public BossSpawnEffect bossSpawn;
+    private void Start()
+    {
+        bossSpawn = GetComponent<BossSpawnEffect>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -31,11 +34,16 @@ public class boss_spawner : MonoBehaviour
 
         }
         SetLocation();
-        if (Managers.StageManager.IsStageCleared())
+        //if (Managers.StageManager.IsStageCleared())
+        if(Input.GetKeyDown(KeyCode.C))
         {
+            
             Managers.UI.bossSlider.gameObject.SetActive(true);
             Managers.UI.InitBossSlider();
             Spawn();
+            Managers.CameraManager.SetFollow(ob.transform);
+            Managers.CameraManager.SetPriority(11);
+            bossSpawn.PlayFromTimeline();
             Managers.StageManager.SetStageKillCount();
         }
     }

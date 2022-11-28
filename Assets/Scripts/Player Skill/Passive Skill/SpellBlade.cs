@@ -83,7 +83,9 @@ public class SpellBlade : PassiveSkill
 
     public override void Upgrade()
     {
-        
+        buffDamagePercent += 50;
+        SkillCoolTime -= 2f;
+        skillDuration += 2f;
     }
 
     private void SpellBladeActive()

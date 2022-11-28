@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class CoinController : MonoBehaviour
 {
-    Transform target;
-    float obtainDistance=2.0f;
-    float rotateSpeed=40f;
-    public int value;
+    [SerializeField] int coinValue;
 
-    void Start()
+    private void FixedUpdate()
     {
-        target = GameObject.Find("Player").transform;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        transform.Rotate(new Vector3(0, 1, 0) * 180 * Time.deltaTime);
     }
 
-    void Update()
+    private void OnTriggerEnter2D(Collider2D target)
     {
-        float spendtime = 0f;
-        spendtime+=Time.deltaTime;
-        transform.Rotate(0, spendtime * rotateSpeed,0, Space.Self);
-        if (Vector2.Distance(target.position, transform.position) <obtainDistance )
+        if(target.CompareTag(Define.StringTag.Player.ToString()))
         {
-            Destroy(gameObject);
+            Managers.StageManager.Player.PlayerGold += coinValue;
+            // TODO 동전 효과음 재생
+            gameObject.SetActive(false);
         }
+    }
+
+    private void OnDisable()
+    {
+        MemoryPoolManager.GetInstance().InputGameObject(gameObject);
     }
 }

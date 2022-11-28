@@ -41,7 +41,6 @@ public abstract class BasicMonsterController : Enemy
     {
         if (state == State.Run) Run();
         if (state == State.Attack) Attack();
-        //if (state == State.Die) OnDead();
     }
 
     //달리기
@@ -129,8 +128,28 @@ public abstract class BasicMonsterController : Enemy
         yield return new WaitForSeconds(1.0f);
 
         int killCount = Random.Range(minKillCount, maxKillCount);
+        int coinLevel = Random.Range(0, 3);
 
-        //동전 드랍
+        //동전 드랍  (22/11/28 새벽 오전3시 추가함 (김윤호)
+        /*
+        GameObject coin = MemoryPoolManager.GetInstance().OutputGameObject
+                       (StageManager.GetInstance().coins[coinLevel],
+                        "Coin/" + coins[coinLevel].gameObject.name,
+                        transform.position,
+                        Quaternion.identity);
+
+        coin.SetActive(true);
+        */
+
+        GameObject coin = MemoryPoolManager.GetInstance().OutputGameObject
+               (Managers.Resource.GetPerfabGameObject("Coin/Level1_Coin"),
+                "Coin/" + Managers.Resource.GetPerfabGameObject("Coin/Level1_Coin").name,
+                transform.position,
+                Quaternion.identity);
+
+        coin.SetActive(true);
+
+        Managers.StageManager.DecreaseKillCount();
         //캐릭터 정보에 킬카운트 넘겨주기
         gameObject.SetActive(false);
 

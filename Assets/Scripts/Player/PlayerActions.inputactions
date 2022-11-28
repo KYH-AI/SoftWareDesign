@@ -67,6 +67,60 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "NodeA",
+                    "type": "Button",
+                    "id": "5cc2fdb4-1b47-4c27-b042-5565134c641b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NodeS",
+                    "type": "Button",
+                    "id": "9d4a9fef-e154-4b3e-8de1-f7871ba42f84",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NodeD",
+                    "type": "Button",
+                    "id": "9a6f9b7f-e879-45d1-8f6c-2fefe5320e60",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NodeZ",
+                    "type": "Button",
+                    "id": "cc926377-38aa-41a8-9fd4-bd31b4d3c979",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NodeX",
+                    "type": "Button",
+                    "id": "081889a5-fe6c-4d61-86fc-af476c01a546",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NodeC",
+                    "type": "Button",
+                    "id": "baa53628-e989-4b63-9920-09cce3bc449c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -142,7 +196,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "PC",
                     "action": "Skill2",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -153,7 +207,7 @@
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "PC",
                     "action": "Skill3",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -164,7 +218,7 @@
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "PC",
                     "action": "Skill4",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -175,7 +229,7 @@
                     "path": "<Keyboard>/t",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "PC",
                     "action": "Skill5",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -188,6 +242,72 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "559697d5-44b7-46d7-8cfe-32c58b284f09",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "NodeA",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9c0a4b1-832e-4ae3-9e9a-bbee2a1b7de1",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "NodeS",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b16e8ee6-7faf-4379-8d19-1ec55175c330",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "NodeD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f5f1896-be76-4686-a246-bbbc2d1e0583",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "NodeZ",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "18a812b3-0908-4665-9cb1-e02546e375a3",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "NodeX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f23977b7-4b43-43f7-8686-514e83184751",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "NodeC",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
