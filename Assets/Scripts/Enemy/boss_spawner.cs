@@ -44,7 +44,7 @@ public class boss_spawner : MonoBehaviour
         spawnX = Managers.StageManager.Player.transform.position.x;
         spawny = Managers.StageManager.Player.transform.position.y + 7f;
     }
-    void Spawn()
+    void Spawn()    
     {
         ob = Instantiate(Boss[StageNum], new Vector2(spawnX, spawny), Quaternion.identity);
         ob.GetComponent<Enemy>().EnemyInit(Managers.StageManager.Player);
