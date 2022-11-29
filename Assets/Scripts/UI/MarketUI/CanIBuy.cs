@@ -58,8 +58,7 @@ public class CanIBuy : MonoBehaviour
         
         if (Managers.StageManager.Player.PlayerGold >= item)
         { 
-            Managers.StageManager.Player.PlayerGold -= item;       
-            selectImage = soldout;
+            Managers.StageManager.Player.PlayerGold -= item;
 
 
 
@@ -77,12 +76,15 @@ public class CanIBuy : MonoBehaviour
                     ActiveSkill activeSkill = newSkillObject.GetComponent<ActiveSkill>();
                     activeSkill.Init(Managers.StageManager.Player);
                     Managers.StageManager.Player.playerActiveSkills.Add(Managers.StageManager.Player.ActiveSkillSlot_Index++, activeSkill);
+                    Managers.UI.UpdateActiveSkills(selectImage, activeSkill);
+                    print("스킬구매" + selectImage.ToString() + activeSkill.ToString());
                 }
                 else
                 {
                     PassiveSkill passiveSkill = newSkillObject.GetComponent<PassiveSkill>();
                     passiveSkill.Init(Managers.StageManager.Player);
                     passiveSkill.OnActive();
+                    Managers.UI.UpdatePassiveSkills(selectImage, passiveSkill);
                 }
 
               
@@ -107,6 +109,7 @@ public class CanIBuy : MonoBehaviour
                 updateSkill.SkillLevel++;
             }
             money.text = Managers.StageManager.Player.PlayerGold.ToString();
+            selectImage = soldout;
         }
 
 

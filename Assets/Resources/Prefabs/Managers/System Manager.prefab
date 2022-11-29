@@ -3631,18 +3631,25 @@ MonoBehaviour:
   bossSlider: {fileID: 805685865}
   killCount: {fileID: 698936452}
   goldAmount: {fileID: 970836321}
-  activeSkills:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  passiveSkills:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  activeImages:
+  - {fileID: 232128084}
+  - {fileID: 349680724}
+  - {fileID: 1795921854}
+  - {fileID: 1826795693}
+  - {fileID: 689531020}
+  passiveImages:
+  - {fileID: 256797356}
+  - {fileID: 36132125}
+  - {fileID: 408099455}
+  - {fileID: 1083813942}
+  - {fileID: 1201644154}
+  activeSkillIndex: 0
+  passiveSkillIndex: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
+  activeSkillImages: []
+  passiveSkillImages: []
+  activeSkillLists: []
+  passiveSkillLists: []
 --- !u!1 &5931700736161428398
 GameObject:
   m_ObjectHideFlags: 0
@@ -3660,7 +3667,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8820328236706474561
 RectTransform:
   m_ObjectHideFlags: 0
