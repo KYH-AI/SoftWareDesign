@@ -31,6 +31,7 @@ public class StageManager : MonoBehaviour
     {
         SetStageKillCount();
         stage = Define.Stage.STAGE1;
+<<<<<<< HEAD
         SenecFadeEffect();
         monsterCounter = 0;
         isSpawnOkay = true;
@@ -43,6 +44,9 @@ public class StageManager : MonoBehaviour
             isBossAlive = false;
         else
             isBossAlive = true;
+=======
+       // SenecFadeEffect();
+>>>>>>> newSubBoss
     }
 
     #endregion
