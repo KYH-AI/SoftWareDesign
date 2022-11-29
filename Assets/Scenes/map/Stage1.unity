@@ -451,6 +451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6846434639202314339, guid: c6fceae9aed4c114ca3429bafb3f024b,
         type: 3}
+<<<<<<< HEAD
       propertyPath: m_AnchoredPosition.y
       value: 53
       objectReference: {fileID: 0}
@@ -473,6 +474,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 12.068481
+=======
+      propertyPath: m_IsActive
+      value: 0
+>>>>>>> newSubBoss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
