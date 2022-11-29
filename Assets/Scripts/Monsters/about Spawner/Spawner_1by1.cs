@@ -10,7 +10,7 @@ public class Spawner_1by1 : MonoBehaviour
 
     private float spawnRate;
 
-    int MaxCnt = 100;
+    int MaxCnt = 10;
 
     bool spawnerRestart = false;
     void Start()
@@ -28,8 +28,9 @@ public class Spawner_1by1 : MonoBehaviour
     {
         if (spawnerRestart == true)
         {
-            spawnRateMin = 10.0f;
-            spawnRateMax = 12.0f;
+            spawnRateMin = 5.0f;
+            spawnRateMax = 7.0f;
+            Debug.Log("spawn restart!");
             StartCoroutine("Spawn");
         }
     }

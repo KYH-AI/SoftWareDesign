@@ -17,7 +17,7 @@ public class Spawner_FixedMaximum : MonoBehaviour
     int idx;
     public int MAX;
 
-    int MaxCnt=100;
+    int MaxCnt=10;
     int cnt = 0;
 
     bool spawnRestart = false;

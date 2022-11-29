@@ -39,7 +39,7 @@ public class StageManager : MonoBehaviour
 
     private void Update()
     {
-        if (Managers.UI.bossSlider.value < 0f)
+        if (Managers.UI.bossSlider.value <= 0f)
             isBossAlive = false;
         else
             isBossAlive = true;
