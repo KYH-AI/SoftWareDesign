@@ -80,6 +80,7 @@ public abstract class BasicMonsterController : Enemy
     //데미지 표시, 데미지 입은 애니메이션
     public override sealed void TakeDamage(int newDamage)
     {
+        if (state == State.Die) return;
         EnemyRigidbody.velocity = Vector2.zero;
         base.TakeDamage(newDamage);
 
@@ -94,7 +95,7 @@ public abstract class BasicMonsterController : Enemy
         floatingText.SetActive(true);
 
         base.EnemyAnimator.SetTrigger("MoveToDamage");
-        StartCoroutine(DamageProcess());
+        //StartCoroutine(DamageProcess());
         if (base.Hp <= 0)
         {
             EnemyRigidbody.velocity = Vector2.zero;
@@ -114,11 +115,11 @@ public abstract class BasicMonsterController : Enemy
         }
     }
 
-    IEnumerator DamageProcess()
+    /*IEnumerator DamageProcess()
     {
 
         yield return new WaitForSeconds(1.0f);
-    }
+    }*/
 
 
     //죽음
