@@ -34,6 +34,7 @@ public class LoadingScene : MonoBehaviour
             if (progressBar.fillAmount >=1f)
             {
                 op.allowSceneActivation = true;
+                Managers.StageManager.SenecFadeEffect();
                 yield break; 
             }
             yield return null;

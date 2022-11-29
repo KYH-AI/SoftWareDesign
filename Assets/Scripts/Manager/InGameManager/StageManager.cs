@@ -112,8 +112,24 @@ public class StageManager : MonoBehaviour
                 mainTitleText.text = "제 5장";
                 subTitleText.text = "시로의 희망";
                 break;
+
+            case Define.Stage.STORE1:
+                mainTitleText.text = "휴식처";
+                subTitleText.text = "푸근한 집";
+                break;
+            case Define.Stage.STORE2:
+                mainTitleText.text = "휴식처";
+                subTitleText.text = "행복한 하루";
+                break;
+            case Define.Stage.STORE3:
+                mainTitleText.text = "휴식처";
+                subTitleText.text = "가벼운 마음으로";
+                break;
+            case Define.Stage.STORE4:
+                mainTitleText.text = "휴식처";
+                subTitleText.text = "마지막 꿈나라";
+                break;
         }
-        print("애니메이션 호출");
         sceneAnimator.SetTrigger("Movie Start");
     }
 }

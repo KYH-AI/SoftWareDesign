@@ -66,19 +66,19 @@ public class BossSpawnEffect : MonoBehaviour
         switch (Managers.StageManager.stage)
         {
             case Define.Stage.STAGE1:
-                bossEffectText.text = "첫 번째 보스";
+                bossEffectText.text = "화가 많은 애벌레";
                 bossEffectImage.sprite = bossImageList[0];
                 break;
             case Define.Stage.STAGE2:
-                bossEffectText.text = "두 번째 보스";
+                bossEffectText.text = "까꿍기사";
                 bossEffectImage.sprite = bossImageList[1];
                 break;
             case Define.Stage.STAGE3:
-                bossEffectText.text = "세 번째 보스";
+                bossEffectText.text = "불타는지팡이";
                 bossEffectImage.sprite = bossImageList[2];
                 break;
             case Define.Stage.STAGE4:
-                bossEffectText.text = "네 번째 보스";
+                bossEffectText.text = "흑화한 농부";
                 bossEffectImage.sprite = bossImageList[3];
                 break;
             case Define.Stage.Boss:
