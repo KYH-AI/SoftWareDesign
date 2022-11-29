@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Boss2_attack : MonoBehaviour
+public class Boss2_Attack : MonoBehaviour
 {
     Boss2 boss2;
     private void Start()
