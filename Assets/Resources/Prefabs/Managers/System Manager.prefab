@@ -3191,7 +3191,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 69}
+  m_AnchoredPosition: {x: 0, y: 53}
   m_SizeDelta: {x: 1169.2, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8408097807595494097
@@ -3631,7 +3631,13 @@ MonoBehaviour:
   bossSlider: {fileID: 805685865}
   killCount: {fileID: 698936452}
   goldAmount: {fileID: 970836321}
-  skills:
+  activeSkills:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  passiveSkills:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -3672,8 +3678,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 12.068481}
+  m_SizeDelta: {x: 112.6396, y: 104.594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5197567661464775849
 CanvasRenderer:
@@ -3747,7 +3753,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 17, y: 138}
+  m_AnchoredPosition: {x: 17, y: 122}
   m_SizeDelta: {x: 691.9741, y: 100.3596}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3029008683472530303
@@ -3882,7 +3888,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 8, y: -75}
+  m_AnchoredPosition: {x: 8, y: -91}
   m_SizeDelta: {x: 930.59, y: 100.3596}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5594996724540429932

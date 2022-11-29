@@ -26,6 +26,7 @@ public class FlameStrike : ActiveSkill
     private WaitForSeconds skillAttackDelayTimeSec;
     #endregion
 
+    /*
     #region 스킬 스텟 프로퍼티
     /// <summary>
     /// 스킬 데미지 프로퍼티 ( set : 스킬 데미지 값 변경 )
@@ -34,8 +35,9 @@ public class FlameStrike : ActiveSkill
     /// <summary>
     /// 불기둥 스킬 소환 개수 프로퍼티 ( set : 불기둥 스킬 소환 개수 값 변경 )
     /// </summary>
-    public float SkillProjectile { set { SkillProjectile = value; } }
+    public int SkillProjectile { set { skillProjectileCount = value; } }
     #endregion
+    */
 
     private void Start()
     {
@@ -66,17 +68,11 @@ public class FlameStrike : ActiveSkill
         skillDamgae += 20;
         SkillCoolTime -= 2;
         skillProjectileCount += 2;
-        // TODO : 상점에서 업그레이드 방식이 정해지면 진행 하자 (09/28)
     }
 
     private void FlameStrikeSkillAttack()
     {
-        // TODO (09/29) : 불기둥 소환방식 랜덤으로 설정
         StartCoroutine(FlameStrikeSkillProcess());
-    }
-    private Vector2 RandomSpawnLocation (float xPos = 0f, float yPos = 0f)
-    {
-        return new Vector2(transform.position.x + xPos, transform.position.y + yPos);
     }
 
     IEnumerator FlameStrikeSkillProcess()

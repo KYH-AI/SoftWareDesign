@@ -54,7 +54,8 @@ public class Portal : MonoBehaviour
         transform.position = new Vector2(0, 0);
         MemoryPoolManager.GetInstance().InitPool();
         Managers.StageManager.SenecFadeEffect();
-        SceneManager.LoadScene("JinminStore");
+        //  SceneManager.LoadScene("JinminStore");
+        SceneManager.LoadScene("JinminStore(Test)");
     }
 
     IEnumerator SceneChange()

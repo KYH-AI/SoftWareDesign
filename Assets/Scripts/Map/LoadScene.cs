@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
+    /*
     static string nextScene;
 
     public static void LoadScene(string sceneName)
@@ -18,6 +19,6 @@ public class LoadScene : MonoBehaviour
     {
         
     }
-
+    */
   
 }
