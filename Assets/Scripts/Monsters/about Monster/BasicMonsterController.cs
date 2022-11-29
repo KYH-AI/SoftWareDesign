@@ -6,8 +6,9 @@ using UnityEngine.AI;
 
 public abstract class BasicMonsterController : Enemy
 {
-    float radius = 0.2f;   
+    float radius = 0.2f;
     //public GameObject coinPrephab;
+    public GameObject coinPrefap;
     public enum State
     {
         Run,
@@ -39,11 +40,7 @@ public abstract class BasicMonsterController : Enemy
 
     public void Update()
     {
-        if (Managers.StageManager.IsStageCleared())
-        {
-            print("´Ù Á×À½!!!!!!!!!!!!!!!!!");
-            OnDead();
-        }
+        if (Managers.StageManager.IsStageCleared()) OnDead();
         else
         {
             if (state == State.Run) Run();
@@ -142,8 +139,8 @@ public abstract class BasicMonsterController : Enemy
         int coinLevel = Random.Range(0, 3);
 
         GameObject coin = MemoryPoolManager.GetInstance().OutputGameObject
-               (Managers.StageManager.coins[coinLevel],
-                "Coin/" + Managers.Resource.GetPerfabGameObject("Coin/Level1_Coin").name,
+               (coinPrefap,
+                "Coin/" +coinPrefap.name,
                 transform.position,
                 Quaternion.identity);
 

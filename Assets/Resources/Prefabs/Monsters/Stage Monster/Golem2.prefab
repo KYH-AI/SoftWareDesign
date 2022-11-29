@@ -301,6 +301,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: fe535c1536b466d4abfd7ca8f2a691ec, type: 2}
+  coinPrefap: {fileID: 2353769794241766457, guid: f9fdc48dc0c67ff4b9d0a65760553e6a,
+    type: 3}
   state: 0
   coolTime: -1
   skillTime: 10

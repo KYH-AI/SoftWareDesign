@@ -23,9 +23,4 @@ public class SpawnerMove : MonoBehaviour
     {
         gameObject.transform.position = target.position;
     }
-
-    void stop()
-    {
-        this.gameObject.SetActive(false);
-    }
 }

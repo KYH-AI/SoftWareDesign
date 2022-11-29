@@ -8,7 +8,7 @@ public class LoadScene : MonoBehaviour
 {
     static string nextScene;
 
-    public static void LoadScene(string sceneName)
+    /*public void LoadScene(string sceneName)
     {
         nextScene = sceneName;
         SceneManager.LoadScene("LoadingScene");
@@ -18,6 +18,6 @@ public class LoadScene : MonoBehaviour
     {
         
     }
-
+    */
   
 }

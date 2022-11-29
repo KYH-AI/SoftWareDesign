@@ -799,6 +799,38 @@ MonoBehaviour:
   spawnRateMin: 3
   spawnRateMax: 5
   MaxCnt: 100
+--- !u!1 &4555769131885205167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2333858376005285377}
+  m_Layer: 0
+  m_Name: SlimeSpawn_total
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2333858376005285377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4555769131885205167}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 15, y: 45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8967234591598548439}
+  - {fileID: 4603725683767276043}
+  m_Father: {fileID: 8967234591947267996}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5003434293957043047
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,7 +902,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5358792418452267751}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: -5, z: 0}
+  m_LocalPosition: {x: -20, y: -50, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8580134892035321338}
@@ -893,7 +925,7 @@ Transform:
   - {fileID: 1200008543910147019}
   - {fileID: 2188194483604252427}
   - {fileID: 7025909860099667978}
-  m_Father: {fileID: 8967234591947267996}
+  m_Father: {fileID: 2333858376005285377}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5507124108438241675
@@ -1765,8 +1797,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8967234591598548438}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10, y: -40, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8787966605694631389}
@@ -1789,7 +1821,7 @@ Transform:
   - {fileID: 1987714168}
   - {fileID: 1601506817}
   - {fileID: 801063594}
-  m_Father: {fileID: 8967234591947267996}
+  m_Father: {fileID: 2333858376005285377}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8967234591656830306
@@ -1821,7 +1853,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8967234591947267996}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8967234591656830304
 MonoBehaviour:
@@ -2023,7 +2055,7 @@ Transform:
   - {fileID: 8967234590887318507}
   - {fileID: 8967234592131589656}
   m_Father: {fileID: 8967234591947267996}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8967234591801189734
 GameObject:
@@ -2129,6 +2161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8967234591947267996}
   - component: {fileID: 8967234591947267997}
+  - component: {fileID: 9058134668791124089}
   m_Layer: 0
   m_Name: Stage1_Center
   m_TagString: Untagged
@@ -2147,8 +2180,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8967234591598548439}
-  - {fileID: 4603725683767276043}
+  - {fileID: 2333858376005285377}
   - {fileID: 8967234591782878858}
   - {fileID: 8967234591656830307}
   m_Father: {fileID: 0}
@@ -2166,6 +2198,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632500f630a057e45af43c2b94c2c9b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9058134668791124089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8967234591947267999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6859e4fa70496404b81155a0092e8e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnerBasic1: {fileID: 4555769131885205167}
+  spawnerBasic2: {fileID: 8967234591782878853}
+  spawnerElite: {fileID: 8967234591656830306}
 --- !u!1 &8967234591972984785
 GameObject:
   m_ObjectHideFlags: 0

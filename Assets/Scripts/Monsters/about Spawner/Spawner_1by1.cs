@@ -10,27 +10,40 @@ public class Spawner_1by1 : MonoBehaviour
 
     private float spawnRate;
 
-    public int MaxCnt = 10;
-    int cnt = 0;
+    int MaxCnt = 100;
 
+    bool spawnerRestart = false;
     void Start()
     {
-        MaxCnt = 10;
+        Invoke(nameof(dealy), 1f);
+    }
+
+    void dealy()
+    {
         StartCoroutine("Spawn");
-        cnt = 0;
+        spawnerRestart = true;
+    }
+
+    private void OnEnable()
+    {
+        if (spawnerRestart == true)
+        {
+            spawnRateMin = 10.0f;
+            spawnRateMax = 12.0f;
+            StartCoroutine("Spawn");
+        }
     }
 
     IEnumerator Spawn()
     {
-        if (cnt < MaxCnt)
+        if (Managers.StageManager.monsterCounter < MaxCnt)
         {
             spawnRate = Random.Range(spawnRateMin, spawnRateMax);
             yield return new WaitForSeconds(spawnRate);
             GameObject ob = MemoryPoolManager.GetInstance().OutputGameObject(Prefab, "Monsters/Stage Monster/" + Prefab.name, this.transform.position, Quaternion.identity);
-            //ob.GetComponent<Enemy>().EnemyInit(Managers.Player);
             ob.GetComponent<Enemy>().EnemyInit(Managers.StageManager.Player);
             ob.SetActive(true);
-            cnt++;
+            Managers.StageManager.monsterCounter++;
             StartCoroutine("Spawn");
         }
     }

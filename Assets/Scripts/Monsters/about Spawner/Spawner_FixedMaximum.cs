@@ -17,14 +17,16 @@ public class Spawner_FixedMaximum : MonoBehaviour
     int idx;
     public int MAX;
 
-    public int MaxCnt=20;
+    int MaxCnt=100;
     int cnt = 0;
+
+    bool spawnRestart = false;
     // Start is called before the first frame update
     void Start()
     {
-
-        Invoke(nameof(dealy), 3f);
+        Invoke(nameof(dealy), 1f);
     }
+
 
     void dealy()
     {
@@ -38,12 +40,24 @@ public class Spawner_FixedMaximum : MonoBehaviour
             ob.SetActive(false);
         }
         state = true;
+        spawnRestart = true;
         StartCoroutine("Spawn");
     }
 
+    private void OnEnable()
+    {
+        if (spawnRestart == true)
+        {
+            spawnRateMin = 10.0f;
+            spawnRateMax = 12.0f;
+            StartCoroutine("Spawn");
+        }
+    }
+
+
     IEnumerator Spawn()
     {
-        if (cnt < MaxCnt)
+        if (Managers.StageManager.monsterCounter < MaxCnt)
         {
             spawnRate = Random.Range(spawnRateMin, spawnRateMax);
             yield return new WaitForSeconds(spawnRate);

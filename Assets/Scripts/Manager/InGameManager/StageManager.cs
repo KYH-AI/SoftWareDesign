@@ -15,8 +15,8 @@ public class StageManager : MonoBehaviour
 
     public int monsterCounter;
     public bool isSpawnOkay;
-    
-    public bool isBossAlive;
+
+    public bool isBossAlive = true;
 
     #region æ¿ Fade ø¨√‚
     public TextMeshProUGUI mainTitleText;
@@ -42,7 +42,7 @@ public class StageManager : MonoBehaviour
         if (Managers.UI.bossSlider.value < 0f)
             isBossAlive = false;
         else
-            isBossAlive = false;
+            isBossAlive = true;
     }
 
     #endregion
