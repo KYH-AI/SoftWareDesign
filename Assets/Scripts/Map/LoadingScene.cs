@@ -30,7 +30,7 @@ public class LoadingScene : MonoBehaviour
         while (!op.isDone)
         {
             time += Time.unscaledDeltaTime;
-            progressBar.fillAmount = time/5f;
+            progressBar.fillAmount = time/2f;
             if (progressBar.fillAmount >=1f)
             {
                 op.allowSceneActivation = true;
