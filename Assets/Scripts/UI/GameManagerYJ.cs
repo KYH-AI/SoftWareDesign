@@ -15,6 +15,10 @@ public class GameManagerYJ : MonoBehaviour
     public GameObject marketUI;
 
 
+    private void Start()
+    {
+        Managers.StageManager.shopManager = this;
+    }
 
     public void Action(GameObject scanOb)
     {
@@ -77,7 +81,7 @@ if(isAction) //대화창 나가기
            isAction = false;
         }
 
-        else //대화창 팝업
+        else //대화창 팝업ㄴ
         {
             //isAction = true;  액션이 켜져 있을때 enter을 한번 더 누르면 그대로 꺼진다. 
             scanObject = scanOb;

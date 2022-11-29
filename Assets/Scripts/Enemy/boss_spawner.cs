@@ -31,13 +31,13 @@ public class boss_spawner : MonoBehaviour
 
         }
         SetLocation();
-       // if (Managers.StageManager.IsStageCleared())
-        if(Input.GetKeyDown(KeyCode.C))
+        if(Input.GetKeyDown(KeyCode.C) || Managers.StageManager.IsStageCleared())
         {
             
             Managers.UI.bossSlider.gameObject.SetActive(true);
             Managers.UI.InitBossSlider();
             Spawn();
+            Managers.StageManager.InitMonsterCounter();
             Managers.CameraManager.SetFollow(this.transform); 
             bossSpawn.PlayFromTimeline();
             Managers.StageManager.SetStageKillCount();

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Spawner_FixedMaximum : MonoBehaviour
 {
-    int[] dx = new int[] { 20, -20, 20, -20, 50, -50, 50, -50 };
-    int[] dy = new int[] { 50, 50, -50, -50, 20, 20, -20, -20 };
+    int[] dx = new int[] { 10, -10, 10, -10, 30, -30, 30, -30 };
+    int[] dy = new int[] { 30, 30, -30, -30, 30, 10, -10, -10 };
     public GameObject Prefab;
     public GameObject[] Monster;
     public float spawnRateMin;
@@ -17,12 +17,14 @@ public class Spawner_FixedMaximum : MonoBehaviour
     int idx;
     public int MAX;
 
+    int MaxCnt=100;
+    bool spawnRestart = false;
     // Start is called before the first frame update
     void Start()
     {
-        //dealy();
-        Invoke(nameof(dealy), 1f);
+        Invoke(nameof(dealy), 3f);
     }
+
 
     void dealy()
     {
@@ -36,30 +38,46 @@ public class Spawner_FixedMaximum : MonoBehaviour
             ob.SetActive(false);
         }
         state = true;
+        spawnRestart = true;
         StartCoroutine("Spawn");
     }
 
+    private void OnEnable()
+    {
+        if (spawnRestart == true)
+        {
+            spawnRateMin = 10.0f;
+            spawnRateMax = 12.0f;
+            StartCoroutine("Spawn");
+        }
+    }
+
+
     IEnumerator Spawn()
     {
-        spawnRate = Random.Range(spawnRateMin, spawnRateMax);
-        yield return new WaitForSeconds(spawnRate);
-        if (Monster[idx].activeInHierarchy == false)
+        if (Managers.StageManager.monsterCounter < MaxCnt)
         {
-            int n = (int)Random.Range(0, 8);
-            Monster[idx].transform.position = gameObject.transform.position + Vector3.left * dx[n] + Vector3.up * dy[n];
-            Monster[idx].SetActive(true);
-            state = false;
-        }
-        idx++;
-        if (idx == MAX)
-        {
-            if (state == true)//Max까지 최대 오브젝트 setActive(true) 상태
+            spawnRate = Random.Range(spawnRateMin, spawnRateMax);
+            yield return new WaitForSeconds(spawnRate);
+            if (Monster[idx].activeInHierarchy == false)
             {
-
+                int n = (int)Random.Range(0, 8);
+                Monster[idx].transform.position = gameObject.transform.position + Vector3.left * dx[n] + Vector3.up * dy[n];
+                Monster[idx].SetActive(true);
+                state = false;
             }
-            idx = 0;
-            state = true;
+            idx++;
+            if (idx == MAX)
+            {
+                if (state == true)//Max까지 최대 오브젝트 setActive(true) 상태
+                {
+
+                }
+                idx = 0;
+                state = true;
+            }
+            Managers.StageManager.monsterCounter++;
+            StartCoroutine("Spawn");
         }
-        StartCoroutine("Spawn");
     }
 }

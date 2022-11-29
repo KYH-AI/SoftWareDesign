@@ -156,11 +156,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicStat: {fileID: 11400000, guid: 845b5c1c94f054843826f0f48d9dacd3, type: 2}
-  playerLayer: 10
-  DamageInform: {fileID: 0}
+  coinPrefap: {fileID: 2353769794241766457, guid: 9413d8c2362a93744b054a20d1ce8793,
+    type: 3}
   state: 0
   coolTime: -1
   skillTime: 2
   minKillCount: 0
   maxKillCount: 0
-  canvas: {fileID: 0}

@@ -13,7 +13,17 @@ public class StageManager : MonoBehaviour
     public Define.Stage stage;        //현재 스테이지
     public GameObject[] coins = new GameObject[3];
 
-    #region 씬 Fade 연출
+    #region 상점 변수
+    public GameManagerYJ shopManager;
+    #endregion
+
+    #region 몬스터 스포너 변수
+    public int monsterCounter = 0;
+    public bool isSpawnOkay = true;
+    public bool isBossAlive = true;
+    #endregion
+
+    #region 씬 Fade 연출 변수
     public TextMeshProUGUI mainTitleText;
     public TextMeshProUGUI subTitleText;
     public Animator sceneAnimator;
@@ -27,8 +37,24 @@ public class StageManager : MonoBehaviour
         SetStageKillCount();
         stage = Define.Stage.STAGE1;
         SenecFadeEffect();
+        monsterCounter = 0;
+        isSpawnOkay = true;
+        isBossAlive = true;
+}
+
+    private void Update()
+    {
+        if (Managers.UI.bossSlider.value < 0f)
+            isBossAlive = false;
+        else
+            isBossAlive = true ;
     }
+
     #endregion
+    public void InitMonsterCounter()
+    {
+        monsterCounter = 0;
+    }
 
     public void DecreaseKillCount()     //킬카운트를 줄이는 방식으로 진행하려고 함. 플레이어가 몬스터를 죽이면 실행.
     {
@@ -48,11 +74,6 @@ public class StageManager : MonoBehaviour
     {
         killCount = 100;
     }
-   /* public void MakePortal()            //포탈 생성 함수.
-    {
-        portal = Instantiate(portalPref);
-        portal.transform.position = Player.transform.position;
-    }*/
     public void ChangeStage()                   //씬 이동시 실행해야 하는 함수. 스테이지를 1씩 증가시킨다.
     {
         stage++;
@@ -86,8 +107,24 @@ public class StageManager : MonoBehaviour
                 mainTitleText.text = "제 5장";
                 subTitleText.text = "시로의 희망";
                 break;
+
+            case Define.Stage.STORE1:
+                mainTitleText.text = "휴식처";
+                subTitleText.text = "낯선 사람";
+                break;
+            case Define.Stage.STORE2:
+                mainTitleText.text = "휴식처";
+                subTitleText.text = "푸근한 집";
+                break;
+            case Define.Stage.STORE3:
+                mainTitleText.text = "휴식처";
+                subTitleText.text = "가벼운 마음으로";
+                break;
+            case Define.Stage.STORE4:
+                mainTitleText.text = "휴식처";
+                subTitleText.text = "마지막 꿈나라";
+                break;
         }
-        print("애니메이션 호출");
         sceneAnimator.SetTrigger("Movie Start");
     }
 }

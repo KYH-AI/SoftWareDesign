@@ -8,8 +8,17 @@ public class SpawnerMove : MonoBehaviour
 
     private void Start()
     {
-       target = Managers.StageManager.Player.GetComponent<Transform>();    
+        target = this.gameObject.transform;
+        Invoke(nameof(dealy), 3f);
+       // target = Managers.StageManager.Player.GetComponent<Transform>();    
     }
+
+    void dealy()
+    {
+        target = Managers.StageManager.Player.GetComponent<Transform>();
+    }
+
+
     void Update()
     {
         gameObject.transform.position = target.position;

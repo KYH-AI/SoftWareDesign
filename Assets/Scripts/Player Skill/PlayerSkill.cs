@@ -18,7 +18,7 @@ public class PlayerSkill : MonoBehaviour
     /// <summary>
     /// 스킬 상태
     /// </summary>
-    protected Define.CurrentSkillState currentSkillState;
+    public Define.CurrentSkillState currentSkillState;
 
     #region 스킬 쿨타임 변수
     /// <summary>

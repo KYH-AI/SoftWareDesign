@@ -28,6 +28,7 @@ public class ThrowingKnife : ActiveSkill
     private readonly WaitForSeconds SkillAttackDelay = new WaitForSeconds(0.25f);
     #endregion
 
+    /*
     #region 스킬 스텟 프로퍼티
     /// <summary>
     /// 스킬 데미지 프로퍼티 ( set : 스킬 데미지 값 변경 )
@@ -42,6 +43,7 @@ public class ThrowingKnife : ActiveSkill
     /// </summary>
     public float SkillProjectile { set { SkillProjectile = value; } }
     #endregion
+    */
 
     public override void OnActive()
     {
@@ -62,7 +64,6 @@ public class ThrowingKnife : ActiveSkill
         SkillCoolTime -= 0.5f;
         skillProjectileCount += 2;
         skillProjectileSpeed += 2f;
-        // TODO : 상점에서 업그레이드 방식이 정해지면 진행 하자 (09/28)
     }
 
     private void ThrowingKnifeSkillAttack()
@@ -72,7 +73,7 @@ public class ThrowingKnife : ActiveSkill
 
      private IEnumerator ThrowingKnifeSkillProcess()
     {
-        for(int projectiletCount = 0; projectiletCount < skillProjectileCount; projectiletCount++)
+        for (int projectiletCount = 0; projectiletCount < skillProjectileCount; projectiletCount++)
         {
             CreateProjectile();
             yield return SkillAttackDelay;
