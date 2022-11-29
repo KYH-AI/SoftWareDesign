@@ -115,11 +115,11 @@ public class StageManager : MonoBehaviour
 
             case Define.Stage.STORE1:
                 mainTitleText.text = "ÈÞ½ÄÃ³";
-                subTitleText.text = "Çª±ÙÇÑ Áý";
+                subTitleText.text = "³¸¼± »ç¶÷";
                 break;
             case Define.Stage.STORE2:
                 mainTitleText.text = "ÈÞ½ÄÃ³";
-                subTitleText.text = "Çàº¹ÇÑ ÇÏ·ç";
+                subTitleText.text = "Çª±ÙÇÑ Áý";
                 break;
             case Define.Stage.STORE3:
                 mainTitleText.text = "ÈÞ½ÄÃ³";
