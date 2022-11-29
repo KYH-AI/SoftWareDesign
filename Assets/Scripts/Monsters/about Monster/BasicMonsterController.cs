@@ -75,6 +75,7 @@ public abstract class BasicMonsterController : Enemy
     //데미지 표시, 데미지 입은 애니메이션
     public override sealed void TakeDamage(int newDamage)
     {
+        EnemyRigidbody.velocity = Vector2.zero;
         base.TakeDamage(newDamage);
 
         //Damage text
@@ -91,6 +92,7 @@ public abstract class BasicMonsterController : Enemy
         StartCoroutine(DamageProcess());
         if (base.Hp <= 0)
         {
+            EnemyRigidbody.velocity = Vector2.zero;
             state = State.Die;
             return;
         }
@@ -119,6 +121,7 @@ public abstract class BasicMonsterController : Enemy
     protected override sealed void OnDead()
     {
         base.OnDead();
+        base.EnemyCollider.enabled = false;
         EnemyRigidbody.velocity = Vector2.zero;
         base.EnemyAnimator.SetTrigger("Die");
         StartCoroutine(DieProcess());
@@ -140,6 +143,8 @@ public abstract class BasicMonsterController : Enemy
 
         Managers.StageManager.DecreaseKillCount();
         //캐릭터 정보에 킬카운트 넘겨주기
+
+        base.EnemyCollider.enabled = true;
         gameObject.SetActive(false);
 
     }
