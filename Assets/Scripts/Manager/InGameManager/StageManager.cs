@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using TMPro;
 
 public class StageManager : MonoBehaviour
 {
@@ -12,12 +13,20 @@ public class StageManager : MonoBehaviour
     public Define.Stage stage;        //현재 스테이지
     public GameObject[] coins = new GameObject[3];
 
+    #region 씬 Fade 연출
+    public TextMeshProUGUI mainTitleText;
+    public TextMeshProUGUI subTitleText;
+    public Animator sceneAnimator;
+    public GameObject sceneMovie;
+    #endregion
+
     #region 유니티 함수
 
     private void Start()
     {
         SetStageKillCount();
         stage = Define.Stage.STAGE1;
+        SenecFadeEffect();
     }
     #endregion
 
@@ -53,4 +62,32 @@ public class StageManager : MonoBehaviour
         return killCount;
     }
 
+    public void SenecFadeEffect()
+    {
+        switch (stage)
+        {
+            case Define.Stage.STAGE1:
+                mainTitleText.text = "제 1장";
+                subTitleText.text = "피의 복수";
+                break;
+            case Define.Stage.STAGE2:
+                mainTitleText.text = "제 2장";
+                subTitleText.text = "굶주린 아이";
+                break;
+            case Define.Stage.STAGE3:
+                mainTitleText.text = "제 3장";
+                subTitleText.text = "약주고 병주고";
+                break;
+            case Define.Stage.STAGE4:
+                mainTitleText.text = "제 4장";
+                subTitleText.text = "꺾이지 않는 마음";
+                break;
+            case Define.Stage.Boss:
+                mainTitleText.text = "제 5장";
+                subTitleText.text = "시로의 희망";
+                break;
+        }
+        print("애니메이션 호출");
+        sceneAnimator.SetTrigger("Movie Start");
+    }
 }

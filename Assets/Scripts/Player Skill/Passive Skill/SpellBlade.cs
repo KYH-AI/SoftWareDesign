@@ -92,7 +92,6 @@ public class SpellBlade : PassiveSkill
     {
         if (currentSkillState == Define.CurrentSkillState.ACTIVE)
         {
-            print("»£√‚µ ");
             currentSkillState = Define.CurrentSkillState.COOL_TIME;
             buffCoroutine = StartCoroutine(SpellBladeSkillProcess());
         }

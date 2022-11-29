@@ -80,10 +80,8 @@ public class Drone : PassiveSkill
 
     private void Update()  // 드론 사격 여부 확인
     {
-        //  print("연출중 : " + playerObject.PlayerController.isAttackalble);
         if (!isDroneStop && currentSkillState == Define.CurrentSkillState.ACTIVE)
         {
-            print("드론 공격중");
             currentSkillState = DroneSkillAttack();
         }
     }
@@ -186,7 +184,6 @@ public class Drone : PassiveSkill
         }
 
         droneRotateCheck = null;
-        // Debug.Log("드론 회전 종료");
     }
 
     /// <summary>

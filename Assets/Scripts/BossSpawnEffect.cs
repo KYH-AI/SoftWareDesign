@@ -11,11 +11,14 @@ public class BossSpawnEffect : MonoBehaviour
     public PlayableDirector playableDirector;
     public TimelineAsset timeline;
     public Text bossEffectText;
+<<<<<<< HEAD
+   // Image bossEffectImage;
+    //public Sprite[] bossImageList;
+=======
     public Image bossEffectImage;
-    public Image[] bossImageList;
+    public Sprite[] bossImageList;
+>>>>>>> main
     public CinemachineVirtualCamera bossCamera;
-
-
 
 
     private void Update()
@@ -67,23 +70,43 @@ public class BossSpawnEffect : MonoBehaviour
         {
             case Define.Stage.STAGE1:
                 bossEffectText.text = "첫 번째 보스";
-                bossEffectImage = bossImageList[0];
+<<<<<<< HEAD
+                //bossEffectImage.sprite = bossImageList[0];
                 break;
             case Define.Stage.STAGE2:
                 bossEffectText.text = "두 번째 보스";
-                bossEffectImage = bossImageList[1];
+                //bossEffectImage.sprite = bossImageList[1];
                 break;
             case Define.Stage.STAGE3:
                 bossEffectText.text = "세 번째 보스";
-                bossEffectImage = bossImageList[2];
+                //bossEffectImage.sprite = bossImageList[2];
                 break;
             case Define.Stage.STAGE4:
                 bossEffectText.text = "네 번째 보스";
-                bossEffectImage = bossImageList[3];
+               // bossEffectImage.sprite = bossImageList[3];
                 break;
             case Define.Stage.Boss:
                 bossEffectText.text = "최종 보스";
-                bossEffectImage = bossImageList[4];
+                //bossEffectImage.sprite = bossImageList[4];
+=======
+                bossEffectImage.sprite = bossImageList[0];
+                break;
+            case Define.Stage.STAGE2:
+                bossEffectText.text = "두 번째 보스";
+                bossEffectImage.sprite = bossImageList[1];
+                break;
+            case Define.Stage.STAGE3:
+                bossEffectText.text = "세 번째 보스";
+                bossEffectImage.sprite = bossImageList[2];
+                break;
+            case Define.Stage.STAGE4:
+                bossEffectText.text = "네 번째 보스";
+                bossEffectImage.sprite = bossImageList[3];
+                break;
+            case Define.Stage.Boss:
+                bossEffectText.text = "최종 보스";
+                bossEffectImage.sprite = bossImageList[4];
+>>>>>>> main
                 break;
 
         }
