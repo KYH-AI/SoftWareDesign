@@ -6,7 +6,11 @@ using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
+    public float playerHp;
+    public float playerMaxHp;
     public Slider playerSlider;
+    public Image playerRightSlider;
+    public Image playerLeftSlider;
     public Slider bossSlider;
     public Text killCount;
     public Text goldAmount;
@@ -35,6 +39,12 @@ public class UIManager : MonoBehaviour
         CoolTimeProcess();
     }
 
+    public void UpdatePlayerHp()
+    {
+        playerMaxHp = Managers.StageManager.Player.MaxHp;
+        playerHp = Managers.StageManager.Player.Hp;
+    }
+
     public void InitSkillImages()
     {
         activeSkillIndex = 0;
@@ -59,7 +69,13 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePlayerHpSlider(float currentHp, float maxHp)      //플레이어가 데미지 받았을 때 실행.
     {
-        playerSlider.value = currentHp / maxHp;
+        if (currentHp / maxHp > 0.5)
+            playerRightSlider.fillAmount = (currentHp + currentHp - maxHp) / maxHp;
+        else
+        {
+            playerRightSlider.fillAmount = 0;
+            playerLeftSlider.fillAmount = (currentHp + currentHp) / maxHp;
+        }
     }
 
     public void UpdateBossHpSlider(float currentHp, float maxHp)        //보스 몬스터가 데미지 받았을 때 실행.
