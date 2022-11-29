@@ -13,6 +13,7 @@ public class SpawnerController : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("isAlive" + Managers.StageManager.isBossAlive);
         spawnerBasic1.SetActive(true);
         spawnerBasic2.SetActive(true);
         spawnerElite.SetActive(true);
@@ -21,6 +22,7 @@ public class SpawnerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("isAlive"+Managers.StageManager.isBossAlive);
         if (Managers.StageManager.isBossAlive == false)
         {
             spawnerBasic1.SetActive(false);
