@@ -11,7 +11,11 @@ public class BossSpawnEffect : MonoBehaviour
     public PlayableDirector playableDirector;
     public TimelineAsset timeline;
     public Text bossEffectText;
+    public Image bossEffectImage;
+    public Image[] bossImageList;
     public CinemachineVirtualCamera bossCamera;
+
+
 
 
     private void Update()
@@ -36,10 +40,11 @@ public class BossSpawnEffect : MonoBehaviour
     #region 타임라인 시그널 함수
     public void TimeLineStartSignal()
     {
-        UpdateBossEffectText();
-        Managers.SkillEffectVolume.ChagnePostProcessProfile(null);
         Managers.StageManager.Player.PlayerController.isMoveable = false;
         Managers.StageManager.Player.PlayerController.isAttackalble = false;
+        UpdateBossEffectText();
+        Managers.SkillEffectVolume.ChagnePostProcessProfile(null);
+
         //플레이어의 움직임을 제한. -> 윤호
         //보스들은 signal이 없어도 그냥 대기상태에 있도록.
         //카메라의 priority는 BossSpawn에서 바꿔줬음.
@@ -47,9 +52,10 @@ public class BossSpawnEffect : MonoBehaviour
 
     public void TimeLineEndSignal()
     {
-        bossCamera.gameObject.SetActive(false);
         Managers.StageManager.Player.PlayerController.isMoveable = true;
         Managers.StageManager.Player.PlayerController.isAttackalble = true;
+        bossCamera.gameObject.SetActive(false);
+
         //중간보스는 얘기해봐야한다.
         //보스의 state를 move로 바꿔주자.
     }
@@ -61,18 +67,23 @@ public class BossSpawnEffect : MonoBehaviour
         {
             case Define.Stage.STAGE1:
                 bossEffectText.text = "첫 번째 보스";
+                bossEffectImage = bossImageList[0];
                 break;
             case Define.Stage.STAGE2:
                 bossEffectText.text = "두 번째 보스";
+                bossEffectImage = bossImageList[1];
                 break;
             case Define.Stage.STAGE3:
                 bossEffectText.text = "세 번째 보스";
+                bossEffectImage = bossImageList[2];
                 break;
             case Define.Stage.STAGE4:
                 bossEffectText.text = "네 번째 보스";
+                bossEffectImage = bossImageList[3];
                 break;
             case Define.Stage.Boss:
                 bossEffectText.text = "최종 보스";
+                bossEffectImage = bossImageList[4];
                 break;
 
         }
