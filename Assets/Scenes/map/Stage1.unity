@@ -429,44 +429,9 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 1364585006, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
-      propertyPath: bossImageList.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364585006, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
-      propertyPath: bossImageList.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 3fbfd7ff269c74c4aba08b2ac6ca6a31,
-        type: 3}
-    - target: {fileID: 1364585006, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
-      propertyPath: bossImageList.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: c84416e265167d54c8e6d0563f0d62ab,
-        type: 3}
-    - target: {fileID: 1364585006, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
-      propertyPath: bossImageList.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: 16052c491e5525b459138f4d91641bb6,
-        type: 3}
-    - target: {fileID: 1364585006, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
-      propertyPath: bossImageList.Array.data[3]
-      value: 
-      objectReference: {fileID: 21300000, guid: 3e1f9099c9d26f444a87440f5f26be3a,
-        type: 3}
-    - target: {fileID: 1364585006, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
-      propertyPath: bossImageList.Array.data[4]
-      value: 
-      objectReference: {fileID: 21300000, guid: 3e1f9099c9d26f444a87440f5f26be3a,
-        type: 3}
-    - target: {fileID: 1364585007, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
-      propertyPath: m_SceneBindings.Array.size
-      value: 7
-=======
     - target: {fileID: 1621287513, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -2114
->>>>>>> main
       objectReference: {fileID: 0}
     - target: {fileID: 1621287513, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
       propertyPath: m_AnchoredPosition.y
