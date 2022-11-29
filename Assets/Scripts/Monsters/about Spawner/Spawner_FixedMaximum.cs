@@ -17,14 +17,12 @@ public class Spawner_FixedMaximum : MonoBehaviour
     int idx;
     public int MAX;
 
-    int MaxCnt=10;
-    int cnt = 0;
-
+    int MaxCnt=100;
     bool spawnRestart = false;
     // Start is called before the first frame update
     void Start()
     {
-        Invoke(nameof(dealy), 1f);
+        Invoke(nameof(dealy), 3f);
     }
 
 
@@ -78,7 +76,7 @@ public class Spawner_FixedMaximum : MonoBehaviour
                 idx = 0;
                 state = true;
             }
-            cnt++;
+            Managers.StageManager.monsterCounter++;
             StartCoroutine("Spawn");
         }
     }

@@ -18,9 +18,9 @@ public class StageManager : MonoBehaviour
     #endregion
 
     #region 몬스터 스포너 변수
-    public int monsterCounter;
-    public bool isSpawnOkay;
-    public bool isBossAlive;
+    public int monsterCounter = 0;
+    public bool isSpawnOkay = true;
+    public bool isBossAlive = true;
     #endregion
 
     #region 씬 Fade 연출
@@ -44,10 +44,10 @@ public class StageManager : MonoBehaviour
 
     private void Update()
     {
-        if (Managers.UI.bossSlider.value <= 0f)
+        if (Managers.UI.bossSlider.value < 0f)
             isBossAlive = false;
         else
-            isBossAlive = false;
+            isBossAlive = true ;
     }
 
     #endregion

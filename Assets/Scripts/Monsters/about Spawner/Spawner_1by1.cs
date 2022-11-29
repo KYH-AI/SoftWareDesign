@@ -10,12 +10,12 @@ public class Spawner_1by1 : MonoBehaviour
 
     private float spawnRate;
 
-    int MaxCnt = 10;
+    int MaxCnt = 100;
 
     bool spawnerRestart = false;
     void Start()
     {
-        Invoke(nameof(dealy), 1f);
+        Invoke(nameof(dealy), 3f);
     }
 
     void dealy()
