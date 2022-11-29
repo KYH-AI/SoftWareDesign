@@ -14,12 +14,8 @@ public class RandomDices : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-
-
-    // Player.Money =-150;
-
     {
-        RandomInt = Random.Range(1, 8);
+        RandomInt = Random.Range(1, 9);
         money.text = Managers.StageManager.Player.PlayerGold.ToString();
 
         if (Managers.StageManager.Player.PlayerGold >= 150)

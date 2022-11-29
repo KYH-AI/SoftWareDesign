@@ -31,8 +31,7 @@ public class boss_spawner : MonoBehaviour
 
         }
         SetLocation();
-       // if (Managers.StageManager.IsStageCleared())
-        if(Input.GetKeyDown(KeyCode.C))
+        if(Input.GetKeyDown(KeyCode.C) || Managers.StageManager.IsStageCleared())
         {
             
             Managers.UI.bossSlider.gameObject.SetActive(true);

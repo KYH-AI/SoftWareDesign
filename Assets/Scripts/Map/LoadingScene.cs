@@ -9,6 +9,7 @@ public class LoadingScene : MonoBehaviour
     static string nextScene;
     public Image progressBar;
     float time;
+    bool onFadeEffect = false;
 
     public static void LoadScene(string sceneName)
     {
@@ -31,11 +32,16 @@ public class LoadingScene : MonoBehaviour
         {
             time += Time.unscaledDeltaTime;
             progressBar.fillAmount = time/2f;
-            if (progressBar.fillAmount >=1f)
+            if (progressBar.fillAmount >= 0.9f && !onFadeEffect)
             {
                 Managers.StageManager.SenecFadeEffect();
+                onFadeEffect = true;
+            }
+
+            if (progressBar.fillAmount >= 1f)
+            {
                 op.allowSceneActivation = true;
-                yield break; 
+                yield break;
             }
             yield return null;
         }
