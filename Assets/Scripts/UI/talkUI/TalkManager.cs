@@ -43,29 +43,7 @@ public class TalkManager : MonoBehaviour
 
 
 
-    public void Update()
-    {
-        switch (Managers.StageManager.stage)
-        {
-            
-
-            case Define.Stage.STAGE2:
-                count = 1;
-                break;
-            case Define.Stage.STAGE3:
-                count = 2;
-                break;
-            case Define.Stage.STAGE4:
-                count = 3;
-                break;
-
-            case Define.Stage.Boss:
-                count = 4;
-                break;
-        }
-    }
-
-
+  
 
     //GenaarteDate의 talkDate를 한 문장씩 return해서 반환해준다. 
 }

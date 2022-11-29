@@ -43,7 +43,9 @@ public class GameManagerYJ : MonoBehaviour
 
     void Talk(int id, bool isNPC)
     {
-        string talkData = talkManager.GetTalk(id, talkIndex); //해당하는 문자열이 나온다. 
+
+        
+            string talkData = talkManager.GetTalk(id, talkIndex); //해당하는 문자열이 나온다. 
 
         if (talkData == null)
         { isAction = false;
