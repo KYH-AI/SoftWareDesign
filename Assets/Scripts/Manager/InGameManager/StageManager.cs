@@ -31,7 +31,6 @@ public class StageManager : MonoBehaviour
     {
         SetStageKillCount();
         stage = Define.Stage.STAGE1;
-<<<<<<< HEAD
         SenecFadeEffect();
         monsterCounter = 0;
         isSpawnOkay = true;
@@ -44,9 +43,7 @@ public class StageManager : MonoBehaviour
             isBossAlive = false;
         else
             isBossAlive = true;
-=======
-       // SenecFadeEffect();
->>>>>>> newSubBoss
+
     }
 
     #endregion
@@ -73,11 +70,6 @@ public class StageManager : MonoBehaviour
     {
         killCount = 100;
     }
-   /* public void MakePortal()            //포탈 생성 함수.
-    {
-        portal = Instantiate(portalPref);
-        portal.transform.position = Player.transform.position;
-    }*/
     public void ChangeStage()                   //씬 이동시 실행해야 하는 함수. 스테이지를 1씩 증가시킨다.
     {
         stage++;
