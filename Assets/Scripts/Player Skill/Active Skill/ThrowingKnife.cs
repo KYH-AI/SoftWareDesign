@@ -8,6 +8,7 @@ using UnityEngine;
 public class ThrowingKnife : ActiveSkill
 {
     [SerializeField] GameObject knifeObject;
+    private readonly string[] knifeSFX = { "Player/Active Skill/Throwing_Knife_2", "Player/Active Skill/Throwing_Knife_2" };
 
     #region 스킬 기본 스텟 데이터
     /// <summary>
@@ -94,5 +95,7 @@ public class ThrowingKnife : ActiveSkill
                                                              skillDamgae, 
                                                              skillProjectileSpeed);
         projectile.SetActive(true);
+
+        Managers.Sound.PlaySFXAudio(knifeSFX[Random.Range(0, knifeSFX.Length)], null, 0.5f);
     }
 }

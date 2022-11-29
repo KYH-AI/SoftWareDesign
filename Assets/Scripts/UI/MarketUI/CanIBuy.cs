@@ -58,10 +58,6 @@ public class CanIBuy : MonoBehaviour
         if (Managers.StageManager.Player.PlayerGold >= item)
         { 
             Managers.StageManager.Player.PlayerGold -= item;       
-            selectImage = soldout;
-
-
-
             if (!Managers.StageManager.Player.skillList.TryGetValue(skillObject.name, out PlayerSkill updateSkill))
             {
                 GameObject newSkillObject = Instantiate(skillObject, Managers.StageManager.Player.transform);
@@ -106,6 +102,7 @@ public class CanIBuy : MonoBehaviour
                 updateSkill.SkillLevel++;
             }
             money.text = Managers.StageManager.Player.PlayerGold.ToString();
+            selectImage = soldout;
         }
 
 

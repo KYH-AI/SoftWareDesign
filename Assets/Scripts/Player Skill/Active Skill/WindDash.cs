@@ -8,6 +8,7 @@ using UnityEngine;
 public class WindDash : ActiveSkill
 {
     private TrailRenderer windDlashEffect;
+    private readonly string windDashSFX = "Player/Active Skill/Wind Dash";
 
     #region 스킬 기본 스텟 데이터
     /// <summary>
@@ -76,14 +77,12 @@ public class WindDash : ActiveSkill
         Vector3 firstPosition = playerObject.transform.position;
         float maxDistance = skillDashDistacne;
 
-        // x, y 마지막 방향을 이용해 해당 방향으로 10m 날라간다.
 
         RaycastHit2D hitObject = Physics2D.Raycast(transform.position, playerObject.PlayerController.LastDirection, maxDistance, wallLayer);
 
         if (hitObject)  // RayCast가 벽에 충돌했다는 의미
         {
             maxDistance = hitObject.distance-1f;     // 벽 충돌 위치까지만 Ray를 쏘기 위한 거리 측정
-           // playerObject.transform.position = hitObject.normal; // 충돌한 벽 앞 까지만 이동
             playerObject.transform.Translate(playerObject.PlayerController.LastDirection.normalized * maxDistance); // 마지막으로 본 방향 + dashDistance 길이 만큼 이동
         }
 
@@ -92,12 +91,9 @@ public class WindDash : ActiveSkill
             playerObject.transform.Translate(playerObject.PlayerController.LastDirection.normalized * maxDistance); // 마지막으로 본 방향 + dashDistance 길이 만큼 이동
         }
 
+        Managers.Sound.PlaySFXAudio(windDashSFX, null, 0.5f, false);
 
         RaycastHit2D[] enemyObjects = Physics2D.RaycastAll(firstPosition, playerObject.PlayerController.LastDirection, maxDistance, enemyLayer);
-        /*
-        Debug.Log("스킬 충돌 거리 : " + dashDistance);
-        Debug.Log("충돌한 적 : " + enemyObject.Length);
-        */
 
 
         if (enemyObjects.Length > 0)

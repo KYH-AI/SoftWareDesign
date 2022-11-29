@@ -5,6 +5,8 @@ using UnityEngine;
 public class CoinController : MonoBehaviour
 {
     [SerializeField] int coinValue;
+    private readonly string coinSFX = "Player/Get Gold/GetGold";
+
 
     private void FixedUpdate()
     {
@@ -16,7 +18,7 @@ public class CoinController : MonoBehaviour
         if(target.CompareTag(Define.StringTag.Player.ToString()))
         {
             Managers.StageManager.Player.PlayerGold += coinValue;
-            // TODO 동전 효과음 재생
+            Managers.Sound.PlaySFXAudio(coinSFX, null, 0.25f);
             gameObject.SetActive(false);
         }
     }

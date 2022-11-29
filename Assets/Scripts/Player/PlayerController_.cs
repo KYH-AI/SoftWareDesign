@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
+
 
 public class PlayerController_ : MonoBehaviour
 {
@@ -68,6 +64,12 @@ public class PlayerController_ : MonoBehaviour
     }
     #endregion
 
+    #region 기본 공격 효과음 경로
+    private readonly string[] defaullAttackSFX = { "Player/Default Attack/Player Default Attack_1",
+                                                    "Player/Default Attack/Player Default Attack_2",
+                                                    "Player/Default Attack/Player Default Attack_3" };
+    #endregion
+
     #region 이동 구현부
     public void OnMove(InputValue value)    //new input system 사용시 키 입력 받는 부분. 방향 키 입력을 받으면 OnMove()가 실행된다.
     {
@@ -103,8 +105,6 @@ public class PlayerController_ : MonoBehaviour
     /// 
     void OnSkill1()
     {
-        //첫번째 스킬 사용
-        //if (isAttackalble == true && ) isAttackable이 true이고 스킬이 존재할 때,
         if (isAttackalble == true && Managers.StageManager.Player.playerActiveSkills.ContainsKey(0))
              player.playerActiveSkills[0].OnActive();
     }
@@ -135,17 +135,25 @@ public class PlayerController_ : MonoBehaviour
     }
     void OnAttack()
     {
-        //기본공격 사용
-        isMoveable = false;         //공격을 시작했을 때 움직임을 제한.
-        anim.SetTrigger("BasicAttack");
+        if (isAttackalble == true)
+        {
+            //기본공격 사용
+            isMoveable = false;         //공격을 시작했을 때 움직임을 제한.
+            anim.SetTrigger("BasicAttack");
+        }
     }
     #endregion
+
+   
 
     #region 애니메이션 이벤트 함수
     void SetIsMoveableTrue()        //공격이 끝났을 때 움직이게 할 수 있도록 하는 애니메이션 이벤트 함수.
         => isMoveable = true;
-    void SetColliderEnabled()       //플레이어가 기본 공격시 콜라이더를 켜는 애니메이션 이벤트 함수.
-        => boxCol.enabled = true;
+    void SetColliderEnabled()   // 플레이어가 기본 공격시 콜라이더를 켜는 애니메이션 이벤트 함수.
+    {
+        Managers.Sound.PlaySFXAudio(defaullAttackSFX[Random.Range(0, defaullAttackSFX.Length)]);
+        boxCol.enabled = true;
+    }
     void SetColliderDisabled()      //플레이어가 기본 공격시 콜라이더를 끄는 애니메이션 이벤트 함수.
     {
         boxCol.enabled = false;
