@@ -10,6 +10,7 @@ public class ThunderSlash : ActiveSkill
 {
     private TrailRenderer thunderclapEffect;
     [SerializeField] GameObject thunderSlashLockOnEffect;
+    [SerializeField] GameObject thunderSlashHitEffetc;
     [SerializeField] VolumeProfile thunderClapProfile;
 
     #region 스킬 기본 스텟 데이터
@@ -20,13 +21,8 @@ public class ThunderSlash : ActiveSkill
     /// <summary>
     /// 스킬 타겟 수
     /// </summary>
-    private int skillTotalTarget = 2;
+    private int skillTotalTarget = 10;
     #endregion
-
-    /*  프로퍼티 (09/28) 아직 미정
-    public int SkillDamage { set { skillDamage = value; } }
-    public int SkillTotalTarget { set { skillTotalTarget = value; } }
-    */
 
     private void Start()
     {
@@ -73,7 +69,6 @@ public class ThunderSlash : ActiveSkill
             OnSkillEffect();
             ThunderSlashEffect(); // 번개 효과 이펙트 (Trail Renderer) 활성화
             Time.timeScale = 0.1f;
-           // StageManager.GetInstance().Player.PlayerController.PlayerTimeScale = Time.timeScale;
             StartCoroutine(ThunderSlashSkillAttackSkillProcess(enemyCollider));
             return Define.CurrentSkillState.COOL_TIME;
         }
@@ -85,42 +80,30 @@ public class ThunderSlash : ActiveSkill
         GameObject[] lockOnEffect = new GameObject[skillTotalTarget];
         int targetCount = enemyColliders.Length > skillTotalTarget ? skillTotalTarget : enemyColliders.Length;
 
-        /*
-        // 적이 더 적은경우
-        if (skillTotalTarget > enemyColliders.Length)
-        {
-            tempTotalTaregt = enemyColliders.Length;
-        }
-        */
 
         for(int enemyCount = 0; enemyCount < targetCount; enemyCount++)
         {
             if (enemyColliders[enemyCount] != null)
             {
                 lockOnEffect[enemyCount] = Instantiate(thunderSlashLockOnEffect, enemyColliders[enemyCount].transform.position, Quaternion.identity);
-                yield return new WaitForSecondsRealtime(1f);   // 캐싱 하자
+                yield return new WaitForSecondsRealtime(0.5f);   // 캐싱 하자
             }
         }
 
         for (int enemyCount = 0; enemyCount < targetCount; enemyCount++)
         {
             playerObject.SwitchPlayerSprite((playerObject.transform.position - enemyColliders[enemyCount].transform.position).normalized, true);
-            // GameManager.Instance.PlayerCameraMoveSpeed = 0f;
             playerObject.transform.position = enemyColliders[enemyCount].transform.position;
 
 
-            // TODO : 데미지 처리 하기 (10/30)
             enemyColliders[enemyCount].GetComponent<Enemy>().TakeDamage(skillDamage);
+            Instantiate(thunderSlashHitEffetc, enemyColliders[enemyCount].transform.position, Quaternion.identity);
 
-             yield return new WaitForSecondsRealtime(1f);  // 캐싱 하자
-          //  GameManager.Instance.PlayerCameraMoveSpeed = 10f;
-
-          //  yield return new WaitForSecondsRealtime(1f);   // 캐싱 하자
+             yield return new WaitForSecondsRealtime(0.5f);  // 캐싱 하자
             Destroy(lockOnEffect[enemyCount]);
         }
         OffSkillEffect();
         Time.timeScale = 1.0f;
-       // StageManager.GetInstance().Player.PlayerController.PlayerTimeScale = Time.timeScale;
      
         playerObject.PlayerController.isAttackalble = true; // 침묵 효과
         playerObject.PlayerController.isMoveable = true; // 이동제어
