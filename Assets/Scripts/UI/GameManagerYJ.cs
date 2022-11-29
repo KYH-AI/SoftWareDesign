@@ -18,7 +18,6 @@ public class GameManagerYJ : MonoBehaviour
     private void Start()
     {
         Managers.StageManager.shopManager = this;
-        print(Managers.StageManager.shopManager + " »£√‚µ ");
     }
 
     public void Action(GameObject scanOb)

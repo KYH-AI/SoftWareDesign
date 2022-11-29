@@ -23,7 +23,7 @@ public class StageManager : MonoBehaviour
     public bool isBossAlive = true;
     #endregion
 
-    #region 씬 Fade 연출
+    #region 씬 Fade 연출 변수
     public TextMeshProUGUI mainTitleText;
     public TextMeshProUGUI subTitleText;
     public Animator sceneAnimator;
@@ -74,11 +74,6 @@ public class StageManager : MonoBehaviour
     {
         killCount = 100;
     }
-   /* public void MakePortal()            //포탈 생성 함수.
-    {
-        portal = Instantiate(portalPref);
-        portal.transform.position = Player.transform.position;
-    }*/
     public void ChangeStage()                   //씬 이동시 실행해야 하는 함수. 스테이지를 1씩 증가시킨다.
     {
         stage++;

@@ -18,7 +18,7 @@ public class RandomSkill2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RandomInt = Random.Range(1, 3);
+        RandomInt = Random.Range(1, 4);
 
 
         if (RandomInt == 1)
