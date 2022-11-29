@@ -10,13 +10,17 @@ public class UIManager : MonoBehaviour
     public Slider bossSlider;
     public Text killCount;
     public Text goldAmount;
-    public Image[] skills = new Image[5];
+    public Image[] activeSkills = new Image[5];
+    public Image[] passiveSkills = new Image[5];
 
+    Dictionary<ActiveSkill, Sprite> activeSkillDic = new Dictionary<ActiveSkill, Sprite>();
+    Dictionary<Sprite, PassiveSkill> passiveSkillDic = new Dictionary<Sprite, PassiveSkill>();
     private void Update()
     {
         UpdateKillCounts();
         UpdateGoldText();
     }
+
     public void UpdatePlayerHpSlider(float currentHp, float maxHp)      //플레이어가 데미지 받았을 때 실행.
     {
         playerSlider.value = currentHp / maxHp;
@@ -34,22 +38,32 @@ public class UIManager : MonoBehaviour
     {
         killCount.text = ("" + Managers.StageManager.killCount);
     }
-    public void UpdateSkills()      //상점에서 스킬 구매시 실행.
+    public void UpdateActiveSkills(Sprite sprite, ActiveSkill activeSkill)      //상점에서 스킬 구매시 실행.
     {
-        //플레이어 스킬 딕셔너리에 key로 접근해서 value가 있으면 이미지 띄움.
-        if(Managers.StageManager.Player.playerActiveSkills != null)
-        {
-            //이미지 프리팹을 불러옴.
-        }
+        //activeSkillDic.Add(sprite, activeSkill);
+        //activeSkills[Managers.StageManager.index] = sprite;
+    }
+    public void UpdatePassiveSkills(Sprite sprite, PassiveSkill passiveSkill)      //상점에서 스킬 구매시 실행.
+    {
+        //passiveSkillDic.Add(sprite, passiveSkill);
+        //passiveSkills[Managers.StageManager.index] = sprite;
     }
 
-    public void ShowSkillCoolTime()
+    public void TurnSkillUIOn(PlayerSkill playerSkill)
     {
-        //스킬 상태가 쿨타임이면 남은 쿨 표시
+        //if(activeSkillDic[0].currentSkillState == Define.CurrentSkillState.ACTIVE)
+        //밝아진다.
+        //else
+        //어두워진다.
+    }
+    public void TurnSkillUIOff()
+    {
+
     }
 
     public void InitBossSlider()
     {
         bossSlider.value = 1;
+        Managers.StageManager.isBossAlive = true;
     }
 }

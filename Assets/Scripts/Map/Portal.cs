@@ -28,6 +28,8 @@ public class Portal : MonoBehaviour
                 inPortal = true;
                 print("다음 스테이지로 이동");
                 StartCoroutine(SceneChange());
+                Managers.StageManager.InitMonsterCounter();
+                Managers.UI.InitBossSlider();
             }
 
         }

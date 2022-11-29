@@ -38,6 +38,7 @@ public class boss_spawner : MonoBehaviour
             Managers.UI.bossSlider.gameObject.SetActive(true);
             Managers.UI.InitBossSlider();
             Spawn();
+            Managers.StageManager.InitMonsterCounter();
             Managers.CameraManager.SetFollow(this.transform); 
             bossSpawn.PlayFromTimeline();
             Managers.StageManager.SetStageKillCount();

@@ -13,6 +13,11 @@ public class StageManager : MonoBehaviour
     public Define.Stage stage;        //현재 스테이지
     public GameObject[] coins = new GameObject[3];
 
+    public int monsterCounter;
+    public bool isSpawnOkay;
+    
+    public bool isBossAlive;
+
     #region 씬 Fade 연출
     public TextMeshProUGUI mainTitleText;
     public TextMeshProUGUI subTitleText;
@@ -27,8 +32,24 @@ public class StageManager : MonoBehaviour
         SetStageKillCount();
         stage = Define.Stage.STAGE1;
         SenecFadeEffect();
+        monsterCounter = 0;
+        isSpawnOkay = true;
+        isBossAlive = true;
+}
+
+    private void Update()
+    {
+        if (Managers.UI.bossSlider.value < 0f)
+            isBossAlive = false;
+        else
+            isBossAlive = false;
     }
+
     #endregion
+    public void InitMonsterCounter()
+    {
+        monsterCounter = 0;
+    }
 
     public void DecreaseKillCount()     //킬카운트를 줄이는 방식으로 진행하려고 함. 플레이어가 몬스터를 죽이면 실행.
     {

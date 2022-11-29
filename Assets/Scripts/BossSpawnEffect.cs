@@ -19,7 +19,7 @@ public class BossSpawnEffect : MonoBehaviour
     private void Update()
     {
         //if (Input.anyKeyDown)
-        //    PlayFromTimeline();
+        //PlayFromTimeline();
     }
 
     #region 타임라인 함수
@@ -38,6 +38,7 @@ public class BossSpawnEffect : MonoBehaviour
     #region 타임라인 시그널 함수
     public void TimeLineStartSignal()
     {
+        Managers.StageManager.isSpawnOkay = false;
         Managers.StageManager.Player.PlayerController.isMoveable = false;
         Managers.StageManager.Player.PlayerController.isAttackalble = false;
         UpdateBossEffectText();
@@ -50,6 +51,7 @@ public class BossSpawnEffect : MonoBehaviour
 
     public void TimeLineEndSignal()
     {
+        Managers.StageManager.isSpawnOkay = true;
         Managers.StageManager.Player.PlayerController.isMoveable = true;
         Managers.StageManager.Player.PlayerController.isAttackalble = true;
         bossCamera.gameObject.SetActive(false);
