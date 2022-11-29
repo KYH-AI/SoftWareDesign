@@ -51,8 +51,8 @@ public class Portal : MonoBehaviour
         inPortal = false;
         transform.position = new Vector2(0, 0);
         MemoryPoolManager.GetInstance().InitPool();
-        Managers.StageManager.SenecFadeEffect();
-        SceneManager.LoadScene("JinminStore");
+       // Managers.StageManager.SenecFadeEffect();
+        LoadingScene.LoadScene("JinminStore");
     }
 
     IEnumerator SceneChange()
@@ -61,23 +61,23 @@ public class Portal : MonoBehaviour
         transform.position = new Vector2(0, 0);
         inPortal = false;
         MemoryPoolManager.GetInstance().InitPool();
-        Managers.StageManager.SenecFadeEffect();
+        //Managers.StageManager.SenecFadeEffect();
         switch (Managers.StageManager.stage)
         {
-            case Define.Stage.STAGE2:
-               SceneManager.LoadScene("Stage2");
+            case Define.Stage.STORE1:
+                LoadingScene.LoadScene("Stage2");
                 Managers.StageManager.stage = Define.Stage.STAGE2;
                 break;
-            case Define.Stage.STAGE3:
-                SceneManager.LoadScene("Stage3");
+            case Define.Stage.STORE2:
+                LoadingScene.LoadScene("Stage3");
                 Managers.StageManager.stage = Define.Stage.STAGE3;
                 break;
-            case Define.Stage.STAGE4:
-                SceneManager.LoadScene("Stage4");
+            case Define.Stage.STORE3:
+                LoadingScene.LoadScene("Stage4");
                 Managers.StageManager.stage = Define.Stage.STAGE4;
                 break;
-            case Define.Stage.Boss:
-                SceneManager.LoadScene("Stage5");
+            case Define.Stage.STORE4:
+                LoadingScene.LoadScene("Stage5");
                 Managers.StageManager.stage = Define.Stage.Boss;
                 break;
         }
