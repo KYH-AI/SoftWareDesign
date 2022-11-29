@@ -13,6 +13,7 @@ public class Spawner_1by1 : MonoBehaviour
     int MaxCnt = 100;
 
     bool spawnerRestart = false;
+
     void Start()
     {
         Invoke(nameof(dealy), 3f);
@@ -26,6 +27,7 @@ public class Spawner_1by1 : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log("spawnerRestart : " + spawnerRestart);
         if (spawnerRestart == true)
         {
             spawnRateMin = 5.0f;
