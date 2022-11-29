@@ -16,7 +16,6 @@ public class Portal : MonoBehaviour
             if (Input.GetKey(KeyCode.Space)&& !inPortal)
             {
                 inPortal = true;
-                print("상점으로 이동!");
                 StartCoroutine(ToStore());
             }
 
@@ -26,7 +25,6 @@ public class Portal : MonoBehaviour
             if (Input.GetKey(KeyCode.Space)&&!inPortal)
             {
                 inPortal = true;
-                print("다음 스테이지로 이동");
                 StartCoroutine(SceneChange());
             }
 
@@ -37,19 +35,16 @@ public class Portal : MonoBehaviour
         switch (Managers.StageManager.stage)
         {
             case Define.Stage.STAGE1:
-                Managers.StageManager.stage = Define.Stage.STAGE2;
-                print("stage2상태");
+                Managers.StageManager.stage = Define.Stage.STORE1;
                 break;
             case Define.Stage.STAGE2:
-                Managers.StageManager.stage = Define.Stage.STAGE3;
-                print("stage3상태");
+                Managers.StageManager.stage = Define.Stage.STORE2;
                 break;
             case Define.Stage.STAGE3:
-                Managers.StageManager.stage = Define.Stage.STAGE4;
-                print("stage4상태");
+                Managers.StageManager.stage = Define.Stage.STORE3;
                 break;
             case Define.Stage.STAGE4:
-                Managers.StageManager.stage = Define.Stage.Boss;
+                Managers.StageManager.stage = Define.Stage.STORE4;
                 break;
         }
         yield return new WaitForSeconds(1f);
@@ -69,19 +64,21 @@ public class Portal : MonoBehaviour
         Managers.StageManager.SenecFadeEffect();
         switch (Managers.StageManager.stage)
         {
-                   
-
             case Define.Stage.STAGE2:
                SceneManager.LoadScene("Stage2");
-               break;
+                Managers.StageManager.stage = Define.Stage.STAGE2;
+                break;
             case Define.Stage.STAGE3:
                 SceneManager.LoadScene("Stage3");
+                Managers.StageManager.stage = Define.Stage.STAGE3;
                 break;
             case Define.Stage.STAGE4:
                 SceneManager.LoadScene("Stage4");
+                Managers.StageManager.stage = Define.Stage.STAGE4;
                 break;
             case Define.Stage.Boss:
                 SceneManager.LoadScene("Stage5");
+                Managers.StageManager.stage = Define.Stage.Boss;
                 break;
         }
     }

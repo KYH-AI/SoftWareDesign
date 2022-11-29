@@ -13,10 +13,6 @@ public class BossSpawnEffect : MonoBehaviour
     public Text bossEffectText;
     public Image bossEffectImage;
     public Sprite[] bossImageList;
-<<<<<<< HEAD
-
-=======
->>>>>>> main
     public CinemachineVirtualCamera bossCamera;
 
 
