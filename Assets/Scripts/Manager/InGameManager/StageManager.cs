@@ -26,7 +26,7 @@ public class StageManager : MonoBehaviour
     {
         SetStageKillCount();
         stage = Define.Stage.STAGE1;
-       // SenecFadeEffect();
+        SenecFadeEffect();
     }
     #endregion
 
