@@ -49,8 +49,6 @@ public class FlameStrike : ActiveSkill
 
     public override void OnActive()
     {
-
-        Debug.Log("현재 스킬상태는 : " + currentSkillState);
         if (currentSkillState == Define.CurrentSkillState.ACTIVE)
         {
             currentSkillState = Define.CurrentSkillState.COOL_TIME;

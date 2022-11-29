@@ -39,8 +39,16 @@ public abstract class BasicMonsterController : Enemy
 
     public void Update()
     {
-        if (state == State.Run) Run();
-        if (state == State.Attack) Attack();
+        if (Managers.StageManager.IsStageCleared())
+        {
+            print("다 죽음!!!!!!!!!!!!!!!!!");
+            OnDead();
+        }
+        else
+        {
+            if (state == State.Run) Run();
+            if (state == State.Attack) Attack();
+        }
     }
 
     //달리기

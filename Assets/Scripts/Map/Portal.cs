@@ -56,6 +56,7 @@ public class Portal : MonoBehaviour
         inPortal = false;
         transform.position = new Vector2(0, 0);
         MemoryPoolManager.GetInstance().InitPool();
+        Managers.StageManager.SenecFadeEffect();
         SceneManager.LoadScene("JinminStore");
     }
 
@@ -65,8 +66,11 @@ public class Portal : MonoBehaviour
         transform.position = new Vector2(0, 0);
         inPortal = false;
         MemoryPoolManager.GetInstance().InitPool();
+        Managers.StageManager.SenecFadeEffect();
         switch (Managers.StageManager.stage)
         {
+                   
+
             case Define.Stage.STAGE2:
                SceneManager.LoadScene("Stage2");
                break;
@@ -79,7 +83,6 @@ public class Portal : MonoBehaviour
             case Define.Stage.Boss:
                 SceneManager.LoadScene("Stage5");
                 break;
-
         }
     }
 
