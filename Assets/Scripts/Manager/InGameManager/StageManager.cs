@@ -13,10 +13,15 @@ public class StageManager : MonoBehaviour
     public Define.Stage stage;        //현재 스테이지
     public GameObject[] coins = new GameObject[3];
 
+    #region 상점 변수
+    public GameManagerYJ shopManager;
+    #endregion
+
+    #region 몬스터 스포너 변수
     public int monsterCounter;
     public bool isSpawnOkay;
-
-    public bool isBossAlive = true;
+    public bool isBossAlive;
+    #endregion
 
     #region 씬 Fade 연출
     public TextMeshProUGUI mainTitleText;
@@ -42,7 +47,7 @@ public class StageManager : MonoBehaviour
         if (Managers.UI.bossSlider.value <= 0f)
             isBossAlive = false;
         else
-            isBossAlive = true;
+            isBossAlive = false;
     }
 
     #endregion

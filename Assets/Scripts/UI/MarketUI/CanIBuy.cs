@@ -30,15 +30,8 @@ public class CanIBuy : MonoBehaviour
     Image selectImage;
     public Image soldout;
 
-
-    // 테스트 용도 지워도 됨
-    int i = 0;
-    
     public void Start()
-    {//Money = GameObject.Find("NowMoney");
-
-
-
+    {
         Yes.SetActive(false);
         No.SetActive(false);
         Up.SetActive(false);
@@ -62,48 +55,38 @@ public class CanIBuy : MonoBehaviour
 
     public void Answer()
     {
-       
-       
         
-        //skillObject.AddComponent<RayForUpgrade> ();
         if (Managers.StageManager.Player.PlayerGold >= item)
-               { 
-                Managers.StageManager.Player.PlayerGold -= item;
-               
+        { 
+            Managers.StageManager.Player.PlayerGold -= item;       
             selectImage = soldout;
 
 
-            if (!Managers.StageManager.Player.skillList.TryGetValue(skillObject.name, out PlayerSkill updateSkill))
 
+            if (!Managers.StageManager.Player.skillList.TryGetValue(skillObject.name, out PlayerSkill updateSkill))
             {
+                GameObject newSkillObject = Instantiate(skillObject, Managers.StageManager.Player.transform);
+
                 Yes.SetActive(true);
                 Invoke("HideAnswerY", Speed);
 
-                PlayerSkill newSkill;
                   skillLevel++;
                 if (isActiveSkill)
                 {
-                    ActiveSkill activeSkill = Instantiate(skillObject, Managers.StageManager.Player.transform).GetComponent<ActiveSkill>();
+        
+                    ActiveSkill activeSkill = newSkillObject.GetComponent<ActiveSkill>();
                     activeSkill.Init(Managers.StageManager.Player);
-                    Managers.StageManager.Player.playerActiveSkills.Add(i++, activeSkill);
-                    // 나중에 0 대신 아래 코드로 작성
-                    // Managers.StageManager.Player.playerActiveSkills.Add(Managers.StageManager.Player.ActiveSkillSlot_Index++, activeSkill)
-
+                    Managers.StageManager.Player.playerActiveSkills.Add(Managers.StageManager.Player.ActiveSkillSlot_Index++, activeSkill);
                 }
                 else
                 {
-                   
-
-                    print(skillObject.name);
-                    print(Managers.StageManager.Player);
-                    PassiveSkill passiveSkill = Instantiate(skillObject, Managers.StageManager.Player.transform).GetComponent<PassiveSkill>();
+                    PassiveSkill passiveSkill = newSkillObject.GetComponent<PassiveSkill>();
                     passiveSkill.Init(Managers.StageManager.Player);
                     passiveSkill.OnActive();
                 }
 
-                newSkill = skillObject.GetComponent<PlayerSkill>();
-                newSkill.SkillLevel++;
-                Managers.StageManager.Player.skillList.Add(skillObject.name, newSkill);
+              
+                Managers.StageManager.Player.skillList.Add(skillObject.name, newSkillObject.GetComponent<PlayerSkill>());
             }
 
             else // 강화
@@ -112,17 +95,17 @@ public class CanIBuy : MonoBehaviour
                 Invoke("HideAnswerU", Speed);
 
 
-                if (skillObject.GetComponent<ActiveSkill>() != null)
+                if (updateSkill.GetComponent<ActiveSkill>() != null)
                 {
-                        skillObject.GetComponent<ActiveSkill>().Upgrade();
+                    updateSkill.GetComponent<ActiveSkill>().Upgrade();
                 }
                 else
                 {
-                        skillObject.GetComponent<PassiveSkill>().Upgrade();
+
+                    updateSkill.GetComponent<PassiveSkill>().Upgrade();
                 }
                 updateSkill.SkillLevel++;
             }
-
             money.text = Managers.StageManager.Player.PlayerGold.ToString();
         }
 
