@@ -21,6 +21,12 @@ public class RandomDices : MonoBehaviour
     private void Start()
     {
         btn.onClick.AddListener(Dice);
+
+        money.text = Managers.StageManager.Player.PlayerGold.ToString();
+        sheld.text = Managers.StageManager.Player.Armor.ToString();
+        attack.text = Managers.StageManager.Player.DefaultAttackDamage.ToString();
+        speed.text = Managers.StageManager.Player.MoveSpeed.ToString();
+        hp.text = Managers.StageManager.Player.MaxHp.ToString();
     }
 
     public void Dice()
