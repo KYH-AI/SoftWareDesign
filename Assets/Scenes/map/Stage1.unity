@@ -271,6 +271,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage1_Center
       objectReference: {fileID: 0}
+    - target: {fileID: 8967234591947267999, guid: 6cd823db686f90049bbec25e4bac4ce3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cd823db686f90049bbec25e4bac4ce3, type: 3}
 --- !u!114 &802625368 stripped

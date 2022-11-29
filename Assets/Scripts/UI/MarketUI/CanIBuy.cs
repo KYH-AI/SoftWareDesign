@@ -43,7 +43,6 @@ public class CanIBuy : MonoBehaviour
         SelectBtn2.onClick.AddListener(Buy2);
         SelectBtn3.onClick.AddListener(Buy3);
 
-        print(Managers.StageManager.Player);
     }
 
 

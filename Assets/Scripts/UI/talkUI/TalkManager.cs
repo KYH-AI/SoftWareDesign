@@ -13,7 +13,7 @@ public class TalkManager : MonoBehaviour
     {
         talkData = new Dictionary<int, string[]>(); // 변수 생성 
         GenerateData(); //메소드 불러오기
-                        }
+     }
 
 
     void GenerateData()

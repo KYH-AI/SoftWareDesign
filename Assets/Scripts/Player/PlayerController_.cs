@@ -105,32 +105,32 @@ public class PlayerController_ : MonoBehaviour
     {
         //첫번째 스킬 사용
         //if (isAttackalble == true && ) isAttackable이 true이고 스킬이 존재할 때,
-        if (isAttackalble == true && Managers.StageManager.Player.playerActiveSkills[0] != null)
+        if (isAttackalble == true && Managers.StageManager.Player.playerActiveSkills.ContainsKey(0))
              player.playerActiveSkills[0].OnActive();
-
     }
     void OnSkill2()
     {
         //2번째 스킬 사용
-        if (isAttackalble == true && Managers.StageManager.Player.playerActiveSkills[1] != null)
+
+        if (isAttackalble == true && Managers.StageManager.Player.playerActiveSkills.ContainsKey(1))
             player.playerActiveSkills[1].OnActive();
     }
     void OnSkill3()
     {
         //3번째 스킬 사용
-        if (isAttackalble == true && Managers.StageManager.Player.playerActiveSkills[2] != null)
+        if (isAttackalble == true && Managers.StageManager.Player.playerActiveSkills.ContainsKey(2))
             player.playerActiveSkills[2].OnActive();
     }
     void OnSkill4()
     {
         //4번째 스킬 사용
-        if (isAttackalble == true && Managers.StageManager.Player.playerActiveSkills[3] != null)
+        if (isAttackalble == true && Managers.StageManager.Player.playerActiveSkills.ContainsKey(3))
             player.playerActiveSkills[3].OnActive();
     }
     void OnSkill5()
     {
         //5번째 스킬 사용
-        if (isAttackalble == true && Managers.StageManager.Player.playerActiveSkills[4] != null)
+        if (isAttackalble == true && Managers.StageManager.Player.playerActiveSkills.ContainsKey(4))
             player.playerActiveSkills[4].OnActive();
     }
     void OnAttack()

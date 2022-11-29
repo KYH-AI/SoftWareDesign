@@ -458,8 +458,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 196253693}
-        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: ChangeStart
+        m_TargetAssemblyTypeName: ControlButton, Assembly-CSharp
+        m_MethodName: ChangeScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -529,7 +529,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 196253687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87d9b0a33e5c86c4aa74df2e998e28a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4442bb20470b1a44b8d0ca9563f102fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &202828863
@@ -1545,7 +1545,7 @@ GameObject:
   - component: {fileID: 931192706}
   - component: {fileID: 931192707}
   m_Layer: 5
-  m_Name: 'QUitButton '
+  m_Name: 'QuitButton '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1617,7 +1617,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 931192707}
-        m_TargetAssemblyTypeName: Quit, Assembly-CSharp
+        m_TargetAssemblyTypeName: ControlButton, Assembly-CSharp
         m_MethodName: Quitbtn
         m_Mode: 1
         m_Arguments:

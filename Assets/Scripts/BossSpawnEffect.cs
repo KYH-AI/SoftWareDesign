@@ -15,13 +15,6 @@ public class BossSpawnEffect : MonoBehaviour
     public Sprite[] bossImageList;
     public CinemachineVirtualCamera bossCamera;
 
-
-    private void Update()
-    {
-        //if (Input.anyKeyDown)
-        //PlayFromTimeline();
-    }
-
     #region 타임라인 함수
     public void Play()
     {
@@ -43,10 +36,6 @@ public class BossSpawnEffect : MonoBehaviour
         Managers.StageManager.Player.PlayerController.isAttackalble = false;
         UpdateBossEffectText();
         Managers.SkillEffectVolume.ChagnePostProcessProfile(null);
-
-        //플레이어의 움직임을 제한. -> 윤호
-        //보스들은 signal이 없어도 그냥 대기상태에 있도록.
-        //카메라의 priority는 BossSpawn에서 바꿔줬음.
     }
 
     public void TimeLineEndSignal()
@@ -55,13 +44,10 @@ public class BossSpawnEffect : MonoBehaviour
         Managers.StageManager.Player.PlayerController.isMoveable = true;
         Managers.StageManager.Player.PlayerController.isAttackalble = true;
         bossCamera.gameObject.SetActive(false);
-
-        //중간보스는 얘기해봐야한다.
-        //보스의 state를 move로 바꿔주자.
     }
     #endregion
 
-    public void UpdateBossEffectText()      //보스마다 text를 달리하자.
+    public void UpdateBossEffectText()     
     {
         switch (Managers.StageManager.stage)
         {
