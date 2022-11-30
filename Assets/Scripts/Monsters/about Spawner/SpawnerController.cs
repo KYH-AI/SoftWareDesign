@@ -34,6 +34,7 @@ public class SpawnerController : MonoBehaviour
             spawnerBasic1.SetActive(true);
             spawnerBasic2.SetActive(true);
             spawnerElite.SetActive(true);
+            restart = false;
         }
     }
 }

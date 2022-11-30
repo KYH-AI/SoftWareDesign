@@ -76,7 +76,7 @@ public class Player : LivingEntity
     {
         DontDestroyOnLoad(gameObject);
         PlayerInit();
-
+        Managers.UI.InitUI();
 
         #region 스킬 테스트 중 (김윤호)
         /* 테스트 용도 */

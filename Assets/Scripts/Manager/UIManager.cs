@@ -26,19 +26,12 @@ public class UIManager : MonoBehaviour
     public List<ActiveSkill> activeSkillLists = new List<ActiveSkill>();
     public List<PassiveSkill> passiveSkillLists = new List<PassiveSkill>();
 
-    private void Start()
+    public void InitUI()
     {
         InitSkillImages();
         UpdateGoldText();
         UpdateKillCounts();
     }
-    private void Update()
-    {
-        UpdateGoldText();
-        UpdateKillCounts();
-        CoolTimeProcess();
-    }
-
     public void UpdatePlayerHp()
     {
         playerMaxHp = Managers.StageManager.Player.MaxHp;
@@ -84,7 +77,7 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateGoldText()    //°ñµå È¹µæ ½Ã ½ÇÇà.
     {
-        goldAmount.text = Managers.StageManager.Player.PlayerGold.ToString();
+        goldAmount.text = Managers.StageManager.Player.PlayerGold + "";
     }
     public void UpdateKillCounts()  //¸ó½ºÅÍ Ã³Ä¡ ½Ã ½ÇÇà.
     {

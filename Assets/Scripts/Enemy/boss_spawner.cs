@@ -10,7 +10,11 @@ public class boss_spawner : MonoBehaviour
     private float spawny;
     GameObject ob;
     public BossSpawnEffect bossSpawn;
-
+    AudioSource audioSource;
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -31,8 +35,10 @@ public class boss_spawner : MonoBehaviour
 
         }
         SetLocation();
-        if(Managers.StageManager.IsStageCleared() || Input.GetKeyDown(KeyCode.C))
+
+        if(Managers.StageManager.IsStageCleared()&&!Managers.StageManager.isBossSpawn)
         {
+            Managers.StageManager.isBossSpawn = true;
             Managers.UI.bossSlider.gameObject.SetActive(true);
             Managers.UI.InitBossSlider();
             Spawn();
@@ -53,5 +59,6 @@ public class boss_spawner : MonoBehaviour
     {
         ob = Instantiate(Boss[StageNum], new Vector2(spawnX, spawny), Quaternion.identity);
         ob.GetComponent<Enemy>().EnemyInit(Managers.StageManager.Player);
+        Managers.Sound.PlaySFXAudio("SubBoss/BossSpanwer_SFX", audioSource, 10f);
     }
 }

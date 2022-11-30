@@ -44,14 +44,6 @@ public class StageManager : MonoBehaviour
         isBossAlive = true;
 }
 
-    private void Update()
-    {
-        if (Managers.UI.bossSlider.value < 0f)
-            isBossAlive = false;
-        else
-            isBossAlive = true ;
-    }
-
     #endregion
     public void InitMonsterCounter()
     {
@@ -61,7 +53,10 @@ public class StageManager : MonoBehaviour
     public void DecreaseKillCount()     //킬카운트를 줄이는 방식으로 진행하려고 함. 플레이어가 몬스터를 죽이면 실행.
     {
         if (killCount <= 0)
+        {
+            isSpawnOkay = false;
             return;
+        }
         killCount--;
         Managers.UI.UpdateKillCounts();
     }
@@ -128,6 +123,19 @@ public class StageManager : MonoBehaviour
                 break;
         }
         sceneAnimator.SetTrigger("Movie Start");
-        Managers.Sound.PlaySFXAudio("Etc/SceneChangeSFX");
+      //  Managers.Sound.PlaySFXAudio("Etc/SceneChangeSFX");
+    }
+
+    public void IsBossAlive(float currentHp)
+    {
+        if (currentHp <= 0f)
+        {
+            isSpawnOkay = false;
+            isBossAlive = false;
+        }
+        else
+        {
+            isBossAlive = true;
+        }
     }
 }

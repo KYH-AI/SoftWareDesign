@@ -29,7 +29,6 @@ public class Portal : MonoBehaviour
                 StartCoroutine(SceneChange());
                 Managers.StageManager.InitMonsterCounter();
                 Managers.UI.InitBossSlider();
-                Managers.StageManager.SetStageKillCount();
             }
 
         }

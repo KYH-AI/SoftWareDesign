@@ -29,12 +29,13 @@ public class Boss1 : Enemy
     [SerializeField] Material orignalMaterial;
     [SerializeField] GameObject Portalpref;
     GameObject myInstance;
+    AudioSource audioSource;
 
     private void Start()
     {
         base.Start();
         Invoke(nameof(GetBossLayer),4.5f);
-        
+        audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -159,6 +160,7 @@ public class Boss1 : Enemy
         base.TakeDamage(newDamage);
         EnemyAnimator.SetBool("isHit", true);
         Managers.UI.UpdateBossHpSlider(Hp, MaxHp);
+        Managers.StageManager.IsBossAlive(Hp);
         StartCoroutine(SwitchMaterial());
     }
 
@@ -206,4 +208,13 @@ public class Boss1 : Enemy
         Destroy(gameObject);
 
     }
+    void FireSound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/fire-magic-6947", audioSource);
+    }
+    void DeadSound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/Àú±Û¸µ4", audioSource);
+    }
+    
 }
