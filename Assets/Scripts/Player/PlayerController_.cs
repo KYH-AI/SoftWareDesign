@@ -1,9 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
+using System.Collections.Generic;
 
 
 public class PlayerController_ : MonoBehaviour
 {
+    
+
+    
+
     #region 이동 관련 변수 선언부
     Vector3 moveDirection;                  //이동방향
     Vector2 lastDirection;                  //마지막 이동방향
@@ -33,11 +39,15 @@ public class PlayerController_ : MonoBehaviour
     #region 상태 제어 변수 선언부
     public bool isMoveable = true;             //기본 공격 때 움직임을 제한하기 위한 변수.
     public bool isAttackalble = true;   //스킬 사용 중 혹은 보스 몬스터에게 침묵이 걸렸을 때 스킬 사용을 제한하기 위한 변수.
+    public bool bossDebuff = false;
     #endregion
 
     #region 플레이어 정보 변수 선언부
     Player player;
     #endregion
+
+    public List<char> delevList = new List<char>();
+
 
     #region 유니티 함수
     public void PlayerControllerInit(Player player)
@@ -59,8 +69,11 @@ public class PlayerController_ : MonoBehaviour
     }
     private void Update()
     {
-        if (isMoveable == true)              //기본 공격시 이동을 막기 위함.
+        if (isMoveable == true && !bossDebuff)              //기본 공격시 이동을 막기 위함.
+        {
             Move();
+           
+        }
     }
     #endregion
 
@@ -144,7 +157,16 @@ public class PlayerController_ : MonoBehaviour
     }
     #endregion
 
-   
+    
+    void OnNodeA() { delevList.Add('A'); print("A"); }
+    void OnNodeS() { delevList.Add('S'); print("S"); }
+    void OnNodeD() { delevList.Add('D'); print("D"); }
+    void OnNodeZ() { delevList.Add('Z'); print("Z"); }
+    void OnNodeX() { delevList.Add('X'); print("X"); }
+    void OnNodeC() { delevList.Add('C'); print("C"); }
+
+  
+
 
     #region 애니메이션 이벤트 함수
     void SetIsMoveableTrue()        //공격이 끝났을 때 움직이게 할 수 있도록 하는 애니메이션 이벤트 함수.
