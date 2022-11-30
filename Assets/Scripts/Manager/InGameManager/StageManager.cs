@@ -123,6 +123,7 @@ public class StageManager : MonoBehaviour
                 subTitleText.text = "마지막 꿈나라";
                 break;
         }
+        StartCoroutine(BackGroundSound(stage));
         sceneAnimator.SetTrigger("Movie Start");
         Invoke(nameof(FadeEffect), 0.5f);
     }
@@ -144,5 +145,27 @@ public class StageManager : MonoBehaviour
     private void FadeEffect()
     {
         Managers.Sound.PlaySFXAudio("Etc/SceneChangeSFX");
+    }
+    IEnumerator BackGroundSound(Define.Stage stage)
+    {
+        yield return new WaitForSeconds(1.5f);
+        switch (stage)
+        {
+            case Define.Stage.STAGE1:
+                Managers.Sound.PlayBGMAudio("Stage1BackGround");
+                break;
+            case Define.Stage.STAGE2:
+                Managers.Sound.PlayBGMAudio("Stage2BackGround");
+                break;
+            case Define.Stage.STAGE3:
+                Managers.Sound.PlayBGMAudio("Stage3BackGround");
+                break;
+            case Define.Stage.STAGE4:
+                Managers.Sound.PlayBGMAudio("Stage4BackGround");
+                break;
+            case Define.Stage.Boss:
+                Managers.Sound.PlayBGMAudio("Stage5BackGround");
+                break;
+        }
     }
 }

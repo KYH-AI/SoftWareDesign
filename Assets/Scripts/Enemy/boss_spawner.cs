@@ -55,6 +55,5 @@ public class boss_spawner : MonoBehaviour
     {
         ob = Instantiate(Boss[StageNum], new Vector2(spawnX, spawny), Quaternion.identity);
         ob.GetComponent<Enemy>().EnemyInit(Managers.StageManager.Player);
-        Managers.Sound.PlaySFXAudio("SubBoss/BossSpanwer_SFX");
     }
 }
