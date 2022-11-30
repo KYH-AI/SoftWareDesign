@@ -17,6 +17,7 @@ public class Boss2 : Enemy
     float moveDistance = 15f;
     float attackDistance = 2.5f;
     float attackDelay = 2f;
+    AudioSource audioSource;
     Vector2 dir;
     BossState state = BossState.IDLE_STATE;
     bool isAttack = true;
@@ -35,7 +36,7 @@ public class Boss2 : Enemy
     {
         base.Start();
         Invoke(nameof(GetBossLayer), 4.5f);
-
+        audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -148,6 +149,7 @@ public class Boss2 : Enemy
         Managers.UI.bossSlider.gameObject.SetActive(false);
         isDie = true;
         EnemyAnimator.SetTrigger("isDie");
+        Deadsound();
     }
     void DeadProcess()//Die애니메이션에 넣음
     {
@@ -201,7 +203,6 @@ public class Boss2 : Enemy
         {
             state = BossState.HIDE_STATE;
             yield return new WaitForSeconds(0.8f);
-            isFadeout = true;
             attackCnt = 0;
         }
         else
@@ -228,8 +229,8 @@ public class Boss2 : Enemy
         }
         if (isFadeout)
         {
-           StartCoroutine(FadeOut());
             isFadeout = false;
+            StartCoroutine(FadeOut());
         }
          
        
@@ -238,6 +239,7 @@ public class Boss2 : Enemy
     {
         gameObject.tag = "Untagged";
         gameObject.layer = 15;
+        FadeOutsound();
         while (SpriteRenderer.color.a > 0)
         {
             var color = SpriteRenderer.color;
@@ -259,6 +261,7 @@ public class Boss2 : Enemy
     {
         gameObject.tag = "Enemy";
         gameObject.layer = 14;
+        FadeINsound();
         state = BossState.ATTACK_STATE;
         while (SpriteRenderer.color.a < 1)
         {
@@ -270,9 +273,24 @@ public class Boss2 : Enemy
             //wait for a frame
             yield return null;
         }
-
+        isFadeout = true;
         isHide = false;
 
     }
-
+    void Attacksound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/boss2_Attack_SFX", audioSource);
+    }
+    void FadeOutsound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/FadeOut_SFX", audioSource);
+    }
+    void FadeINsound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/FadeIn_SFX", audioSource);
+    }
+    void Deadsound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/pzeDth00", audioSource);
+    }
 }
