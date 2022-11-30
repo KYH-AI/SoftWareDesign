@@ -46,6 +46,7 @@ public class BossSpawnEffect : MonoBehaviour
         Managers.StageManager.Player.PlayerController.isAttackalble = true;
         bossCamera.gameObject.SetActive(false);
         Managers.Sound.PlayBGMAudio("Jeontoo3");
+        print("1");
     }
     #endregion
 
@@ -70,7 +71,7 @@ public class BossSpawnEffect : MonoBehaviour
                 bossEffectImage.sprite = bossImageList[3];
                 break;
             case Define.Stage.Boss:
-                bossEffectText.text = "최종 보스";
+                bossEffectText.text = "착했던 사령술사";
                 bossEffectImage.sprite = bossImageList[4];
                 break;
 

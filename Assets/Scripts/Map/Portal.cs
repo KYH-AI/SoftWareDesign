@@ -56,7 +56,7 @@ public class Portal : MonoBehaviour
         transform.position = new Vector2(0, 0);
         MemoryPoolManager.GetInstance().InitPool();
         Managers.SkillEffectVolume.ChagnePostProcessProfile(null);
-        LoadingScene.LoadScene("JinminStore");
+        LoadingScene.LoadScene("JinminStore 1");
     }
 
     IEnumerator SceneChange()
