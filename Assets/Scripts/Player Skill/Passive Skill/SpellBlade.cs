@@ -86,7 +86,7 @@ public class SpellBlade : PassiveSkill
     {
         buffDamagePercent += 50;
         SkillCoolTime -= 2f;
-        skillDuration += 2f;
+        SkillDuration = (skillDuration + 2f);
     }
 
     private void SpellBladeActive()

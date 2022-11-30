@@ -65,10 +65,6 @@ public class Barrier : ActiveSkill
         set { skillDamage = value; }
     } 
     /// <summary>
-    /// 방벽 스킬 크기 프로퍼티 ( set : 방벽 스킬 Scale 값 변경 )
-    /// </summary>
-    public Vector3 BarrierSize { set { barrierSize.localScale = value; } }
-    /// <summary>
     /// 방벽 스킬 공격간격 시간 프로퍼티 ( set : 공견간격 시간 코루틴 WaitForSeconds 값 변경 )
     /// </summary>
     public float BarrierAttackDelay
@@ -108,7 +104,6 @@ public class Barrier : ActiveSkill
         }
         else
         {
-            // TODO : UI에서 "아직 재사용 대기시간 입니다." 연출하기
             return;
         }
     }
@@ -118,10 +113,8 @@ public class Barrier : ActiveSkill
         skillDamage += 1;
         SkillCoolTime -= 2f;
         barrierSize.localScale += new Vector3(0.5f, 0.5f, 1f);
-        barrierAttackDelay -= 0.2f;
-        skillDuration += 1f;
-        //  barrierSize.localScale += new Vector3(0.5f, 0.5f, 1f);
-        // TODO : 상점에서 업그레이드 방식이 정해지면 진행 하자 (09/28)
+        BarrierAttackDelay =  (barrierAttackDelay - 0.2f);
+        SkillDuration = (skillDuration + 1f);
     }
 
     private void BarrierSkillActive()
@@ -130,7 +123,6 @@ public class Barrier : ActiveSkill
         barrierCollider.enabled = true;
         Managers.Sound.PlaySFXAudio(barrierOnSFX, null, 0.5f);
         StartCoroutine(BarrierHitBox());
-        // TODO : barrier 오브젝트 콜라이더 활성화
     }
 
     private void BarrierSkillDisable()
@@ -145,8 +137,6 @@ public class Barrier : ActiveSkill
         barrierCollider.enabled = false;
         barrierEffectObject.SetActive(false);
         OnCoolTime();
-
-        // TODO : barrier 오브젝트 콜라이더 비활성화
     }
 
     private IEnumerator BarrierSkillProcess()
@@ -158,7 +148,6 @@ public class Barrier : ActiveSkill
         BarrierSkillDisable();
     }
 
-    // Barrier 콜라이더 On/Off
     private IEnumerator BarrierHitBox()
     {
         while (true)

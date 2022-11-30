@@ -24,13 +24,6 @@ public class Coward : PassiveSkill
 
     #region 스킬 스텟 프로퍼티
     /// <summary>
-    /// 스킬 이동속도 프로퍼티 (  set : 겁쟁이 이동속도 buffSpeed 값 변경 )
-    /// </summary>
-    public int BuffSpeed
-    {
-        set { buffSpeed = value; }
-    }
-    /// <summary>
     /// 스킬 지속시간 프로퍼티 (  set : 겁쟁이 지속시간 코루틴 WaitForSeconds 값 변경 )
     /// </summary>
     public float SkillDuration 
@@ -66,7 +59,7 @@ public class Coward : PassiveSkill
 
     public override void Upgrade()
     {
-        skillDuration += 1f;
+        SkillDuration = (skillDuration + 1f);
         SkillCoolTime -= 2f;
         buffSpeed += 2;
     }

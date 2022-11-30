@@ -43,7 +43,6 @@ public class ThunderSlash : ActiveSkill
         }
         else
         {
-            // TODO : UI에서 "아직 재사용 대기시간 입니다." 연출하기
             return;
         }
     }
@@ -53,7 +52,6 @@ public class ThunderSlash : ActiveSkill
         skillDamage += 10;
         SkillCoolTime -= 2;
         skillTotalTarget += 3;
-        // TODO : 상점에서 업그레이드 방식이 정해지면 진행 하자 (09/28)
     }
 
     private Define.CurrentSkillState ThunderSlashSkillAttack()

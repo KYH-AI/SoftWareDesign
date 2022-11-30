@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// 메이플 전사 파워 슬래쉬 기술
-/// </summary>
+
 public class WindDash : ActiveSkill
 {
     private TrailRenderer windDlashEffect;
@@ -19,17 +17,6 @@ public class WindDash : ActiveSkill
     /// 스킬 대쉬 최대길이
     /// </summary>
     private float skillDashDistacne = 5f;
-    #endregion
-
-    #region 스킬 스텟 프로퍼티
-    /// <summary>
-    /// 스킬 데미지 프로퍼티 ( set : 스킬 데미지 값 변경 )
-    /// </summary>
-    public int SkillDamgae { set { skillDamgae = value; } }
-    /// <summary>
-    /// 스킬 대쉬 최대길이 프로퍼티 ( set : 스킬 대쉬 최대길이 값 변경 )
-    /// </summary>
-    public float SkillDashDistacne { set { skillDashDistacne = value; } }   
     #endregion
 
     private void Start()

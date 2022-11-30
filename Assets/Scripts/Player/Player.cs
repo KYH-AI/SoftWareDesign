@@ -77,10 +77,11 @@ public class Player : LivingEntity
         DontDestroyOnLoad(gameObject);
         PlayerInit();
 
+
         #region 스킬 테스트 중 (김윤호)
         /* 테스트 용도 */
 
-
+        /*
         GameObject skillObject3 = Managers.Resource.GetPerfabGameObject("Player_Skill/FlameStrike Skill");
         ActiveSkill fpSkill = Instantiate(skillObject3, this.transform).GetComponent<ActiveSkill>();
         fpSkill.Init(this);
@@ -130,8 +131,9 @@ public class Player : LivingEntity
         PassiveSkill drSkill = Instantiate(droneSkill, this.transform).GetComponent<PassiveSkill>();
         drSkill.Init(this);
         drSkill.OnActive();
+        */
 
-#endregion
+        #endregion
 
     }
 

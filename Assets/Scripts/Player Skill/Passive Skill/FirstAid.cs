@@ -30,16 +30,6 @@ public class FirstAid : PassiveSkill
     {
         set { buffHpRegenPercent = value; }
     }
-    /// <summary>
-    /// 스킬 지속시간 프로퍼티 (  set : 겁쟁이 지속시간 코루틴 WaitForSeconds 값 변경 )
-    /// </summary>
-    public float SkillDuration
-    {
-        set
-        {
-            skillDuration = value;
-        }
-    }
     #endregion
 
     private void Start()

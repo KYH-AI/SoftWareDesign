@@ -27,19 +27,6 @@ public class FlameStrike : ActiveSkill
     private WaitForSeconds skillAttackDelayTimeSec;
     #endregion
 
-    /*
-    #region 스킬 스텟 프로퍼티
-    /// <summary>
-    /// 스킬 데미지 프로퍼티 ( set : 스킬 데미지 값 변경 )
-    /// </summary>
-    public int SkillDamgae { set { skillDamgae = value; } }
-    /// <summary>
-    /// 불기둥 스킬 소환 개수 프로퍼티 ( set : 불기둥 스킬 소환 개수 값 변경 )
-    /// </summary>
-    public int SkillProjectile { set { skillProjectileCount = value; } }
-    #endregion
-    */
-
     private void Start()
     {
         FlameStrikeInit();

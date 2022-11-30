@@ -6,17 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class ControlButton : MonoBehaviour
 {
-   
-       
-        
     public void ChangeScene()
     {
-        SceneManager.LoadScene("Stage1");
+        SceneManager.LoadScene("prologue");
     }
 
-      public void Quitbtn()
-      {
+    public void Quitbtn()
+    {
         Application.Quit();
-      }
-   
+    }
 }
