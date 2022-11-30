@@ -8,6 +8,7 @@ public class SpellBlade : PassiveSkill
     /// 스킬 이펙트 오브젝트
     /// </summary>
     [SerializeField] GameObject spellBladeEffect;
+    private readonly string[] spellBaldeSFX = { "Player/Active Skill/SpellBlade_1", "Player/Active Skill/SpellBlade_2" };
 
     #region 스킬 초기 스텟 데이터
     /// <summary>
@@ -103,18 +104,17 @@ public class SpellBlade : PassiveSkill
 
     private IEnumerator SpellBladeSkillProcess()
     {
-   //     print("스킬 버프 작동");
         // 플레이어 기본공격력이 달라진 경우 다시 버프 데미지 재계산
         if (playerObject.DefaultAttackDamage != lastDefaultAttackDamage)
         {
             lastBuffDamage = (playerObject.DefaultAttackDamage * buffDamagePercent) / 100;
         }
         spellBladeEffect.SetActive(true);
-
+        Managers.Sound.PlaySFXAudio(spellBaldeSFX[0]);
         playerObject.DefaultAttackDamage += lastBuffDamage;  // 버프 데미지 적용
         yield return skillDurationSec;
         StopSkillProcess();
-    //    print("스킬 지속시간이 모두 종료됨");
+
     }
 
     /// <summary>
@@ -125,12 +125,11 @@ public class SpellBlade : PassiveSkill
         // 스킬이 적용된 상태가 아니면 무시
         if (buffCoroutine == null) return;
 
+        Managers.Sound.PlaySFXAudio(spellBaldeSFX[1]);
         StopCoroutine(buffCoroutine);  // 스킬 코루틴 바로 종료
         buffCoroutine = null;          // 코루틴 초기화
         OnCoolTime();
         playerObject.DefaultAttackDamage -= lastBuffDamage;  // 버프 데미지 해체
-    //    print(playerObject.DefaultAttackDamage + " 버프 해체 데미지");
-    //    print("스킬 지속시간이 모두 종료됨");
         spellBladeEffect.SetActive(false);
     }
 }

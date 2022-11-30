@@ -7,6 +7,7 @@ public class HourGlass : PassiveSkill
 {
     [SerializeField] GameObject hourGlassEffectObject;
     [SerializeField] VolumeProfile hourGlassProfile;
+    private readonly string[] hourGlassSFX = {"Player/Active Skill/HourGlass_1", "Player/Active Skill/HourGlass_2" };
 
     private Animator hourGlassAnimator;
 
@@ -80,6 +81,7 @@ public class HourGlass : PassiveSkill
 
     private void HourGlassSkillDisable()
     {
+        Managers.Sound.PlaySFXAudio(hourGlassSFX[1]);
         hourGlassAnimator.SetTrigger("ComeBack"); // 돌아오는 시계 애니메이션 재생 및 HourGlassEvent.cs 에서 연출 효과 및 시간 정지 해체 진행
         OnCoolTime();
         playerObject.PlayerController.isAttackalble = true;
@@ -87,6 +89,7 @@ public class HourGlass : PassiveSkill
 
     private void OnSkillEffect()
     {
+       Managers.Sound.PlaySFXAudio(hourGlassSFX[0]);
        Managers.SkillEffectVolume.ChagnePostProcessProfile(hourGlassProfile); // Hour Glass 스킬 포스트 프로세싱 효과 활성화
     }
 

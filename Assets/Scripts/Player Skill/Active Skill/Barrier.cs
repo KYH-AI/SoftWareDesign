@@ -5,6 +5,7 @@ using UnityEngine;
 public class Barrier : ActiveSkill
 {
    [SerializeField] GameObject barrierEffectObject;
+    private readonly string barrierOnSFX = "Player/Active Skill/Barrier On";
 
     private CircleCollider2D barrierCollider; 
     private Animator barrierAnimator;
@@ -127,6 +128,7 @@ public class Barrier : ActiveSkill
     {
         barrierEffectObject.SetActive(true);
         barrierCollider.enabled = true;
+        Managers.Sound.PlaySFXAudio(barrierOnSFX, null, 0.5f);
         StartCoroutine(BarrierHitBox());
         // TODO : barrier 오브젝트 콜라이더 활성화
     }
