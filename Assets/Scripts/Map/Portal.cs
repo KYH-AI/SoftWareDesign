@@ -60,6 +60,7 @@ public class Portal : MonoBehaviour
     IEnumerator SceneChange()
     {
         yield return new WaitForSeconds(1f);
+        Managers.StageManager.isBossSpawn = false;
         transform.position = new Vector2(0, 0);
         inPortal = false;
         MemoryPoolManager.GetInstance().InitPool();

@@ -35,9 +35,9 @@ public class boss_spawner : MonoBehaviour
 
         }
         SetLocation();
-        if(Input.GetKeyDown(KeyCode.C) || Managers.StageManager.IsStageCleared())
+        if(Managers.StageManager.IsStageCleared())
         {
-            
+            Managers.StageManager.isBossSpawn = true;
             Managers.UI.bossSlider.gameObject.SetActive(true);
             Managers.UI.InitBossSlider();
             Spawn();
@@ -46,6 +46,7 @@ public class boss_spawner : MonoBehaviour
             bossSpawn.PlayFromTimeline();
             Managers.StageManager.SetStageKillCount();
         }
+        print(Managers.StageManager.killCount);
     }
     void SetLocation()
     {
