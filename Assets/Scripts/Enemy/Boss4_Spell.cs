@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Boss4_Spell : Projectile
 {
-  
+    AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void DisableObject()
     {
         this.gameObject.SetActive(false);
@@ -20,5 +25,9 @@ public class Boss4_Spell : Projectile
         {
             target.GetComponent<Player>().TakeDamage(ProjectileDamage);
         }
+    }
+    void sound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/Boss4_Spell_SFX", audioSource);
     }
 }

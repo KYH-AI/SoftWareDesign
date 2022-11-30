@@ -12,8 +12,12 @@ public class StageManager : MonoBehaviour
     public int killCount;      //현재 킬 카운트
     public Define.Stage stage;        //현재 스테이지
     public GameObject[] coins = new GameObject[3];
+<<<<<<< HEAD
     public int bossCount = 0;
 
+=======
+    public bool isBossSpawn = false;
+>>>>>>> newSubBoss
 
     #region 상점 변수
     public GameManagerYJ shopManager;
@@ -128,6 +132,6 @@ public class StageManager : MonoBehaviour
                 break;
         }
         sceneAnimator.SetTrigger("Movie Start");
-        Managers.Sound.PlaySFXAudio("Etc/SceneChangeSFX");
+        //Managers.Sound.PlaySFXAudio("Etc/SceneChangeSFX");
     }
 }

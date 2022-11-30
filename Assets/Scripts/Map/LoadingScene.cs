@@ -41,6 +41,7 @@ public class LoadingScene : MonoBehaviour
             if (progressBar.fillAmount >= 1f)
             {
                 op.allowSceneActivation = true;
+                Managers.StageManager.SetStageKillCount();
                 yield break;
             }
             yield return null;
