@@ -17,6 +17,7 @@ public class GameManagerYJ : MonoBehaviour
     private void Start()
     {
         Managers.StageManager.shopManager = this;
+        Managers.Sound.PlayBGMAudio("Bird1");
     }
 
     public void Action(GameObject scanOb)
