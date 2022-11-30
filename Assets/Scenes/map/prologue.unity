@@ -2241,7 +2241,6 @@ GameObject:
   - component: {fileID: 1810208841}
   - component: {fileID: 1810208843}
   - component: {fileID: 1810208842}
-  - component: {fileID: 1810208844}
   m_Layer: 0
   m_Name: talkImage
   m_TagString: Untagged
@@ -2319,18 +2318,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810208840}
   m_CullTransparentMesh: 1
---- !u!114 &1810208844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810208840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fa764700245f9240907858ab0fe1b44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1833022770
 GameObject:
   m_ObjectHideFlags: 0
