@@ -126,5 +126,6 @@ public class StageManager : MonoBehaviour
                 break;
         }
         sceneAnimator.SetTrigger("Movie Start");
+        Managers.Sound.PlaySFXAudio("Etc/SceneChangeSFX");
     }
 }

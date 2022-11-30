@@ -6,6 +6,7 @@ public class BarrierEvent : MonoBehaviour
 {
 
     Barrier barrier;
+    private readonly string barrierHitSFX = "Player/Active Skill/Barrier Hit";
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class BarrierEvent : MonoBehaviour
     {
         if(target.CompareTag(Define.StringTag.Enemy.ToString()))
         {
+            Managers.Sound.PlaySFXAudio(barrierHitSFX, null, 0.25f);
             target.GetComponent<Enemy>().TakeDamage(barrier.SkillDamage);
         }
     }

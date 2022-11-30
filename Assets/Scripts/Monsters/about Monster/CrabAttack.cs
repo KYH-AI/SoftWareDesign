@@ -49,6 +49,9 @@ public class CrabAttack : BasicMonsterController
 
     void AttackPlayer()
     {
+        string name = base.attackAudio.ToString().Substring(0, base.attackAudio.ToString().Length - 33);
+        Debug.Log(name + "_Attack");
+        Managers.Sound.PlaySFXAudio("Monster/" + name + "_Attack", base.attackAudio, base.volume, false);
         if (Physics2D.OverlapCircle(this.transform.position, crabAttackRadius, 1<<10) == true)
         {
             base.DefaultAttack();
