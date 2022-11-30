@@ -36,6 +36,7 @@ public class BossSpawnEffect : MonoBehaviour
         Managers.StageManager.Player.PlayerController.isAttackalble = false;
         UpdateBossEffectText();
         Managers.SkillEffectVolume.ChagnePostProcessProfile(null);
+        Managers.StageManager.isSpawnOkay = true;
     }
 
     public void TimeLineEndSignal()
