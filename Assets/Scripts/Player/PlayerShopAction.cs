@@ -13,20 +13,19 @@ public class PlayerShopAction : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-             Collider2D rayHIt = Physics2D.OverlapCircle(transform.position,  3.5f, LayerMask.GetMask("object")); //해당레이어의물체만스캔
+            Collider2D rayHIt = Physics2D.OverlapCircle(transform.position, 1.0f, LayerMask.GetMask("object")); //해당레이어의물체만스캔
             if (rayHIt != null)
             {
                 scanObject = rayHIt.gameObject;
-                print("raycast 호출됨");
                 Managers.StageManager.shopManager.Action(scanObject);
-            } 
+
+            }
             else
-                scanObject = null;   
+                scanObject = null;
+
+
         }
-
-
-
-
     }
-
 }
+
+
