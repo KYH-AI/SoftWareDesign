@@ -30,8 +30,8 @@ public class PotionUpdate : MonoBehaviour
 
             Managers.StageManager.Player.PlayerGold -= 150;
            
-            Managers.StageManager.Player.MaxHp += 100;
-            potion.text = "체력 100회복!";
+            Managers.StageManager.Player.Hp += 10;
+            potion.text = "체력 회복!";
           
         }
         else { potion.text = "구매 불가! "; }
