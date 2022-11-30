@@ -46,10 +46,7 @@ public class StageManager : MonoBehaviour
 
     private void Update()
     {
-        if (Managers.UI.bossSlider.value < 0f)
-            isBossAlive = false;
-        else
-            isBossAlive = true ;
+
     }
 
     #endregion
@@ -128,6 +125,14 @@ public class StageManager : MonoBehaviour
                 break;
         }
         sceneAnimator.SetTrigger("Movie Start");
-        Managers.Sound.PlaySFXAudio("Etc/SceneChangeSFX");
+      //  Managers.Sound.PlaySFXAudio("Etc/SceneChangeSFX");
+    }
+
+    public void IsBossAlive(float currentHp)
+    {
+        if (currentHp <= 0f)
+            isBossAlive = false;
+        else
+            isBossAlive = true;
     }
 }

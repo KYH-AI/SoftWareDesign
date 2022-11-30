@@ -72,9 +72,11 @@ public class PlayerSkill : MonoBehaviour
     private IEnumerator SkillCoolTimeProcess()
     {
         //Debug.Log("해당 스킬 쿨타임 : " + skillCoolTime);
+        Managers.UI.CoolTimeProcess();                          //스킬을 쓸 때마다 UI 쿨타임 함수 실행.
 
         yield return skillCoolTimeSec;
 
+        Managers.UI.CoolTimeProcess();                          //쿨이 끝날 때도 UI 쿨타임 함수 실행
         currentSkillState = Define.CurrentSkillState.ACTIVE;
     }
 

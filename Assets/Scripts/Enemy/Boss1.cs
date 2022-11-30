@@ -159,6 +159,7 @@ public class Boss1 : Enemy
         base.TakeDamage(newDamage);
         EnemyAnimator.SetBool("isHit", true);
         Managers.UI.UpdateBossHpSlider(Hp, MaxHp);
+        Managers.StageManager.IsBossAlive(Hp);
         StartCoroutine(SwitchMaterial());
     }
 
