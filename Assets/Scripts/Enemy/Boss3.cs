@@ -28,11 +28,12 @@ public class Boss3 : Enemy
     float fireDelay = 1f;
     float attackDelay = 3f;
     private int skillDamage = 5;
-
+    AudioSource audioSource;
     private void Start()
     {
         base.Start();
         Invoke(nameof(GetBossLayer), 4.5f);
+        audioSource = GetComponent<AudioSource>();  
 
     }
     private void GetBossLayer()
@@ -126,7 +127,7 @@ public class Boss3 : Enemy
 
     IEnumerator TelpoToPlayer()
     {
-        
+        TelpoSound();
         yield return new WaitForSeconds(0.5f);
         GameObject projectile = MemoryPoolManager.GetInstance().OutputGameObject(Telpo,
                                                                                     "SubBoss/"+Telpo.name,
@@ -241,4 +242,17 @@ public class Boss3 : Enemy
         myInstance.transform.position = new Vector2(transform.position.x-2f, transform.position.y+1f);
         Destroy(gameObject);
     }
+    void AttackSound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/MP_swosh-sword-swing", audioSource);
+    }
+    void DeadSound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/Boss3_Die_SFX", audioSource);
+    }
+    void TelpoSound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/boss3_Telpo_SFX", audioSource);
+    }
+
 }
