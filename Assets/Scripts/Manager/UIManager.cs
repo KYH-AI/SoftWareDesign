@@ -6,8 +6,6 @@ using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
-    public float playerHp;
-    public float playerMaxHp;
     public Slider playerSlider;
     public Image playerRightSlider;
     public Image playerLeftSlider;
@@ -31,11 +29,6 @@ public class UIManager : MonoBehaviour
         InitSkillImages();
         UpdateGoldText();
         UpdateKillCounts();
-    }
-    public void UpdatePlayerHp()
-    {
-        playerMaxHp = Managers.StageManager.Player.MaxHp;
-        playerHp = Managers.StageManager.Player.Hp;
     }
 
     public void InitSkillImages()
@@ -63,7 +56,10 @@ public class UIManager : MonoBehaviour
     public void UpdatePlayerHpSlider(float currentHp, float maxHp)      //플레이어가 데미지 받았을 때 실행.
     {
         if (currentHp / maxHp > 0.5)
+        {
+            playerLeftSlider.fillAmount = 1f;
             playerRightSlider.fillAmount = (currentHp + currentHp - maxHp) / maxHp;
+        }
         else
         {
             playerRightSlider.fillAmount = 0;

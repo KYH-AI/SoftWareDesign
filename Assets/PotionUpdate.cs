@@ -32,7 +32,9 @@ public class PotionUpdate : MonoBehaviour
            
             Managers.StageManager.Player.Hp += 10;
             potion.text = "체력 회복!";
-          
+            Managers.UI.UpdatePlayerHpSlider(Managers.StageManager.Player.Hp, Managers.StageManager.Player.MaxHp);
+
+
         }
         else { potion.text = "구매 불가! "; }
 
