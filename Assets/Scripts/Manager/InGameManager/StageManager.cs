@@ -13,6 +13,7 @@ public class StageManager : MonoBehaviour
     public Define.Stage stage;        //현재 스테이지
     public GameObject[] coins = new GameObject[3];
     public int bossCount = 0;
+    public bool isBossSpawn = false;
 
 
     #region 상점 변수
