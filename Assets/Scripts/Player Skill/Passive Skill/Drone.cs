@@ -14,7 +14,7 @@ public class Drone : PassiveSkill
     private Coroutine droneRotateCheck;
     private bool isDroneStop = false;
 
-    private readonly string[] droneSFX = { "Player/Active Skill/Drone_1", "Player/Active Skill/Drone_2" };
+    private readonly string[] droneSFX = { "Player/Passive Skill/Drone_1", "Player/Passive Skill/Drone_2" };
     private float lastTime = 0f;        // 드론 마지막 사격 시간
     private readonly float DRONE_MOVE_SPEED = 50f;              // 드론 이동 속도 (상수 값)
     private readonly float DRONE_BULLET_LINE_DURATION = 0.1f;   // 드론 공격 이펙트 지속 시간(상수 값)

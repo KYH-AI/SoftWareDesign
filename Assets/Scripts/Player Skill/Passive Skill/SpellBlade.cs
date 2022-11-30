@@ -8,7 +8,7 @@ public class SpellBlade : PassiveSkill
     /// 스킬 이펙트 오브젝트
     /// </summary>
     [SerializeField] GameObject spellBladeEffect;
-    private readonly string[] spellBaldeSFX = { "Player/Active Skill/SpellBlade_1", "Player/Active Skill/SpellBlade_2" };
+    private readonly string[] spellBaldeSFX = { "Player/Passive Skill/SpellBlade_1", "Player/Passive Skill/SpellBlade_2" };
 
     #region 스킬 초기 스텟 데이터
     /// <summary>

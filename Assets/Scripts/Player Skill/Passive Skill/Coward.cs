@@ -5,7 +5,7 @@ using UnityEngine;
 public class Coward : PassiveSkill
 {
     [SerializeField] GameObject cowardEffect;
-    private readonly string cowardSFX = "Player/Active Skill/Coward";
+    private readonly string cowardSFX = "Player/Passive Skill/Coward";
 
     #region 스킬 초기 스텟 데이터
     /// <summary>

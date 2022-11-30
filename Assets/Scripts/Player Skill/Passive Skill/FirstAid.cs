@@ -5,7 +5,7 @@ using UnityEngine;
 public class FirstAid : PassiveSkill
 {
     [SerializeField] GameObject firstAidEffect;
-    private readonly string firstAidSFX = "Player/Active Skill/FirstAid";
+    private readonly string firstAidSFX = "Player/Passive Skill/FirstAid";
 
     #region 스킬 초기 스텟 데이터
     /// <summary>

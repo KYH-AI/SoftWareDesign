@@ -7,7 +7,7 @@ public class HourGlass : PassiveSkill
 {
     [SerializeField] GameObject hourGlassEffectObject;
     [SerializeField] VolumeProfile hourGlassProfile;
-    private readonly string[] hourGlassSFX = {"Player/Active Skill/HourGlass_1", "Player/Active Skill/HourGlass_2" };
+    private readonly string[] hourGlassSFX = { "Player/Passive Skill/HourGlass_1", "Player/Passive Skill/HourGlass_2" };
 
     private Animator hourGlassAnimator;
 
