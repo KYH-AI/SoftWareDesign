@@ -10,7 +10,11 @@ public class boss_spawner : MonoBehaviour
     private float spawny;
     GameObject ob;
     public BossSpawnEffect bossSpawn;
-
+    AudioSource audioSource;
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -53,5 +57,6 @@ public class boss_spawner : MonoBehaviour
     {
         ob = Instantiate(Boss[StageNum], new Vector2(spawnX, spawny), Quaternion.identity);
         ob.GetComponent<Enemy>().EnemyInit(Managers.StageManager.Player);
+        Managers.Sound.PlaySFXAudio("SubBoss/BossSpanwer_SFX", audioSource, 10f);
     }
 }

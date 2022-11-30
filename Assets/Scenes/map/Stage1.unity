@@ -575,6 +575,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: System Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 3482405793546430598, guid: c6fceae9aed4c114ca3429bafb3f024b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4362261394933252585, guid: c6fceae9aed4c114ca3429bafb3f024b,
         type: 3}
       propertyPath: Player

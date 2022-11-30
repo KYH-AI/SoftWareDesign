@@ -41,4 +41,5 @@ public class FireBall : Projectile
             target.GetComponent<Player>().TakeDamage(ProjectileDamage);
         }
     }
+    
 }
