@@ -177,6 +177,7 @@ public class Boss4_ : Enemy
     public override void TakeDamage(int newDamage)
     {
         base.TakeDamage(newDamage);
+        Managers.StageManager.IsBossAlive(Hp);
         Managers.UI.UpdateBossHpSlider(Hp, MaxHp);
         EnemyAnimator.SetBool("isHit", true);
     }

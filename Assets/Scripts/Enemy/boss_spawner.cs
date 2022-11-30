@@ -47,7 +47,6 @@ public class boss_spawner : MonoBehaviour
             Managers.CameraManager.SetFollow(this.transform); 
             bossSpawn.PlayFromTimeline();
         }
-        print(Managers.StageManager.killCount);
     }
     //보스가 죽으면 보스카운터는 0;
     void SetLocation()
