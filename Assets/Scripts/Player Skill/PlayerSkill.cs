@@ -36,6 +36,8 @@ public class PlayerSkill : MonoBehaviour
     {
         set 
         {
+            if (skillCoolTime <= 0) value = 1f;
+
             if (skillCoolTime != value)  // 기존 스킬 쿨타임이 변경되면 코루틴 WaitForSeconds 값도 변경
             { 
                 skillCoolTimeSec = new WaitForSeconds(value);

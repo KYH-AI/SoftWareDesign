@@ -31,18 +31,18 @@ public class boss_spawner : MonoBehaviour
 
         }
         SetLocation();
-        if(Input.GetKeyDown(KeyCode.C) || Managers.StageManager.IsStageCleared())
+        if(Managers.StageManager.IsStageCleared() || Input.GetKeyDown(KeyCode.C))
         {
-            
             Managers.UI.bossSlider.gameObject.SetActive(true);
             Managers.UI.InitBossSlider();
             Spawn();
+            Managers.StageManager.bossCount++;
             Managers.StageManager.InitMonsterCounter();
             Managers.CameraManager.SetFollow(this.transform); 
             bossSpawn.PlayFromTimeline();
-            Managers.StageManager.SetStageKillCount();
         }
     }
+    //보스가 죽으면 보스카운터는 0;
     void SetLocation()
     {
         spawnX = Managers.StageManager.Player.transform.position.x;

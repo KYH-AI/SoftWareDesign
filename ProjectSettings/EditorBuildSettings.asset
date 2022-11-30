@@ -27,9 +27,6 @@ EditorBuildSettings:
     path: Assets/Scenes/map/Stage4.unity
     guid: 1aed5888a1f1e0b42acb5be994dd1164
   - enabled: 1
-    path: Assets/Scenes/map/Stage5.unity
-    guid: 4ec48055cbad59a40a9b519dd5870395
-  - enabled: 1
     path: Assets/Scenes/map/JinminStore.unity
     guid: 496dc5b7f0069134391df6f81243c645
   - enabled: 1

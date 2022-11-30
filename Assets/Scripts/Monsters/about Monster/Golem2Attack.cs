@@ -56,6 +56,9 @@ public class Golem2Attack : BasicMonsterController
 
         yield return new WaitForSeconds(warningTime);
 
+        string name = base.attackAudio.ToString().Substring(0, base.attackAudio.ToString().Length - 33);
+        Debug.Log(name + "_Attack");
+        Managers.Sound.PlaySFXAudio("Monster/" + name + "_Attack", base.attackAudio, base.volume, false);
 
         beamRenderer.color = new Color(225, 225, 225, 225);
         beamRenderer.sprite = laser;

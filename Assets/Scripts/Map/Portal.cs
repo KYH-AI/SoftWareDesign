@@ -17,6 +17,7 @@ public class Portal : MonoBehaviour
             {
                 inPortal = true;
                 StartCoroutine(ToStore());
+                Managers.StageManager.bossCount--;
             }
 
         }
@@ -28,6 +29,7 @@ public class Portal : MonoBehaviour
                 StartCoroutine(SceneChange());
                 Managers.StageManager.InitMonsterCounter();
                 Managers.UI.InitBossSlider();
+                Managers.StageManager.SetStageKillCount();
             }
 
         }

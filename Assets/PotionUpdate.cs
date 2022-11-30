@@ -21,12 +21,11 @@ public class PotionUpdate : MonoBehaviour
     public void Potion()
     {
         if (Managers.StageManager.Player.PlayerGold >= 150)
-
         {
             Managers.StageManager.Player.PlayerGold -= 150;
             Managers.StageManager.Player.MaxHp += 100;
             potion.text = "체력 100회복!";
-          
+            Managers.UI.UpdatePlayerHp();
         }
         else { potion.text = "구매 불가! "; }
 
