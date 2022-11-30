@@ -8,7 +8,7 @@ public class BombController : MonoBehaviour
     float bombAttackRadius = 0.5f;
     public GameObject crab;
     public Animator anim;
-    float shootSpeed=0.1f;
+    float shootSpeed=4f;
     Vector3 dir;
     float time;
 
@@ -25,8 +25,8 @@ public class BombController : MonoBehaviour
 
     void Update()
     {
-         if (time >= 0.6f)
-         {
+        if (time >= 0.5f)
+        {
             anim.SetTrigger("bomb");
             Debug.Log("Set Bomb!");
             Debug.Log(name + "_Attack");

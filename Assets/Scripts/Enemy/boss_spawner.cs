@@ -11,6 +11,7 @@ public class boss_spawner : MonoBehaviour
     GameObject ob;
     public BossSpawnEffect bossSpawn;
 
+    bool BossIsHere=false;
     // Update is called once per frame
     void Update()
     {
@@ -31,7 +32,7 @@ public class boss_spawner : MonoBehaviour
 
         }
         SetLocation();
-        if(Managers.StageManager.IsStageCleared() || Input.GetKeyDown(KeyCode.C))
+        if(Input.GetKeyDown(KeyCode.C))
         {
             Managers.UI.bossSlider.gameObject.SetActive(true);
             Managers.UI.InitBossSlider();
