@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Player : LivingEntity
 {
     /* 변수 */
+
+    #region 플레이어 사망처리 변수
+    private bool isDead = false;
+    public bool IsDead { get { return isDead; } }
+    #endregion
 
     #region 플레이어 이미지 변수
     [SerializeField] Sprite[] attackSprites;
@@ -67,6 +73,11 @@ public class Player : LivingEntity
         get { return activeSkillSlot_Index;}
         set { activeSkillSlot_Index = value; }
     }
+    #endregion
+
+    #region 플레이어 효과음
+    private readonly string[] PLAYER_HIT_SFX = { "Player/PlayerHitSFX_1", "Player/PlayerHitSFX_2", "Player/PlayerHitSFX_3" };
+    private readonly string PLAYER_DEAD_SFX = "Player/PlayerDeadSFX";
     #endregion
 
     /* 함수 */
@@ -152,7 +163,9 @@ public class Player : LivingEntity
     #region 플레이어 피격 시
     public override sealed void TakeDamage(int newDamage)
     {
+        if (isDead) return;
         base.TakeDamage(newDamage);
+
         HitEvent?.Invoke(); // 피격 시 관련된 패시브 기술만 호출함
         StartCoroutine(SwitchMaterial()); // 피격 시 플레이어 색상 변경 코루틴
 
@@ -165,6 +178,7 @@ public class Player : LivingEntity
 
         floatingText.GetComponent<FloatingText>().DamageText = newDamage.ToString();
         floatingText.SetActive(true);
+        Managers.Sound.PlaySFXAudio(PLAYER_HIT_SFX[Random.Range(0, PLAYER_HIT_SFX.Length)]);
 
 
         Managers.UI.UpdatePlayerHpSlider(Hp, MaxHp);
@@ -185,8 +199,13 @@ public class Player : LivingEntity
     #region 플레이어 사망 처리
     protected override void OnDead()
     {
+        playerController.isAttackalble = false;
+        playerController.isMoveable = false;
+        isDead = true;
+        Managers.Sound.PlaySFXAudio(PLAYER_DEAD_SFX);
         StopAllCoroutines();
-        gameObject.SetActive(false);
+        gameObject.layer = 0;
+        playerController.Anim.SetTrigger("isDead");
     }
     #endregion
 
@@ -218,5 +237,10 @@ public class Player : LivingEntity
     }
     #endregion
 
+    private void PlayerDeadEvent()
+    {
+        SceneManager.LoadScene("Ending");
+        gameObject.SetActive(false);
+    }
 
 }

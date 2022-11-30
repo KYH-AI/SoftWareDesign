@@ -126,6 +126,11 @@ public class StageManager : MonoBehaviour
                 break;
         }
         sceneAnimator.SetTrigger("Movie Start");
+        Invoke(nameof(DelaySceneFadeAudio), 0.5f);
+    }
+
+    private void DelaySceneFadeAudio()
+    {
         Managers.Sound.PlaySFXAudio("Etc/SceneChangeSFX");
     }
 }

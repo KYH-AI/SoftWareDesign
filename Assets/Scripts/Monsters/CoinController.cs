@@ -18,7 +18,7 @@ public class CoinController : MonoBehaviour
         if(target.CompareTag(Define.StringTag.Player.ToString()))
         {
             Managers.StageManager.Player.PlayerGold += coinValue;
-            Managers.Sound.PlaySFXAudio(coinSFX, null, 0.25f);
+            Managers.Sound.PlaySFXAudio(coinSFX, null, 0.1f);
             gameObject.SetActive(false);
         }
     }

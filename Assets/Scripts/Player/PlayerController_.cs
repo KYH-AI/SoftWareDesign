@@ -46,17 +46,7 @@ public class PlayerController_ : MonoBehaviour
         anim = GetComponent<Animator>();
         boxCol = GetComponentInChildren<BoxCollider2D>();
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Portal")
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                Managers.SceneManager_.LoadScene();
-            }
 
-        }
-    }
     private void Update()
     {
         if (isMoveable == true)              //기본 공격시 이동을 막기 위함.
