@@ -8,6 +8,7 @@ using UnityEngine;
 public class ThrowingKnife : ActiveSkill
 {
     [SerializeField] GameObject knifeObject;
+    private readonly string[] knifeSFX = { "Player/Active Skill/Throwing_Knife_2", "Player/Active Skill/Throwing_Knife_2" };
 
     #region 스킬 기본 스텟 데이터
     /// <summary>
@@ -28,23 +29,6 @@ public class ThrowingKnife : ActiveSkill
     private readonly WaitForSeconds SkillAttackDelay = new WaitForSeconds(0.25f);
     #endregion
 
-    /*
-    #region 스킬 스텟 프로퍼티
-    /// <summary>
-    /// 스킬 데미지 프로퍼티 ( set : 스킬 데미지 값 변경 )
-    /// </summary>
-    public int SkillDamgae { set { skillDamgae = value; } }
-    /// <summary>
-    /// 표창 투척속도 프로퍼티 ( set : 표창 투척속도 값 변경 )
-    /// </summary>
-    public float SkillProjectileSpeed { set { skillProjectileSpeed = value; } }
-    /// <summary>
-    /// 표창 소환 개수 프로퍼티 ( set : 표창 소환 개수 개수 값 변경 )
-    /// </summary>
-    public float SkillProjectile { set { SkillProjectile = value; } }
-    #endregion
-    */
-
     public override void OnActive()
     {
         if(currentSkillState == Define.CurrentSkillState.ACTIVE)
@@ -54,7 +38,6 @@ public class ThrowingKnife : ActiveSkill
         }
         else
         {
-            // TODO : UI에서 "아직 재사용 대기시간 입니다." 연출하기
             return;
         }
     }
@@ -94,5 +77,7 @@ public class ThrowingKnife : ActiveSkill
                                                              skillDamgae, 
                                                              skillProjectileSpeed);
         projectile.SetActive(true);
+
+        Managers.Sound.PlaySFXAudio(knifeSFX[Random.Range(0, knifeSFX.Length)], null, 0.5f);
     }
 }
