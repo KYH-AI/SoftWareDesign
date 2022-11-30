@@ -37,6 +37,7 @@ public abstract class BasicMonsterController : Enemy
     private void OnEnable()
     {
         state = State.Run;
+        noCoin = false;
     }
 
     public void Update()
@@ -87,6 +88,7 @@ public abstract class BasicMonsterController : Enemy
         if (state == State.Die) return;
         EnemyRigidbody.velocity = Vector2.zero;
         renderer.color = new Color(255 / 255f, 0 / 255f, 0 / 255f, 255 / 255f);
+        Managers.Sound.PlaySFXAudio("Monster/Damaged",null,0.4f,false);
         base.TakeDamage(newDamage);
 
         //Damage text
@@ -161,6 +163,7 @@ public abstract class BasicMonsterController : Enemy
         //캐릭터 정보에 킬카운트 넘겨주기
 
         base.EnemyCollider.enabled = true;
+        
         renderer.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
         gameObject.SetActive(false);
 
