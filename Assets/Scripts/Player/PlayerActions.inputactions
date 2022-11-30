@@ -71,7 +71,7 @@
                 {
                     "name": "NodeA",
                     "type": "Button",
-                    "id": "5cc2fdb4-1b47-4c27-b042-5565134c641b",
+                    "id": "b382142a-24c4-493e-9469-8c807bfc6b0e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -80,7 +80,7 @@
                 {
                     "name": "NodeS",
                     "type": "Button",
-                    "id": "9d4a9fef-e154-4b3e-8de1-f7871ba42f84",
+                    "id": "f2fa8008-8d25-4bf1-8db6-d220c392b8ac",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -89,7 +89,7 @@
                 {
                     "name": "NodeD",
                     "type": "Button",
-                    "id": "9a6f9b7f-e879-45d1-8f6c-2fefe5320e60",
+                    "id": "9eca04ba-00f0-4013-ad1d-b71c347b8501",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -98,7 +98,7 @@
                 {
                     "name": "NodeZ",
                     "type": "Button",
-                    "id": "cc926377-38aa-41a8-9fd4-bd31b4d3c979",
+                    "id": "93247511-f2e2-48fb-9476-fc809b3df97c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -107,7 +107,7 @@
                 {
                     "name": "NodeX",
                     "type": "Button",
-                    "id": "081889a5-fe6c-4d61-86fc-af476c01a546",
+                    "id": "d610b618-901f-4d8a-aa31-a9d322ab0631",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -116,7 +116,7 @@
                 {
                     "name": "NodeC",
                     "type": "Button",
-                    "id": "baa53628-e989-4b63-9920-09cce3bc449c",
+                    "id": "91cd69ce-c3ae-434c-870f-b102203c59d6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -247,7 +247,7 @@
                 },
                 {
                     "name": "",
-                    "id": "559697d5-44b7-46d7-8cfe-32c58b284f09",
+                    "id": "89b36f75-934d-49e4-85cc-d6400537c2a4",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -258,7 +258,7 @@
                 },
                 {
                     "name": "",
-                    "id": "d9c0a4b1-832e-4ae3-9e9a-bbee2a1b7de1",
+                    "id": "403a9029-ca28-4d62-a58c-67b3f084f1f7",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -269,7 +269,7 @@
                 },
                 {
                     "name": "",
-                    "id": "b16e8ee6-7faf-4379-8d19-1ec55175c330",
+                    "id": "bd82ec49-cc9a-489c-8fdd-7e616643c3df",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -280,7 +280,7 @@
                 },
                 {
                     "name": "",
-                    "id": "8f5f1896-be76-4686-a246-bbbc2d1e0583",
+                    "id": "70cd8f15-d9d8-4e24-b82e-e9766e80d586",
                     "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
@@ -291,7 +291,7 @@
                 },
                 {
                     "name": "",
-                    "id": "18a812b3-0908-4665-9cb1-e02546e375a3",
+                    "id": "9f423fcb-2744-4ec9-af46-c11375db59b2",
                     "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
@@ -302,7 +302,7 @@
                 },
                 {
                     "name": "",
-                    "id": "f23977b7-4b43-43f7-8686-514e83184751",
+                    "id": "76b357fc-1fc0-4811-90cf-33e8cc659ec7",
                     "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
