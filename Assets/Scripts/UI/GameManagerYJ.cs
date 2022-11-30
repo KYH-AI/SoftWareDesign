@@ -37,7 +37,9 @@ public class GameManagerYJ : MonoBehaviour
 
         else
         {
+            print(A.id + " ," + A.isNPC);
             Talk(A.id, A.isNPC);
+    
             talkPanel.SetActive(isAction); //true or fasle 
         }
         

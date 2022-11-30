@@ -42,7 +42,7 @@ public abstract class BasicMonsterController : Enemy
 
     public void Update()
     {
-        if (Managers.StageManager.IsStageCleared() || Managers.StageManager.isSpawnOkay == false) {
+        if (Managers.StageManager.isSpawnOkay == false) {
             noCoin = true;
             OnDead(); 
         }
@@ -157,7 +157,7 @@ public abstract class BasicMonsterController : Enemy
 
         Debug.Log("audio name : " + attackAudio.name);
 
-        if (attackAudio.name != "BlueSkull_Attack"||Managers.StageManager.ReturnKillCount()!= 0)
+        if (attackAudio.name != "BlueSkull(Clone)"||Managers.StageManager.ReturnKillCount()!= 0)
             Managers.StageManager.DecreaseKillCount();
        
         //캐릭터 정보에 킬카운트 넘겨주기

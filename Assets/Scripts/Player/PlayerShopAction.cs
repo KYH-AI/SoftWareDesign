@@ -17,6 +17,8 @@ public class PlayerShopAction : MonoBehaviour
             if (rayHIt != null)
             {
                 scanObject = rayHIt.gameObject;
+                print(scanObject.name);
+              
                 Managers.StageManager.shopManager.Action(scanObject);
 
             }

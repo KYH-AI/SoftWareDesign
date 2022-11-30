@@ -56,7 +56,12 @@ public class Portal : MonoBehaviour
         transform.position = new Vector2(0, 0);
         MemoryPoolManager.GetInstance().InitPool();
         Managers.SkillEffectVolume.ChagnePostProcessProfile(null);
-        LoadingScene.LoadScene("JinminStore 1");
+
+        //스포너 관련 함수 초기화
+        Managers.StageManager.isSpawnOkay = true;
+        Managers.StageManager.isBossAlive = true;
+
+        LoadingScene.LoadScene("JinminStore");
     }
 
     IEnumerator SceneChange()

@@ -23,7 +23,7 @@ public class BossSpawnEffect : MonoBehaviour
     }
     public void PlayFromTimeline()
     {
-        TimeLineEndSignal();
+        //TimeLineEndSignal();
         playableDirector.Play(timeline);
     }
     #endregion
