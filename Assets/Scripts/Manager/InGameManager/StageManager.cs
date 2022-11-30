@@ -124,7 +124,7 @@ public class StageManager : MonoBehaviour
                 break;
         }
         sceneAnimator.SetTrigger("Movie Start");
-      //  Managers.Sound.PlaySFXAudio("Etc/SceneChangeSFX");
+        Invoke(nameof(FadeEffect), 0.5f);
     }
 
     public void IsBossAlive(float currentHp)
@@ -139,5 +139,10 @@ public class StageManager : MonoBehaviour
         {
             isBossAlive = true;
         }
+    }
+
+    private void FadeEffect()
+    {
+        Managers.Sound.PlaySFXAudio("Etc/SceneChangeSFX");
     }
 }

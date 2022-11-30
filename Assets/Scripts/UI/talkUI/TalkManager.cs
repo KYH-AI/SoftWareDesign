@@ -14,17 +14,9 @@ public class TalkManager : MonoBehaviour
 
     private void Start()
     {
-        Invoke(nameof(s), 1f);
-
-    }
-
-    void s()
-    {
         talkData = new Dictionary<int, string[]>(); // 변수 생성 
-       // Managers.StageManager.stage = Define.Stage.STORE4;
         GenerateData(); //메소드 불러오기
     }
-
 
     void GenerateData()
     {
@@ -51,11 +43,6 @@ public class TalkManager : MonoBehaviour
                 break;
               
         }
-
-       
-        
-       
-      
 
     }
 
