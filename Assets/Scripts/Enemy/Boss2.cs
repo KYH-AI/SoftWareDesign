@@ -134,8 +134,9 @@ public class Boss2 : Enemy
     public override void TakeDamage(int newDamage)
     {
         print("데미지 받음");
-        base.TakeDamage(newDamage);
+        Managers.StageManager.IsBossAlive(Hp);
         Managers.UI.UpdateBossHpSlider(Hp, MaxHp);
+        base.TakeDamage(newDamage);
         Hurt();
     }
 

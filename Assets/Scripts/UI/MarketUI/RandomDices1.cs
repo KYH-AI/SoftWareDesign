@@ -10,6 +10,7 @@ public class RandomDices1 : MonoBehaviour
     public Sprite[]simage;
     public Button btn;
 
+    AudioSource audioSoure;
     int RandomInt;
 
     public Text money;
@@ -20,6 +21,7 @@ public class RandomDices1 : MonoBehaviour
 
     private void Start()
     {
+        audioSoure = GetComponent<AudioSource>();
         btn.onClick.AddListener(Dice);
 
         money.text = Managers.StageManager.Player.PlayerGold.ToString();
@@ -41,7 +43,8 @@ public class RandomDices1 : MonoBehaviour
         if (Managers.StageManager.Player.PlayerGold >= 150)
 
         {    Managers.StageManager.Player.PlayerGold -= 150;
-            
+            audioSoure.Play();
+
             if (RandomInt == 1)
             {
                 skill.sprite = simage[0];
