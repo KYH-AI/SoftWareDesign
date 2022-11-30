@@ -35,14 +35,10 @@ public class boss_spawner : MonoBehaviour
 
         }
         SetLocation();
-<<<<<<< HEAD
-        if(Managers.StageManager.IsStageCleared() || Input.GetKeyDown(KeyCode.C))
-        {
-=======
-        if(Managers.StageManager.IsStageCleared())
+
+        if(Managers.StageManager.IsStageCleared()&&!Managers.StageManager.isBossSpawn)
         {
             Managers.StageManager.isBossSpawn = true;
->>>>>>> newSubBoss
             Managers.UI.bossSlider.gameObject.SetActive(true);
             Managers.UI.InitBossSlider();
             Spawn();

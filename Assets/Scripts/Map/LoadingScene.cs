@@ -42,6 +42,7 @@ public class LoadingScene : MonoBehaviour
             {
                 op.allowSceneActivation = true;
                 Managers.StageManager.SetStageKillCount();
+                Managers.StageManager.isBossSpawn = false;
                 yield break;
             }
             yield return null;
