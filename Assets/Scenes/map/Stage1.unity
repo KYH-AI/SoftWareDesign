@@ -358,10 +358,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 441235186, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 441235186, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 761238053, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1156510919}
+    - target: {fileID: 805685863, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 932423403, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 970836321, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -459,7 +475,7 @@ PrefabInstance:
     - target: {fileID: 5931700736161428398, guid: c6fceae9aed4c114ca3429bafb3f024b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}

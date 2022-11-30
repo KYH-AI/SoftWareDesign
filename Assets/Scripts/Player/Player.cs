@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Player : LivingEntity
 {
     /* 변수 */
+
+    #region 플레이어 사망처리 변수
+    private bool isDead = false;
+    public bool IsDead { get { return isDead; } }
+    #endregion
 
     #region 플레이어 이미지 변수
     [SerializeField] Sprite[] attackSprites;
@@ -26,14 +32,14 @@ public class Player : LivingEntity
 
     #region 플레이어 재화 변수
     private int playerGold = 0;
-    public int PlayerGold 
-    { 
+    public int PlayerGold
+    {
         get { return playerGold; }
-        set 
-        { 
-            playerGold = value; 
+        set
+        {
+            playerGold = value;
             Managers.UI.UpdateGoldText();
-        } 
+        }
     }
     #endregion
 
@@ -59,14 +65,19 @@ public class Player : LivingEntity
 
     #region 상점에서 사용하는 스킬종류 변수
     public Dictionary<string, PlayerSkill> skillList = new Dictionary<string, PlayerSkill>();
-    
+
     // 플레이어 액티브 스킬 슬롯
     private int activeSkillSlot_Index = 0;
     public int ActiveSkillSlot_Index
     {
-        get { return activeSkillSlot_Index;}
+        get { return activeSkillSlot_Index; }
         set { activeSkillSlot_Index = value; }
     }
+    #endregion
+
+    #region 플레이어 효과음
+    private readonly string[] PLAYER_HIT_SFX = { "Player/PlayerHitSFX_1", "Player/PlayerHitSFX_2", "Player/PlayerHitSFX_3" };
+    private readonly string PLAYER_DEAD_SFX = "Player/PlayerDeadSFX";
     #endregion
 
     /* 함수 */
@@ -78,65 +89,6 @@ public class Player : LivingEntity
         PlayerInit();
         Managers.UI.InitUI();
 
-        #region 스킬 테스트 중 (김윤호)
-        /* 테스트 용도 */
-
-        
-        GameObject skillObject3 = Managers.Resource.GetPerfabGameObject("Player_Skill/FlameStrike Skill");
-        ActiveSkill fpSkill = Instantiate(skillObject3, this.transform).GetComponent<ActiveSkill>();
-        fpSkill.Init(this);
-        playerActiveSkills.Add(0, fpSkill);
-
-        GameObject skillObject2 = Managers.Resource.GetPerfabGameObject("Player_Skill/ThrowingKnife Skill");
-        ActiveSkill tkSkill = Instantiate(skillObject2, this.transform).GetComponent<ActiveSkill>();
-        tkSkill.Init(this);
-        playerActiveSkills.Add(1, tkSkill);
-
-        /*
-
-        GameObject skillObject1 = Managers.Resource.GetPerfabGameObject("Player_Skill/ThunderSlash Skill");
-        ActiveSkill tdSkill = Instantiate(skillObject1, this.transform).GetComponent<ActiveSkill>();
-        tdSkill.Init(this);
-        playerActiveSkills.Add(2, tdSkill);
-
-        GameObject barrierSkill = Managers.Resource.GetPerfabGameObject("Player_Skill/Barrier Skill");
-        ActiveSkill skill = Instantiate(barrierSkill, this.transform).GetComponent<ActiveSkill>();
-        skill.Init(this);
-        playerActiveSkills.Add(3, skill);
-
-        GameObject windSlashSkill = Managers.Resource.GetPerfabGameObject("Player_Skill/WindDash Skill");
-        ActiveSkill wdskill = Instantiate(windSlashSkill, this.transform).GetComponent<ActiveSkill>();
-        wdskill.Init(this);
-        playerActiveSkills.Add(4, wdskill);
-
-        GameObject skillObject0 = Managers.Resource.GetPerfabGameObject("Player_Skill/HourGlass Skill");
-        PassiveSkill ttSkill = Instantiate(skillObject0, this.transform).GetComponent<PassiveSkill>();
-        ttSkill.Init(this);
-        ttSkill.OnActive();
-
-        GameObject cowardSkill = Managers.Resource.GetPerfabGameObject("Player_Skill/Coward Skill");
-        PassiveSkill mvSkill = Instantiate(cowardSkill, this.transform).GetComponent<PassiveSkill>();
-        mvSkill.Init(this);
-        mvSkill.OnActive();
-
-        GameObject firstAidSkill = Managers.Resource.GetPerfabGameObject("Player_Skill/FirstAid Skill");
-        PassiveSkill hellSkill = Instantiate(firstAidSkill, this.transform).GetComponent<PassiveSkill>();
-        hellSkill.Init(this);
-        hellSkill.OnActive();
-
-        GameObject spellBladeSkill = Managers.Resource.GetPerfabGameObject("Player_Skill/SpellBlade Skill");
-        PassiveSkill damageSkill = Instantiate(spellBladeSkill, this.transform).GetComponent<PassiveSkill>();
-        damageSkill.Init(this);
-        damageSkill.OnActive();
-
-        GameObject droneSkill = Managers.Resource.GetPerfabGameObject("Player_Skill/Drone Skill");
-        PassiveSkill drSkill = Instantiate(droneSkill, this.transform).GetComponent<PassiveSkill>();
-        drSkill.Init(this);
-        drSkill.OnActive();
-        
-        */
-        #endregion
-
     }
 
     /// <summary>
@@ -146,7 +98,7 @@ public class Player : LivingEntity
     {
         BasicStatInit();
         playerController = GetComponent<PlayerController_>();
-        spriteRenderer = GetComponent<SpriteRenderer>();    
+        spriteRenderer = GetComponent<SpriteRenderer>();
         playerController.PlayerControllerInit(this);
     }
     #endregion
@@ -154,19 +106,22 @@ public class Player : LivingEntity
     #region 플레이어 피격 시
     public override sealed void TakeDamage(int newDamage)
     {
+        if (isDead) return;
         base.TakeDamage(newDamage);
+
         HitEvent?.Invoke(); // 피격 시 관련된 패시브 기술만 호출함
         StartCoroutine(SwitchMaterial()); // 피격 시 플레이어 색상 변경 코루틴
 
 
         GameObject floatingText = MemoryPoolManager.GetInstance().OutputGameObject
             (Managers.Resource.GetPerfabGameObject("UI/DamageText")
-            ,"UI/DamageText"
-            ,new Vector3(transform.position.x, transform.position.y)
-            ,Quaternion.identity);
+            , "UI/DamageText"
+            , new Vector3(transform.position.x, transform.position.y)
+            , Quaternion.identity);
 
         floatingText.GetComponent<FloatingText>().DamageText = newDamage.ToString();
         floatingText.SetActive(true);
+        Managers.Sound.PlaySFXAudio(PLAYER_HIT_SFX[Random.Range(0, PLAYER_HIT_SFX.Length)]);
 
 
         Managers.UI.UpdatePlayerHpSlider(Hp, MaxHp);
@@ -187,8 +142,13 @@ public class Player : LivingEntity
     #region 플레이어 사망 처리
     protected override void OnDead()
     {
+        playerController.isAttackalble = false;
+        playerController.isMoveable = false;
+        isDead = true;
+        Managers.Sound.PlaySFXAudio(PLAYER_DEAD_SFX);
         StopAllCoroutines();
-        gameObject.SetActive(false);
+        gameObject.layer = 0;
+        playerController.Anim.SetTrigger("isDead");
     }
     #endregion
 
@@ -220,5 +180,10 @@ public class Player : LivingEntity
     }
     #endregion
 
+    private void PlayerDeadEvent()
+    {
+        SceneManager.LoadScene("Ending");
+        gameObject.SetActive(false);
+    }
 
 }
