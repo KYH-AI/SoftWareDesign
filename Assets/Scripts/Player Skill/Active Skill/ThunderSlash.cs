@@ -86,6 +86,7 @@ public class ThunderSlash : ActiveSkill
             if (enemyColliders[enemyCount] != null)
             {
                 lockOnEffect[enemyCount] = Instantiate(thunderSlashLockOnEffect, enemyColliders[enemyCount].transform.position, Quaternion.identity);
+                Managers.Sound.PlaySFXAudio("Player/Active Skill/ThunderSlash_1");
                 yield return new WaitForSecondsRealtime(0.5f);   // Ä³½Ì ÇÏÀÚ
             }
         }

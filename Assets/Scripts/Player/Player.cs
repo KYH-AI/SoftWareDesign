@@ -76,10 +76,11 @@ public class Player : LivingEntity
     {
         DontDestroyOnLoad(gameObject);
         PlayerInit();
+
         #region 스킬 테스트 중 (김윤호)
         /* 테스트 용도 */
 
-        /*
+
         GameObject skillObject3 = Managers.Resource.GetPerfabGameObject("Player_Skill/FlameStrike Skill");
         ActiveSkill fpSkill = Instantiate(skillObject3, this.transform).GetComponent<ActiveSkill>();
         fpSkill.Init(this);
@@ -129,11 +130,9 @@ public class Player : LivingEntity
         PassiveSkill drSkill = Instantiate(droneSkill, this.transform).GetComponent<PassiveSkill>();
         drSkill.Init(this);
         drSkill.OnActive();
-        
 
-        */
+#endregion
 
-        #endregion
     }
 
     /// <summary>
@@ -152,9 +151,6 @@ public class Player : LivingEntity
     public override sealed void TakeDamage(int newDamage)
     {
         base.TakeDamage(newDamage);
-
-      //  print("플레이어가 데미지 받음 " + newDamage);
-
         HitEvent?.Invoke(); // 피격 시 관련된 패시브 기술만 호출함
         StartCoroutine(SwitchMaterial()); // 피격 시 플레이어 색상 변경 코루틴
 
@@ -206,24 +202,10 @@ public class Player : LivingEntity
 
     private IEnumerator SwitchSprite(Vector2 dir, bool isDelay)
     {
-        /*
-         *  동 = 1, 0
-         *  서 = -1, 0
-         *  남 = 0, -1
-         *  북 = 0, 1
-         */
 
         if (dir.y > 0) spriteRenderer.sprite = attackSprites[0];
         else if (dir.y < 0) spriteRenderer.sprite = attackSprites[1];
         else spriteRenderer.sprite = attackSprites[2];
-        /*
-        else if (dir.x > 0) spriteRenderer.sprite = attackSprites[2];
-        else if (dir.x < 0)
-        {
-          //  spriteRenderer.flipX = true;
-            spriteRenderer.sprite = attackSprites[2];
-        }
-       */
 
         if (isDelay)
             yield return spriteSeconds;

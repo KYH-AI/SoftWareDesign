@@ -46,7 +46,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &962196204
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +92,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &1601506816
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +138,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &1987714167
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +184,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &386043603520350687
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +230,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &414654003646305313
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +276,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &431010890056475223
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +322,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &759331696293779494
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,7 +368,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &763064082395004322
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +414,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &1100405408251354842
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +460,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &1139997081349432914
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +506,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &1163646642815218381
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +552,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &1524551620736405848
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,7 +598,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &2094902395309777084
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,7 +644,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &2764053932208934047
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +690,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &3446193939623288078
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,7 +736,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &3558953716069766215
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +782,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &4555769131885205167
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +860,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &5358792418452267751
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,7 +956,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &6038162019244937476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,7 +1002,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &6367822747479592916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,7 +1048,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &6600308762358002547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,7 +1094,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 10
 --- !u!1 &7026682575082622591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1162,7 +1140,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &7890687328532627475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,7 +1186,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8082510346698981719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,7 +1232,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234590500012890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,7 +1278,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234590751531140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,7 +1324,6 @@ MonoBehaviour:
   Prefab: {fileID: 228962412014079394, guid: 1fac73e1ca5872f4bb952be15b0ac4fb, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234590857002436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,7 +1370,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234590887318506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,7 +1416,6 @@ MonoBehaviour:
   Prefab: {fileID: 228962412014079394, guid: 1fac73e1ca5872f4bb952be15b0ac4fb, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234590968416725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,7 +1462,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234591013030297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,7 +1508,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234591176357420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1585,7 +1554,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234591463196225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1632,7 +1600,6 @@ MonoBehaviour:
   Prefab: {fileID: 228962412014079394, guid: 1fac73e1ca5872f4bb952be15b0ac4fb, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234591555924778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,7 +1646,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234591559219203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,7 +1692,6 @@ MonoBehaviour:
   Prefab: {fileID: 228962412014079394, guid: 1fac73e1ca5872f4bb952be15b0ac4fb, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234591593882555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,7 +1738,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234591598548438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1877,7 +1841,6 @@ MonoBehaviour:
   spawnRateMin: 1
   spawnRateMax: 5
   MAX: 5
-  MaxCnt: 20
 --- !u!1 &8967234591696220386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1924,7 +1887,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234591751831727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,7 +1933,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234591754668146
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,7 +1979,6 @@ MonoBehaviour:
   Prefab: {fileID: 228962412014079394, guid: 1fac73e1ca5872f4bb952be15b0ac4fb, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234591782878853
 GameObject:
   m_ObjectHideFlags: 0
@@ -2103,7 +2063,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234591902294835
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,7 +2109,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234591947267999
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,7 +2217,6 @@ MonoBehaviour:
   Prefab: {fileID: 228962412014079394, guid: 1fac73e1ca5872f4bb952be15b0ac4fb, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234592131589659
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,7 +2263,6 @@ MonoBehaviour:
   Prefab: {fileID: 228962412014079394, guid: 1fac73e1ca5872f4bb952be15b0ac4fb, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234592213356984
 GameObject:
   m_ObjectHideFlags: 0
@@ -2353,7 +2309,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234592307256724
 GameObject:
   m_ObjectHideFlags: 0
@@ -2400,7 +2355,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234592422993326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,7 +2401,6 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234592457183110
 GameObject:
   m_ObjectHideFlags: 0
@@ -2494,7 +2447,6 @@ MonoBehaviour:
   Prefab: {fileID: 228962412014079394, guid: 1fac73e1ca5872f4bb952be15b0ac4fb, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100
 --- !u!1 &8967234592488401538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2541,4 +2493,3 @@ MonoBehaviour:
   Prefab: {fileID: 8283450641377011257, guid: 7305e6944ad7c5a459a1ccaac6f0f963, type: 3}
   spawnRateMin: 3
   spawnRateMax: 5
-  MaxCnt: 100

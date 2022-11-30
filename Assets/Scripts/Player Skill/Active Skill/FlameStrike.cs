@@ -6,6 +6,7 @@ public class FlameStrike : ActiveSkill
 {
     [SerializeField] GameObject firePillarObject;
     [SerializeField] VolumeProfile firePillarProfile;
+    private readonly string[] flameStrikeSFX = { "Player/Active Skill/Flame Strike_1", "Player/Active Skill/Flame Strike_2" };
 
     #region 스킬 기본 스텟 데이터
     /// <summary>
@@ -87,6 +88,8 @@ public class FlameStrike : ActiveSkill
                                                                                      Quaternion.identity); 
             projectile.GetComponent<Projectile>().ProjectileInit(Define.StringTag.Enemy, Vector2.zero, skillDamgae);
             projectile.SetActive(true);
+            Managers.Sound.PlaySFXAudio(flameStrikeSFX[0]);
+            Managers.Sound.PlayDelaySFXAudio(flameStrikeSFX[1], 1f, null, 1f);
             yield return skillAttackDelayTimeSec; // 불기둥 소환간격 시간
         }
 
@@ -103,4 +106,5 @@ public class FlameStrike : ActiveSkill
     {
         Managers.SkillEffectVolume.ChagnePostProcessProfile(null);
     }
+
 }
