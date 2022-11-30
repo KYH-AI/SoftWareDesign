@@ -6,12 +6,10 @@ public class Fire : Projectile
 {
     private Animator Animator;
     float burnDelay = 0.5f;
-    AudioSource AudioSource;
     bool isBurn = true;
     private void Awake()
     {
         Animator = GetComponent<Animator>();
-        AudioSource =GetComponent<AudioSource>();
     }
     IEnumerator Burning()
     {
@@ -41,7 +39,7 @@ public class Fire : Projectile
         if (isBurn)
         {
             isBurn = false;
-            Managers.Sound.PlaySFXAudio("SubBoss/불타는-효과음", AudioSource);
+            Managers.Sound.PlaySFXAudio("SubBoss/불타는-효과음");
         }
        
     }

@@ -28,12 +28,10 @@ public class Boss3 : Enemy
     float fireDelay = 1f;
     float attackDelay = 3f;
     private int skillDamage = 5;
-    AudioSource audioSource;
     private void Start()
     {
         base.Start();
-        Invoke(nameof(GetBossLayer), 4.5f);
-        audioSource = GetComponent<AudioSource>();  
+        Invoke(nameof(GetBossLayer), 4.5f); 
 
     }
     private void GetBossLayer()
@@ -243,15 +241,15 @@ public class Boss3 : Enemy
     }
     void AttackSound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/MP_swosh-sword-swing", audioSource);
+        Managers.Sound.PlaySFXAudio("SubBoss/MP_swosh-sword-swing");
     }
     void DeadSound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/Boss3_Die_SFX", audioSource);
+        Managers.Sound.PlaySFXAudio("SubBoss/Boss3_Die_SFX");
     }
     void TelpoSound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/boss3_Telpo_SFX", audioSource);
+        Managers.Sound.PlaySFXAudio("SubBoss/boss3_Telpo_SFX");
     }
 
 }
