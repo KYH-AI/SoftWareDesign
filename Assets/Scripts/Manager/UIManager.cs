@@ -6,8 +6,6 @@ using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
-    public float playerHp;
-    public float playerMaxHp;
     public Slider playerSlider;
     public Image playerRightSlider;
     public Image playerLeftSlider;
@@ -26,23 +24,11 @@ public class UIManager : MonoBehaviour
     public List<ActiveSkill> activeSkillLists = new List<ActiveSkill>();
     public List<PassiveSkill> passiveSkillLists = new List<PassiveSkill>();
 
-    private void Start()
+    public void InitUI()
     {
         InitSkillImages();
         UpdateGoldText();
         UpdateKillCounts();
-    }
-    private void Update()
-    {
-        UpdateGoldText();
-        UpdateKillCounts();
-        CoolTimeProcess();
-    }
-
-    public void UpdatePlayerHp()
-    {
-        playerMaxHp = Managers.StageManager.Player.MaxHp;
-        playerHp = Managers.StageManager.Player.Hp;
     }
 
     public void InitSkillImages()
@@ -70,7 +56,10 @@ public class UIManager : MonoBehaviour
     public void UpdatePlayerHpSlider(float currentHp, float maxHp)      //플레이어가 데미지 받았을 때 실행.
     {
         if (currentHp / maxHp > 0.5)
+        {
+            playerLeftSlider.fillAmount = 1f;
             playerRightSlider.fillAmount = (currentHp + currentHp - maxHp) / maxHp;
+        }
         else
         {
             playerRightSlider.fillAmount = 0;
@@ -84,11 +73,15 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateGoldText()    //골드 획득 시 실행.
     {
-        goldAmount.text = Managers.StageManager.Player.PlayerGold.ToString();
+        goldAmount.text = Managers.StageManager.Player.PlayerGold + "";
     }
     public void UpdateKillCounts()  //몬스터 처치 시 실행.
     {
         killCount.text = ("" + Managers.StageManager.killCount);
+    }
+    public void InitKillText()
+    {
+        killCount.text = Managers.UI.killCount.ToString();
     }
     public void UpdateActiveSkills(Image image, ActiveSkill activeSkill)        //상점에서 스킬 구매시 실행.
     {

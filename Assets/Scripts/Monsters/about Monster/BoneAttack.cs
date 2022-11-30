@@ -45,6 +45,9 @@ public class BoneAttack :BasicMonsterController
     IEnumerator Spawn()
     {
         yield return new WaitForSeconds(base.skillTime);
+        string name = base.attackAudio.ToString().Substring(0, base.attackAudio.ToString().Length - 33);
+        Debug.Log(name + "_Attack");
+        Managers.Sound.PlaySFXAudio("Monster/" + name + "_Attack", base.attackAudio, base.volume, false);
         Monster[idx].transform.position = gameObject.transform.position;
         Monster[idx++].SetActive(true);
         if (idx == MAX)

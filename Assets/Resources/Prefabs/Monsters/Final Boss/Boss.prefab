@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 8014877367899294284, guid: 82d28e785af996e42a707d0a2ac4a66b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -145,7 +145,6 @@ MonoBehaviour:
   - {fileID: 8865842915923590607, guid: aa53fb6ccd3218d4e8ada19ddfce5846, type: 3}
   originalMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   hurtMaterial: {fileID: 2100000, guid: c839255fc8f6b4b4d90bf8c1af9f9bd1, type: 3}
-  player: {fileID: 2523420501982882025, guid: 89bc5ce83beb6ef45b1ec56cc9495ed4, type: 3}
   seekerPrefab: {fileID: 6279684435295860098, guid: be28ad4073d11ba47a42653371305c36,
     type: 3}
   SkeletonSeekerSpawner: {fileID: 2084283507, guid: 5dbf7f272ac796c499f8c92017fe721d,

@@ -15,4 +15,4 @@ MonoBehaviour:
   hp: 1
   moveSpeed: 1
   armor: 0
-  defaultAttackDamage: 0
+  defaultAttackDamage: 3

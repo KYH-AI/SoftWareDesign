@@ -23,8 +23,9 @@ public class BossSpawnEffect : MonoBehaviour
     }
     public void PlayFromTimeline()
     {
-        TimeLineEndSignal();
+        //TimeLineEndSignal();
         playableDirector.Play(timeline);
+        Managers.Sound.PlayBGMAudio("BossSpawnBackGround");
     }
     #endregion
 
@@ -36,6 +37,7 @@ public class BossSpawnEffect : MonoBehaviour
         Managers.StageManager.Player.PlayerController.isAttackalble = false;
         UpdateBossEffectText();
         Managers.SkillEffectVolume.ChagnePostProcessProfile(null);
+        Managers.StageManager.isSpawnOkay = true;
     }
 
     public void TimeLineEndSignal()
@@ -68,7 +70,7 @@ public class BossSpawnEffect : MonoBehaviour
                 bossEffectImage.sprite = bossImageList[3];
                 break;
             case Define.Stage.Boss:
-                bossEffectText.text = "최종 보스";
+                bossEffectText.text = "착했던 사령술사";
                 bossEffectImage.sprite = bossImageList[4];
                 break;
 

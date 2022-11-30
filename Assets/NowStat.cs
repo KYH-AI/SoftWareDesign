@@ -20,7 +20,6 @@ public class NowStat : MonoBehaviour
         sheld.text = Managers.StageManager.Player.Armor.ToString();
         hp.text = Managers.StageManager.Player.MaxHp.ToString();
         attack.text = Managers.StageManager.Player.DefaultAttackDamage.ToString();
-        Managers.StageManager.Player.PlayerGold = 10000;
         money.text = Managers.StageManager.Player.PlayerGold.ToString();
 
     }

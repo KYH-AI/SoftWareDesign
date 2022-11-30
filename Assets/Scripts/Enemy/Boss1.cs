@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Boss1 : Enemy
 {
@@ -35,7 +34,6 @@ public class Boss1 : Enemy
     {
         base.Start();
         Invoke(nameof(GetBossLayer),4.5f);
-        
     }
     void Update()
     {
@@ -160,6 +158,7 @@ public class Boss1 : Enemy
         base.TakeDamage(newDamage);
         EnemyAnimator.SetBool("isHit", true);
         Managers.UI.UpdateBossHpSlider(Hp, MaxHp);
+        Managers.StageManager.IsBossAlive(Hp);
         StartCoroutine(SwitchMaterial());
     }
 
@@ -207,4 +206,13 @@ public class Boss1 : Enemy
         Destroy(gameObject);
 
     }
+    void FireSound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/fire-magic-6947");
+    }
+    void DeadSound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/Àú±Û¸µ4");
+    }
+    
 }

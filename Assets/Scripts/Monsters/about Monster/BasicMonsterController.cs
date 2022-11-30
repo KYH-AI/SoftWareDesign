@@ -7,8 +7,11 @@ using UnityEngine.AI;
 public abstract class BasicMonsterController : Enemy
 {
     float radius = 0.2f;
-    //public GameObject coinPrephab;
+    bool noCoin = false;
     public GameObject coinPrefap;
+    public AudioSource attackAudio;
+    public float volume;
+
     public enum State
     {
         Run,
@@ -21,14 +24,12 @@ public abstract class BasicMonsterController : Enemy
     public float coolTime=-1.0f, skillTime = 2.0f;
     new SpriteRenderer renderer;
 
-
-    public int minKillCount;
-    public int maxKillCount;
-
+    
     new public void Start()
     {
         base.Start();
         renderer = GetComponent<SpriteRenderer>();
+        attackAudio = GetComponent<AudioSource>();
         state = State.Run;
     }
 
@@ -36,11 +37,15 @@ public abstract class BasicMonsterController : Enemy
     private void OnEnable()
     {
         state = State.Run;
+        noCoin = false;
     }
 
     public void Update()
     {
-        if (Managers.StageManager.IsStageCleared()) OnDead();
+        if (Managers.StageManager.isSpawnOkay == false) {
+            noCoin = true;
+            OnDead(); 
+        }
         else
         {
             if (state == State.Run) Run();
@@ -82,6 +87,8 @@ public abstract class BasicMonsterController : Enemy
     {
         if (state == State.Die) return;
         EnemyRigidbody.velocity = Vector2.zero;
+        renderer.color = new Color(255 / 255f, 0 / 255f, 0 / 255f, 255 / 255f);
+        Managers.Sound.PlaySFXAudio("Monster/Damaged",null,0.4f,false);
         base.TakeDamage(newDamage);
 
         //Damage text
@@ -95,7 +102,7 @@ public abstract class BasicMonsterController : Enemy
         floatingText.SetActive(true);
 
         base.EnemyAnimator.SetTrigger("MoveToDamage");
-        //StartCoroutine(DamageProcess());
+        StartCoroutine(DamageProcess());
         if (base.Hp <= 0)
         {
             EnemyRigidbody.velocity = Vector2.zero;
@@ -115,16 +122,17 @@ public abstract class BasicMonsterController : Enemy
         }
     }
 
-    /*IEnumerator DamageProcess()
+    IEnumerator DamageProcess()
     {
-
-        yield return new WaitForSeconds(1.0f);
-    }*/
+       // renderer.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
+        yield return new WaitForSeconds(0.3f);
+        renderer.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
+    }
 
 
     //죽음
     //죽음 애니메이션,코인드랍,비활성화
-    protected override sealed void OnDead()
+    protected override void OnDead()
     {
         base.OnDead();
         base.EnemyCollider.enabled = false;
@@ -136,21 +144,27 @@ public abstract class BasicMonsterController : Enemy
     {
         yield return new WaitForSeconds(1.0f);
 
-        int killCount = Random.Range(minKillCount, maxKillCount);
-        int coinLevel = Random.Range(0, 3);
+        if (noCoin==false)
+        {
+            GameObject coin = MemoryPoolManager.GetInstance().OutputGameObject
+                   (coinPrefap,
+                    "Coin/" + coinPrefap.name,
+                    transform.position,
+                    Quaternion.identity);
 
-        GameObject coin = MemoryPoolManager.GetInstance().OutputGameObject
-               (coinPrefap,
-                "Coin/" +coinPrefap.name,
-                transform.position,
-                Quaternion.identity);
+            coin.SetActive(true);
+        }
 
-        coin.SetActive(true);
+        Debug.Log("audio name : " + attackAudio.name);
 
-        Managers.StageManager.DecreaseKillCount();
+        if (attackAudio.name != "BlueSkull(Clone)"||Managers.StageManager.ReturnKillCount()!= 0)
+            Managers.StageManager.DecreaseKillCount();
+       
         //캐릭터 정보에 킬카운트 넘겨주기
 
         base.EnemyCollider.enabled = true;
+        
+        renderer.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
         gameObject.SetActive(false);
 
     }

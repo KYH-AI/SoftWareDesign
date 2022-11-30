@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class GameManagerYJ : MonoBehaviour
 {
-
     public TalkManager talkManager;
     public GameObject talkPanel;
     public Text easyTalk;
@@ -18,6 +17,7 @@ public class GameManagerYJ : MonoBehaviour
     private void Start()
     {
         Managers.StageManager.shopManager = this;
+        Managers.Sound.PlayBGMAudio("Bird1");
     }
 
     public void Action(GameObject scanOb)
@@ -37,7 +37,9 @@ public class GameManagerYJ : MonoBehaviour
 
         else
         {
+            print(A.id + " ," + A.isNPC);
             Talk(A.id, A.isNPC);
+    
             talkPanel.SetActive(isAction); //true or fasle 
         }
         
@@ -52,7 +54,8 @@ public class GameManagerYJ : MonoBehaviour
             string talkData = talkManager.GetTalk(id, talkIndex); //해당하는 문자열이 나온다. 
 
         if (talkData == null)
-        { isAction = false;
+        {  isAction = false;
+           Managers.StageManager.Player.PlayerController.isMoveable = true;
             talkIndex = 0;
             return; } // 이야기가 다 끝나고, 즉 인덱스가 다 돌아가면 대화창 내리기,
                                        // talkIndex와 대화의 문장 갯수를 비교해 끝 확인  
@@ -61,6 +64,8 @@ public class GameManagerYJ : MonoBehaviour
         if (isNPC) //챕터별 상점 주인마다 id지정 
         {
             easyTalk.text = talkData;
+            
+
         }
 
         else 
@@ -68,6 +73,7 @@ public class GameManagerYJ : MonoBehaviour
             easyTalk.text = talkData;
         }
         isAction = true;
+        Managers.StageManager.Player.PlayerController.isMoveable = true;
         talkIndex++; 
     }
 }

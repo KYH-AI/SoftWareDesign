@@ -17,7 +17,7 @@ public class Spawner_FixedMaximum : MonoBehaviour
     int idx;
     public int MAX;
 
-    int MaxCnt=100;
+    int MaxCnt=200;
     bool spawnRestart = false;
     // Start is called before the first frame update
     void Start()
@@ -46,8 +46,11 @@ public class Spawner_FixedMaximum : MonoBehaviour
     {
         if (spawnRestart == true)
         {
-            spawnRateMin = 10.0f;
-            spawnRateMax = 12.0f;
+            spawnRateMin = 1.0f;
+            spawnRateMax = 20.0f;
+            Managers.StageManager.monsterCounter = 0;
+            Debug.Log("FixedMAX SpawnRate Min/Max : " + spawnRateMin + " / " + spawnRateMax);
+            Debug.Log("restart monsterCounter : " + Managers.StageManager.monsterCounter);
             StartCoroutine("Spawn");
         }
     }
@@ -55,7 +58,7 @@ public class Spawner_FixedMaximum : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        if (Managers.StageManager.monsterCounter < MaxCnt)
+        if (Managers.StageManager.monsterCounter++ <= MaxCnt)
         {
             spawnRate = Random.Range(spawnRateMin, spawnRateMax);
             yield return new WaitForSeconds(spawnRate);
@@ -69,14 +72,8 @@ public class Spawner_FixedMaximum : MonoBehaviour
             idx++;
             if (idx == MAX)
             {
-                if (state == true)//Max까지 최대 오브젝트 setActive(true) 상태
-                {
-
-                }
                 idx = 0;
-                state = true;
             }
-            Managers.StageManager.monsterCounter++;
             StartCoroutine("Spawn");
         }
     }

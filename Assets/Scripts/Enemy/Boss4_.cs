@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Boss4_ : Enemy
 {
@@ -31,7 +30,6 @@ public class Boss4_ : Enemy
     {
         base.Start();
         Invoke(nameof(GetBossLayer), 4.5f);
-
     }
     void Update()
     {
@@ -176,6 +174,7 @@ public class Boss4_ : Enemy
     public override void TakeDamage(int newDamage)
     {
         base.TakeDamage(newDamage);
+        Managers.StageManager.IsBossAlive(Hp);
         Managers.UI.UpdateBossHpSlider(Hp, MaxHp);
         EnemyAnimator.SetBool("isHit", true);
     }
@@ -190,6 +189,7 @@ public class Boss4_ : Enemy
         base.OnDead();
         Managers.UI.bossSlider.gameObject.SetActive(false);
         EnemyAnimator.SetTrigger("Die");
+        DeadSound();
     }
 
     private void destory()//죽는 애니 마지막에 넣기
@@ -205,5 +205,12 @@ public class Boss4_ : Enemy
         myInstance.transform.position = transform.position;
         Destroy(gameObject);
     }
-
+    void Attack1Sound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/MP_swosh-sword-swing");
+    }
+    void DeadSound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/boss4_Die_SFX");
+    }
 }

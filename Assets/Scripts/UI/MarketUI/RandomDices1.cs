@@ -10,6 +10,7 @@ public class RandomDices1 : MonoBehaviour
     public Sprite[]simage;
     public Button btn;
 
+    AudioSource audioSoure;
     int RandomInt;
 
     public Text money;
@@ -20,6 +21,7 @@ public class RandomDices1 : MonoBehaviour
 
     private void Start()
     {
+        audioSoure = GetComponent<AudioSource>();
         btn.onClick.AddListener(Dice);
 
         money.text = Managers.StageManager.Player.PlayerGold.ToString();
@@ -41,12 +43,13 @@ public class RandomDices1 : MonoBehaviour
         if (Managers.StageManager.Player.PlayerGold >= 150)
 
         {    Managers.StageManager.Player.PlayerGold -= 150;
-            
+            audioSoure.Play();
+
             if (RandomInt == 1)
             {
                 skill.sprite = simage[0];
-                statResult.text = "공격력 100 증가!";
-                Managers.StageManager.Player.DefaultAttackDamage += 100;
+                statResult.text = "공격력 증가!";
+                Managers.StageManager.Player.DefaultAttackDamage += 3;
                
 
             }
@@ -54,24 +57,24 @@ public class RandomDices1 : MonoBehaviour
             else if (RandomInt == 2)
             {
                 skill.sprite = simage[1];
-                statResult.text = "방어력 100 증가!";
-                Managers.StageManager.Player.Armor += 100;
+                statResult.text = "방어력 증가!";
+                Managers.StageManager.Player.Armor += 2;
           
             }
 
             else if (RandomInt == 3)
             {
                 skill.sprite = simage[2];
-                statResult.text = "이동속도 100 증가!";
-                Managers.StageManager.Player.MoveSpeed += 100;
+                statResult.text = "이동속도 증가!";
+                Managers.StageManager.Player.MoveSpeed += 0.25f;
                
             }
 
             else if (RandomInt == 4)
             {
                 skill.sprite = simage[3];
-                statResult.text = "체력 100 증가!";
-                Managers.StageManager.Player.MaxHp += 100;
+                statResult.text = "최대체력 증가!";
+                Managers.StageManager.Player.MaxHp += 15;
                
             }
 
@@ -83,15 +86,15 @@ public class RandomDices1 : MonoBehaviour
                 {
                     
                     skill.sprite = simage[4];
-                    statResult.text = "공격력 50 감소!";
-                    Managers.StageManager.Player.DefaultAttackDamage -= 50;
+                    statResult.text = "공격력 감소!";
+                    Managers.StageManager.Player.DefaultAttackDamage -= 3;
                 }
                 else //if (Managers.StageManager.Player.DefaultAttackDamage <= 50)
                 {
                     
                     skill.sprite = simage[0];
-                     statResult.text = "공격력 100 증가!";
-                     Managers.StageManager.Player.DefaultAttackDamage += 100;
+                     statResult.text = "공격력 증가!";
+                     Managers.StageManager.Player.DefaultAttackDamage += 3;
                 }
 
             }
@@ -104,15 +107,15 @@ public class RandomDices1 : MonoBehaviour
                 {
                    
                     skill.sprite = simage[5];
-                    statResult.text = "방어력 50 감소!";
-                    Managers.StageManager.Player.Armor -= 50;
+                    statResult.text = "방어력 감소!";
+                    Managers.StageManager.Player.Armor -= 2;
                 }
                 else // if (Managers.StageManager.Player.Armor <= 50)
                 {
                     
                     skill.sprite = simage[1];
-                     statResult.text = "방어력 100 증가!";
-                     Managers.StageManager.Player.Armor += 100;
+                     statResult.text = "방어력 증가!";
+                     Managers.StageManager.Player.Armor += 2;
                 }
             }
 
@@ -123,15 +126,15 @@ public class RandomDices1 : MonoBehaviour
                 if (Managers.StageManager.Player.MoveSpeed >= 50)
                 {
                     skill.sprite = simage[6];
-                    statResult.text = "이동속도 50 감소!";
-                    Managers.StageManager.Player.MoveSpeed -= 50;
+                    statResult.text = "이동속도 감소!";
+                    Managers.StageManager.Player.MoveSpeed -= 0.25f;
                 }
                 else //if (Managers.StageManager.Player.MoveSpeed <= 50)
                 {
                    
                      skill.sprite = simage[2];
-                     statResult.text = "이동속도 100 증가!";
-                     Managers.StageManager.Player.MoveSpeed += 100;
+                     statResult.text = "이동속도 증가!";
+                     Managers.StageManager.Player.MoveSpeed += 0.25f;
                 }
             }
 
@@ -144,16 +147,16 @@ public class RandomDices1 : MonoBehaviour
                 {
                    
                     skill.sprite = simage[7];
-                    statResult.text = "체력 50 감소!";
-                    Managers.StageManager.Player.MaxHp -= 50;
+                    statResult.text = "최대체력 감소!";
+                    Managers.StageManager.Player.MaxHp -= 15;
                 }
                 else //if (Managers.StageManager.Player.MaxHp <= 50)
                 {
                     {
                       
                         skill.sprite = simage[3];
-                         statResult.text = "체력 100 증가!";
-                         Managers.StageManager.Player.MaxHp += 100;
+                         statResult.text = "최대체력 증가!";
+                         Managers.StageManager.Player.MaxHp += 15;
 
                     }
                 }

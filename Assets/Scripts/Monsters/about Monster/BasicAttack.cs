@@ -9,6 +9,13 @@ public class BasicAttack : BasicMonsterController
         if (base.coolTime < 0)
         {
             base.EnemyAnimator.SetTrigger("Attack");
+
+            string name = "";
+            if (attackAudio.name == "BlueSkull(Clone)")
+                name = "Blueskull";
+            else name = base.attackAudio.ToString().Substring(0, base.attackAudio.ToString().Length - 26);
+            Debug.Log(name + "_Attack");
+            Managers.Sound.PlaySFXAudio("Monster/"+name+"_Attack", base.attackAudio, base.volume, false);
             StartCoroutine(AttackProcess());
             base.EnemyAnimator.SetTrigger("AttackToMove");
             base.coolTime = base.skillTime;

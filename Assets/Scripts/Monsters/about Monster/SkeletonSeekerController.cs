@@ -37,10 +37,7 @@ public class SkeletonSeekerController : Enemy
 
     public void Ready()
     {
-        Debug.Log("hello");
         base.EnemyAnimator.SetTrigger("RunSpawnToWalk");
-        Debug.Log("hi");
-        this.GetComponent<Collider2D>().enabled = true;
         this.GetComponent<Animator>().enabled = true;
         Debug.Log("레디함수 들어옴");
         StartCoroutine(ReadyProcess());
@@ -62,6 +59,7 @@ public class SkeletonSeekerController : Enemy
     public void Run()
     {
         base.Move();
+        this.GetComponent<Collider2D>().enabled = true;
         if ((playerTarget.gameObject.transform.position.x - this.transform.position.x) < 0)
             renderer.flipX = true;
         else renderer.flipX = false;
@@ -115,7 +113,7 @@ public class SkeletonSeekerController : Enemy
     public override sealed void TakeDamage(int newDamage)
     {
         base.TakeDamage(newDamage);
-
+        Managers.Sound.PlaySFXAudio("Final_Boss_SFX/04_sack_open_2");
         //Damage text
         GameObject floatingText = MemoryPoolManager.GetInstance().OutputGameObject
             (Managers.Resource.GetPerfabGameObject("UI/DamageText")
@@ -164,6 +162,8 @@ public class SkeletonSeekerController : Enemy
     }
     IEnumerator DieProcess()
     {
+        Managers.Sound.PlaySFXAudio("Final_Boss_SFX/Beast_Bellow4");
+        
         yield return new WaitForSeconds(1.0f);
 
         //int killCount = Random.Range(minKillCount, maxKillCount);

@@ -790,7 +790,7 @@ public class LeanTween : MonoBehaviour {
     * <summary>Test whether or not a tween is paused on a GameObject</summary>
     * 
     * @method LeanTween.isPaused
-    * @param {GameObject} gameObject:GameObject GameObject that you want to test if it is paused
+    * @param {GameObject} gameObject:GameObject GameObject that you want to RunSeekerSpawnerGo if it is paused
     */
     public static bool isPaused(GameObject gameObject = null)
     {
@@ -821,7 +821,7 @@ public class LeanTween : MonoBehaviour {
     * <summary>Test whether or not a tween is paused or not</summary>
     * 
     * @method LeanTween.isPaused
-    * @param {GameObject} id:int id of the tween that you want to test if it is paused
+    * @param {GameObject} id:int id of the tween that you want to RunSeekerSpawnerGo if it is paused
     * @example
     * int id = LeanTween.moveX(gameObject, 1f, 3f).id;<br />
     * LeanTween.pause(gameObject);<br />
@@ -845,7 +845,7 @@ public class LeanTween : MonoBehaviour {
     * <summary>Test whether or not a tween is active on a GameObject</summary>
     * 
     * @method LeanTween.isTweening
-    * @param {GameObject} gameObject:GameObject GameObject that you want to test if it is tweening
+    * @param {GameObject} gameObject:GameObject GameObject that you want to RunSeekerSpawnerGo if it is tweening
     */
     public static bool isTweening( GameObject gameObject = null ){
         if(gameObject==null){
@@ -871,7 +871,7 @@ public class LeanTween : MonoBehaviour {
     * <summary>Test whether or not a tween is active or not</summary>
     * 
     * @method LeanTween.isTweening
-    * @param {GameObject} id:int id of the tween that you want to test if it is tweening
+    * @param {GameObject} id:int id of the tween that you want to RunSeekerSpawnerGo if it is tweening
     * @example
     * int id = LeanTween.moveX(gameObject, 1f, 3f).id;<br />
     * if(LeanTween.isTweening( id ))<br />

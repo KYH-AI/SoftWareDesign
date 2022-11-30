@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class Boss2 : Enemy
 {
@@ -36,7 +35,6 @@ public class Boss2 : Enemy
     {
         base.Start();
         Invoke(nameof(GetBossLayer), 4.5f);
-
     }
     void Update()
     {
@@ -136,8 +134,9 @@ public class Boss2 : Enemy
     public override void TakeDamage(int newDamage)
     {
         print("데미지 받음");
-        base.TakeDamage(newDamage);
+        Managers.StageManager.IsBossAlive(Hp);
         Managers.UI.UpdateBossHpSlider(Hp, MaxHp);
+        base.TakeDamage(newDamage);
         Hurt();
     }
 
@@ -149,6 +148,7 @@ public class Boss2 : Enemy
         Managers.UI.bossSlider.gameObject.SetActive(false);
         isDie = true;
         EnemyAnimator.SetTrigger("isDie");
+        Deadsound();
     }
     void DeadProcess()//Die애니메이션에 넣음
     {
@@ -202,7 +202,6 @@ public class Boss2 : Enemy
         {
             state = BossState.HIDE_STATE;
             yield return new WaitForSeconds(0.8f);
-            isFadeout = true;
             attackCnt = 0;
         }
         else
@@ -229,8 +228,8 @@ public class Boss2 : Enemy
         }
         if (isFadeout)
         {
-           StartCoroutine(FadeOut());
             isFadeout = false;
+            StartCoroutine(FadeOut());
         }
          
        
@@ -239,6 +238,7 @@ public class Boss2 : Enemy
     {
         gameObject.tag = "Untagged";
         gameObject.layer = 15;
+        FadeOutsound();
         while (SpriteRenderer.color.a > 0)
         {
             var color = SpriteRenderer.color;
@@ -260,6 +260,7 @@ public class Boss2 : Enemy
     {
         gameObject.tag = "Enemy";
         gameObject.layer = 14;
+        FadeINsound();
         state = BossState.ATTACK_STATE;
         while (SpriteRenderer.color.a < 1)
         {
@@ -271,9 +272,24 @@ public class Boss2 : Enemy
             //wait for a frame
             yield return null;
         }
-
+        isFadeout = true;
         isHide = false;
 
     }
-
+    void Attacksound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/boss2_Attack_SFX");
+    }
+    void FadeOutsound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/FadeOut_SFX");
+    }
+    void FadeINsound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/FadeIn_SFX");
+    }
+    void Deadsound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/pzeDth00");
+    }
 }

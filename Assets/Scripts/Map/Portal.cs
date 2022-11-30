@@ -17,6 +17,7 @@ public class Portal : MonoBehaviour
             {
                 inPortal = true;
                 StartCoroutine(ToStore());
+                Managers.StageManager.bossCount--;
             }
 
         }
@@ -27,6 +28,7 @@ public class Portal : MonoBehaviour
                 inPortal = true;
                 StartCoroutine(SceneChange());
                 Managers.StageManager.InitMonsterCounter();
+                Managers.UI.InitKillText();
                 Managers.UI.InitBossSlider();
             }
 
@@ -49,16 +51,23 @@ public class Portal : MonoBehaviour
                 Managers.StageManager.stage = Define.Stage.STORE4;
                 break;
         }
+        Sound();
         yield return new WaitForSeconds(1f);
         inPortal = false;
         transform.position = new Vector2(0, 0);
         MemoryPoolManager.GetInstance().InitPool();
         Managers.SkillEffectVolume.ChagnePostProcessProfile(null);
+
+        //스포너 관련 함수 초기화
+        Managers.StageManager.isSpawnOkay = true;
+        Managers.StageManager.isBossAlive = true;
+
         LoadingScene.LoadScene("JinminStore");
     }
 
     IEnumerator SceneChange()
     {
+        Sound();
         yield return new WaitForSeconds(1f);
         transform.position = new Vector2(0, 0);
         inPortal = false;
@@ -83,6 +92,10 @@ public class Portal : MonoBehaviour
                 Managers.StageManager.stage = Define.Stage.Boss;
                 break;
         }
+    }
+    private void Sound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/portal_SFX");
     }
 
 }

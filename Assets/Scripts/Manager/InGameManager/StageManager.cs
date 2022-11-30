@@ -12,6 +12,9 @@ public class StageManager : MonoBehaviour
     public int killCount;      //현재 킬 카운트
     public Define.Stage stage;        //현재 스테이지
     public GameObject[] coins = new GameObject[3];
+    public int bossCount = 0;
+    public bool isBossSpawn = false;
+
 
     #region 상점 변수
     public GameManagerYJ shopManager;
@@ -42,14 +45,6 @@ public class StageManager : MonoBehaviour
         isBossAlive = true;
 }
 
-    private void Update()
-    {
-        if (Managers.UI.bossSlider.value < 0f)
-            isBossAlive = false;
-        else
-            isBossAlive = true ;
-    }
-
     #endregion
     public void InitMonsterCounter()
     {
@@ -59,7 +54,10 @@ public class StageManager : MonoBehaviour
     public void DecreaseKillCount()     //킬카운트를 줄이는 방식으로 진행하려고 함. 플레이어가 몬스터를 죽이면 실행.
     {
         if (killCount <= 0)
+        {
+            isSpawnOkay = false;
             return;
+        }
         killCount--;
         Managers.UI.UpdateKillCounts();
     }
@@ -125,12 +123,49 @@ public class StageManager : MonoBehaviour
                 subTitleText.text = "마지막 꿈나라";
                 break;
         }
+        StartCoroutine(BackGroundSound(stage));
         sceneAnimator.SetTrigger("Movie Start");
-        Invoke(nameof(DelaySceneFadeAudio), 0.5f);
+        Invoke(nameof(FadeEffect), 0.5f);
     }
 
-    private void DelaySceneFadeAudio()
+    public void IsBossAlive(float currentHp)
+    {
+        if (currentHp <= 0f)
+        {
+            isSpawnOkay = false;
+            isBossAlive = false;
+           // Managers.Sound.PlayBGMAudio("");
+        }
+        else
+        {
+            isBossAlive = true;
+        }
+    }
+
+    private void FadeEffect()
     {
         Managers.Sound.PlaySFXAudio("Etc/SceneChangeSFX");
+    }
+    IEnumerator BackGroundSound(Define.Stage stage)
+    {
+        yield return new WaitForSeconds(1.5f);
+        switch (stage)
+        {
+            case Define.Stage.STAGE1:
+                Managers.Sound.PlayBGMAudio("Stage1BackGround");
+                break;
+            case Define.Stage.STAGE2:
+                Managers.Sound.PlayBGMAudio("Stage2BackGround");
+                break;
+            case Define.Stage.STAGE3:
+                Managers.Sound.PlayBGMAudio("Stage3BackGround");
+                break;
+            case Define.Stage.STAGE4:
+                Managers.Sound.PlayBGMAudio("Stage4BackGround");
+                break;
+            case Define.Stage.Boss:
+                Managers.Sound.PlayBGMAudio("Stage5BackGround");
+                break;
+        }
     }
 }
