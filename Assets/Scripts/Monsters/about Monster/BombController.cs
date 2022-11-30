@@ -8,14 +8,18 @@ public class BombController : MonoBehaviour
     float bombAttackRadius = 0.5f;
     public GameObject crab;
     public Animator anim;
-    float shootSpeed=2.0f;
+    float shootSpeed=0.1f;
     Vector3 dir;
     float time;
+
+    AudioSource bombAudio;
+    float bombVolume;
 
     void OnEnable()
     {
         dir = (this.transform.position - crab.transform.position).normalized;
         anim = GetComponent<Animator>();
+        bombAudio = GetComponent<AudioSource>();
         time = 0;
     }
 
@@ -25,6 +29,8 @@ public class BombController : MonoBehaviour
          {
             anim.SetTrigger("bomb");
             Debug.Log("Set Bomb!");
+            Debug.Log(name + "_Attack");
+            Managers.Sound.PlaySFXAudio("Monster/" + "bomb_Attack", bombAudio, bombVolume, false);
             StartCoroutine(Bomb());
         }
         else

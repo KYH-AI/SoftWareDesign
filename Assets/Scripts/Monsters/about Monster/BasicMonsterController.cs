@@ -7,8 +7,10 @@ using UnityEngine.AI;
 public abstract class BasicMonsterController : Enemy
 {
     float radius = 0.2f;
-    //public GameObject coinPrephab;
     public GameObject coinPrefap;
+    public AudioSource attackAudio;
+    public float volume;
+
     public enum State
     {
         Run,
@@ -21,14 +23,11 @@ public abstract class BasicMonsterController : Enemy
     public float coolTime=-1.0f, skillTime = 2.0f;
     new SpriteRenderer renderer;
 
-
-    public int minKillCount;
-    public int maxKillCount;
-
     new public void Start()
     {
         base.Start();
         renderer = GetComponent<SpriteRenderer>();
+        attackAudio = GetComponent<AudioSource>();
         state = State.Run;
     }
 
@@ -40,7 +39,7 @@ public abstract class BasicMonsterController : Enemy
 
     public void Update()
     {
-        if (Managers.StageManager.IsStageCleared()) OnDead();
+        if (Managers.StageManager.IsStageCleared()||Managers.StageManager.isSpawnOkay==false) OnDead();
         else
         {
             if (state == State.Run) Run();
@@ -124,7 +123,7 @@ public abstract class BasicMonsterController : Enemy
 
     //죽음
     //죽음 애니메이션,코인드랍,비활성화
-    protected override sealed void OnDead()
+    protected override void OnDead()
     {
         base.OnDead();
         base.EnemyCollider.enabled = false;
@@ -136,18 +135,22 @@ public abstract class BasicMonsterController : Enemy
     {
         yield return new WaitForSeconds(1.0f);
 
-        int killCount = Random.Range(minKillCount, maxKillCount);
-        int coinLevel = Random.Range(0, 3);
+        if (Managers.StageManager.isSpawnOkay == true)
+        {
+            GameObject coin = MemoryPoolManager.GetInstance().OutputGameObject
+                   (coinPrefap,
+                    "Coin/" + coinPrefap.name,
+                    transform.position,
+                    Quaternion.identity);
 
-        GameObject coin = MemoryPoolManager.GetInstance().OutputGameObject
-               (coinPrefap,
-                "Coin/" +coinPrefap.name,
-                transform.position,
-                Quaternion.identity);
+            coin.SetActive(true);
+        }
 
-        coin.SetActive(true);
+        Debug.Log("audio name : " + attackAudio.name);
 
-        Managers.StageManager.DecreaseKillCount();
+        if (attackAudio.name != "BlueSkull_Attack"||Managers.StageManager.killCount!=0)
+            Managers.StageManager.DecreaseKillCount();
+       
         //캐릭터 정보에 킬카운트 넘겨주기
 
         base.EnemyCollider.enabled = true;

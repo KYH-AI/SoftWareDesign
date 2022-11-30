@@ -24,11 +24,15 @@ public class MushroomAttack : BasicMonsterController
         mushroomRenderer = GetComponent<SpriteRenderer>();
         c = GetComponent<Collider2D>();
         base.EnemyAnimator.SetTrigger("Attack");
+        Managers.StageManager.monsterCounter--;
         bombPosition = this.transform.position;
         base.EnemyAnimator.SetTrigger("Smoke");
         transform.position = bombPosition;
         c.isTrigger = true;
         Hp = 10000000;
+        string name = base.attackAudio.ToString().Substring(0, base.attackAudio.ToString().Length - 33);
+        Debug.Log(name + "_Attack");
+        Managers.Sound.PlaySFXAudio("Monster/" + name + "_Attack", base.attackAudio, volume, false);
         StartCoroutine(AttackProcess());
     }
 

@@ -9,10 +9,12 @@ public class Drone : PassiveSkill
     private LineRenderer droneBulletLine;
     private Light2D droneMuzzleFlash;
 
+
     private Coroutine droneAttackCheck;
     private Coroutine droneRotateCheck;
     private bool isDroneStop = false;
 
+    private readonly string[] droneSFX = { "Player/Passive Skill/Drone_1", "Player/Passive Skill/Drone_2" };
     private float lastTime = 0f;        // 드론 마지막 사격 시간
     private readonly float DRONE_MOVE_SPEED = 50f;              // 드론 이동 속도 (상수 값)
     private readonly float DRONE_BULLET_LINE_DURATION = 0.1f;   // 드론 공격 이펙트 지속 시간(상수 값)
@@ -42,25 +44,7 @@ public class Drone : PassiveSkill
     /// 스킬 공격 딜레이 코루틴
     /// </summary>
     private WaitForSeconds skillAttackDelayTimeSec;
-    #endregion
-
-    #region 스킬 스텟 프로퍼티
-    /// <summary>
-    /// 스킬 데미지 프로퍼티 ( set : 스킬 데미지 값 변경 )
-    /// </summary>
-    public int SkillDamage {  set { skillDamage = value; } }
-    /// <summary>
-    /// 스킬 공격 범위 프로퍼티 ( set : 스킬 공격 범위 값 변경 )
-    /// </summary>
-    public float SkillRange { set { skillRange = value; } }
-    /// <summary>
-    /// 스킬 타겟 수 프로퍼티 ( set : 스킬 공격 타켓 수 값 변경 )
-    /// </summary>
-    public int SkillTargetCount { set { skillTargetCount = value; } }
-    /// <summary>
-    /// 스킬 공격 딜레이 시간 프로퍼티 ( set : 공격 딜레이 시간 코루틴 WaitForSeconds 값 변경 )
-    /// </summary>
-    public float SkillAttackDelay
+    private float SkillAttackDelay
     {
         set
         {
@@ -106,7 +90,7 @@ public class Drone : PassiveSkill
         skillDamage += 3;
         SkillCoolTime -= 2f;
         skillTargetCount += 3;
-        skillAttackDelay -= 0.25f;
+        SkillAttackDelay = (skillAttackDelay - 0.25f);
         skillRange += 2;
     }
 
@@ -141,11 +125,13 @@ public class Drone : PassiveSkill
             {
                 if (playerObject.PlayerController.isAttackalble == false) StopAllCoroutines();
 
+                Managers.Sound.PlaySFXAudio(droneSFX[0]);
 
                 Enemy enemy = enemyColliders[enemyCount].GetComponent<Enemy>();
                 StartCoroutine(DroneBulletEffect(enemy.transform.position));
                 enemy.TakeDamage(skillDamage);
 
+                Managers.Sound.PlaySFXAudio(droneSFX[1]);
                 lastTime += skillAttackDelay;   // 공격 쿨타임에 타켓변경 시간까지 추가
                 yield return skillAttackDelayTimeSec;
             }
