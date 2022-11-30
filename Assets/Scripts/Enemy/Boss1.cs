@@ -29,13 +29,11 @@ public class Boss1 : Enemy
     [SerializeField] Material orignalMaterial;
     [SerializeField] GameObject Portalpref;
     GameObject myInstance;
-    AudioSource audioSource;
 
     private void Start()
     {
         base.Start();
         Invoke(nameof(GetBossLayer),4.5f);
-        audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -210,11 +208,11 @@ public class Boss1 : Enemy
     }
     void FireSound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/fire-magic-6947", audioSource);
+        Managers.Sound.PlaySFXAudio("SubBoss/fire-magic-6947");
     }
     void DeadSound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/저글링4", audioSource);
+        Managers.Sound.PlaySFXAudio("SubBoss/저글링4");
     }
     
 }
