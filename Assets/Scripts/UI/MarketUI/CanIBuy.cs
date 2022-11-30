@@ -28,10 +28,12 @@ public class CanIBuy : MonoBehaviour
     public Button SelectBtn3;
     int skillLevel;
     Image selectImage;
+    AudioSource audioSoure;
     public Image soldout;
 
     public void Start()
     {
+        audioSoure = GetComponent<AudioSource>();
         Yes.SetActive(false);
         No.SetActive(false);
         Up.SetActive(false);
@@ -54,7 +56,8 @@ public class CanIBuy : MonoBehaviour
 
     public void Answer()
     {
-        
+        audioSoure.Play();
+
         if (Managers.StageManager.Player.PlayerGold >= item)
         { 
             Managers.StageManager.Player.PlayerGold -= item;
