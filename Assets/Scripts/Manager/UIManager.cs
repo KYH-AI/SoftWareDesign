@@ -82,13 +82,16 @@ public class UIManager : MonoBehaviour
     {
         bossSlider.value = currentHp / maxHp;
     }
+
+
+
     public void UpdateGoldText()    //골드 획득 시 실행.
     {
-        goldAmount.text = Managers.StageManager.Player.PlayerGold.ToString();
+       // goldAmount.text = Managers.StageManager.Player.PlayerGold.ToString();
     }
     public void UpdateKillCounts()  //몬스터 처치 시 실행.
     {
-        killCount.text = ("" + Managers.StageManager.killCount);
+       // killCount.text = ("" + Managers.StageManager.killCount);
     }
     public void UpdateActiveSkills(Image image, ActiveSkill activeSkill)        //상점에서 스킬 구매시 실행.
     {
