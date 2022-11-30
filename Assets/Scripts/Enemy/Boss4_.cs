@@ -5,7 +5,6 @@ using UnityEngine;
 public class Boss4_ : Enemy
 {
     protected int Boss = 1 << 14;
-    AudioSource AudioSource;
     public enum BossState
     {
         IDLE_STATE,
@@ -31,8 +30,6 @@ public class Boss4_ : Enemy
     {
         base.Start();
         Invoke(nameof(GetBossLayer), 4.5f);
-        AudioSource= GetComponent<AudioSource>();
-
     }
     void Update()
     {
@@ -210,10 +207,10 @@ public class Boss4_ : Enemy
     }
     void Attack1Sound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/MP_swosh-sword-swing", AudioSource);
+        Managers.Sound.PlaySFXAudio("SubBoss/MP_swosh-sword-swing");
     }
     void DeadSound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/boss4_Die_SFX", AudioSource);
+        Managers.Sound.PlaySFXAudio("SubBoss/boss4_Die_SFX");
     }
 }

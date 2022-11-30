@@ -17,7 +17,6 @@ public class Boss2 : Enemy
     float moveDistance = 15f;
     float attackDistance = 2.5f;
     float attackDelay = 2f;
-    AudioSource audioSource;
     Vector2 dir;
     BossState state = BossState.IDLE_STATE;
     bool isAttack = true;
@@ -36,7 +35,6 @@ public class Boss2 : Enemy
     {
         base.Start();
         Invoke(nameof(GetBossLayer), 4.5f);
-        audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -280,18 +278,18 @@ public class Boss2 : Enemy
     }
     void Attacksound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/boss2_Attack_SFX", audioSource);
+        Managers.Sound.PlaySFXAudio("SubBoss/boss2_Attack_SFX");
     }
     void FadeOutsound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/FadeOut_SFX", audioSource);
+        Managers.Sound.PlaySFXAudio("SubBoss/FadeOut_SFX");
     }
     void FadeINsound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/FadeIn_SFX", audioSource);
+        Managers.Sound.PlaySFXAudio("SubBoss/FadeIn_SFX");
     }
     void Deadsound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/pzeDth00", audioSource);
+        Managers.Sound.PlaySFXAudio("SubBoss/pzeDth00");
     }
 }

@@ -50,6 +50,7 @@ public class Portal : MonoBehaviour
                 Managers.StageManager.stage = Define.Stage.STORE4;
                 break;
         }
+        Sound();
         yield return new WaitForSeconds(1f);
         inPortal = false;
         transform.position = new Vector2(0, 0);
@@ -60,6 +61,7 @@ public class Portal : MonoBehaviour
 
     IEnumerator SceneChange()
     {
+        Sound();
         yield return new WaitForSeconds(1f);
         transform.position = new Vector2(0, 0);
         inPortal = false;
@@ -84,6 +86,10 @@ public class Portal : MonoBehaviour
                 Managers.StageManager.stage = Define.Stage.Boss;
                 break;
         }
+    }
+    private void Sound()
+    {
+        Managers.Sound.PlaySFXAudio("SubBoss/portal_SFX");
     }
 
 }
