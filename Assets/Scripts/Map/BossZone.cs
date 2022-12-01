@@ -22,6 +22,7 @@ public class BossZone : MonoBehaviour
             Managers.UI.InitBossSlider();
             Managers.CameraManager.SetFollow(bossObejct.transform);
             bossSpawnEffect.PlayFromTimeline();
+            bossObejct.BossSetBattle();
             Destroy(gameObject);
         }
     }

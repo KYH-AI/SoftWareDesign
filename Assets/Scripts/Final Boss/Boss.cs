@@ -108,6 +108,12 @@ public class Boss : Enemy
         darkHealTempHp = BOSS_TEMP_HP;
         
         bossFSM.bossState = Define.BossState.CASTING_STATE; //연출효과 대기
+ 
+    }
+
+    #region 보스 연출이 종료되면 Move 상태로 전환
+    public void BossSetBattle()
+    {
         Invoke(nameof(GetBossLayer), 3f);
     }
 
@@ -117,6 +123,7 @@ public class Boss : Enemy
         isStart = true;
         bossFSM.bossState = Define.BossState.MOVE_STATE;
     }
+    #endregion
 
 
     void Update()
