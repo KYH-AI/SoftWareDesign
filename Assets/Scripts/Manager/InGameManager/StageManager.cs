@@ -70,7 +70,7 @@ public class StageManager : MonoBehaviour
     }
     public void SetStageKillCount()     //킬 카운트를 100으로 초기화 하는 함수.
     {
-        killCount = 100;
+        killCount = 1;
     }
     public void ChangeStage()                   //씬 이동시 실행해야 하는 함수. 스테이지를 1씩 증가시킨다.
     {
@@ -103,7 +103,7 @@ public class StageManager : MonoBehaviour
                 break;
             case Define.Stage.Boss:
                 mainTitleText.text = "제 5장";
-                subTitleText.text = "시로의 희망";
+                subTitleText.text = "시로의 복수";
                 break;
 
             case Define.Stage.STORE1:
@@ -134,7 +134,6 @@ public class StageManager : MonoBehaviour
         {
             isSpawnOkay = false;
             isBossAlive = false;
-           // Managers.Sound.PlayBGMAudio("");
         }
         else
         {

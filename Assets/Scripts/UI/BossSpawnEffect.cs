@@ -23,7 +23,6 @@ public class BossSpawnEffect : MonoBehaviour
     }
     public void PlayFromTimeline()
     {
-        //TimeLineEndSignal();
         playableDirector.Play(timeline);
         Managers.Sound.PlayBGMAudio("BossSpawnBackGround");
     }
@@ -34,6 +33,7 @@ public class BossSpawnEffect : MonoBehaviour
     {
         Managers.StageManager.isSpawnOkay = false;
         Managers.StageManager.Player.PlayerController.isMoveable = false;
+        Managers.StageManager.Player.PlayerController.bossDebuff = true;
         Managers.StageManager.Player.PlayerController.isAttackalble = false;
         UpdateBossEffectText();
         Managers.SkillEffectVolume.ChagnePostProcessProfile(null);
@@ -44,6 +44,7 @@ public class BossSpawnEffect : MonoBehaviour
     {
         Managers.StageManager.isSpawnOkay = true;
         Managers.StageManager.Player.PlayerController.isMoveable = true;
+        Managers.StageManager.Player.PlayerController.bossDebuff = false;
         Managers.StageManager.Player.PlayerController.isAttackalble = true;
         bossCamera.gameObject.SetActive(false);
     }

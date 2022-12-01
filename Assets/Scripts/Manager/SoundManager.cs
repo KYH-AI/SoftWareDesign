@@ -140,5 +140,12 @@ public class SoundManager : MonoBehaviour
         return wfs;
     }
 
+    public void StopBGMAudio(AudioSource bgmAudio = null)
+    {
+        if (bgmAudio == null) bgmAudio = bgmAduioSource;
+
+        if(bgmAudio.isPlaying) bgmAudio.Stop();
+    }
+
 
 }

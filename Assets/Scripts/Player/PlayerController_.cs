@@ -8,8 +8,6 @@ public class PlayerController_ : MonoBehaviour
 {
     
 
-    
-
     #region 이동 관련 변수 선언부
     Vector3 moveDirection;                  //이동방향
     Vector2 lastDirection;                  //마지막 이동방향
@@ -46,7 +44,9 @@ public class PlayerController_ : MonoBehaviour
     Player player;
     #endregion
 
+    #region 보스 입력 이벤트 변수
     public List<char> delevList = new List<char>();
+    #endregion
 
 
     #region 유니티 함수
@@ -56,23 +56,12 @@ public class PlayerController_ : MonoBehaviour
         anim = GetComponent<Animator>();
         boxCol = GetComponentInChildren<BoxCollider2D>();
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Portal")
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                Managers.SceneManager_.LoadScene();
-            }
 
-        }
-    }
     private void Update()
     {
         if (isMoveable == true && !bossDebuff)              //기본 공격시 이동을 막기 위함.
         {
             Move();
-           
         }
     }
     #endregion
@@ -157,16 +146,14 @@ public class PlayerController_ : MonoBehaviour
     }
     #endregion
 
-    
-    void OnNodeA() { delevList.Add('A'); print("A"); }
-    void OnNodeS() { delevList.Add('S'); print("S"); }
-    void OnNodeD() { delevList.Add('D'); print("D"); }
-    void OnNodeZ() { delevList.Add('Z'); print("Z"); }
-    void OnNodeX() { delevList.Add('X'); print("X"); }
-    void OnNodeC() { delevList.Add('C'); print("C"); }
-
-  
-
+    #region 보스 입력 이벤트 함수
+    void OnNodeA() { delevList.Add('A'); }
+    void OnNodeS() { delevList.Add('S'); }
+    void OnNodeD() { delevList.Add('D'); }
+    void OnNodeZ() { delevList.Add('Z');  }
+    void OnNodeX() { delevList.Add('X');  }
+    void OnNodeC() { delevList.Add('C');  }
+    #endregion 보스 입력 이벤트 함수
 
     #region 애니메이션 이벤트 함수
     void SetIsMoveableTrue()        //공격이 끝났을 때 움직이게 할 수 있도록 하는 애니메이션 이벤트 함수.

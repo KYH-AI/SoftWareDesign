@@ -13,17 +13,11 @@ public class Managers : MonoBehaviour
     private SoundManager sound;
     public static SoundManager Sound { get { return Instance.sound; } }
 
-    private ButtonManager button;
-    public static ButtonManager Button { get { return Instance.button; } }
-
     private SkillEffectVolumeManager skillEffectVolume;
     public static SkillEffectVolumeManager SkillEffectVolume { get { return Instance.skillEffectVolume; } }
 
     private UIManager ui;
     public static UIManager UI { get { return Instance.ui; } }
-
-    private SceneManager_ sceneManager_;
-    public static SceneManager_ SceneManager_ { get { return Instance.sceneManager_; } }
 
     private CameraManager cameraManager;
     public static CameraManager CameraManager { get { return Instance.cameraManager; } }
@@ -57,11 +51,8 @@ public class Managers : MonoBehaviour
     {
         stageManager = GetComponentInChildren<StageManager>();
         sound = GetComponentInChildren<SoundManager>();
-        button = GetComponentInChildren<ButtonManager>();
         skillEffectVolume = GetComponentInChildren<SkillEffectVolumeManager>();
-        sceneManager_ = GetComponentInChildren<SceneManager_>();
         cameraManager = GetComponentInChildren<CameraManager>();
         ui = GetComponentInChildren<UIManager>();
- 
     }
 }

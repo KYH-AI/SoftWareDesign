@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Boss : Enemy
 {
@@ -86,6 +87,7 @@ public class Boss : Enemy
     private float bossHpPercentage=100f;            //보스의 체력을 퍼센티지로 나타내 저장하는 변수
     private float patternCheckTimer = 0.0f;     //일정시간이 지나고 특정 패턴을 실행시키고 싶을 때 사용
     private bool patternCheck = false;          // == isgod. true이면 무적임. 
+    private bool isStart = false;
     #endregion
 
     [SerializeField] Spawner_SkeletonSeeker SkeletonSeekerSpawner;
@@ -105,13 +107,22 @@ public class Boss : Enemy
         bossSpriteRenderer = GetComponent<SpriteRenderer>();
         darkHealTempHp = BOSS_TEMP_HP;
         
-        //bossFSM.bossState = Define.BossState.CASTING_STATE; //연출효과 대기
+        bossFSM.bossState = Define.BossState.CASTING_STATE; //연출효과 대기
+        Invoke(nameof(GetBossLayer), 3f);
     }
-    
-   
+
+    private void GetBossLayer()
+    {
+        gameObject.layer = 14;
+        isStart = true;
+        bossFSM.bossState = Define.BossState.MOVE_STATE;
+    }
+
 
     void Update()
     {
+        if (!isStart || bossFSM == null) return;
+
         SwitchSpriteImageDir(transform);
         if (bossFSM != null) bossFSM.Update();                      //보스의 STATE값이 있을 때만 동작함. 
         if (bossFSM.bossState != Define.BossState.CASTING_STATE)    //보스가 패턴 중일 때는 패턴체크타이머를 증가하지 않음
@@ -225,12 +236,18 @@ public class Boss : Enemy
     {
         bossFSM.bossState = Define.BossState.DEAD_STATE;
         SetAnimationTrigger("RunDead");
+
     }
     public void Die()
     {
+        bossFSM.bossState = Define.BossState.CASTING_STATE;
         Managers.Sound.PlaySFXAudio("Final_Boss_SFX/Death");
-        Destroy(this);
-        
+        Invoke(nameof(DelayDeadAnim), 2.5f);
+    }
+
+    private void DelayDeadAnim()
+    {
+        SceneManager.LoadScene("Ending");
     }
     /// <summary>
     /// 보스의 체력에 따라 해당하는 기능을 실행시키는 함수
@@ -401,11 +418,13 @@ public class Boss : Enemy
         bossFSM.bossState = Define.BossState.MOVE_STATE;
 
     }
-    #endregion
+
     private void RunSeekerSpawnerGo()
     {
         SkeletonSeekerSpawner.go(); 
     }
+    #endregion
+
     #region 바인드 패턴 관련 함수들
     /// <summary>
     /// 패턴 바인드 실행 함수
@@ -587,15 +606,5 @@ public class Boss : Enemy
         //EnemyRigidbody.transform.localScale = new Vector2(-scaleX, transform.localScale.y);
     }
     #endregion
-    /*
-    #region 플레이어 인풋 액션 함수 모음
-    void OnNodeA() { inputList.Add('A'); print("AAAA"); }
-    void OnNodeS()  {inputList.Add('S'); print("SSSS"); }
-    void OnNodeD()  {inputList.Add('D'); print("dddd"); }
-    void OnNodeZ()  { inputList.Add('Z'); print("zzzz") ; }
-    void OnNodeX()  {inputList.Add('X'); print("xxxx"); }
-    void OnNodeC()  {inputList.Add('C'); print("cccc"); }
-    #endregion
-    */
 }
 

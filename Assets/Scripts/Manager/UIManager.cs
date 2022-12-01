@@ -79,9 +79,9 @@ public class UIManager : MonoBehaviour
     {
         killCount.text = ("" + Managers.StageManager.killCount);
     }
-    public void InitKillText()
+    public void InitKillText(string killCount)
     {
-        killCount.text = Managers.UI.killCount.ToString();
+        this.killCount.text = killCount;
     }
     public void UpdateActiveSkills(Image image, ActiveSkill activeSkill)        //상점에서 스킬 구매시 실행.
     {
