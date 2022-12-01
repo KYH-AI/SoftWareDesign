@@ -208,6 +208,7 @@ public class Boss : Enemy
         }
         Hurt();
         base.TakeDamage(newDamage);
+        Managers.UI.UpdateBossHpSlider(Hp, MaxHp);
         bossHpPercentage = (float)Hp / (float)MaxHp * 100;        //현재 체력 나누기 최대체력 곱하기 백
         print("데미지 계산 처리 후 보스 현재 체력"+ bossHpPercentage);
         //Managers.StageManager.IsBossAlive(Hp)

@@ -2108,7 +2108,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c84416e265167d54c8e6d0563f0d62ab, type: 3}
   - {fileID: 21300000, guid: 16052c491e5525b459138f4d91641bb6, type: 3}
   - {fileID: 21300000, guid: 3e1f9099c9d26f444a87440f5f26be3a, type: 3}
-  - {fileID: 21300000, guid: 3e1f9099c9d26f444a87440f5f26be3a, type: 3}
+  - {fileID: 21300000, guid: ff151e12e4031b94784ce4ffe0408fb1, type: 3}
   bossCamera: {fileID: 452006305}
 --- !u!1 &1403968911
 GameObject:

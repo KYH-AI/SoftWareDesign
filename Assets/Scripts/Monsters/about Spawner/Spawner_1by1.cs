@@ -10,7 +10,7 @@ public class Spawner_1by1 : MonoBehaviour
 
     private float spawnRate;
 
-    int MaxCnt = 200;
+    int MaxCnt = 100;
 
     bool spawnerRestart = false;
 

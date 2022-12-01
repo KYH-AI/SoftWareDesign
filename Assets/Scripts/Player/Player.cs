@@ -31,7 +31,7 @@ public class Player : LivingEntity
     #endregion
 
     #region 플레이어 재화 변수
-    private int playerGold = 1000;
+    private int playerGold = 0;
     public int PlayerGold
     {
         get { return playerGold; }

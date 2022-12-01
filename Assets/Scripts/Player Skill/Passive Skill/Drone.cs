@@ -64,7 +64,7 @@ public class Drone : PassiveSkill
 
     private void Update()  // 드론 사격 여부 확인
     {
-        if (!isDroneStop && currentSkillState == Define.CurrentSkillState.ACTIVE)
+        if (currentSkillState == Define.CurrentSkillState.ACTIVE)
         {
             currentSkillState = DroneSkillAttack();
         }
@@ -88,9 +88,9 @@ public class Drone : PassiveSkill
     public override void Upgrade()
     {
         skillDamage += 3;
-        SkillCoolTime -= 2f;
+        SkillCoolTime -= 1f;
         skillTargetCount += 3;
-        SkillAttackDelay = (skillAttackDelay - 0.25f);
+        SkillAttackDelay = (skillAttackDelay - 0.1f);
         skillRange += 2;
     }
 
