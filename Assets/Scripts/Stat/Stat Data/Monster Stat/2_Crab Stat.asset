@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e6443d67a4cf241a1179bfa19679a3, type: 3}
   m_Name: 2_Crab Stat
   m_EditorClassIdentifier: 
-  hp: 1
-  moveSpeed: 2
+  hp: 20
+  moveSpeed: 1
   armor: 0
   defaultAttackDamage: 2
