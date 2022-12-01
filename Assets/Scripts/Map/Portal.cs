@@ -12,11 +12,11 @@ public class Portal : MonoBehaviour
     {
         if (collision.gameObject.tag == "Portal")
         {
-       
             if (Input.GetKey(KeyCode.Space)&& !inPortal)
             {
                 inPortal = true;
                 StartCoroutine(ToStore());
+                Managers.UI.InitKillText("X");
                 Managers.StageManager.bossCount--;
             }
 
@@ -28,11 +28,11 @@ public class Portal : MonoBehaviour
                 inPortal = true;
                 StartCoroutine(SceneChange());
                 Managers.StageManager.InitMonsterCounter();
-                Managers.UI.InitKillText();
+                Managers.UI.InitKillText(Managers.StageManager.killCount.ToString());
                 Managers.UI.InitBossSlider();
             }
-
         }
+
     }
     IEnumerator ToStore()
     {

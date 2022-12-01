@@ -55,7 +55,7 @@ public class RandomSkill3 : MonoBehaviour
 
         else if (RandomInt == 4)
         {
-            skill.sprite = simage[2];
+            skill.sprite = simage[3];
             stext.text = "  <응급치료> 가격:300 구매하시겠습니까?";
             ItemName.text = "<응급치료>";
             product = 300;

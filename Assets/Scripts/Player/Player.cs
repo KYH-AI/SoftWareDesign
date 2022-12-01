@@ -31,7 +31,7 @@ public class Player : LivingEntity
     #endregion
 
     #region 플레이어 재화 변수
-    private int playerGold = 0;
+    private int playerGold = 1000;
     public int PlayerGold
     {
         get { return playerGold; }
@@ -125,7 +125,6 @@ public class Player : LivingEntity
 
 
         Managers.UI.UpdatePlayerHpSlider(Hp, MaxHp);
-        // TODO : 피격 효과음 재생
     }
 
     /// <summary>
@@ -149,6 +148,12 @@ public class Player : LivingEntity
         StopAllCoroutines();
         gameObject.layer = 0;
         playerController.Anim.SetTrigger("isDead");
+    }
+
+    private void PlayerDeadEvent()
+    {
+        SceneManager.LoadScene("Ending");
+        gameObject.SetActive(false);
     }
     #endregion
 
@@ -179,11 +184,4 @@ public class Player : LivingEntity
         playerController.Anim.enabled = true;
     }
     #endregion
-
-    private void PlayerDeadEvent()
-    {
-        SceneManager.LoadScene("Ending");
-        gameObject.SetActive(false);
-    }
-
 }

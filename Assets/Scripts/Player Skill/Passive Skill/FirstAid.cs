@@ -32,15 +32,6 @@ public class FirstAid : PassiveSkill
     }
     #endregion
 
-    private void Start()
-    {
-        FirstAidInit();
-    }
-
-    private void FirstAidInit()
-    {
-        //skillDurationSec = new WaitForSeconds(skillDuration);
-    }
 
     /// <summary>
     ///  해당 스킬 피격 시 발동 되도록 이벤트 등록
@@ -76,6 +67,7 @@ public class FirstAid : PassiveSkill
         while(buffDuration > 0)
         { 
             playerObject.Hp += addHP;
+            Managers.UI.UpdatePlayerHpSlider(playerObject.Hp, playerObject.MaxHp);
             Managers.Sound.PlaySFXAudio(firstAidSFX);
             buffDuration--;
             yield return PER_SECONDS;
