@@ -24,7 +24,8 @@ public abstract class LivingEntity : MonoBehaviour
     { 
         get { return hp; } 
         set 
-        { 
+        {
+            if ((value + hp) >= maxHp) hp = maxHp;
             hp = value;
         } 
     }

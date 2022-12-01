@@ -37,7 +37,7 @@ public class PlayerController_ : MonoBehaviour
     #region 상태 제어 변수 선언부
     public bool isMoveable = true;             //기본 공격 때 움직임을 제한하기 위한 변수.
     public bool isAttackalble = true;   //스킬 사용 중 혹은 보스 몬스터에게 침묵이 걸렸을 때 스킬 사용을 제한하기 위한 변수.
-    public bool bossDebuff = false;
+    public bool bossDebuff = false;     // 보스에 대한 이동제어 제한
     #endregion
 
     #region 플레이어 정보 변수 선언부

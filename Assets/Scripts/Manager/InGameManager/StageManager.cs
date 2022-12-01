@@ -53,7 +53,7 @@ public class StageManager : MonoBehaviour
 
     public void DecreaseKillCount()     //킬카운트를 줄이는 방식으로 진행하려고 함. 플레이어가 몬스터를 죽이면 실행.
     {
-        if (killCount <= 0)
+        if (killCount == 0)
         {
             isSpawnOkay = false;
             return;
@@ -70,7 +70,7 @@ public class StageManager : MonoBehaviour
     }
     public void SetStageKillCount()     //킬 카운트를 100으로 초기화 하는 함수.
     {
-        killCount = 1;
+        killCount = 5;
     }
     public void ChangeStage()                   //씬 이동시 실행해야 하는 함수. 스테이지를 1씩 증가시킨다.
     {

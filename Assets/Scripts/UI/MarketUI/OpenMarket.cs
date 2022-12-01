@@ -11,8 +11,6 @@ public class OpenMarket : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-      //  mbtn = transform.Find("market").GetComponent<Button>();
-       // MarketTool = transform.Find("MarketTool").GetComponent<GameObject>();
         
         mbtn.onClick.AddListener(activeMarket);
     }

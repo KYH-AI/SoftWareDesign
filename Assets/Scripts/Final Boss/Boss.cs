@@ -114,7 +114,7 @@ public class Boss : Enemy
     #region 보스 연출이 종료되면 Move 상태로 전환
     public void BossSetBattle()
     {
-        Invoke(nameof(GetBossLayer), 3f);
+        Invoke(nameof(GetBossLayer), 4f);
     }
 
     private void GetBossLayer()
@@ -128,7 +128,7 @@ public class Boss : Enemy
 
     void Update()
     {
-        if (!isStart || bossFSM == null) return;
+        if (!isStart) return;
 
         SwitchSpriteImageDir(transform);
         if (bossFSM != null) bossFSM.Update();                      //보스의 STATE값이 있을 때만 동작함. 
@@ -340,6 +340,7 @@ public class Boss : Enemy
             Managers.Sound.PlaySFXAudio("Final_Boss_SFX/45_Charge_05", null, 0.5f, false);
             yield return new WaitForSeconds(1.0f);
             darkHealCheckTimer += 1.0f;
+            print(darkHealCheckTimer);
         }
         Destroy(darkHealA);
         if (darkHealB != null) Destroy(darkHealB, 1.0f);
