@@ -14,7 +14,7 @@ public class ThrowingKnife : ActiveSkill
     /// <summary>
     /// 스킬 데미지
     /// </summary>
-    private int skillDamgae = 10;
+    private int skillDamgae = 13;
     /// <summary>
     /// 표창 소환 개수
     /// </summary>

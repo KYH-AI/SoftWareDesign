@@ -176,7 +176,7 @@ public class RandomDices1 : MonoBehaviour
         }
         else
         {
-            statResult.text = " 돈이 부족하여 구매 불가능합니다. "; }
+            statResult.text = " 돈이 부족합니다."; }
     }
 
 
