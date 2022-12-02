@@ -48,6 +48,11 @@ public class PlayerController_ : MonoBehaviour
     public List<char> delevList = new List<char>();
     #endregion
 
+    #region 기본 공격 효과음 경로
+    private readonly string[] defaullAttackSFX = { "Player/Default Attack/Player Default Attack_1",
+                                                    "Player/Default Attack/Player Default Attack_2",
+                                                    "Player/Default Attack/Player Default Attack_3" };
+    #endregion
 
     #region 유니티 함수
     public void PlayerControllerInit(Player player)
@@ -64,12 +69,6 @@ public class PlayerController_ : MonoBehaviour
             Move();
         }
     }
-    #endregion
-
-    #region 기본 공격 효과음 경로
-    private readonly string[] defaullAttackSFX = { "Player/Default Attack/Player Default Attack_1",
-                                                    "Player/Default Attack/Player Default Attack_2",
-                                                    "Player/Default Attack/Player Default Attack_3" };
     #endregion
 
     #region 이동 구현부

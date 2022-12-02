@@ -22,15 +22,6 @@ public class FirstAid : PassiveSkill
     private readonly WaitForSeconds PER_SECONDS = new WaitForSeconds(1f);
     #endregion
 
-    #region 스킬 스텟 프로퍼티
-    /// <summary>
-    /// 스킬 이동속도 프로퍼티 (  set : 겁쟁이 이동속도 buffSpeed 값 변경 )
-    /// </summary>
-    public int BuffHpRegenPercent
-    {
-        set { buffHpRegenPercent = value; }
-    }
-    #endregion
 
 
     /// <summary>

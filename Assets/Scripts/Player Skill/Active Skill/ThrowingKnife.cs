@@ -14,7 +14,7 @@ public class ThrowingKnife : ActiveSkill
     /// <summary>
     /// 스킬 데미지
     /// </summary>
-    private int skillDamgae = 2;
+    private int skillDamgae = 10;
     /// <summary>
     /// 표창 소환 개수
     /// </summary>
@@ -22,7 +22,7 @@ public class ThrowingKnife : ActiveSkill
     /// <summary>
     /// 표창 투척속도
     /// </summary>
-    private float skillProjectileSpeed = 15f; // 초기 값은 15
+    private float skillProjectileSpeed = 15f;
     /// <summary>
     /// 표창 소환간격 (상수 값)
     /// </summary>

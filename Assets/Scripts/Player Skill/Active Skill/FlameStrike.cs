@@ -20,7 +20,7 @@ public class FlameStrike : ActiveSkill
     /// <summary>
     /// 불기둥 소환 간격시간
     /// </summary>
-    private float skillAttackDelay = 0.25f; // 초기 값 0초
+    private readonly float skillAttackDelay = 0.25f; // 초기 값 0초
     /// <summary>
     /// 불기둥 소환간격 시간 코루틴  
     /// </summary>
@@ -46,7 +46,6 @@ public class FlameStrike : ActiveSkill
         }
         else
         {
-            // TODO : UI에서 "아직 재사용 대기시간 입니다." 연출하기
             return;
         }
     }
