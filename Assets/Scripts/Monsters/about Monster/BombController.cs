@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BombController : MonoBehaviour
 {
-    int damage = 15;
+    int damage = 3;
     float bombAttackRadius = 0.5f;
     public GameObject crab;
     public Animator anim;

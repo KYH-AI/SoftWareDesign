@@ -171,6 +171,7 @@ public abstract class BasicMonsterController : Enemy
 
     private void OnDisable()
     {
+        BasicStatInit();
         MemoryPoolManager.GetInstance().InputGameObject(gameObject);
     }
 }
