@@ -38,7 +38,7 @@ public class TalkManager : MonoBehaviour
                 break;
 
             case Define.Stage.STORE4:
-                talkData.Add(4, new string[] { "...저 너머에 있는 적은 나조차도 정복하지 못했네.", "소싯적 나도 몬스터 토벌을 꿈꿨었지.","물론 현실의 벽에 부딛혀 접은 뒤로 지금은 여기서 상점이나 하면서 죽치고 있다만,", " 마지막 놈은 꽤 쎄다네. 부디 조심하시게나." });
+                talkData.Add(4, new string[] { "...저 너머에 있는 적은 나조차도 정복하지 못했네.", "소싯적 나도 몬스터 토벌을 꿈꿨었지.","물론 현실의 벽에 부딛혀 지금은 여기서 상점이나 하면서 죽치고 있다만,", " 마지막 놈은 꽤 쎄다네. 부디 조심하시게나." });
                 id.id = 4;
                 break;
               

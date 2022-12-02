@@ -151,19 +151,19 @@ public class StageManager : MonoBehaviour
         switch (stage)
         {
             case Define.Stage.STAGE1:
-                Managers.Sound.PlayBGMAudio("Stage1BackGround");
+                Managers.Sound.PlayBGMAudio("Stage1BackGround", null, 0.5f, true);
                 break;
             case Define.Stage.STAGE2:
-                Managers.Sound.PlayBGMAudio("Stage2BackGround");
+                Managers.Sound.PlayBGMAudio("Stage2BackGround", null, 0.5f, true);
                 break;
             case Define.Stage.STAGE3:
-                Managers.Sound.PlayBGMAudio("Stage3BackGround");
+                Managers.Sound.PlayBGMAudio("Stage3BackGround", null, 0.5f, true);
                 break;
             case Define.Stage.STAGE4:
-                Managers.Sound.PlayBGMAudio("Stage4BackGround");
+                Managers.Sound.PlayBGMAudio("Stage4BackGround", null, 0.5f, true);
                 break;
             case Define.Stage.Boss:
-                Managers.Sound.PlayBGMAudio("Stage5BackGround");
+                Managers.Sound.PlayBGMAudio("Stage5BackGround", null, 0.5f, true);
                 break;
         }
     }
