@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8292104439405096281}
   - component: {fileID: 8292104439405096280}
   - component: {fileID: 8487121544590386020}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Crab
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -344,6 +344,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bomb
       objectReference: {fileID: 0}
+    - target: {fileID: 7785771457856068786, guid: cdc66b9fa528d9f4d87b8dac8c5f8335,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdc66b9fa528d9f4d87b8dac8c5f8335, type: 3}
 --- !u!1 &7816514526005037068 stripped
@@ -429,6 +434,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785771457856068786, guid: cdc66b9fa528d9f4d87b8dac8c5f8335,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdc66b9fa528d9f4d87b8dac8c5f8335, type: 3}
@@ -516,6 +526,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bomb
       objectReference: {fileID: 0}
+    - target: {fileID: 7785771457856068786, guid: cdc66b9fa528d9f4d87b8dac8c5f8335,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdc66b9fa528d9f4d87b8dac8c5f8335, type: 3}
 --- !u!1 &5215394883257393214 stripped
@@ -601,6 +616,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785771457856068786, guid: cdc66b9fa528d9f4d87b8dac8c5f8335,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdc66b9fa528d9f4d87b8dac8c5f8335, type: 3}
@@ -688,6 +708,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bomb
       objectReference: {fileID: 0}
+    - target: {fileID: 7785771457856068786, guid: cdc66b9fa528d9f4d87b8dac8c5f8335,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdc66b9fa528d9f4d87b8dac8c5f8335, type: 3}
 --- !u!1 &353056093436007787 stripped
@@ -773,6 +798,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785771457856068786, guid: cdc66b9fa528d9f4d87b8dac8c5f8335,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdc66b9fa528d9f4d87b8dac8c5f8335, type: 3}

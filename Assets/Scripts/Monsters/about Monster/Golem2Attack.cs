@@ -64,6 +64,7 @@ public class Golem2Attack : BasicMonsterController
         beamRenderer.sprite = laser;
         beamCollider.enabled = true;//공격
         yield return new WaitForSeconds(attackTime);
+        beamCollider.enabled = false; // 비활성화
         beam.SetActive(false);
 
         StartCoroutine("Beam");

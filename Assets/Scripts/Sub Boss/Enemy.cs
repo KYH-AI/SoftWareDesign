@@ -21,11 +21,6 @@ public class Enemy : LivingEntity, IBasicMovement
         BasicStatInit();
     }
 
-    /*private void FixedUpdate()
-    {
-        //Move();
-    }*/
-
     public void EnemyInit(Player playerTarget)
     {
         this.playerTarget = playerTarget;

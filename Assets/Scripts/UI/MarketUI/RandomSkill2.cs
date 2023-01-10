@@ -27,7 +27,7 @@ public class RandomSkill2 : MonoBehaviour
             stext.text = " <표창검> 가격:100 구매하시겠습니까?";
             ItemName.text = "<표창검>";
             product = 100;
-            itemDetailExplan.text = "플레이어가 마지막으로 보고 있는 방향으로 표창검을 발사한다.";
+            itemDetailExplan.text = "<표창검> 플레이어가 마지막으로 보고 있는 방향으로 표창검을 발사한다.";
             skillLevel = 0;
 
         }
@@ -38,7 +38,7 @@ public class RandomSkill2 : MonoBehaviour
             stext.text = "  <XT-쉴드> 가격:200 구매하시겠습니까?";
             ItemName.text = "<XT-쉴드>";
             product = 200;
-            itemDetailExplan.text = " 플레이어를 감싸는 방벽이 생성되어 적과 접촉시 공격한다.";
+            itemDetailExplan.text = "<XT-쉴드> 플레이어를 감싸는 방벽이 생성되어 적과 접촉시 공격한다.";
             skillLevel = 0;
         }
         else if (RandomInt == 3)
@@ -47,7 +47,7 @@ public class RandomSkill2 : MonoBehaviour
             stext.text = "  <모래시계> 가격:300 구매하시겠습니까?";
             ItemName.text = "<모래시계>";
             product = 300;
-            itemDetailExplan.text = "현재 체력이 30%이하로 떨어지면 시간이 정지된다.";
+            itemDetailExplan.text = "<모래시계> 현재 체력이 30%이하로 떨어지면 시간이 정지된다.";
             skillLevel = 0;
         }
 

@@ -36,7 +36,7 @@ public class PlayerSkill : MonoBehaviour
     {
         set 
         {
-            if (skillCoolTime <= 0) value = 1f;
+            if ((skillCoolTime - value) <= 0) value = 1f;
 
             if (skillCoolTime != value)  // 기존 스킬 쿨타임이 변경되면 코루틴 WaitForSeconds 값도 변경
             { 
@@ -71,13 +71,12 @@ public class PlayerSkill : MonoBehaviour
     /// <returns>해당 스킬 쿨타임</returns>
     private IEnumerator SkillCoolTimeProcess()
     {
-        //Debug.Log("해당 스킬 쿨타임 : " + skillCoolTime);
         Managers.UI.CoolTimeProcess();                          //스킬을 쓸 때마다 UI 쿨타임 함수 실행.
 
         yield return skillCoolTimeSec;
-
-        Managers.UI.CoolTimeProcess();                          //쿨이 끝날 때도 UI 쿨타임 함수 실행
-        currentSkillState = Define.CurrentSkillState.ACTIVE;
+                        
+        currentSkillState = Define.CurrentSkillState.ACTIVE;   //쿨이 끝날 때도 UI 쿨타임 함수 실행
+        Managers.UI.CoolTimeProcess();
     }
 
 }

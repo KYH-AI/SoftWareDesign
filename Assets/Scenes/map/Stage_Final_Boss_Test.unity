@@ -431,6 +431,11 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 359910546}
+    - target: {fileID: 1364585006, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
+      propertyPath: bossImageList.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: ff151e12e4031b94784ce4ffe0408fb1,
+        type: 3}
     - target: {fileID: 1755852631, guid: c6fceae9aed4c114ca3429bafb3f024b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 25.05

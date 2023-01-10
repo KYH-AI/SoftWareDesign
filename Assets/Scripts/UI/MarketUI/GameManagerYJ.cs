@@ -22,15 +22,14 @@ public class GameManagerYJ : MonoBehaviour
 
     public void Action(GameObject scanOb)
     {
-
-        //isAction = true;  액션이 켜져 있을때 enter을 한번 더 누르면 그대로 꺼진다. 
         scanObject = scanOb;
         ObjData A/*형식이나 변수처럼 이용*/ = scanObject.GetComponent<ObjData>();
 
 
         if(scanObject.CompareTag("Market"))
-            {
+        {
             marketUI.gameObject.SetActive(true);
+            Managers.StageManager.Player.PlayerController.bossDebuff = true;
         }
     
          
@@ -55,7 +54,7 @@ public class GameManagerYJ : MonoBehaviour
 
         if (talkData == null)
         {  isAction = false;
-           Managers.StageManager.Player.PlayerController.isMoveable = true;
+            FreezePlayer(false);
             talkIndex = 0;
             return; } // 이야기가 다 끝나고, 즉 인덱스가 다 돌아가면 대화창 내리기,
                                        // talkIndex와 대화의 문장 갯수를 비교해 끝 확인  
@@ -64,7 +63,6 @@ public class GameManagerYJ : MonoBehaviour
         if (isNPC) //챕터별 상점 주인마다 id지정 
         {
             easyTalk.text = talkData;
-            
 
         }
 
@@ -73,28 +71,12 @@ public class GameManagerYJ : MonoBehaviour
             easyTalk.text = talkData;
         }
         isAction = true;
-        Managers.StageManager.Player.PlayerController.isMoveable = true;
+        FreezePlayer(true);
         talkIndex++; 
     }
+
+    public void FreezePlayer(bool isFreeze)
+    {
+        Managers.StageManager.Player.PlayerController.bossDebuff = isFreeze;
+    }
 }
-
-
-
-/*  public void Action(GameObject scanOb) {
-
-if(isAction) //대화창 나가기
-        {
-           isAction = false;
-        }
-
-        else //대화창 팝업ㄴ
-        {
-            //isAction = true;  액션이 켜져 있을때 enter을 한번 더 누르면 그대로 꺼진다. 
-            scanObject = scanOb;
-            ObjData A/*형식이나 변수처럼 이용* = scanObject.GetComponent<ObjData>();
-Talk(A.id, A.isNPC);
-        }
-
-        talkPanel.SetActive(isAction); //true or fasle 
-
-    }*/

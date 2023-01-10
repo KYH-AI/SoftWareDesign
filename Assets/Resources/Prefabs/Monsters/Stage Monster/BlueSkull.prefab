@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2717129123398836085}
   - component: {fileID: 2717129123398836086}
   - component: {fileID: 4159154899059102425}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BlueSkull
   m_TagString: Enemy
   m_Icon: {fileID: 0}

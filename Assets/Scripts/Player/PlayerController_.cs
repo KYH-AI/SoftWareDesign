@@ -37,7 +37,7 @@ public class PlayerController_ : MonoBehaviour
     #region 상태 제어 변수 선언부
     public bool isMoveable = true;             //기본 공격 때 움직임을 제한하기 위한 변수.
     public bool isAttackalble = true;   //스킬 사용 중 혹은 보스 몬스터에게 침묵이 걸렸을 때 스킬 사용을 제한하기 위한 변수.
-    public bool bossDebuff = false;
+    public bool bossDebuff = false;     // 보스에 대한 이동제어 제한
     #endregion
 
     #region 플레이어 정보 변수 선언부
@@ -48,6 +48,11 @@ public class PlayerController_ : MonoBehaviour
     public List<char> delevList = new List<char>();
     #endregion
 
+    #region 기본 공격 효과음 경로
+    private readonly string[] defaullAttackSFX = { "Player/Default Attack/Player Default Attack_1",
+                                                    "Player/Default Attack/Player Default Attack_2",
+                                                    "Player/Default Attack/Player Default Attack_3" };
+    #endregion
 
     #region 유니티 함수
     public void PlayerControllerInit(Player player)
@@ -64,12 +69,6 @@ public class PlayerController_ : MonoBehaviour
             Move();
         }
     }
-    #endregion
-
-    #region 기본 공격 효과음 경로
-    private readonly string[] defaullAttackSFX = { "Player/Default Attack/Player Default Attack_1",
-                                                    "Player/Default Attack/Player Default Attack_2",
-                                                    "Player/Default Attack/Player Default Attack_3" };
     #endregion
 
     #region 이동 구현부
@@ -147,12 +146,12 @@ public class PlayerController_ : MonoBehaviour
     #endregion
 
     #region 보스 입력 이벤트 함수
-    void OnNodeA() { delevList.Add('A'); }
-    void OnNodeS() { delevList.Add('S'); }
-    void OnNodeD() { delevList.Add('D'); }
-    void OnNodeZ() { delevList.Add('Z');  }
-    void OnNodeX() { delevList.Add('X');  }
-    void OnNodeC() { delevList.Add('C');  }
+    void OnNodeA() { if (bossDebuff) { delevList.Add('A'); } }
+    void OnNodeS() { if (bossDebuff) { delevList.Add('S'); } }
+    void OnNodeD() { if (bossDebuff) { delevList.Add('D'); } }
+    void OnNodeZ() { if (bossDebuff) { delevList.Add('Z'); } }
+    void OnNodeX() { if (bossDebuff) { delevList.Add('X'); } }
+    void OnNodeC() { if (bossDebuff) { delevList.Add('C'); } }
     #endregion 보스 입력 이벤트 함수
 
     #region 애니메이션 이벤트 함수

@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-/// <summary>
-/// ±Í¸êÀÇ Ä®³¯ º®·ÂÀÏ¼¶ N¿¬¼Ó ±â¼ú
-/// </summary>
+
 public class ThunderSlash : ActiveSkill
 {
     private TrailRenderer thunderclapEffect;
@@ -21,7 +19,7 @@ public class ThunderSlash : ActiveSkill
     /// <summary>
     /// ½ºÅ³ Å¸°Ù ¼ö
     /// </summary>
-    private int skillTotalTarget = 10;
+    private int skillTotalTarget = 2;
     #endregion
 
     private void Start()

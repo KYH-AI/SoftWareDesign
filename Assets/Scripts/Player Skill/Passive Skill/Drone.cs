@@ -64,7 +64,7 @@ public class Drone : PassiveSkill
 
     private void Update()  // 드론 사격 여부 확인
     {
-        if (!isDroneStop && currentSkillState == Define.CurrentSkillState.ACTIVE)
+        if (currentSkillState == Define.CurrentSkillState.ACTIVE)
         {
             currentSkillState = DroneSkillAttack();
         }
@@ -88,9 +88,9 @@ public class Drone : PassiveSkill
     public override void Upgrade()
     {
         skillDamage += 3;
-        SkillCoolTime -= 2f;
+        SkillCoolTime -= 1f;
         skillTargetCount += 3;
-        SkillAttackDelay = (skillAttackDelay - 0.25f);
+        SkillAttackDelay = (skillAttackDelay - 0.1f);
         skillRange += 2;
     }
 
@@ -142,7 +142,7 @@ public class Drone : PassiveSkill
 
 
 
-    /* 드론 연출 효과 */
+    #region 드론 연출 효과
 
     /// <summary>
     /// 드론 회전 코루틴
@@ -191,5 +191,5 @@ public class Drone : PassiveSkill
         droneMuzzleFlash.enabled = false; // 2D Light 컴포넌트 비활성화
     }
 
-
+    #endregion
 }

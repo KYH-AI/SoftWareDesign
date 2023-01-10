@@ -60,7 +60,7 @@ public class HourGlass : PassiveSkill
     public override void Upgrade()
     {
         SkillDuration = (skillDuration + 1f);
-        SkillCoolTime -= 5f;
+        SkillCoolTime -= 10f;
     }
 
     private void HourGlassSkillActive()
