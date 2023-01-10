@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss4_ : Enemy
+public class Boss4 : Enemy
 {
     protected int Boss = 1 << 14;
     public enum BossState

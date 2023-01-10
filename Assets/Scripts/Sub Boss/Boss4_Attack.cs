@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Boss4_Attack_ : MonoBehaviour
+public class Boss4_Attack : MonoBehaviour
 {
-    Boss4_ boss4;
+    Boss4 boss4;
     private void Start()
     {
-        boss4 = GetComponentInParent<Boss4_>();
+        boss4 = GetComponentInParent<Boss4>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

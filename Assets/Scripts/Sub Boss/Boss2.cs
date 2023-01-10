@@ -14,7 +14,6 @@ public class Boss2 : Enemy
         HIDE_STATE
     };
     float distance;
-    float moveDistance = 15f;
     float attackDistance = 2.5f;
     float attackDelay = 2f;
     Vector2 dir;

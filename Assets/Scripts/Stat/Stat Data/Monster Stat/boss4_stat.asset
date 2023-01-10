@@ -15,4 +15,4 @@ MonoBehaviour:
   hp: 120
   moveSpeed: 5
   armor: 5
-  defaultAttackDamage: 10
+  defaultAttackDamage: 2
