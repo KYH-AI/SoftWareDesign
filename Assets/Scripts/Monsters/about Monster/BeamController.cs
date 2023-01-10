@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BeamController :MonoBehaviour
 {
-    private int damage = 15;
+    private int damage = 35;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

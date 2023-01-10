@@ -300,7 +300,6 @@ public class Boss : Enemy
         }
         else
         {
-            bossHpPercentage = 100f;
             return;
         }
     }
@@ -315,9 +314,9 @@ public class Boss : Enemy
     /// </summary>
     public void Pattern_DarkHeal()
     {
+        bossFSM.bossState = Define.BossState.CASTING_STATE; //스테이트 변경
         bossRigidBody.velocity = Vector2.zero;              //보스 좌표 고정
         SetAnimationTrigger("RunDarkHealMotion");           //애니메이션 트리거 실행
-        bossFSM.bossState = Define.BossState.CASTING_STATE; //스테이트 변경
         RunDarkHeal();                                      //패턴함수 실행
         Managers.Sound.PlaySFXAudio("Final_Boss_SFX/LostArkSkillSfx1");
     }
@@ -331,9 +330,10 @@ public class Boss : Enemy
             if (darkHealCheckTimer >= 7.0f && darkHealTempHp > 0)          //시간 카운터가 8초가 지나고 1,000 데미지 이하로 받았을 때
             {
                 Hp += MaxHp * 15 / 100;     //전체값의 15%만큼 증가
+                Managers.UI.UpdateBossHpSlider(Hp, MaxHp);
                 break;
             }
-            else if (darkHealCheckTimer < 7.0f && darkHealTempHp <= 0)     //시간 카운터가 8초가 지나지 않고 1,000데미지 이상으로 받았을 때
+            else if (darkHealTempHp <= 0)     //시간 카운터가 8초가 지나지 않고 1,000데미지 이상으로 받았을 때
             {
                 darkHealB = CreateSimpleAnimation(finalBossDarkHealFailed, this.gameObject.transform, 0, 3);
                 break;
@@ -445,6 +445,7 @@ public class Boss : Enemy
     {
         bossFSM.bossState = Define.BossState.CASTING_STATE;
         print("false해줌 ");
+        Managers.StageManager.Player.PlayerController.delevList.Clear();
         Managers.StageManager.Player.PlayerController.isAttackalble = false;
         Managers.StageManager.Player.PlayerController.bossDebuff = true;    
         print("false 해주고 난 뒤"); 
@@ -508,20 +509,21 @@ public class Boss : Enemy
         else { 
             for (int num = 0; num < 6; num++)   //키보드 아이콘 프리팹 갯수만큼 반복
             {
-                if (qteCharArray[num] != inputList[num])    //만약 랜덤 생성된 배열과 입력받은 값이 다르다면 실패
+                if (inputList[num].Equals(null))       //검사 도중 입력이 되지 않았다면 실패 
+                {
+                    print("검사 도중 입력이 되지 않았음");
+                    Managers.Sound.PlaySFXAudio("Final_Boss_SFX/wrong-answer-126515");
+                    qteCheck = false;
+                    break;
+                }
+                else if (qteCharArray[num] != inputList[num])    //만약 랜덤 생성된 배열과 입력받은 값이 다르다면 실패
                 {
                     print("랜덤 생성된 배열과 입력받은 값이 다름");
                     Managers.Sound.PlaySFXAudio("Final_Boss_SFX/wrong-answer-126515");
                     qteCheck = false;
                     break;
                 }
-                else if (inputList[num].Equals(null))       //검사 도중 입력이 되지 않았다면 실패 
-                {
-                    print("검사 도중 입력이 되지 않았음");
-                    Managers.Sound.PlaySFXAudio("Final_Boss_SFX/wrong-answer-126515");
-                    qteCheck = false;
-                    break;  
-                }
+  
                 qteCheck = true;                            //위 조건들을 통과하면, 성공! 
             }
         }
@@ -552,10 +554,14 @@ public class Boss : Enemy
         if (bindVineFail != null) Destroy(bindVineFail, 5.0f);          //생성했던 프리팹 파괴
         SetBossGodMode();                               //보스의 무적을 해제함
         PatternReset();                                 //패턴에 사용한 변수값들 초기화
+
+        inputList.Clear();
+        Managers.StageManager.Player.PlayerController.delevList.Clear();
     }
     IEnumerator BindFalseProcess()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(3.0f);
+
         Managers.StageManager.Player.PlayerController.isAttackalble = true;
         Managers.StageManager.Player.PlayerController.bossDebuff = false;
     }

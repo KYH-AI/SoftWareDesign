@@ -42,6 +42,7 @@ public class Boss4_ : Enemy
     private void GetBossLayer()
     {
         gameObject.layer = 14;
+        gameObject.tag = Define.StringTag.Enemy.ToString();
         isStart = true; 
     }
     void ChangeOrder()

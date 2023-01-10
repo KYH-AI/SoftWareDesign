@@ -146,12 +146,12 @@ public class PlayerController_ : MonoBehaviour
     #endregion
 
     #region 보스 입력 이벤트 함수
-    void OnNodeA() { delevList.Add('A'); }
-    void OnNodeS() { delevList.Add('S'); }
-    void OnNodeD() { delevList.Add('D'); }
-    void OnNodeZ() { delevList.Add('Z');  }
-    void OnNodeX() { delevList.Add('X');  }
-    void OnNodeC() { delevList.Add('C');  }
+    void OnNodeA() { if (bossDebuff) { delevList.Add('A'); } }
+    void OnNodeS() { if (bossDebuff) { delevList.Add('S'); } }
+    void OnNodeD() { if (bossDebuff) { delevList.Add('D'); } }
+    void OnNodeZ() { if (bossDebuff) { delevList.Add('Z'); } }
+    void OnNodeX() { if (bossDebuff) { delevList.Add('X'); } }
+    void OnNodeC() { if (bossDebuff) { delevList.Add('C'); } }
     #endregion 보스 입력 이벤트 함수
 
     #region 애니메이션 이벤트 함수
