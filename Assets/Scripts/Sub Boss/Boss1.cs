@@ -2,23 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss1 : Enemy
+public class Boss1 : SubBoss
 {
-    protected int Boss = 1 << 14;
     public enum BossState
     {
         IDLE_STATE, 
         MOVE_STATE,
         ATTACK_STATE
     }
-    Vector2 dir;
     Vector2 attackDir;
     BossState state = BossState.IDLE_STATE;
     int attackCnt;
     bool isMove=false;
     bool isAttack=false;
-    bool isDie = false;
-    bool isStart = false;
     float idleDelay = 3f;
     float moveTime = 3f;
     int skillDamage = 3;
@@ -28,51 +24,23 @@ public class Boss1 : Enemy
     [SerializeField] Material HitEffectMaterial;     // 피격 시 머티리얼
     [SerializeField] Material orignalMaterial;
     [SerializeField] GameObject Portalpref;
-    GameObject myInstance;
 
     private void Start()
     {
         base.Start();
-        Invoke(nameof(GetBossLayer),4.5f);
     }
     void Update()
     {
-        attackDir= (playerTarget.transform.position - FireBallTransform.position);
-        dir = (playerTarget.transform.position - transform.position);
+        Measure();
         Fsm();
         ChangeOrder();
     }
-
-    private void GetBossLayer()
+    protected override void Measure()
     {
-        gameObject.layer = 14;
-        gameObject.tag = Define.StringTag.Enemy.ToString();
-        isStart = true;
+        attackDir = (playerTarget.transform.position - FireBallTransform.position);
+        base.Measure();
     }
 
-    void ChangeOrder()
-    {
-        if (dir.y < 0)
-        {
-            SpriteRenderer.sortingOrder = 3;
-        }
-        else
-        {
-            SpriteRenderer.sortingOrder = 5;
-        }
-    }
-    private void ChangeDir()
-    {
-        if (dir.x < 0)
-        {
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-        }
-        else
-        {
-            gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
-    }
     void Fsm()
     {
         switch (state)
@@ -209,11 +177,11 @@ public class Boss1 : Enemy
     }
     void FireSound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/fire-magic-6947");
+        PlaySound("SubBoss/Boss1_Attack_SFX");
     }
     void DeadSound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/저글링4");
+        PlaySound("SubBoss/Boss1_Die_SFX");
     }
     
 }

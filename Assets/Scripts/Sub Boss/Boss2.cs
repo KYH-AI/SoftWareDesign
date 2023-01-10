@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss2 : Enemy
+public class Boss2 : SubBoss
 {
-    protected int Boss = 1 << 14;
     protected int DontDamaged = 1 << 15;
     public enum BossState
     {
@@ -16,61 +15,30 @@ public class Boss2 : Enemy
     float distance;
     float attackDistance = 2.5f;
     float attackDelay = 2f;
-    Vector2 dir;
     BossState state = BossState.IDLE_STATE;
     bool isAttack = true;
     bool isHurt = false;
-    bool isDie = false;
-    bool isStart = false;
     int attackCnt = 0;
     bool isFadeout = true;
     bool isHide = false;
     bool isIdle = true;
     [SerializeField] GameObject Portalpref;
-    GameObject myInstance;
 
 
     private void Start()
     {
         base.Start();
-        Invoke(nameof(GetBossLayer), 4.5f);
     }
     void Update()
     {
-        dir = (playerTarget.transform.position - transform.position);
-       distance = dir.magnitude; 
+        Measure();
         Fsm();
         ChangeOrder();
     }
-    private void GetBossLayer()
+    protected override void Measure()
     {
-        gameObject.layer = 14;
-        gameObject.tag = Define.StringTag.Enemy.ToString();
-        isStart = true;
-
-    }
-    void ChangeOrder()
-    {
-        if (dir.y < 0)
-        {
-            SpriteRenderer.sortingOrder = 3;
-        }
-        else
-        {
-            SpriteRenderer.sortingOrder = 5;
-        }
-    }
-    private void ChangeDir()
-    {
-        if (dir.x < 0)
-        {
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-        }
-        else
-        {
-            gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
+        base.Measure();
+        distance = dir.magnitude;
     }
     void Fsm()
     {
@@ -279,18 +247,18 @@ public class Boss2 : Enemy
     }
     void Attacksound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/boss2_Attack_SFX");
+        PlaySound("SubBoss/boss2_Attack_SFX");
     }
     void FadeOutsound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/FadeOut_SFX");
+        PlaySound("SubBoss/FadeOut_SFX");
     }
     void FadeINsound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/FadeIn_SFX");
+        PlaySound("SubBoss/FadeIn_SFX");
     }
     void Deadsound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/pzeDth00");
+        PlaySound("SubBoss/Boss2_Die_SFX");
     }
 }

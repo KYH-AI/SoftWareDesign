@@ -38,13 +38,9 @@ public class CanIBuy : MonoBehaviour
         No.SetActive(false);
         Up.SetActive(false);
         btn.onClick.AddListener(Answer);
-        
-
-
-        SelectBtn1.onClick.AddListener(Buy1);
+        /*SelectBtn1.onClick.AddListener(Buy1);
         SelectBtn2.onClick.AddListener(Buy2);
-        SelectBtn3.onClick.AddListener(Buy3);
-
+        SelectBtn3.onClick.AddListener(Buy3);*/
     }
 
 
@@ -62,7 +58,9 @@ public class CanIBuy : MonoBehaviour
         { 
             Managers.StageManager.Player.PlayerGold -= item;
 
-
+            print(Managers.StageManager.Player.PlayerGold);
+            print(item);
+            print(skillObject.name);
 
             if (!Managers.StageManager.Player.skillList.TryGetValue(skillObject.name, out PlayerSkill updateSkill))
             {
@@ -123,7 +121,7 @@ public class CanIBuy : MonoBehaviour
 
     }
 
-    void Buy1()
+    public void Buy1()
     {
         item = RandomSkillSlot1.product;
         selectImage = RandomSkillSlot1.skill;
@@ -139,7 +137,7 @@ public class CanIBuy : MonoBehaviour
         
     }
 
-    void Buy2()
+    public void Buy2()
     {
         item = RandomSkillSlot2.product;
         selectImage = RandomSkillSlot2.skill;
@@ -155,7 +153,7 @@ public class CanIBuy : MonoBehaviour
         }
     }
 
-    void Buy3()
+    public void Buy3()
     {
         item = RandomSkillSlot3.product;
        selectImage = RandomSkillSlot3.skill;

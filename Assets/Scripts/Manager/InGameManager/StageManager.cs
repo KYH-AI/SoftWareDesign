@@ -70,7 +70,7 @@ public class StageManager : MonoBehaviour
     }
     public void SetStageKillCount()     //킬 카운트를 100으로 초기화 하는 함수.
     {
-        killCount = 100;
+        killCount = 1;
     }
     public void ChangeStage()                   //씬 이동시 실행해야 하는 함수. 스테이지를 1씩 증가시킨다.
     {

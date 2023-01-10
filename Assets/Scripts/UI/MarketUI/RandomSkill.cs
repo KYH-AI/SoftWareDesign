@@ -23,7 +23,7 @@ public class RandomSkill : MonoBehaviour
 
         
     {
-        RandomInt = Random.Range(1,4);
+        RandomInt = 3; //Random.Range(1,4);
 
    
         if (RandomInt == 1)

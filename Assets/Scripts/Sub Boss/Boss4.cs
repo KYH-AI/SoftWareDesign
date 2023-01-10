@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss4 : Enemy
+public class Boss4 : SubBoss
 {
-    protected int Boss = 1 << 14;
     public enum BossState
     {
         IDLE_STATE,
@@ -13,61 +12,32 @@ public class Boss4 : Enemy
         ATTACK2_STATE,
         Dead_STATE
     }
-    Vector2 dir;
     float distance;
     BossState state = BossState.IDLE_STATE;
     bool isIdle = true;
-    bool isDie = false;
-    bool isStart = false;
     float attackDelay = 4f;
     float attackdistance = 3f;
     int attack2Cnt =0;
     int skillDamage = 3;
     [SerializeField] GameObject Spell;
     [SerializeField] GameObject Portalpref;
-    GameObject myInstance;
     private void Start()
     {
         base.Start();
-        Invoke(nameof(GetBossLayer), 4.5f);
     }
     void Update()
     {
-        dir = (playerTarget.transform.position - transform.position);
-        distance = dir.magnitude;
+        Measure();
         Fsm();
         ChangeOrder();
 
     }
-    private void GetBossLayer()
+    protected override void Measure()
     {
-        gameObject.layer = 14;
-        gameObject.tag = Define.StringTag.Enemy.ToString();
-        isStart = true; 
+        base.Measure();
+        distance = dir.magnitude;
     }
-    void ChangeOrder()
-    {
-        if (dir.y < 0)
-        {
-            SpriteRenderer.sortingOrder = 3;
-        }
-        else
-        {
-            SpriteRenderer.sortingOrder = 5;
-        }
-    }
-    private void ChangeDir()
-    {
-        if (dir.x < 0)
-        {
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-        }
-        else
-        {
-            gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
-    }
+  
     void Fsm()
     {
         switch (state)
@@ -208,10 +178,10 @@ public class Boss4 : Enemy
     }
     void Attack1Sound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/MP_swosh-sword-swing");
+        PlaySound("SubBoss/Boss3_4_Attack_SFX");
     }
     void DeadSound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/boss4_Die_SFX");
+        PlaySound("SubBoss/boss4_Die_SFX");
     }
 }

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss3 : Enemy
+public class Boss3 : SubBoss
 {
-    protected int Boss = 1 << 14;
+
     public enum BossState
     {
         IDLE_STATE,
@@ -13,49 +13,31 @@ public class Boss3 : Enemy
         ATTACK2_STATE,
         Dead_STATE
     };
-    Vector2 dir;
     BossState state = BossState.IDLE_STATE;
     bool isIdle = true;
     bool isTelpo = false;
     bool isAttack1 = false;
     bool isAttack2 = false;
-    bool isDie = false;
-    bool isStart = false;
     [SerializeField] GameObject Telpo;
     [SerializeField] GameObject Fire;
     [SerializeField] GameObject Portalpref;
-    GameObject myInstance;
+
     float fireDelay = 1f;
     float attackDelay = 3f;
     private int skillDamage = 5;
     private void Start()
     {
         base.Start();
-        Invoke(nameof(GetBossLayer), 4.5f); 
-
-    }
-    private void GetBossLayer()
-    {
-        gameObject.layer = 14;
-        gameObject.tag = Define.StringTag.Enemy.ToString();
-        isStart = true;
     }
     void Update()
     {
-        dir = (playerTarget.transform.position - transform.position);
+        Measure();
         Fsm();
         ChangeOrder();
     }
-    void ChangeOrder()
+    protected override void Measure()
     {
-        if (dir.y < 0)
-        {
-            SpriteRenderer.sortingOrder = 3;
-        }
-        else
-        {
-            SpriteRenderer.sortingOrder = 5;
-        }
+        base.Measure();
     }
 
     public override void TakeDamage(int newDamage)
@@ -243,15 +225,15 @@ public class Boss3 : Enemy
     }
     void AttackSound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/MP_swosh-sword-swing");
+        PlaySound("SubBoss/Boss3_4_Attack_SFX");
     }
     void DeadSound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/Boss3_Die_SFX");
+        PlaySound("SubBoss/Boss3_Die_SFX");
     }
     void TelpoSound()
     {
-        Managers.Sound.PlaySFXAudio("SubBoss/boss3_Telpo_SFX");
+        PlaySound("SubBoss/boss3_Telpo_SFX");
     }
 
 }
