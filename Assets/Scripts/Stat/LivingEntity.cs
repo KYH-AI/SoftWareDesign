@@ -53,7 +53,7 @@ public abstract class LivingEntity : MonoBehaviour
             moveSpeed = value;
         }
     }
-    public float Armor { get; set; }
+    public int Armor { get; set; }
     public int DefaultAttackDamage 
     {
         get { return defaultAttackDamage; }

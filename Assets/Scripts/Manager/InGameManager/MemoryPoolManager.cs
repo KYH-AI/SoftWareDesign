@@ -89,7 +89,7 @@ public class MemoryPoolManager : MonoBehaviour
     {
         pools.Clear();
     }
-
+    
     private void OnEnable()
     {
         pools = new Dictionary<string, Queue<GameObject>>();

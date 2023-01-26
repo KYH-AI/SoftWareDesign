@@ -54,6 +54,14 @@ public class Define
         UI,
         SubBoss,
     }
+
+    public enum ItemType
+    {
+        Skill,
+        Stat,
+        Potion,
+    }
+
     /// <summary>
     /// BOSS에서 사용하는 STATE의 열거형 변수 집합
     /// </summary>
