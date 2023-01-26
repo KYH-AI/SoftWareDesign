@@ -46,7 +46,7 @@ public class ShopCore : MonoBehaviour
     private void InitSkillList()
     {
         skillProcess.SetRandomSkillList();
-        shopUI.InitRandomSKillList(skillProcess.GetSkillList);
+        shopUI.InitRandomSKillList(skillProcess.SkillList);
     }
     
     private void InitRandomDice()
@@ -256,9 +256,7 @@ internal class DiceProcess : Item
 internal class SkillProcess : Item
 {
     [SerializeField] private ItemStat[] allSkillList;
-    
-    private ItemStat[] skillList = new ItemStat[3];
-    public ItemStat[] GetSkillList { get { return skillList; } }
+    public ItemStat[] SkillList { get; private set; } = new ItemStat[3];
 
     private GameObject skillObject;
     private readonly string DEFAULT_SKILL_PATH = "Player_Skill/";
@@ -268,10 +266,10 @@ internal class SkillProcess : Item
     
     internal void SetRandomSkillList()
     {
-        for (var i = 0; i < skillList.Length; i++)
+        for (var i = 0; i < SkillList.Length; i++)
         {
-            skillList[i] = allSkillList[RandomProcess.RandomSkillList(allSkillList.Length)];
-            ItemList[i] = skillList[i]; // 0 ~ 2 까지 스킬 아이템 전달
+            SkillList[i] = allSkillList[RandomProcess.RandomSkillList(allSkillList.Length)];
+            ItemList[i] = SkillList[i]; // 0 ~ 2 까지 스킬 아이템 전달
         }
     }
 
@@ -282,9 +280,9 @@ internal class SkillProcess : Item
         if (itemResultText.Equals(string.Empty))
         {
             // 구매
-            if (!Managers.StageManager.Player.skillList.TryGetValue(skillList[itemIndex].ItemName, out PlayerSkill updateSkill))
+            if (!Managers.StageManager.Player.skillList.TryGetValue(SkillList[itemIndex].ItemName, out PlayerSkill updateSkill))
             {
-                skillObject = MakeSkillObject(skillList[itemIndex].ItemName);
+                skillObject = MakeSkillObject(SkillList[itemIndex].ItemName);
                 GameObject newSkillObject = Object.Instantiate(skillObject, Managers.StageManager.Player.transform);
                 
 
@@ -292,14 +290,14 @@ internal class SkillProcess : Item
                 {
                     activeSkill.Init(Managers.StageManager.Player);
                     Managers.StageManager.Player.playerActiveSkills.Add(Managers.StageManager.Player.ActiveSkillSlot_Index++, activeSkill);
-                    Managers.UI.UpdateActiveSkills(skillList[itemIndex].ItemImage, activeSkill);
+                    Managers.UI.UpdateActiveSkills(SkillList[itemIndex].ItemImage, activeSkill);
                    // print("스킬구매" + selectImage.ToString() + activeSkill.ToString());
                 }
                 else if(newSkillObject.TryGetComponent(out PassiveSkill passiveSkill))
                 {
                     passiveSkill.Init(Managers.StageManager.Player);
                     passiveSkill.OnActive();
-                    Managers.UI.UpdatePassiveSkills(skillList[itemIndex].ItemImage, passiveSkill);
+                    Managers.UI.UpdatePassiveSkills(SkillList[itemIndex].ItemImage, passiveSkill);
                 }
                 else
                 {
@@ -402,7 +400,7 @@ public class Item
     }
 
     /// <summary>
-    /// 플레이어의 아이템 가격계산
+    /// 플레이어 골드와 아이템 가격계산
     /// </summary>
     /// <param name="item">아이템</param>
     /// <param name="playerGold">플레이어 골드</param>
