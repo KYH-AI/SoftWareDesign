@@ -24,8 +24,9 @@ public abstract class LivingEntity : MonoBehaviour
     { 
         get { return hp; } 
         set 
-        { 
-            hp = value;
+        {
+            if ((value + hp) >= maxHp) hp = maxHp;
+            else hp = value;
         } 
     }
 
@@ -79,15 +80,6 @@ public abstract class LivingEntity : MonoBehaviour
     /// ( 추상화 = 구현필수 ) 사망처리 함수
     /// </summary>
     protected abstract void OnDead();
-    /*
-    {
-        // TODO : Enemy는 메모리 풀링 (재정의)
-
-        // TODO : Boss는 게임승리 UI (재정의)
-
-        // TODO : Player는 게임오버 UI (재정의)
-    }
-    */
 
     /// <summary>
     /// 체력 감소 함수 (현재 체력 = 받은 데미지 - 방어력)
@@ -100,14 +92,9 @@ public abstract class LivingEntity : MonoBehaviour
         if (newDamage <= armor) hp -= 1;
         else hp -= (newDamage - armor);  
 
-
-
         if (hp <= 0)
         {
             OnDead();
         }
-
-        // TODO : Boss UI에서 체력 게이지 변경 (재정의)
-        // TODO : Player UI에서 체력 게이지 변경 (재정의)
     }
 }

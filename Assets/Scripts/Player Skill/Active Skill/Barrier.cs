@@ -26,7 +26,7 @@ public class Barrier : ActiveSkill
     /// <summary>
     /// 스킬 데미지
     /// </summary>
-    private int skillDamage = 2;
+    private int skillDamage = 10;
     /// <summary>
     /// 방벽 스킬 사이즈
     /// </summary>
@@ -113,7 +113,7 @@ public class Barrier : ActiveSkill
         skillDamage += 1;
         SkillCoolTime -= 2f;
         barrierSize.localScale += new Vector3(0.5f, 0.5f, 1f);
-        BarrierAttackDelay =  (barrierAttackDelay - 0.2f);
+        BarrierAttackDelay =  (barrierAttackDelay - 0.1f);
         SkillDuration = (skillDuration + 1f);
     }
 

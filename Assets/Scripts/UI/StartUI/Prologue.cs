@@ -8,7 +8,7 @@ public class Prologue : MonoBehaviour
     /// <summary>
     /// 애니메이션에서 호출
     /// </summary>
-    private void NextSecen()
+    public void NextSecen()
     {
         SceneManager.LoadScene("Stage1");
     }

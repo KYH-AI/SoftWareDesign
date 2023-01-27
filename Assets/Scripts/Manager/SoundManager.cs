@@ -49,7 +49,7 @@ public class SoundManager : MonoBehaviour
     /// <param name="bgmAudio">BGM을 재생할 오디오 (기본 값 Null)</param>
     /// <param name="vol">볼륨 (기본 값 0.2)</param>
     /// <param name="isloop">BGM 반복 (기본 값 True)</param>
-    public void PlayBGMAudio(string bgmClipName, AudioSource bgmAudio = null, float vol = 0.2f, bool isloop = true)
+    public void PlayBGMAudio(string bgmClipName, AudioSource bgmAudio = null, float vol = 0.5f, bool isloop = true)
     {
         if (bgmAudio == null) bgmAudio = bgmAduioSource;
 
@@ -138,6 +138,13 @@ public class SoundManager : MonoBehaviour
         if (!delayTime.TryGetValue(delay, out wfs))
             delayTime.Add(delay, wfs = new WaitForSeconds(delay));
         return wfs;
+    }
+
+    public void StopBGMAudio(AudioSource bgmAudio = null)
+    {
+        if (bgmAudio == null) bgmAudio = bgmAduioSource;
+
+        if(bgmAudio.isPlaying) bgmAudio.Stop();
     }
 
 

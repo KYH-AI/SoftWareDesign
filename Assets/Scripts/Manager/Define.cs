@@ -32,7 +32,6 @@ public class Define
     /// </summary>
     public enum Stage
     {
-        Tutorial,
         STAGE1,
         STORE1,
         STAGE2,

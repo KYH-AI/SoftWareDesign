@@ -33,6 +33,8 @@ public class SpellBlade : PassiveSkill
     private WaitForSeconds skillDurationSec;
     #endregion
 
+    private Coroutine buffCoroutine;
+
     #region 스킬 스텟 프로퍼티
     /// <summary>
     /// 공격력 버프 퍼센트 증가 프로퍼티 (  set : 버프 데미지 buffDamagePercent 값 변경 )
@@ -61,8 +63,6 @@ public class SpellBlade : PassiveSkill
     }
     #endregion
 
-    private Coroutine buffCoroutine;
-
     private void Start()
     {
         SpellBladeInit();
@@ -77,14 +77,13 @@ public class SpellBlade : PassiveSkill
 
     public override void OnActive()
     {
-        // TODO : 플레이어에서 Active 스킬을 쓰는 구간에 AddListener 이벤트 등록
         playerObject.OnActiveSkillEvent += SpellBladeActive;
         playerObject.DisableBuffEvent += StopSkillProcess;
     }
 
     public override void Upgrade()
     {
-        buffDamagePercent += 50;
+        BuffDamagePercent = 50;
         SkillCoolTime -= 2f;
         SkillDuration = (skillDuration + 2f);
     }
